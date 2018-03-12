@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cali</groupId>
+    <artifactId>eventkalender-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>eventkalender-ear</artifactId>
+  <packaging>ear</packaging>
+  <name>eventkalender-ear</name>
+
+  <!-- Define the versions of your ear components here -->
+  <dependencies>
+    <dependency>
+      <groupId>cali</groupId>
+      <artifactId>eventkalender-client</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>cali</groupId>
+      <artifactId>eventkalender-ejb</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <type>ejb</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>eventkalender-ear</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>2.10.1</version>
+        <configuration>
+          <version>7</version>
+          <modules>
+            <webModule>
+              <groupId>cali</groupId>
+              <artifactId>eventkalender-client</artifactId>
+              <bundleFileName>eventkalender-client.war</bundleFileName>
+              <contextRoot>/EventkalenderClient</contextRoot>
+            </webModule>
+            <ejbModule>
+              <groupId>cali</groupId>
+              <artifactId>eventkalender-ejb</artifactId>
+              <bundleFileName>eventkalender-ejb.jar</bundleFileName>
+            </ejbModule>
+          </modules>
+          <displayName>EventkalenderEAR</displayName>
+          <!-- If I want maven to generate the application.xml, set this 
+            to true -->
+          <generateApplicationXml>true</generateApplicationXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+
