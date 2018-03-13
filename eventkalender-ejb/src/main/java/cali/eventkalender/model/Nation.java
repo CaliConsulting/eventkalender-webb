@@ -1,10 +1,15 @@
 package cali.eventkalender.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,14 +19,17 @@ public class Nation implements Serializable {
 	private static final long serialVersionUID = -8440701148404480824L;
 
 	@Id
-	@Column(name = "Id")
+	@Column(name = "Id", nullable = false)
 	private long id;
 
-	@Column(name = "Name")
+	@Column(name = "Name", nullable = false)
 	private String name;
-	
+
+	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER)
+	private List<Event> events;
+
 	public Nation() {
-		
+		this.events = new ArrayList<>();
 	}
 
 	public long getId() {
@@ -39,5 +47,33 @@ public class Nation implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Nation)) {
+			return false;
+		}
+		Nation n = (Nation) obj;
+		return Objects.equals(this.id, n.id) && Objects.equals(this.name, n.name);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.id, this.name);
+	}
+
 }
