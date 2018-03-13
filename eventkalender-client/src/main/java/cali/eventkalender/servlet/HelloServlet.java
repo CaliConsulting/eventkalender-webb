@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.model.Person;
 
 /**
  * Servlet implementation class HelloServlet
@@ -63,6 +64,12 @@ public class HelloServlet extends HttpServlet {
         	out.write(String.format("<p>StartTime: %s</p>", e.getStartTime()));
         	out.write(String.format("<p>EndTime: %s</p>", e.getEndTime()));
         }
+        
+        Event e1 = facade.findEventById(1);
+        for(Person p : e1.getPersons()) {
+        	out.write(p.getFirstName());
+        }
+       
         
         out.write("</body>");
         out.write("</html>");

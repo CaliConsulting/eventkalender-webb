@@ -2,6 +2,8 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -34,12 +38,16 @@ public class Event implements Serializable {
 	@Column(name = "EndTime", nullable = false)
 	private LocalDateTime endTime;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
 	private Nation nation;
 
-	public Event() {
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"), inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
+	private List<Person> persons;
 
+	public Event() {
+		this.persons = new ArrayList<>();
 	}
 
 	public long getId() {
@@ -90,6 +98,14 @@ public class Event implements Serializable {
 		this.nation = nation;
 	}
 
+	public List<Person> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -105,7 +121,7 @@ public class Event implements Serializable {
 		return Objects.equals(this.id, e.id) && Objects.equals(this.name, e.name)
 				&& Objects.equals(this.startTime, e.endTime) && Objects.equals(this.endTime, e.endTime);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.id, this.name, this.startTime, this.endTime);
