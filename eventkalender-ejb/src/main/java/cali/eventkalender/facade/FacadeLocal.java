@@ -4,6 +4,7 @@ import javax.ejb.Local;
 
 import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.model.Person;
 
 @Local
 public interface FacadeLocal {
@@ -12,16 +13,24 @@ public interface FacadeLocal {
 	
 	Nation addNation(Nation nation);
 	
+	Person addPerson(Person person);
+	
 	void deleteEvent(long id);
 	
 	void deleteNation(long id);
+	
+	void deletePerson(long id);
 	
 	Event findEventById(long id);
 	
 	Nation findNationById(long id);
 	
+	Person findPersonById(long id);
+	
 	Event updateEvent(Event event);
 	
 	Nation updateNation(Nation nation);
+	
+	Person updatePerson(Person person);
 	
 }

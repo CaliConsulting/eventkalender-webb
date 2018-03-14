@@ -3,13 +3,15 @@ package cali.eventkalender.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,7 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 3103101978093076417L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Id", nullable = false)
 	private long id;
 
@@ -65,6 +68,27 @@ public class Person implements Serializable {
 
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Person)) {
+			return false;
+		}
+		Person p = (Person) obj;
+		return Objects.equals(this.id, p.id) && Objects.equals(this.firstName, p.firstName)
+				&& Objects.equals(this.lastName, p.lastName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.id, this.firstName, this.lastName);
 	}
 
 }
