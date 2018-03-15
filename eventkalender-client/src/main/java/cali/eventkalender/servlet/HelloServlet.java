@@ -70,6 +70,9 @@ public class HelloServlet extends HttpServlet {
 		for (Person p : e1.getPersons()) {
 			out.write(String.format("<p>%s</p>", p.getFirstName()));
 		}
+		out.write("<p>-----------------------</p>");
+		out.write("<form>Förnamn:<br><input type=\"text\" name=\"firstname\"> <br>");
+		out.write("Efternamn:<br><input type=\"text\" name=\"lastname\"> <br> </form>");
 
 		out.write("</body>");
 		out.write("</html>");
