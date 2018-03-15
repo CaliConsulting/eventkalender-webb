@@ -16,9 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(name="Event.findAll",query="SELECT e FROM Event e")
 @Table(name = "Event")
 public class Event implements Serializable {
 

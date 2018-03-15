@@ -1,10 +1,14 @@
 package cali.eventkalender.eao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.model.Person;
 
 @Stateless
 public class NationEAO implements NationEAOLocal {
@@ -26,6 +30,11 @@ public class NationEAO implements NationEAOLocal {
 		if (n != null) {
 			em.remove(n);
 		}
+	}
+	
+	public List<Nation> findAll(){
+		TypedQuery<Nation> tq = em.createNamedQuery("Nation.findAll", Nation.class);
+		return tq.getResultList();
 	}
 	
 	public Nation findById(long id) {
