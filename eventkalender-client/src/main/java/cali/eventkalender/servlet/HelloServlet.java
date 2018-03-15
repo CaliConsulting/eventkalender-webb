@@ -72,7 +72,8 @@ public class HelloServlet extends HttpServlet {
 		}
 		out.write("<p>-----------------------</p>");
 		out.write("<form>Förnamn:<br><input type=\"text\" name=\"firstname\"> <br>");
-		out.write("Efternamn:<br><input type=\"text\" name=\"lastname\"> <br> </form>");
+		out.write("Efternamn:<br><input type=\"text\" name=\"lastname\"> <br>");
+		out.write("<input type=\"submit\" value=\"Registrera\"><br></form>");
 
 		out.write("</body>");
 		out.write("</html>");
