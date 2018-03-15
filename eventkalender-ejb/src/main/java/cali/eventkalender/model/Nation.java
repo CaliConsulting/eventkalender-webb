@@ -11,10 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(name="Nation.findAll",query="SELECT n FROM Nation n")
 @Table(name = "Nation")
 public class Nation implements Serializable {
 
