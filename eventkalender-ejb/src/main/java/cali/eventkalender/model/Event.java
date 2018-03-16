@@ -2,9 +2,9 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name="Event.findAll",query="SELECT e FROM Event e")
+@NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e")
 @Table(name = "Event")
 public class Event implements Serializable {
 
@@ -48,11 +48,12 @@ public class Event implements Serializable {
 	private Nation nation;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"), inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
-	private List<Person> persons;
+	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"),
+			inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
+	private Set<Person> persons;
 
 	public Event() {
-		this.persons = new ArrayList<>();
+		this.persons = new LinkedHashSet<>();
 	}
 
 	public long getId() {
@@ -103,11 +104,11 @@ public class Event implements Serializable {
 		this.nation = nation;
 	}
 
-	public List<Person> getPersons() {
+	public Set<Person> getPersons() {
 		return persons;
 	}
 
-	public void setPersons(List<Person> persons) {
+	public void setPersons(Set<Person> persons) {
 		this.persons = persons;
 	}
 

@@ -1,9 +1,9 @@
 package cali.eventkalender.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name="Person.findAll",query="SELECT p FROM Person p")
+@NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
 @Table(name = "Person")
 public class Person implements Serializable {
 
@@ -34,10 +34,10 @@ public class Person implements Serializable {
 	private String lastName;
 
 	@ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER)
-	private List<Event> events;
+	private Set<Event> events;
 
 	public Person() {
-		this.events = new ArrayList<>();
+		this.events = new LinkedHashSet<>();
 	}
 
 	public long getId() {
@@ -64,11 +64,11 @@ public class Person implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public List<Event> getEvents() {
+	public Set<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<Event> events) {
+	public void setEvents(Set<Event> events) {
 		this.events = events;
 	}
 

@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import cali.eventkalender.model.Nation;
-import cali.eventkalender.model.Person;
 
 @Stateless
 public class NationEAO implements NationEAOLocal {
@@ -24,19 +23,19 @@ public class NationEAO implements NationEAOLocal {
 		em.persist(nation);
 		return nation;
 	}
-	
+
 	public void delete(long id) {
 		Nation n = findById(id);
 		if (n != null) {
 			em.remove(n);
 		}
 	}
-	
-	public List<Nation> findAll(){
+
+	public List<Nation> findAll() {
 		TypedQuery<Nation> tq = em.createNamedQuery("Nation.findAll", Nation.class);
 		return tq.getResultList();
 	}
-	
+
 	public Nation findById(long id) {
 		return em.find(Nation.class, id);
 	}
@@ -47,4 +46,3 @@ public class NationEAO implements NationEAOLocal {
 	}
 
 }
-

@@ -1,9 +1,9 @@
 package cali.eventkalender.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name="Nation.findAll",query="SELECT n FROM Nation n")
+@NamedQuery(name = "Nation.findAll", query = "SELECT n FROM Nation n")
 @Table(name = "Nation")
 public class Nation implements Serializable {
 
@@ -31,10 +31,10 @@ public class Nation implements Serializable {
 	private String name;
 
 	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER)
-	private List<Event> events;
+	private Set<Event> events;
 
 	public Nation() {
-		this.events = new ArrayList<>();
+		this.events = new LinkedHashSet<>();
 	}
 
 	public long getId() {
@@ -53,14 +53,14 @@ public class Nation implements Serializable {
 		this.name = name;
 	}
 
-	public List<Event> getEvents() {
+	public Set<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<Event> events) {
+	public void setEvents(Set<Event> events) {
 		this.events = events;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -75,7 +75,7 @@ public class Nation implements Serializable {
 		Nation n = (Nation) obj;
 		return Objects.equals(this.id, n.id) && Objects.equals(this.name, n.name);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.id, this.name);

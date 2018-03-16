@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Person;
 
 @Stateless
@@ -15,10 +14,10 @@ public class PersonEAO implements PersonEAOLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-    public PersonEAO() {
-        // TODO Auto-generated constructor stub
-    }
+
+	public PersonEAO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Person add(Person person) {
@@ -33,12 +32,12 @@ public class PersonEAO implements PersonEAOLocal {
 			em.remove(p);
 		}
 	}
-	
-	public List<Person> findAll(){
+
+	public List<Person> findAll() {
 		TypedQuery<Person> tq = em.createNamedQuery("Person.findAll", Person.class);
 		return tq.getResultList();
 	}
-	
+
 	@Override
 	public Person findById(long id) {
 		return em.find(Person.class, id);
