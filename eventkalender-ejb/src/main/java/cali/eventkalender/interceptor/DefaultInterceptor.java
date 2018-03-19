@@ -1,8 +1,9 @@
 package cali.eventkalender.interceptor;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
@@ -15,29 +16,53 @@ public class DefaultInterceptor {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultInterceptor.class);
 
-	@AroundInvoke
-	public Object log(InvocationContext ctx) throws Exception {
+	@PostConstruct
+	public void postConstruct(InvocationContext ctx) {
 		Object ctxTarget = ctx.getTarget();
-		Method ctxMethod = ctx.getMethod();
 		if (ctxTarget == null) {
 			throw new UnsupportedOperationException("Target can't be null");
 		}
+		try {
+			LOGGER.info("PostConstruct - {}", ctxTarget.getClass().getName());
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+		}
+	}
+
+	@PreDestroy
+	public void preDestroy(InvocationContext ctx) {
+		Object ctxTarget = ctx.getTarget();
+		if (ctxTarget == null) {
+			throw new UnsupportedOperationException("Target can't be null");
+		}
+		try {
+			LOGGER.info("PreDestroy - {}, proceed={}", ctxTarget.getClass().getName(), ctx.proceed());
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+		}
+	}
+
+	@AroundInvoke
+	public Object aroundInvoke(InvocationContext ctx) throws Exception {
+		Method ctxMethod = ctx.getMethod();
+		Object ctxTarget = ctx.getTarget();
 		if (ctxMethod == null) {
 			throw new UnsupportedOperationException("Method can't be null");
 		}
+		if (ctxTarget == null) {
+			throw new UnsupportedOperationException("Target can't be null");
+		}
 
-		String methodToLog = ctxMethod.getName();
-		Object[] parameters = ctx.getParameters();
-		
-		methodToLog += getMethodParametersLog(parameters);
+		String targetName = ctxTarget.getClass().getName();
+		String methodName = ctxMethod.getName();
+		String parameterValues = getParameterString(ctx.getParameters());
 
-		String logResult = String.format("Call to %s.%s", ctxTarget.getClass().getSimpleName(), methodToLog);
-		LOGGER.info(logResult);
+		LOGGER.info("AroundInvoke - {}.{}{}", targetName, methodName, parameterValues);
 
 		return ctx.proceed();
 	}
-	
-	private String getMethodParametersLog(Object[] parameters) {
+
+	private String getParameterString(Object[] parameters) {
 		String formattedParameters = "";
 		if (parameters.length != 0) {
 			formattedParameters += "(";
