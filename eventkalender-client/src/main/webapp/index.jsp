@@ -10,7 +10,7 @@
 <body>
 <div class="addPerson">
 	<h1>Lägg till person</h1>
-	<form>
+	<form action="TestServlet" method="POST">
 		<p>Förnamn:</p>
 		<input type="Text" name="firstName">
 		<p>Efternamn:</p>
