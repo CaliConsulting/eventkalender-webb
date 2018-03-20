@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,14 +25,14 @@ public class Nation implements Serializable {
 	private static final long serialVersionUID = -8440701148404480824L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Event> events;
 
 	public Nation() {

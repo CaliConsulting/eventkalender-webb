@@ -9,6 +9,9 @@
     <non-jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</non-jta-data-source>
     <properties>
       <property name="eclipselink.deploy-on-startup" value="true" />
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+      <property name="eclipselink.logging.level" value="INFO" />
+      <property name="eclipselink.weaving" value="false" />
     </properties>
   </persistence-unit>
 </persistence>

@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +25,8 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 3103101978093076417L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "FirstName", nullable = false)
@@ -34,7 +35,7 @@ public class Person implements Serializable {
 	@Column(name = "LastName", nullable = false)
 	private String lastName;
 
-	@ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Event> events;
 
 	public Person() {
