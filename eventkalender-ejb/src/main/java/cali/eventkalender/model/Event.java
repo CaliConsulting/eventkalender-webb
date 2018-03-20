@@ -45,11 +45,11 @@ public class Event implements Serializable {
 	@Column(name = "EndTime", nullable = false)
 	private LocalDateTime endTime;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
 	private Nation nation;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"),
 			inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
 	private Set<Person> persons;

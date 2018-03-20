@@ -32,7 +32,7 @@ public class Nation implements Serializable {
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
 	private Set<Event> events;
 
 	public Nation() {
@@ -62,21 +62,21 @@ public class Nation implements Serializable {
 	public void setEvents(Set<Event> events) {
 		this.events = events;
 	}
-	
+
 	public void addEvent(Event event) {
 		this.events.add(event);
 		if (event.getNation() != this) {
 			event.setNation(this);
 		}
 	}
-	
+
 	public void deleteEvent(long id) {
 		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
 		if (e.isPresent()) {
 			deleteEvent(e.get());
 		}
 	}
-	
+
 	public void deleteEvent(Event event) {
 		this.events.remove(event);
 		if (event.getNation() == this) {

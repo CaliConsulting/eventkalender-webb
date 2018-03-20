@@ -35,7 +35,7 @@ public class Person implements Serializable {
 	@Column(name = "LastName", nullable = false)
 	private String lastName;
 
-	@ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "persons")
 	private Set<Event> events;
 
 	public Person() {
