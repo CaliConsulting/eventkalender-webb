@@ -24,8 +24,8 @@ public class Nation implements Serializable {
 	private static final long serialVersionUID = -8440701148404480824L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "Name", nullable = false)

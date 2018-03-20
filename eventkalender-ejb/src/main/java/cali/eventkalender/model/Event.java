@@ -28,8 +28,8 @@ public class Event implements Serializable {
 	private static final long serialVersionUID = 4865562529984171768L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "Name", nullable = false)
