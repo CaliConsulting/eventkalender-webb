@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -43,11 +44,11 @@ public class Event implements Serializable {
 	@Column(name = "EndTime", nullable = false)
 	private LocalDateTime endTime;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
 	private Nation nation;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"),
 			inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
 	private Set<Person> persons;

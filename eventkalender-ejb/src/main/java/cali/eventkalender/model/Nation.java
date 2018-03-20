@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +31,7 @@ public class Nation implements Serializable {
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Event> events;
 
 	public Nation() {
