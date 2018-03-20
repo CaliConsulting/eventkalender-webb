@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import cali.eventkalender.listener.EventListener;
+
 @Entity
+@EntityListeners(EventListener.class)
 @NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e")
 @Table(name = "Event")
 public class Event implements Serializable {
