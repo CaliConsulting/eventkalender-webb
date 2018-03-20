@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -110,6 +111,27 @@ public class Event implements Serializable {
 
 	public void setPersons(Set<Person> persons) {
 		this.persons = persons;
+	}
+	
+	public void addPerson(Person person) {
+		this.persons.add(person);
+		if (!person.getEvents().contains(this)) {
+			person.getEvents().add(this);
+		}
+	}
+	
+	public void deletePerson(long id) {
+		Optional<Person> p = this.persons.stream().filter(x -> id == x.getId()).findFirst();
+		if (p.isPresent()) {
+			deletePerson(p.get());
+		}
+	}
+	
+	public void deletePerson(Person person) {
+		this.persons.remove(person);
+		if (person.getEvents().contains(this)) {
+			person.getEvents().remove(this);
+		}
 	}
 
 	@Override

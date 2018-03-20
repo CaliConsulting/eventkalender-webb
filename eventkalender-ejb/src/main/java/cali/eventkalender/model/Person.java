@@ -3,6 +3,7 @@ package cali.eventkalender.model;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -70,6 +71,27 @@ public class Person implements Serializable {
 
 	public void setEvents(Set<Event> events) {
 		this.events = events;
+	}
+	
+	public void addEvent(Event event) {
+		this.events.add(event);
+		if (!event.getPersons().contains(this)) {
+			event.getPersons().add(this);
+		}
+	}
+	
+	public void deleteEvent(long id) {
+		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
+		if (e.isPresent()) {
+			deleteEvent(e.get());
+		}
+	}
+	
+	public void deleteEvent(Event event) {
+		this.events.remove(event);
+		if (event.getPersons().contains(this)) {
+			event.getPersons().remove(this);
+		}
 	}
 
 	@Override
