@@ -38,6 +38,16 @@ public class Nation implements Serializable {
 	public Nation() {
 		this.events = new LinkedHashSet<>();
 	}
+	
+	public Nation(String name) {
+		this();
+		setName(Objects.requireNonNull(name));
+	}
+	
+	public Nation(String name, Set<Event> events) {
+		this(name);
+		setEvents(Objects.requireNonNull(events));
+	}
 
 	public long getId() {
 		return id;
@@ -60,7 +70,10 @@ public class Nation implements Serializable {
 	}
 
 	public void setEvents(Set<Event> events) {
-		this.events = events;
+		this.events = new LinkedHashSet<>();
+		for (Event e : events) {
+			addEvent(e);
+		}
 	}
 
 	public void addEvent(Event event) {
@@ -105,3 +118,4 @@ public class Nation implements Serializable {
 	}
 
 }
+

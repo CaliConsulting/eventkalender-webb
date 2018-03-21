@@ -41,6 +41,17 @@ public class Person implements Serializable {
 	public Person() {
 		this.events = new LinkedHashSet<>();
 	}
+	
+	public Person(String firstName, String lastName) {
+		this();
+		setFirstName(Objects.requireNonNull(firstName));
+		setLastName(Objects.requireNonNull(lastName));
+	}
+	
+	public Person(String firstName, String lastName, Set<Event> events) {
+		this(firstName, lastName);
+		setEvents(Objects.requireNonNull(events));
+	}
 
 	public long getId() {
 		return id;
@@ -71,7 +82,10 @@ public class Person implements Serializable {
 	}
 
 	public void setEvents(Set<Event> events) {
-		this.events = events;
+		this.events = new LinkedHashSet<>();
+		for (Event e : events) {
+			addEvent(e);
+		}
 	}
 	
 	public void addEvent(Event event) {
@@ -117,3 +131,4 @@ public class Person implements Serializable {
 	}
 
 }
+
