@@ -36,6 +36,7 @@ public class Nation implements Serializable {
 	private Set<Event> events;
 
 	public Nation() {
+		this.id = Long.MIN_VALUE;
 		this.events = new LinkedHashSet<>();
 	}
 	
@@ -77,8 +78,12 @@ public class Nation implements Serializable {
 	}
 
 	public void addEvent(Event event) {
-		this.events.add(event);
-		if (event.getNation() != this) {
+		if (event != null) {
+			this.events.add(event);
+			Nation n = event.getNation();
+			if (n != null && n != this) {
+				n.deleteEvent(event);
+			}
 			event.setNation(this);
 		}
 	}
@@ -91,8 +96,8 @@ public class Nation implements Serializable {
 	}
 
 	public void deleteEvent(Event event) {
-		this.events.remove(event);
-		if (event.getNation() == this) {
+		if (event != null && event.getNation() == this) {
+			this.events.remove(event);
 			event.setNation(null);
 		}
 	}
@@ -114,7 +119,8 @@ public class Nation implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.id, this.name);
+		int prime = 31;
+		return Objects.hash(this.id * prime, this.name);
 	}
 
 }
