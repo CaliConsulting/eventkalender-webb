@@ -58,6 +58,21 @@ public class Event implements Serializable {
 		this.persons = new LinkedHashSet<>();
 	}
 
+	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime) {
+		this();
+		setName(Objects.requireNonNull(name));
+		setSummary(Objects.requireNonNull(summary));
+		setStartTime(Objects.requireNonNull(startTime));
+		setEndTime(Objects.requireNonNull(endTime));
+	}
+
+	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime, Nation nation,
+			Set<Person> persons) {
+		this(name, summary, startTime, endTime);
+		setNation(Objects.requireNonNull(nation));
+		setPersons(Objects.requireNonNull(persons));
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -111,23 +126,26 @@ public class Event implements Serializable {
 	}
 
 	public void setPersons(Set<Person> persons) {
-		this.persons = persons;
+		this.persons = new LinkedHashSet<>();
+		for (Person p : persons) {
+			addPerson(p);
+		}
 	}
-	
+
 	public void addPerson(Person person) {
 		this.persons.add(person);
 		if (!person.getEvents().contains(this)) {
 			person.getEvents().add(this);
 		}
 	}
-	
+
 	public void deletePerson(long id) {
 		Optional<Person> p = this.persons.stream().filter(x -> id == x.getId()).findFirst();
 		if (p.isPresent()) {
 			deletePerson(p.get());
 		}
 	}
-	
+
 	public void deletePerson(Person person) {
 		this.persons.remove(person);
 		if (person.getEvents().contains(this)) {
@@ -157,3 +175,4 @@ public class Event implements Serializable {
 	}
 
 }
+
