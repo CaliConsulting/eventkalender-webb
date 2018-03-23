@@ -4,11 +4,12 @@
   version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://java.sun.com/xml/ns/persistence">
   <persistence-unit name="EventkalenderPU">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</jta-data-source>
     <non-jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</non-jta-data-source>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
-      <property name="hibernate.hbm2ddl.auto" value="update" />
+      <property name="hibernate.hbm2ddl.auto" value="validate" />
     </properties>
   </persistence-unit>
 </persistence>
