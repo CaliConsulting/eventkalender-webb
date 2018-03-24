@@ -138,8 +138,9 @@ public class Event implements Serializable {
 			if (!this.persons.contains(person)) {
 				this.persons.add(person);
 			}
-			if (!person.getEvents().contains(this)) {
-				person.getEvents().add(this);
+			Set<Event> events = person.getEvents();
+			if (!events.contains(this)) {
+				events.add(this);
 			}
 		}
 //		if (person != null) {

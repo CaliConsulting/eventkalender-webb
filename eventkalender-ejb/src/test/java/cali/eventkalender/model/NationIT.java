@@ -46,6 +46,19 @@ public class NationIT {
 		assertEquals(1, nation.getEvents().size());
 		assertEquals(nation, event.getNation());
 	}
+	
+	@Test
+	public void addEventAlreadyExists() {
+		Nation nation = new Nation("TESTNATION");
+		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
+		event.setId(Long.MAX_VALUE);
+
+		nation.addEvent(event);
+		nation.addEvent(event);
+
+		assertEquals(1, nation.getEvents().size());
+		assertEquals(nation, event.getNation());
+	}
 
 	@Test
 	public void addEventWithNullObject() {

@@ -87,13 +87,14 @@ public class Nation implements Serializable {
 //			event.setNation(this);
 //		}
 		if (event != null) {
+			Nation n = event.getNation();
+			if (n != null && n != this) {
+				n.deleteEvent(event);
+			}
 			if (!this.events.contains(event)) {
 				this.events.add(event);
+				event.setNation(this);
 			}
-			if (event.getNation() != null && event.getNation() != this) {
-				event.getNation().deleteEvent(event);
-			}
-			event.setNation(this);
 		}
 	}
 
@@ -106,9 +107,7 @@ public class Nation implements Serializable {
 
 	public void deleteEvent(Event event) {
 		if (event != null) {
-			if (this.events.contains(event)) {
-				this.events.remove(event);
-			}
+			this.events.remove(event);
 			event.setNation(null);
 		}
 	}

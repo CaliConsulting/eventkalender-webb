@@ -65,6 +65,20 @@ public class EventIT {
 	}
 	
 	@Test
+	public void addPersonAlreadyExists() {
+		Event event = new Event();
+		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
+		person.setId(Long.MAX_VALUE);
+		
+		event.addPerson(person);
+		event.addPerson(person);
+		
+		assertEquals(1, event.getPersons().size());
+		assertEquals(1, person.getEvents().size());
+		assertTrue(person.getEvents().contains(event));
+	}
+	
+	@Test
 	public void addPersonWithNullObject() {
 		Event event = new Event();
 
