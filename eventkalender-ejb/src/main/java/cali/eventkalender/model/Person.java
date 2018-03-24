@@ -89,10 +89,21 @@ public class Person implements Serializable {
 	}
 	
 	public void addEvent(Event event) {
-		this.events.add(event);
-		if (!event.getPersons().contains(this)) {
-			event.getPersons().add(this);
+		if (event != null) {
+			if (!this.events.contains(event)) {
+				this.events.add(event);
+			}
+			if (!event.getPersons().contains(this)) {
+				event.getPersons().add(this);
+			}
 		}
+//		if (event != null && !event.getPersons().contains(this)) {
+//			this.events.add(event);
+//			Set<Person> persons = event.getPersons();
+//			if (!persons.contains(this)) {
+//				event.addPerson(this);
+//			}
+//		}
 	}
 	
 	public void deleteEvent(long id) {
@@ -103,8 +114,8 @@ public class Person implements Serializable {
 	}
 	
 	public void deleteEvent(Event event) {
-		this.events.remove(event);
-		if (event.getPersons().contains(this)) {
+		if (event != null) {
+			this.events.remove(event);
 			event.getPersons().remove(this);
 		}
 	}
@@ -127,7 +138,8 @@ public class Person implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.id, this.firstName, this.lastName);
+		final int prime = 31;
+		return Objects.hash(this.id * prime, this.firstName, this.lastName);
 	}
 
 }

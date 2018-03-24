@@ -55,6 +55,7 @@ public class Event implements Serializable {
 	private Set<Person> persons;
 
 	public Event() {
+		this.id = Long.MIN_VALUE;
 		this.persons = new LinkedHashSet<>();
 	}
 
@@ -133,10 +134,22 @@ public class Event implements Serializable {
 	}
 
 	public void addPerson(Person person) {
-		this.persons.add(person);
-		if (!person.getEvents().contains(this)) {
-			person.getEvents().add(this);
+		if (person != null) {
+			if (!this.persons.contains(person)) {
+				this.persons.add(person);
+			}
+			if (!person.getEvents().contains(this)) {
+				person.getEvents().add(this);
+			}
 		}
+//		if (person != null) {
+//			this.persons.add(person);
+//			Set<Event> e = person.getEvents();
+//			if (!e.contains(this)) {
+//				e.add(this);
+//			}
+//			person.addEvent(this);
+//		}
 	}
 
 	public void deletePerson(long id) {
@@ -147,10 +160,16 @@ public class Event implements Serializable {
 	}
 
 	public void deletePerson(Person person) {
-		this.persons.remove(person);
-		if (person.getEvents().contains(this)) {
+		if (person != null) {
+			this.persons.remove(person);
 			person.getEvents().remove(this);
 		}
+//		
+//		
+//		if (person != null && person.getEvents().contains(this)) {
+//			this.persons.remove(person);
+//			person.addEvent(this);
+//		}
 	}
 
 	@Override
@@ -166,13 +185,14 @@ public class Event implements Serializable {
 		}
 		Event e = (Event) obj;
 		return Objects.equals(this.id, e.id) && Objects.equals(this.name, e.name)
-				&& Objects.equals(this.startTime, e.endTime) && Objects.equals(this.endTime, e.endTime);
+				&& Objects.equals(this.summary, e.summary) && Objects.equals(this.startTime, e.startTime)
+				&& Objects.equals(this.endTime, e.endTime);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.id, this.name, this.startTime, this.endTime);
+		final int prime = 31;
+		return Objects.hash(this.id * prime, this.name, this.startTime, this.endTime);
 	}
 
 }
-

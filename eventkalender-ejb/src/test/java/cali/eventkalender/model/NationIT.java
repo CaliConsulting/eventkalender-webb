@@ -1,6 +1,7 @@
 package cali.eventkalender.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -66,6 +67,7 @@ public class NationIT {
 
 		assertEquals(0, existingNation.getEvents().size());
 		assertEquals(1, newNation.getEvents().size());
+		assertEquals(newNation, existingEvent.getNation());
 	}
 
 	@Test
@@ -78,7 +80,7 @@ public class NationIT {
 		nation.deleteEvent(Long.MAX_VALUE);
 
 		assertEquals(0, nation.getEvents().size());
-		assertEquals(null, event.getNation());
+		assertNull(event.getNation());
 	}
 
 	@Test
@@ -105,7 +107,7 @@ public class NationIT {
 		nation.deleteEvent(event);
 
 		assertEquals(0, nation.getEvents().size());
-		assertEquals(null, event.getNation());
+		assertNull(event.getNation());
 	}
 
 	@Test

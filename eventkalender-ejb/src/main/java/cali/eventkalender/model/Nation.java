@@ -78,11 +78,20 @@ public class Nation implements Serializable {
 	}
 
 	public void addEvent(Event event) {
+//		if (event != null) {
+//			this.events.add(event);
+//			Nation n = event.getNation();
+//			if (n != null && n != this) {
+//				n.deleteEvent(event);
+//			}
+//			event.setNation(this);
+//		}
 		if (event != null) {
-			this.events.add(event);
-			Nation n = event.getNation();
-			if (n != null && n != this) {
-				n.deleteEvent(event);
+			if (!this.events.contains(event)) {
+				this.events.add(event);
+			}
+			if (event.getNation() != null && event.getNation() != this) {
+				event.getNation().deleteEvent(event);
 			}
 			event.setNation(this);
 		}
@@ -96,8 +105,10 @@ public class Nation implements Serializable {
 	}
 
 	public void deleteEvent(Event event) {
-		if (event != null && event.getNation() == this) {
-			this.events.remove(event);
+		if (event != null) {
+			if (this.events.contains(event)) {
+				this.events.remove(event);
+			}
 			event.setNation(null);
 		}
 	}
@@ -119,7 +130,7 @@ public class Nation implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
+		final int prime = 31;
 		return Objects.hash(this.id * prime, this.name);
 	}
 

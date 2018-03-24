@@ -3,6 +3,7 @@ package cali.eventkalender.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -22,7 +23,7 @@ public class NationTest {
 		Nation nation = new Nation();
 
 		assertEquals(Long.MIN_VALUE, nation.getId());
-		assertEquals(null, nation.getName());
+		assertNull(nation.getName());
 		assertEquals(0, nation.getEvents().size());
 	}
 
@@ -66,7 +67,7 @@ public class NationTest {
 	public void getName() {
 		Nation nation = new Nation();
 
-		assertEquals(null, nation.getName());
+		assertNull(nation.getName());
 	}
 
 	@Test
