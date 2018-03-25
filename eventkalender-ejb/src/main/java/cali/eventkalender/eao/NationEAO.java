@@ -12,7 +12,7 @@ import cali.eventkalender.model.Nation;
 @Stateless
 public class NationEAO implements NationEAOLocal {
 
-	@PersistenceContext(unitName = "EventkalenderPU")
+	@PersistenceContext
 	private EntityManager em;
 
 	public NationEAO() {

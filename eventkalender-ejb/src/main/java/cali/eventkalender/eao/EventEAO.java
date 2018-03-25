@@ -12,7 +12,7 @@ import cali.eventkalender.model.Event;
 @Stateless
 public class EventEAO implements EventEAOLocal {
 
-	@PersistenceContext(unitName = "EventkalenderPU")
+	@PersistenceContext
 	private EntityManager em;
 
 	public EventEAO() {

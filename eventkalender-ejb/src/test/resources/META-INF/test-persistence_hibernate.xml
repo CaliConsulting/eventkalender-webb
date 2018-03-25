@@ -4,6 +4,9 @@
   version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://java.sun.com/xml/ns/persistence">
   <persistence-unit name="EventkalenderPU_Test">
+    <class>cali.eventkalender.model.Event</class>
+    <class>cali.eventkalender.model.Nation</class>
+    <class>cali.eventkalender.model.Person</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

@@ -6,6 +6,9 @@
   <persistence-unit name="EventkalenderPU">
     <jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</jta-data-source>
     <non-jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</non-jta-data-source>
+    <class>cali.eventkalender.model.Event</class>
+    <class>cali.eventkalender.model.Nation</class>
+    <class>cali.eventkalender.model.Person</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
       <property name="hibernate.hbm2ddl.auto" value="update" />

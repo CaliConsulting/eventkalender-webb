@@ -18,16 +18,30 @@
       <artifactId>javax.persistence-api</artifactId>
       <version>2.2</version>
     </dependency>
+
+    <!-- Dependencies for testing EJB in a container (Arquillian) -->
     <dependency>
-      <groupId>org.eclipse.persistence</groupId>
-      <artifactId>eclipselink</artifactId>
-      <version>2.7.1</version>
+      <groupId>org.glassfish.main.extras</groupId>
+      <artifactId>glassfish-embedded-all</artifactId>
+      <version>5.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.192</version>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+      <version>1.0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>1.4.0.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-container-test-spi</artifactId>
+      <version>1.4.0.Final</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

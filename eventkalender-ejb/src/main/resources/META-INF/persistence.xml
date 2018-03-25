@@ -7,6 +7,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</jta-data-source>
     <non-jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</non-jta-data-source>
+    <class>cali.eventkalender.model.Event</class>
+    <class>cali.eventkalender.model.Nation</class>
+    <class>cali.eventkalender.model.Person</class>
     <properties>
       <property name="eclipselink.deploy-on-startup" value="true" />
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
