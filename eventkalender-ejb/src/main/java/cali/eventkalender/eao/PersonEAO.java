@@ -1,8 +1,11 @@
 package cali.eventkalender.eao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import cali.eventkalender.model.Person;
 
@@ -28,6 +31,12 @@ public class PersonEAO implements PersonEAOLocal {
 		if (p != null) {
 			em.remove(p);
 		}
+	}
+
+	@Override
+	public List<Person> findAll() {
+		TypedQuery<Person> tq = em.createNamedQuery("Person.findAll", Person.class);
+		return tq.getResultList();
 	}
 
 	@Override

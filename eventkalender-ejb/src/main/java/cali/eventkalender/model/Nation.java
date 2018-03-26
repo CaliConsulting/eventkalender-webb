@@ -2,37 +2,53 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(name = "Nation.findAll", query = "SELECT n FROM Nation n")
 @Table(name = "Nation")
 public class Nation implements Serializable {
 
 	private static final long serialVersionUID = -8440701148404480824L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
 	private List<Event> events;
 
 	public Nation() {
 		this.events = new ArrayList<>();
+	}
+
+	public Nation(String name) {
+		this();
+		setName(Objects.requireNonNull(name));
+	}
+
+	public Nation(String name, List<Event> events) {
+		this(name);
+		setEvents(Objects.requireNonNull(events));
 	}
 
 	public long getId() {
@@ -56,9 +72,33 @@ public class Nation implements Serializable {
 	}
 
 	public void setEvents(List<Event> events) {
-		this.events = events;
+		this.events = new ArrayList<>();
+		for (Event e : events) {
+			addEvent(e);
+		}
 	}
-	
+
+	public void addEvent(Event event) {
+		this.events.add(event);
+		if (event.getNation() != this) {
+			event.setNation(this);
+		}
+	}
+
+	public void deleteEvent(long id) {
+		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
+		if (e.isPresent()) {
+			deleteEvent(e.get());
+		}
+	}
+
+	public void deleteEvent(Event event) {
+		this.events.remove(event);
+		if (event.getNation() == this) {
+			event.setNation(null);
+		}
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -73,7 +113,7 @@ public class Nation implements Serializable {
 		Nation n = (Nation) obj;
 		return Objects.equals(this.id, n.id) && Objects.equals(this.name, n.name);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.id, this.name);

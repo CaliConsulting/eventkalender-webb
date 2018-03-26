@@ -2,6 +2,7 @@ package cali.eventkalender.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
@@ -21,6 +25,8 @@ import cali.eventkalender.model.Person;
 @WebServlet("/HelloServlet")
 public class HelloServlet extends HttpServlet {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(HelloServlet.class);
+	
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -70,13 +76,12 @@ public class HelloServlet extends HttpServlet {
 		for (Person p : e1.getPersons()) {
 			out.write(String.format("<p>%s</p>", p.getFirstName()));
 		}
-		out.write("<p>-----------------------</p>");
-		out.write("<form>Förnamn:<br><input type=\"text\" name=\"firstname\"> <br>");
-		out.write("Efternamn:<br><input type=\"text\" name=\"lastname\"> <br>");
-		out.write("<input type=\"submit\" value=\"Registrera\"><br></form>");
+		
+		List<Event> events = facade.findNationById(2).getEvents();
+		LOGGER.info(events.toString());
 
 		out.write("</body>");
 		out.write("</html>");
 	}
-
+	
 }
