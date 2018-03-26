@@ -5,7 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<Title>Eventkalender</Title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">	
+		<script src="js/bootstrap.min.js"></script>
+s		<script src="jquery/jquery.min.js"></script>
 	</head>
 	
 	<body>
@@ -66,7 +68,5 @@
 		</div>
 	</div>
 	</div>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="jquery/jquery.min.js"></script>
 	</body>
 </html>
