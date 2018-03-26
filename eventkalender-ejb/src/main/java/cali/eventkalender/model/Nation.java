@@ -1,10 +1,10 @@
 package cali.eventkalender.model;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,19 +33,19 @@ public class Nation implements Serializable {
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
-	private Set<Event> events;
+	private List<Event> events;
 
 	public Nation() {
 		this.id = Long.MIN_VALUE;
-		this.events = new LinkedHashSet<>();
+		this.events = new ArrayList<>();
 	}
-	
+
 	public Nation(String name) {
 		this();
 		setName(Objects.requireNonNull(name));
 	}
-	
-	public Nation(String name, Set<Event> events) {
+
+	public Nation(String name, List<Event> events) {
 		this(name);
 		setEvents(Objects.requireNonNull(events));
 	}
@@ -66,12 +66,12 @@ public class Nation implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Event> getEvents() {
+	public List<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(Set<Event> events) {
-		this.events = new LinkedHashSet<>();
+	public void setEvents(List<Event> events) {
+		this.events = new ArrayList<>();
 		for (Event e : events) {
 			addEvent(e);
 		}
@@ -134,4 +134,3 @@ public class Nation implements Serializable {
 	}
 
 }
-

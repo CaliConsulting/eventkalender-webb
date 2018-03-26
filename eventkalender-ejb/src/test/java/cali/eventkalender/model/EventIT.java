@@ -3,9 +3,9 @@ package cali.eventkalender.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class EventIT {
 	public void setPersons() {
 		Event event = new Event();
 		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		Set<Person> persons = new LinkedHashSet<>(Arrays.asList(person));
+		List<Person> persons = new ArrayList<>(Arrays.asList(person));
 		event.setPersons(persons);
 
 		assertEquals(1, event.getPersons().size());

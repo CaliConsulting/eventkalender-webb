@@ -2,7 +2,7 @@ package cali.eventkalender.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Set;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -77,11 +77,11 @@ public class HelloServlet extends HttpServlet {
 			out.write(String.format("<p>%s</p>", p.getFirstName()));
 		}
 		
-		Set<Event> events = facade.findNationById(2).getEvents();
+		List<Event> events = facade.findNationById(2).getEvents();
 		LOGGER.info(events.toString());
 
 		out.write("</body>");
 		out.write("</html>");
 	}
-
+	
 }

@@ -5,10 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +47,7 @@ public class EventTest {
 		Nation nation = new Nation("TESTNATION");
 		
 		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		Set<Person> persons = new LinkedHashSet<>(Arrays.asList(person));
+		List<Person> persons = new ArrayList<>(Arrays.asList(person));
 		
 		LocalDateTime now = LocalDateTime.now();
 		Event event = new Event("TESTNATION", "TESTSAMMANFATTNING", now, now, nation, persons);
@@ -189,7 +188,7 @@ public class EventTest {
 	public void notEqualsIncompatibleObjectParameter() {
 		Event event = new Event();
 
-		assertFalse(event.equals(new HashSet<Object>()));
+		assertFalse(event.equals(new Object()));
 	}
 
 	@Test

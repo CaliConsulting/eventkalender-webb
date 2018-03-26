@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +26,7 @@ public class NationIT {
 	public void setEvents() {
 		Nation nation = new Nation();
 		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		Set<Event> events = new LinkedHashSet<>(Arrays.asList(event));
+		List<Event> events = new ArrayList<>(Arrays.asList(event));
 		nation.setEvents(events);
 
 		assertEquals(1, nation.getEvents().size());

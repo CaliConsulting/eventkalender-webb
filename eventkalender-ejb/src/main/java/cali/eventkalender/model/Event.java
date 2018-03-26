@@ -2,10 +2,10 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -52,11 +52,11 @@ public class Event implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"),
 			inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
-	private Set<Person> persons;
+	private List<Person> persons;
 
 	public Event() {
 		this.id = Long.MIN_VALUE;
-		this.persons = new LinkedHashSet<>();
+		this.persons = new ArrayList<>();
 	}
 
 	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime) {
@@ -68,7 +68,7 @@ public class Event implements Serializable {
 	}
 
 	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime, Nation nation,
-			Set<Person> persons) {
+			List<Person> persons) {
 		this(name, summary, startTime, endTime);
 		setNation(Objects.requireNonNull(nation));
 		setPersons(Objects.requireNonNull(persons));
@@ -122,12 +122,12 @@ public class Event implements Serializable {
 		this.nation = nation;
 	}
 
-	public Set<Person> getPersons() {
+	public List<Person> getPersons() {
 		return persons;
 	}
 
-	public void setPersons(Set<Person> persons) {
-		this.persons = new LinkedHashSet<>();
+	public void setPersons(List<Person> persons) {
+		this.persons = new ArrayList<>();
 		for (Person p : persons) {
 			addPerson(p);
 		}
@@ -138,7 +138,7 @@ public class Event implements Serializable {
 			if (!this.persons.contains(person)) {
 				this.persons.add(person);
 			}
-			Set<Event> events = person.getEvents();
+			List<Event> events = person.getEvents();
 			if (!events.contains(this)) {
 				events.add(this);
 			}
