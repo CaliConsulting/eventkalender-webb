@@ -19,11 +19,13 @@ public class NationEAO implements NationEAOLocal {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	public Nation add(Nation nation) {
 		em.persist(nation);
 		return nation;
 	}
 
+	@Override
 	public void delete(long id) {
 		Nation n = findById(id);
 		if (n != null) {
@@ -31,15 +33,18 @@ public class NationEAO implements NationEAOLocal {
 		}
 	}
 
+	@Override
 	public List<Nation> findAll() {
 		TypedQuery<Nation> tq = em.createNamedQuery("Nation.findAll", Nation.class);
 		return tq.getResultList();
 	}
 
+	@Override
 	public Nation findById(long id) {
 		return em.find(Nation.class, id);
 	}
 
+	@Override
 	public Nation update(Nation nation) {
 		em.merge(nation);
 		return nation;

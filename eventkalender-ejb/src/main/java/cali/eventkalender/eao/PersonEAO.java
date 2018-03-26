@@ -33,6 +33,7 @@ public class PersonEAO implements PersonEAOLocal {
 		}
 	}
 
+	@Override
 	public List<Person> findAll() {
 		TypedQuery<Person> tq = em.createNamedQuery("Person.findAll", Person.class);
 		return tq.getResultList();

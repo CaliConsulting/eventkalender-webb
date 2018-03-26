@@ -32,7 +32,8 @@ public class EventEAO implements EventEAOLocal {
 			em.remove(e);
 		}
 	}
-
+	
+	@Override
 	public List<Event> findAll() {
 		TypedQuery<Event> tq = em.createNamedQuery("Event.findAll", Event.class);
 		return tq.getResultList();
