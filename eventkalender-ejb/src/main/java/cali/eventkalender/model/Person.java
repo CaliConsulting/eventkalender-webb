@@ -3,8 +3,10 @@ package cali.eventkalender.model;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,8 +25,8 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 3103101978093076417L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "FirstName", nullable = false)
@@ -33,11 +35,22 @@ public class Person implements Serializable {
 	@Column(name = "LastName", nullable = false)
 	private String lastName;
 
-	@ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "persons")
 	private Set<Event> events;
 
 	public Person() {
 		this.events = new LinkedHashSet<>();
+	}
+	
+	public Person(String firstName, String lastName) {
+		this();
+		setFirstName(Objects.requireNonNull(firstName));
+		setLastName(Objects.requireNonNull(lastName));
+	}
+	
+	public Person(String firstName, String lastName, Set<Event> events) {
+		this(firstName, lastName);
+		setEvents(Objects.requireNonNull(events));
 	}
 
 	public long getId() {
@@ -69,7 +82,31 @@ public class Person implements Serializable {
 	}
 
 	public void setEvents(Set<Event> events) {
-		this.events = events;
+		this.events = new LinkedHashSet<>();
+		for (Event e : events) {
+			addEvent(e);
+		}
+	}
+	
+	public void addEvent(Event event) {
+		this.events.add(event);
+		if (!event.getPersons().contains(this)) {
+			event.getPersons().add(this);
+		}
+	}
+	
+	public void deleteEvent(long id) {
+		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
+		if (e.isPresent()) {
+			deleteEvent(e.get());
+		}
+	}
+	
+	public void deleteEvent(Event event) {
+		this.events.remove(event);
+		if (event.getPersons().contains(this)) {
+			event.getPersons().remove(this);
+		}
 	}
 
 	@Override
@@ -94,3 +131,4 @@ public class Person implements Serializable {
 	}
 
 }
+

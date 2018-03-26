@@ -3,8 +3,10 @@ package cali.eventkalender.model;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,18 +25,28 @@ public class Nation implements Serializable {
 	private static final long serialVersionUID = -8440701148404480824L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long id;
 
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "nation", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
 	private Set<Event> events;
 
 	public Nation() {
 		this.events = new LinkedHashSet<>();
+	}
+	
+	public Nation(String name) {
+		this();
+		setName(Objects.requireNonNull(name));
+	}
+	
+	public Nation(String name, Set<Event> events) {
+		this(name);
+		setEvents(Objects.requireNonNull(events));
 	}
 
 	public long getId() {
@@ -58,7 +70,31 @@ public class Nation implements Serializable {
 	}
 
 	public void setEvents(Set<Event> events) {
-		this.events = events;
+		this.events = new LinkedHashSet<>();
+		for (Event e : events) {
+			addEvent(e);
+		}
+	}
+
+	public void addEvent(Event event) {
+		this.events.add(event);
+		if (event.getNation() != this) {
+			event.setNation(this);
+		}
+	}
+
+	public void deleteEvent(long id) {
+		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
+		if (e.isPresent()) {
+			deleteEvent(e.get());
+		}
+	}
+
+	public void deleteEvent(Event event) {
+		this.events.remove(event);
+		if (event.getNation() == this) {
+			event.setNation(null);
+		}
 	}
 
 	@Override
@@ -82,3 +118,4 @@ public class Nation implements Serializable {
 	}
 
 }
+
