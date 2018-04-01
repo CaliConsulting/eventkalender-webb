@@ -8,12 +8,15 @@
 <link rel="stylesheet" href="css/bootstrap.min.css"></link>
 <script src="js/bootstrap.min.js"></script>
 <script src="jquery/jquery.min.js"></script>
+<link rel="icon" type="image/png" href="img/Cali-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="img/Cali-32x32.png	" sizes="32x32">
+<link rel="icon" type="image/png" href="img/Cali-96x96.png" sizes="96x96">
 </head>
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#">
-				<img src="img/Cali.png" class="d-inline-block align top" width="30" height="30" alt=""/>unt	
+				<img src="img/Cali.png" class="d-inline-block align top" width="32" height="32" alt=""/>	
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
