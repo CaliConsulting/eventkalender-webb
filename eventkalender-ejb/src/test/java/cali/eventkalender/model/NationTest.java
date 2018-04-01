@@ -3,12 +3,12 @@ package cali.eventkalender.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ public class NationTest {
 		Nation nation = new Nation();
 
 		assertEquals(Long.MIN_VALUE, nation.getId());
-		assertEquals(null, nation.getName());
+		assertNull(nation.getName());
 		assertEquals(0, nation.getEvents().size());
 	}
 
@@ -38,7 +38,7 @@ public class NationTest {
 	@Test
 	public void constructorRelations() {
 		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		Set<Event> events = new LinkedHashSet<>(Arrays.asList(event));
+		List<Event> events = new ArrayList<>(Arrays.asList(event));
 
 		Nation nation = new Nation("TESTNATION", events);
 
@@ -66,7 +66,7 @@ public class NationTest {
 	public void getName() {
 		Nation nation = new Nation();
 
-		assertEquals(null, nation.getName());
+		assertNull(nation.getName());
 	}
 
 	@Test
@@ -125,7 +125,7 @@ public class NationTest {
 	public void notEqualsIncompatibleObjectParameter() {
 		Nation nation = new Nation();
 
-		assertFalse(nation.equals(new HashSet<Object>()));
+		assertFalse(nation.equals(new Object()));
 	}
 
 	@Test

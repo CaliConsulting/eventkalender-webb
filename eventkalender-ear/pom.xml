@@ -34,7 +34,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-ear-plugin</artifactId>
-        <version>2.10.1</version>
+        <version>3.0.0</version>
         <configuration>
           <version>7</version>
           <modules>
@@ -51,8 +51,6 @@
             </ejbModule>
           </modules>
           <displayName>EventkalenderEAR</displayName>
-          <!-- If I want maven to generate the application.xml, set this 
-            to true -->
           <generateApplicationXml>true</generateApplicationXml>
         </configuration>
       </plugin>

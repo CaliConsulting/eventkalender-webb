@@ -1,10 +1,10 @@
 package cali.eventkalender.model;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,19 +33,19 @@ public class Nation implements Serializable {
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
-	private Set<Event> events;
+	private List<Event> events;
 
 	public Nation() {
 		this.id = Long.MIN_VALUE;
-		this.events = new LinkedHashSet<>();
+		this.events = new ArrayList<>();
 	}
-	
+
 	public Nation(String name) {
 		this();
 		setName(Objects.requireNonNull(name));
 	}
-	
-	public Nation(String name, Set<Event> events) {
+
+	public Nation(String name, List<Event> events) {
 		this(name);
 		setEvents(Objects.requireNonNull(events));
 	}
@@ -66,25 +66,35 @@ public class Nation implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Event> getEvents() {
+	public List<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(Set<Event> events) {
-		this.events = new LinkedHashSet<>();
+	public void setEvents(List<Event> events) {
+		this.events = new ArrayList<>();
 		for (Event e : events) {
 			addEvent(e);
 		}
 	}
 
 	public void addEvent(Event event) {
+//		if (event != null) {
+//			this.events.add(event);
+//			Nation n = event.getNation();
+//			if (n != null && n != this) {
+//				n.deleteEvent(event);
+//			}
+//			event.setNation(this);
+//		}
 		if (event != null) {
-			this.events.add(event);
 			Nation n = event.getNation();
 			if (n != null && n != this) {
 				n.deleteEvent(event);
 			}
-			event.setNation(this);
+			if (!this.events.contains(event)) {
+				this.events.add(event);
+				event.setNation(this);
+			}
 		}
 	}
 
@@ -96,7 +106,7 @@ public class Nation implements Serializable {
 	}
 
 	public void deleteEvent(Event event) {
-		if (event != null && event.getNation() == this) {
+		if (event != null) {
 			this.events.remove(event);
 			event.setNation(null);
 		}
@@ -119,9 +129,8 @@ public class Nation implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
+		final int prime = 31;
 		return Objects.hash(this.id * prime, this.name);
 	}
 
 }
-

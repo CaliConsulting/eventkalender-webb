@@ -1,11 +1,12 @@
 package cali.eventkalender.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,7 @@ public class NationIT {
 	public void setEvents() {
 		Nation nation = new Nation();
 		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		Set<Event> events = new LinkedHashSet<>(Arrays.asList(event));
+		List<Event> events = new ArrayList<>(Arrays.asList(event));
 		nation.setEvents(events);
 
 		assertEquals(1, nation.getEvents().size());
@@ -40,6 +41,19 @@ public class NationIT {
 		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
 		event.setId(Long.MAX_VALUE);
 
+		nation.addEvent(event);
+
+		assertEquals(1, nation.getEvents().size());
+		assertEquals(nation, event.getNation());
+	}
+	
+	@Test
+	public void addEventAlreadyExists() {
+		Nation nation = new Nation("TESTNATION");
+		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
+		event.setId(Long.MAX_VALUE);
+
+		nation.addEvent(event);
 		nation.addEvent(event);
 
 		assertEquals(1, nation.getEvents().size());
@@ -66,6 +80,7 @@ public class NationIT {
 
 		assertEquals(0, existingNation.getEvents().size());
 		assertEquals(1, newNation.getEvents().size());
+		assertEquals(newNation, existingEvent.getNation());
 	}
 
 	@Test
@@ -78,7 +93,7 @@ public class NationIT {
 		nation.deleteEvent(Long.MAX_VALUE);
 
 		assertEquals(0, nation.getEvents().size());
-		assertEquals(null, event.getNation());
+		assertNull(event.getNation());
 	}
 
 	@Test
@@ -105,7 +120,7 @@ public class NationIT {
 		nation.deleteEvent(event);
 
 		assertEquals(0, nation.getEvents().size());
-		assertEquals(null, event.getNation());
+		assertNull(event.getNation());
 	}
 
 	@Test

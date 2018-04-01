@@ -55,21 +55,23 @@ public class DefaultInterceptor {
 
 		String targetName = ctxTarget.getClass().getName();
 		String methodName = ctxMethod.getName();
-		String parameterValues = getParameterString(ctx.getParameters());
 
-		LOGGER.info("AroundInvoke - {}.{}{}", targetName, methodName, parameterValues);
+		String parameterString = getParameterString(ctxMethod.getParameterTypes(), ctx.getParameters());
+
+		LOGGER.info("AroundInvoke - {}.{}{}", targetName, methodName, parameterString);
 
 		return ctx.proceed();
 	}
 
-	private String getParameterString(Object[] parameters) {
+	private String getParameterString(Class<?>[] parameterTypes, Object[] parameterValues) {
 		String formattedParameters = "";
-		if (parameters.length != 0) {
+		if (parameterTypes.length != 0) {
 			formattedParameters += "(";
-			for (int i = 0; i < parameters.length; i++) {
-				Object object = parameters[i];
-				formattedParameters += object.toString();
-				if (i != parameters.length - 1) {
+			for (int i = 0; i < parameterTypes.length; i++) {
+				String typeName = (parameterTypes[i] != null ? parameterTypes[i].getName() : "null");
+				String variableValue = (parameterValues[i] != null ? parameterValues[i].toString() : "null");
+				formattedParameters += String.format("%s=%s", typeName, variableValue);
+				if (i != parameterTypes.length - 1) {
 					formattedParameters += ", ";
 				}
 			}
@@ -79,3 +81,4 @@ public class DefaultInterceptor {
 	}
 
 }
+

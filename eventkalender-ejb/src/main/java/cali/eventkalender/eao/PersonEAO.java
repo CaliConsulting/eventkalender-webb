@@ -14,10 +14,10 @@ public class PersonEAO implements PersonEAOLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-
-	public PersonEAO() {
-		// TODO Auto-generated constructor stub
-	}
+	
+    public PersonEAO() {
+        // TODO Auto-generated constructor stub
+    }
 
 	@Override
 	public Person add(Person person) {
@@ -33,6 +33,7 @@ public class PersonEAO implements PersonEAOLocal {
 		}
 	}
 
+	@Override
 	public List<Person> findAll() {
 		TypedQuery<Person> tq = em.createNamedQuery("Person.findAll", Person.class);
 		return tq.getResultList();

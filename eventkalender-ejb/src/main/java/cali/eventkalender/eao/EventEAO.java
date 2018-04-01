@@ -14,10 +14,10 @@ public class EventEAO implements EventEAOLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-
-	public EventEAO() {
-		// TODO Auto-generated constructor stub
-	}
+	
+    public EventEAO() {
+        // TODO Auto-generated constructor stub
+    }
 
 	@Override
 	public Event add(Event event) {
@@ -33,6 +33,7 @@ public class EventEAO implements EventEAOLocal {
 		}
 	}
 
+	@Override
 	public List<Event> findAll() {
 		TypedQuery<Event> tq = em.createNamedQuery("Event.findAll", Event.class);
 		return tq.getResultList();
