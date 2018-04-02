@@ -119,7 +119,12 @@ public class Event implements Serializable {
 	}
 
 	public void setNation(Nation nation) {
-		this.nation = nation;
+		if (nation != this.nation) {
+			this.nation = nation;
+		}
+		if (nation != null && !nation.getEvents().contains(this)) {
+			nation.addEvent(this);
+		}
 	}
 
 	public List<Person> getPersons() {

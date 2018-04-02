@@ -32,9 +32,9 @@ public class EventTest {
 	@Test
 	public void constructorValues() {
 		LocalDateTime now = LocalDateTime.now();
-		Event event = new Event("TESTNATION", "TESTSAMMANFATTNING", now, now);
+		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
 
-		assertEquals("TESTNATION", event.getName());
+		assertEquals("TESTEVENT", event.getName());
 		assertEquals("TESTSAMMANFATTNING", event.getSummary());
 		assertEquals(now, event.getStartTime());
 		assertEquals(now, event.getEndTime());
@@ -50,9 +50,9 @@ public class EventTest {
 		List<Person> persons = new ArrayList<>(Arrays.asList(person));
 		
 		LocalDateTime now = LocalDateTime.now();
-		Event event = new Event("TESTNATION", "TESTSAMMANFATTNING", now, now, nation, persons);
+		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now, nation, persons);
 
-		assertEquals("TESTNATION", event.getName());
+		assertEquals("TESTEVENT", event.getName());
 		assertEquals("TESTSAMMANFATTNING", event.getSummary());
 		assertEquals(now, event.getStartTime());
 		assertEquals(now, event.getEndTime());

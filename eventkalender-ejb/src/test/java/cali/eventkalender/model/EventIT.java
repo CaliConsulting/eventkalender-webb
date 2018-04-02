@@ -29,6 +29,7 @@ public class EventIT {
 		event.setNation(nation);
 
 		assertEquals(nation, event.getNation());
+		assertEquals(1, nation.getEvents().size());
 	}
 	
 	@Test
