@@ -1,5 +1,7 @@
 package cali.eventkalender.facade;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -54,6 +56,21 @@ public class Facade implements FacadeLocal {
 	@Override
 	public void deletePerson(long id) {
 		personEAO.delete(id);
+	}
+	
+	@Override
+	public List<Event> findAllEvents() {
+		return eventEAO.findAll();
+	}
+	
+	@Override
+	public List<Nation> findAllNations() {
+		return nationEAO.findAll();
+	}
+	
+	@Override
+	public List<Person> findAllPersons() {
+		return personEAO.findAll();
 	}
 	
 	@Override

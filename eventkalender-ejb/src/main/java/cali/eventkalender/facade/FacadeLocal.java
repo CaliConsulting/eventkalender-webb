@@ -1,5 +1,7 @@
 package cali.eventkalender.facade;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import cali.eventkalender.model.Event;
@@ -21,6 +23,12 @@ public interface FacadeLocal {
 	
 	void deletePerson(long id);
 	
+	List<Event> findAllEvents();
+	
+	List<Nation> findAllNations();
+	
+	List<Person> findAllPersons();
+	
 	Event findEventById(long id);
 	
 	Nation findNationById(long id);
@@ -32,5 +40,6 @@ public interface FacadeLocal {
 	Nation updateNation(Nation nation);
 	
 	Person updatePerson(Person person);
+
 	
 }
