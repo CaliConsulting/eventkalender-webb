@@ -5,14 +5,14 @@
   xmlns="http://java.sun.com/xml/ns/persistence">
   <persistence-unit name="EventkalenderPU">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</jta-data-source>
-    <non-jta-data-source>java:jboss/datasources/jdbc/EventkalenderDS</non-jta-data-source>
     <class>cali.eventkalender.model.Event</class>
     <class>cali.eventkalender.model.Nation</class>
     <class>cali.eventkalender.model.Person</class>
     <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
       <property name="eclipselink.deploy-on-startup" value="true" />
-      <property name="eclipselink.ddl-generation" value="none" />
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
       <property name="eclipselink.logging.level" value="INFO" />
       <property name="eclipselink.weaving" value="false" />
     </properties>

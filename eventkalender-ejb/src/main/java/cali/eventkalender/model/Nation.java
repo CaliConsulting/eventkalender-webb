@@ -2,11 +2,9 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,6 +36,7 @@ public class Nation implements Serializable {
 	private List<Event> events;
 
 	public Nation() {
+		this.id = Long.MIN_VALUE;
 		this.events = new ArrayList<>();
 	}
 
@@ -79,9 +78,23 @@ public class Nation implements Serializable {
 	}
 
 	public void addEvent(Event event) {
-		this.events.add(event);
-		if (event.getNation() != this) {
-			event.setNation(this);
+//		if (event != null) {
+//			this.events.add(event);
+//			Nation n = event.getNation();
+//			if (n != null && n != this) {
+//				n.deleteEvent(event);
+//			}
+//			event.setNation(this);
+//		}
+		if (event != null) {
+			Nation n = event.getNation();
+			if (n != null && n != this) {
+				n.deleteEvent(event);
+			}
+			if (!this.events.contains(event)) {
+				this.events.add(event);
+				event.setNation(this);
+			}
 		}
 	}
 
@@ -93,8 +106,8 @@ public class Nation implements Serializable {
 	}
 
 	public void deleteEvent(Event event) {
-		this.events.remove(event);
-		if (event.getNation() == this) {
+		if (event != null) {
+			this.events.remove(event);
 			event.setNation(null);
 		}
 	}
@@ -116,7 +129,8 @@ public class Nation implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.id, this.name);
+		final int prime = 31;
+		return Objects.hash(this.id * prime, this.name);
 	}
 
 }

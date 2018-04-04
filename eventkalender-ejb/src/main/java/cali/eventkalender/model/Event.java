@@ -55,6 +55,7 @@ public class Event implements Serializable {
 	private List<Person> persons;
 
 	public Event() {
+		this.id = Long.MIN_VALUE;
 		this.persons = new ArrayList<>();
 	}
 
@@ -118,7 +119,12 @@ public class Event implements Serializable {
 	}
 
 	public void setNation(Nation nation) {
-		this.nation = nation;
+		if (nation != this.nation) {
+			this.nation = nation;
+		}
+		if (nation != null && !nation.getEvents().contains(this)) {
+			nation.addEvent(this);
+		}
 	}
 
 	public List<Person> getPersons() {
@@ -133,9 +139,14 @@ public class Event implements Serializable {
 	}
 
 	public void addPerson(Person person) {
-		this.persons.add(person);
-		if (!person.getEvents().contains(this)) {
-			person.getEvents().add(this);
+		if (person != null) {
+			if (!this.persons.contains(person)) {
+				this.persons.add(person);
+			}
+			List<Event> events = person.getEvents();
+			if (!events.contains(this)) {
+				events.add(this);
+			}
 		}
 	}
 
@@ -147,8 +158,8 @@ public class Event implements Serializable {
 	}
 
 	public void deletePerson(Person person) {
-		this.persons.remove(person);
-		if (person.getEvents().contains(this)) {
+		if (person != null) {
+			this.persons.remove(person);
 			person.getEvents().remove(this);
 		}
 	}
@@ -166,13 +177,14 @@ public class Event implements Serializable {
 		}
 		Event e = (Event) obj;
 		return Objects.equals(this.id, e.id) && Objects.equals(this.name, e.name)
-				&& Objects.equals(this.startTime, e.endTime) && Objects.equals(this.endTime, e.endTime);
+				&& Objects.equals(this.summary, e.summary) && Objects.equals(this.startTime, e.startTime)
+				&& Objects.equals(this.endTime, e.endTime);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.id, this.name, this.startTime, this.endTime);
+		final int prime = 31;
+		return Objects.hash(this.id * prime, this.name, this.startTime, this.endTime);
 	}
 
 }
-
