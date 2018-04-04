@@ -31,7 +31,7 @@ public class EventEAOIT {
 	}
 
 	@Test
-	public void addEvent() {
+	public void add() {
 		Nation nation = new Nation("TESTNATION");
 		
 		LocalDateTime now = LocalDateTime.now();

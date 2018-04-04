@@ -28,7 +28,7 @@ public class NationEAOIT {
 	}
 
 	@Test
-	public void addNation() {
+	public void add() {
 		Nation nation = new Nation("TESTNATION");
 
 		nationEAO.add(nation);

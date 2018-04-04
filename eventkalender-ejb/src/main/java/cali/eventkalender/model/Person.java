@@ -93,17 +93,11 @@ public class Person implements Serializable {
 			if (!this.events.contains(event)) {
 				this.events.add(event);
 			}
-			if (!event.getPersons().contains(this)) {
-				event.getPersons().add(this);
+			List<Person> persons = event.getPersons();
+			if (!persons.contains(this)) {
+			    persons.add(this);
 			}
 		}
-//		if (event != null && !event.getPersons().contains(this)) {
-//			this.events.add(event);
-//			Set<Person> persons = event.getPersons();
-//			if (!persons.contains(this)) {
-//				event.addPerson(this);
-//			}
-//		}
 	}
 	
 	public void deleteEvent(long id) {

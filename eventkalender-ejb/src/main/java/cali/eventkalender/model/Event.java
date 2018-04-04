@@ -148,14 +148,6 @@ public class Event implements Serializable {
 				events.add(this);
 			}
 		}
-//		if (person != null) {
-//			this.persons.add(person);
-//			Set<Event> e = person.getEvents();
-//			if (!e.contains(this)) {
-//				e.add(this);
-//			}
-//			person.addEvent(this);
-//		}
 	}
 
 	public void deletePerson(long id) {
@@ -170,12 +162,6 @@ public class Event implements Serializable {
 			this.persons.remove(person);
 			person.getEvents().remove(this);
 		}
-//		
-//		
-//		if (person != null && person.getEvents().contains(this)) {
-//			this.persons.remove(person);
-//			person.addEvent(this);
-//		}
 	}
 
 	@Override
