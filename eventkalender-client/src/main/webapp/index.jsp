@@ -9,7 +9,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <link rel="icon" type="image/png" href="img/Cali-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="img/Cali-32x32.png	" sizes="32x32">
+<link rel="icon" type="image/png" href="img/Cali-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="img/Cali-96x96.png" sizes="96x96">
 </head>
 <body>
