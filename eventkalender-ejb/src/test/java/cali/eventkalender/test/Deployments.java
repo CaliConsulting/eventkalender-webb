@@ -40,7 +40,8 @@ public class Deployments {
 
     private static Archive<?> getEntityAccessObjectsArchive(String name) {
         JavaArchive testingLibrary = ShrinkWrap.create(JavaArchive.class, name + "-eao.jar");
-        testingLibrary.addPackages(true, "cali.eventkalender.eao", "cali.eventkalender.model");
+        testingLibrary.addPackages(true, "cali.eventkalender.eao", "cali.eventkalender.facade",
+                "cali.eventkalender.model");
         testingLibrary.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
         return testingLibrary;
     }
