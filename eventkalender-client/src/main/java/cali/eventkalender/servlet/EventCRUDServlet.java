@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EventServlet
+ * Servlet implementation class EventCRUDServlet
  */
-@WebServlet("/EventServlet")
-public class EventServlet extends HttpServlet {
+@WebServlet("/events/crud")
+public class EventCRUDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventServlet() {
+    public EventCRUDServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,8 @@ public class EventServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("pages/EventCRUD.jsp").forward(request, response);
+		System.out.println("hej hej hej");
 	}
 
 	/**
@@ -35,7 +36,8 @@ public class EventServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.getRequestDispatcher("EventCRUD.jsp").forward(request, response);
+
 	}
 
 }

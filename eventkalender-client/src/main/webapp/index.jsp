@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="Eventkalender">
   		<img src="img/Cali.png" Width="30" Height="30">
   		Eventkalender
   </a>
@@ -29,7 +29,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Evenemangslista <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="Eventkalender">Evenemangslista <span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item dropdown">
@@ -37,7 +37,7 @@
           Lägg till/Ta bort:
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Evenemang</a>
+          <a class="dropdown-item" href="events/crud">Evenemang</a>
           <a class="dropdown-item" href="#">Nationer</a>
           <a class="dropdown-item" href="#">Personer</a>
         </div>
