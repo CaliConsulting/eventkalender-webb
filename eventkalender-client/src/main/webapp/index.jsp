@@ -46,23 +46,7 @@
   </div>
 </nav>
 <div class="container">
-	<form action="TestServlet" method="POST">
-		<div class="form-group">
-			<label for="firstName">Förnamn:</label> 
-			<input type="Text" class="form-control" id="firstName"/> 
-			<label for="lastName">Efternamn:</label>
-			<input type="Text" class="form-control" id="lastName"/> 
-			<input type="Submit" name="registerPerson"/>
-		</div>
-	</form>
-	<div>
-		<h1>Lägg till nation</h1>
-		<form>
-			<p>Nationsnamn:</p>
-			<input type="text" name="nationName">
-			<input type="Submit" name="registerNation"/>
-		</form>
-	</div>
+	Name: <% out.println(request.getAttribute("events").toString()); %>
 </div>
 </body>
 </html>
