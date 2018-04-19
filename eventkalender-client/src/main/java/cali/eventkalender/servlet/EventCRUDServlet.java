@@ -27,7 +27,7 @@ public class EventCRUDServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("pages/EventCRUD.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
 		System.out.println("hej hej hej");
 	}
 
@@ -36,7 +36,7 @@ public class EventCRUDServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("EventCRUD.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
 
 	}
 

@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
 
-@WebServlet("/Eventkalender")
-public class TestServlet extends HttpServlet {
+@WebServlet("index")
+public class IndexServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private FacadeLocal facade;
 	
-	public TestServlet() {
+	public IndexServlet() {
 		super();
 	}
 
@@ -29,7 +29,7 @@ public class TestServlet extends HttpServlet {
 		
 		List<Event> events = facade.findAllEvents();
 		request.setAttribute("events", events);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 			
 	}
 
@@ -40,7 +40,7 @@ public class TestServlet extends HttpServlet {
 		
 		System.out.println(firstName + " " + lastName);
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 	}
 
 }
