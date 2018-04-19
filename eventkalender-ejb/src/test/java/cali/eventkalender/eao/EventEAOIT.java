@@ -12,11 +12,12 @@ import javax.ejb.EJB;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.Archive;
 
 import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.test.Deployments;
+import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
 public class EventEAOIT {
@@ -25,9 +26,8 @@ public class EventEAOIT {
 	private EventEAOLocal eventEAO;
 	
 	@Deployment
-	public static JavaArchive createTestArchive() {
-		return ShrinkWrap.create(JavaArchive.class, "eventeao-it.jar").addClasses(Event.class, EventEAO.class)
-				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
+	public static Archive<?> createArchive() {
+	    return Deployments.getArchive(ArchiveType.EAO);
 	}
 
 	@Test

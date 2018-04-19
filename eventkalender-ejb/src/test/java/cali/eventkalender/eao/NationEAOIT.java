@@ -10,33 +10,33 @@ import javax.ejb.EJB;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.Archive;
 
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.test.Deployments;
+import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
 public class NationEAOIT {
 
-	@EJB
-	private NationEAOLocal nationEAO;
-	
-	@Deployment
-	public static JavaArchive createTestArchive() {
-		return ShrinkWrap.create(JavaArchive.class, "nationeao-it.jar").addClasses(Nation.class, NationEAO.class)
-				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-	}
+    @EJB
+    private NationEAOLocal nationEAO;
 
-	@Test
-	public void add() {
-		Nation nation = new Nation("TESTNATION");
+    @Deployment
+    public static Archive<?> createArchive() {
+        return Deployments.getArchive(ArchiveType.EAO);
+    }
 
-		nationEAO.add(nation);
+    @Test
+    public void add() {
+        Nation nation = new Nation("TESTNATION");
 
-		Nation fetchedNation = nationEAO.findById(nation.getId());
+        nationEAO.add(nation);
 
-		assertNotNull(fetchedNation);
-		assertEquals("TESTNATION", fetchedNation.getName());
-	}
+        Nation fetchedNation = nationEAO.findById(nation.getId());
+
+        assertNotNull(fetchedNation);
+        assertEquals("TESTNATION", fetchedNation.getName());
+    }
 
 }
