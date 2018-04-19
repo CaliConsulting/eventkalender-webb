@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <a class="navbar-brand" href="index">
+  <a class="navbar-brand" href="${pageContext.request.contextPath}/">
   		<img src="${pageContext.request.contextPath}/img/Cali.png" Width="30" Height="30">
   		Eventkalender
   </a>
@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index">Evenemangslista</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/">Evenemangslista</a>
       </li>
 
       <li class="nav-item dropdown">
@@ -17,9 +17,9 @@
           Lägg till/Ta bort:
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/pages/EventCRUD.jsp">Evenemang</a>
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/pages/NationCRUD.jsp">Nationer</a>
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/pages/PersonCRUD.jsp">Personer</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/events/crud">Evenemang</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/nations/crud">Nationer</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/persons/crud">Personer</a>
         </div>
       </li>
     </ul>

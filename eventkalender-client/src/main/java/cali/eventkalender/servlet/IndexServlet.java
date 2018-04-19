@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
 
-@WebServlet("index")
+@WebServlet("/")
 public class IndexServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
