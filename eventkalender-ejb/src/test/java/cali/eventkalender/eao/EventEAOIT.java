@@ -4,7 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
 
@@ -49,5 +51,23 @@ public class EventEAOIT {
 		assertEquals(now, fetchedEvent.getEndTime());
 		assertEquals(nation, event.getNation());
 	}
+	
+    @Test
+    public void delete() {
+        Nation nation = new Nation("TESTNATION");
+
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
+        event.setNation(nation);
+
+        eventEAO.add(event);
+        
+        long id = event.getId();
+        eventEAO.delete(id);
+
+        Event fetchedEvent = eventEAO.findById(id);
+        
+        assertNull(fetchedEvent);
+    }
 
 }
