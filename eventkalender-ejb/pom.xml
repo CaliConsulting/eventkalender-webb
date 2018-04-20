@@ -13,14 +13,32 @@
   <name>eventkalender-ejb</name>
 
   <dependencies>
+
+    <!-- Java EE -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>javax.persistence</groupId>
       <artifactId>javax.persistence-api</artifactId>
-      <version>2.2</version>
-      <scope>provided</scope>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
     </dependency>
 
     <!-- Dependencies for testing EJB in a container (Arquillian) -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
       <artifactId>arquillian-junit-container</artifactId>
@@ -48,13 +66,7 @@
     <dependency>
       <groupId>org.jacoco</groupId>
       <artifactId>org.jacoco.core</artifactId>
-      <version>0.8.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.25</version>
+      <version>0.8.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -79,8 +91,8 @@
       <build>
         <plugins>
           <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
-            <version>3.0.2</version>
             <executions>
               <execution>
                 <id>unpack</id>
@@ -135,7 +147,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>
-            <version>3.0.2</version>
             <executions>
               <execution>
                 <id>copy-wildfly-eclipselink-module</id>
@@ -160,19 +171,15 @@
             </executions>
           </plugin>
           <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
-            <version>2.20.1</version>
             <configuration>
               <systemPropertyVariables>
                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                 <jboss.home>${project.basedir}/target/wildfly-11.0.0.Final</jboss.home>
                 <jboss.module.path>${project.basedir}/target/wildfly-11.0.0.Final/modules</jboss.module.path>
-                <!-- <arquillian.launch>arquillian-wildfly-container-embedded</arquillian.launch> -->
                 <eclipselink.archive.factory>org.jipijapa.eclipselink.JBossArchiveFactoryImpl</eclipselink.archive.factory>
               </systemPropertyVariables>
-              <!-- <environmentVariables> -->
-              <!-- <JBOSS_HOME>${project.basedir}/target/wildfly-8.2.0.Final</JBOSS_HOME> -->
-              <!-- </environmentVariables> -->
               <redirectTestOutputToFile>false</redirectTestOutputToFile>
             </configuration>
           </plugin>
@@ -180,44 +187,12 @@
       </build>
 
       <dependencies>
-        <!-- <dependency> -->
-        <!-- <groupId>org.jboss.arquillian.container</groupId> -->
-        <!-- <artifactId>arquillian-glassfish-embedded-3.1</artifactId> -->
-        <!-- <version>1.0.2</version> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.glassfish.main.extras</groupId> -->
-        <!-- <artifactId>glassfish-embedded-all</artifactId> -->
-        <!-- <version>5.0</version> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
-
-
         <dependency>
           <groupId>org.wildfly.arquillian</groupId>
           <artifactId>wildfly-arquillian-container-embedded</artifactId>
           <version>2.1.0.Final</version>
           <scope>test</scope>
         </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>org.wildfly</groupId> -->
-        <!-- <artifactId>wildfly-embedded</artifactId> -->
-        <!-- <version>8.2.0.Final</version> -->
-        <!-- </dependency> -->
-
-        <!-- <dependency> -->
-        <!-- <groupId>org.wildfly</groupId> -->
-        <!-- <artifactId>jipijapa-eclipselink</artifactId> -->
-        <!-- <version>11.0.0.Final</version> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.persistence</groupId> -->
-        <!-- <artifactId>eclipselink</artifactId> -->
-        <!-- <version>2.7.1</version> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
       </dependencies>
     </profile>
   </profiles>
@@ -233,11 +208,24 @@
     </resources>
     <plugins>
       <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-ejb-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-          <ejbVersion>3.2</ejbVersion>
-        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
