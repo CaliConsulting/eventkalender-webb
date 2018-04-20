@@ -1,4 +1,4 @@
-package cali.eventkalender.servlet;
+package cali.eventkalender.servlet.event;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
