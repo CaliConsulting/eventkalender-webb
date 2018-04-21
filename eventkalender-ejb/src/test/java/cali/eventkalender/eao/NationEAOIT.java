@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import javax.ejb.EJB;
 
@@ -30,13 +31,36 @@ public class NationEAOIT {
     @Test
     public void add() {
         Nation nation = new Nation("TESTNATION");
-
         nationEAO.add(nation);
 
         Nation fetchedNation = nationEAO.findById(nation.getId());
 
         assertNotNull(fetchedNation);
         assertEquals("TESTNATION", fetchedNation.getName());
+    }
+    
+    @Test
+    public void delete() {
+        Nation nation = new Nation("TESTNATION");
+        nationEAO.add(nation);
+        
+        long id = nation.getId();
+        nationEAO.delete(id);
+        
+        Nation fetchedNation = nationEAO.findById(id);
+        
+        assertNull(fetchedNation);
+    }
+    
+    @Test
+    public void update() {
+        Nation nation = new Nation("TESTNATION");
+        nationEAO.add(nation);
+        
+        nation.setName("UPDATENATION");
+        nationEAO.update(nation);
+        
+        assertEquals("UPDATENATION", nation.getName());
     }
 
 }
