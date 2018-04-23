@@ -122,7 +122,7 @@ public class Event implements Serializable {
 		if (nation != this.nation) {
 			this.nation = nation;
 		}
-		if (nation != null && !nation.getEvents().contains(this)) {
+		if (nation != null && !nation.hasEvent(this)) {
 			nation.addEvent(this);
 		}
 	}
@@ -140,18 +140,17 @@ public class Event implements Serializable {
 
 	public void addPerson(Person person) {
 		if (person != null) {
-			if (!this.persons.contains(person)) {
+			if (!hasPerson(person)) {
 				this.persons.add(person);
 			}
-			List<Event> events = person.getEvents();
-			if (!events.contains(this)) {
-				events.add(this);
+			if (!person.hasEvent(this)) {
+				person.addEvent(this);
 			}
 		}
 	}
 
 	public void deletePerson(long id) {
-		Optional<Person> p = this.persons.stream().filter(x -> id == x.getId()).findFirst();
+		Optional<Person> p = this.persons.stream().filter(x -> x.getId() == id).findFirst();
 		if (p.isPresent()) {
 			deletePerson(p.get());
 		}
@@ -160,8 +159,14 @@ public class Event implements Serializable {
 	public void deletePerson(Person person) {
 		if (person != null) {
 			this.persons.remove(person);
-			person.getEvents().remove(this);
+			if (person.hasEvent(this)) {
+				person.deleteEvent(this);
+			}
 		}
+	}
+	
+	public boolean hasPerson(Person person) {
+		return this.persons.contains(person);
 	}
 
 	@Override

@@ -4,7 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
 
@@ -47,7 +49,48 @@ public class EventEAOIT {
 		assertEquals("TESTSAMMANFATTNING", fetchedEvent.getSummary());
 		assertEquals(now, fetchedEvent.getStartTime());
 		assertEquals(now, fetchedEvent.getEndTime());
-		assertEquals(nation, event.getNation());
+		assertEquals(nation, fetchedEvent.getNation());
 	}
+	
+    @Test
+    public void delete() {
+        Nation nation = new Nation("TESTNATION");
+
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
+        event.setNation(nation);
+
+        eventEAO.add(event);
+        
+        long id = event.getId();
+        eventEAO.delete(id);
+
+        Event fetchedEvent = eventEAO.findById(id);
+        
+        assertNull(fetchedEvent);
+    }
+    
+    @Test
+    public void update() {
+        Nation nation = new Nation("TESTNATION");
+
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
+        event.setNation(nation);
+
+        eventEAO.add(event);
+        
+        LocalDateTime updateTime = LocalDateTime.now();
+        event.setName("UPDATEEVENT");
+        event.setSummary("UPDATESAMMANFATTNING");
+        event.setStartTime(updateTime);
+        event.setEndTime(updateTime);
+        eventEAO.update(event);
+        
+        assertEquals("UPDATEEVENT", event.getName());
+        assertEquals("UPDATESAMMANFATTNING", event.getSummary());
+        assertEquals(updateTime, event.getStartTime());
+        assertEquals(updateTime, event.getEndTime());
+    }
 
 }
