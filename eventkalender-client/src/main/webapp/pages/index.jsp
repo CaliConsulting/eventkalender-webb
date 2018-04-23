@@ -10,6 +10,7 @@
 		<%@ include file = "Header.jsp" %>
 	</header>
 	<div class="container">
+	<br>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -38,7 +39,7 @@
 			</tbody>
 		</table>
 	</div>
-	<footer>
+	<footer class="footer">
 		<%@ include file = "Footer.jsp" %>
 	</footer>
 </body>
