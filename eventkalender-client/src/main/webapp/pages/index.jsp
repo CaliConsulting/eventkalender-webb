@@ -37,5 +37,6 @@
 	<footer>
 		<%@ include file = "Footer.jsp" %>
 	</footer>
+	<img src="<%= request.getAttribute("weatherlink") %>">
 </body>
 </html>
