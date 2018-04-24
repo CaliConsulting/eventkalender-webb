@@ -14,7 +14,7 @@
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          L�gg till/Ta bort:
+          Lägg till/Ta bort:
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${pageContext.request.contextPath}/events/crud">Evenemang</a>
@@ -23,5 +23,7 @@
         </div>
       </li>
     </ul>
+    <p> <%= request.getAttribute("temperature") %> ℃ </p>
+    <img src="<%= request.getAttribute("weatherlink") %>">
   </div>
 </nav>

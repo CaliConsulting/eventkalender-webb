@@ -42,12 +42,13 @@ public class IndexServlet extends HttpServlet {
 	    try {
             CurrentWeather cwd = owm.currentWeatherByCityName("Lund", OWM.Country.SWEDEN);
             double temp = cwd.getMainData().getTemp();
+            String tempRounded = String.format("%.1f", temp);
             Weather weather = cwd.getWeatherList().get(0);
             LOGGER.info(weather.getIconLink());
             LOGGER.info(String.valueOf(temp));
             
             request.setAttribute("weatherlink", weather.getIconLink());
-            
+            request.setAttribute("temperature", tempRounded);
         } catch (APIException e) {
             // TODO Auto-generated catch block
             LOGGER.info(e.getMessage());
