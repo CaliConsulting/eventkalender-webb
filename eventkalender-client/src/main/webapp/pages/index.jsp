@@ -16,7 +16,7 @@
 				<th>Beskrivning</th>
 				<th>Nation</th>
 				<th>Start tid</th>
-				<th>St‰ngning</th>
+				<th>St√§ngning</th>
 				<th>Inbjudna</th>
 			</tr>
 		<% 	List<Event> events = (List<Event>) request.getAttribute("events");

@@ -23,7 +23,7 @@
         </div>
       </li>
     </ul>
-    <p> <%= request.getAttribute("temperature") %> ℃ </p>
+    <p> <%= request.getAttribute("temperature") %> °C</p>
     <img src="<%= request.getAttribute("weatherlink") %>">
   </div>
 </nav>

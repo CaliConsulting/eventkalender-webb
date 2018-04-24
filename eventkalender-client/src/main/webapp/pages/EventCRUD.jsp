@@ -15,7 +15,7 @@
 				<label for="Nation">Nation:</label>
 				<input list="Nations" class="form-control"	name="Nations" id="Nations">
 					<datalist id="Nations">
-						<option value="Autogenerad lista från databasen">
+						<option value="Autogenerad lista frÃ¥n databasen">
 					</datalist>
 				<input type="Submit" name="registerPerson"/>
 			</div>
