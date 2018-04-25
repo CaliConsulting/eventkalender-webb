@@ -18,9 +18,7 @@ import cali.eventkalender.model.Person;
 public class IndexServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	@EJB
-	private FacadeLocal facade;
-	
+
 	public IndexServlet() {
 		super();
 	}
@@ -28,15 +26,13 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		List<Event> events = facade.findAllEvents();
-		request.setAttribute("events", events);
 		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 			
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String firstName = request.getParameter("firstName");
+	/*	String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		
 		Person p = new Person(firstName, lastName);
@@ -44,7 +40,7 @@ public class IndexServlet extends HttpServlet {
 		
 		System.out.println(firstName + " " + lastName);
 		
-		doGet(request,response);
+		doGet(request,response);  */
 	}
 
 }

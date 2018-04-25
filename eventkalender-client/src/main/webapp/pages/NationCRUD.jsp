@@ -8,11 +8,11 @@
 		<%@ include file = "Header.jsp" %>
 	</header>
 	<div class="container">
-		<form action="${pageContext.request.contextPath}/nations/crud" method="POST">
+		<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/nations/crud" method="POST">
 			<div class="form-group">
-				<label for="nationsname">Namn:</label> 
-				<input type="text" class="form-control" id="nationsnamn" placeholder="Din Nation"/> 
-				 <small id="nationHelp" class="form-text text-muted">Ange din nation</small>
+				<label for="nationsname">Nationsnamn:</label> 
+				<input type="text" class="form-control" id="nationsnamn" placeholder="Nationsnamn" required/> 
+  			    </div>
 				<input type="submit" name="registernation"/>
 			</div>
 		</form>
