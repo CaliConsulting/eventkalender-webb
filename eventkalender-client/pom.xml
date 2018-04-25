@@ -14,16 +14,19 @@
 
   <dependencies>
     <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+    </dependency>
+    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>cali</groupId>
       <artifactId>eventkalender-ejb</artifactId>
       <version>1.0.0-SNAPSHOT</version>
       <scope>provided</scope>
+      <type>ejb</type>
     </dependency>
   </dependencies>
 
@@ -31,8 +34,11 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.0</version>
       </plugin>
     </plugins>
   </build>
