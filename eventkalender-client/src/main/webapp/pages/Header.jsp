@@ -1,3 +1,5 @@
+<%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient" %>
+<%@ page import="net.aksingh.owmjapis.api.APIException" %>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand" href="${pageContext.request.contextPath}/">
   		<img src="${pageContext.request.contextPath}/img/Cali.png" Width="30" Height="30">
@@ -20,7 +22,10 @@
         </div>
       </li>
     </ul>
-    <p> <%= request.getAttribute("temperature") %> °C</p>
-    <img src="<%= request.getAttribute("weatherlink") %>">
+    <%
+		OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
+    %>
+    <p><%= c.getTemperature("Lund") %> °C</p>
+    <img src="<%= c.getIconLink("Lund") %>">
   </div>
 </nav>

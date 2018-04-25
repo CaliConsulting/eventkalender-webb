@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
-import cali.eventkalender.model.Person;
 import net.aksingh.owmjapis.api.APIException;
 import net.aksingh.owmjapis.core.OWM;
 import net.aksingh.owmjapis.model.CurrentWeather;
@@ -37,40 +36,30 @@ public class IndexServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        OWM owm = new OWM("e33f7134856ab9fbbe79a544cc23bc39");
-        owm.setUnit(OWM.Unit.METRIC);
-        try {
-            CurrentWeather cwd = owm.currentWeatherByCityName("Lund", OWM.Country.SWEDEN);
-            double temp = cwd.getMainData().getTemp();
-            String tempRounded = String.format("%.1f", temp);
-            Weather weather = cwd.getWeatherList().get(0);
-            LOGGER.info(weather.getIconLink());
-            LOGGER.info(String.valueOf(temp));
-
-            request.setAttribute("weatherlink", weather.getIconLink());
-            request.setAttribute("temperature", tempRounded);
-        } catch (APIException e) {
-            // TODO Auto-generated catch block
-            LOGGER.info(e.getMessage());
-        }
+//        OWM owm = new OWM("e33f7134856ab9fbbe79a544cc23bc39");
+//        owm.setUnit(OWM.Unit.METRIC);
+//        try {
+//            CurrentWeather cwd = owm.currentWeatherByCityName("Lund", OWM.Country.SWEDEN);
+//            double temp = cwd.getMainData().getTemp();
+//            String tempRounded = String.format("%.1f", temp);
+//            Weather weather = cwd.getWeatherList().get(0);
+//            LOGGER.info(weather.getIconLink());
+//            LOGGER.info(String.valueOf(temp));
+//
+//            request.setAttribute("weatherlink", weather.getIconLink());
+//            request.setAttribute("temperature", tempRounded);
+//        } catch (APIException e) {
+//            // TODO Auto-generated catch block
+//            LOGGER.info(e.getMessage());
+//        }
 
         List<Event> events = facade.findAllEvents();
         request.setAttribute("events", events);
         request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-
-        Person p = new Person(firstName, lastName);
-        facade.addPerson(p);
-
-        System.out.println(firstName + " " + lastName);
-
         doGet(request, response);
     }
 
