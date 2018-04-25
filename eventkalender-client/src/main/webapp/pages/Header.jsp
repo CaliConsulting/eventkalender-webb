@@ -7,7 +7,10 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/">Start</a>
-      </li>      
+      </li>     
+      <li class="nav-item active">
+        <a class="nav-link" href="${pageContext.request.contextPath}/nations/overview">Nationer</a>
+      </li>   
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/events">Evenemangslista</a>
       </li>      
