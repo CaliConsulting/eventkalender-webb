@@ -10,15 +10,20 @@
 	<div class="container">
 		<form action="TestServlet" method="POST">
 			<div class="form-group">
-				<label for="Eventname">Evenemangsnamn:</label> 
-				<input type="Text" class="form-control" id="eventName"/> 
-				<label for="Nation">Nation:</label>
-				<input list="Nations" class="form-control"	name="Nations" id="Nations">
-					<datalist id="Nations">
-						<option value="Autogenerad lista från databasen">
-					</datalist>
-				<input type="Submit" name="registerPerson"/>
-			</div>
+				<label for="eventname">Evenemangsnamn:</label> 
+				<input type="text" class="form-control" id="eventname" placeholder="Evenemangsnamn"/>
+				<label for="nationTextarea">Evenemangsbeskrivning</label>
+    			<textarea class="form-control" id="evenemangTextarea" rows="4" placeholder="Ange en beskrivning av ditt evenemang"></textarea> 
+				<label for="nation">Nation:</label>
+			    <select class="form-control" id="nationFormControl">
+			      <option>Malmö Nation</option>
+			      <option>2</option>
+			      <option>3</option>
+			      <option>4</option>
+			      <option>BlazeitTest501</option>
+  				  </select>
+			</div> 
+ 		 <input type="submit" name="registerevent"/>
 		</form>
 	</div>
 	<footer>
