@@ -69,6 +69,12 @@
       <version>0.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- OpenWeatherMap -->
+    <dependency>
+      <groupId>net.aksingh</groupId>
+      <artifactId>owm-japis</artifactId>
+    </dependency>
   </dependencies>
 
   <profiles>
