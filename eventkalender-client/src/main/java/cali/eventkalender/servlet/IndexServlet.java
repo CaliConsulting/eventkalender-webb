@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
+import cali.eventkalender.model.Person;
 
 @WebServlet("")
 public class IndexServlet extends HttpServlet {
@@ -37,6 +38,9 @@ public class IndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
+		
+		Person p = new Person(firstName, lastName);
+		facade.addPerson(p);
 		
 		System.out.println(firstName + " " + lastName);
 		
