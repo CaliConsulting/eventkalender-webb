@@ -2,7 +2,7 @@
 <%@ page import="net.aksingh.owmjapis.api.APIException" %>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-  		<img src="${pageContext.request.contextPath}/img/Cali.png" Width="30" Height="30">
+  		<img src="${pageContext.request.contextPath}/img/Cali.png" width="30" height="30">
   		Eventkalender
   </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,10 +10,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/">Evenemangslista</a>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Lägg till/Ta bort:
+          Lägg till / ta bort
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${pageContext.request.contextPath}/events/crud">Evenemang</a>
@@ -25,7 +24,7 @@
     <%
 		OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
     %>
-    <p><%= c.getTemperature("Lund") %> °C</p>
+    <span class="align-baseline mr-2"><%= c.getTemperature("Lund") %> °C</span>
     <img src="<%= c.getIconLink("Lund") %>">
   </div>
 </nav>

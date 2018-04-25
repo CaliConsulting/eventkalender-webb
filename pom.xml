@@ -72,6 +72,7 @@
         <groupId>net.aksingh</groupId>
         <artifactId>owm-japis</artifactId>
         <version>2.5.2.2</version>
+        <scope>compile</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
