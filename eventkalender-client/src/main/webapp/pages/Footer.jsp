@@ -1,5 +1,5 @@
 
-<div class="mb-2 bg-primary text-white">
+<div class="mb-2 bg-primary text-white align-text-bottom">
 	<div class="text-center">
 	<a href="${pageContext.request.contextPath}/" class="text-white font-weight-bold">Tillbaka till startsidan  </a></span>
 		</div>
