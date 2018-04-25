@@ -39,7 +39,8 @@
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort</h5>
 				<div class="form-group">
-					<label for="event">Evenemang:</label> <select class="custom-select"
+					<label for="event">Evenemang:</label> 
+					<select class="custom-select"
 						id="eventFormControlDelete" required>
 						<option value="" disabled="disabled" selected>Välj
 							Evenemang...</option>
@@ -50,7 +51,7 @@
 						<option value="5">GA-Balen</option>
 					</select>
 				</div>
-				<input type="submit" name="registerevent" />
+				<input type="submit" name="removeEvent" />
 			</div>
 		</div>
 	</div>
