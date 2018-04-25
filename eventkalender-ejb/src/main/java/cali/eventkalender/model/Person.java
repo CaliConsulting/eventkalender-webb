@@ -90,18 +90,17 @@ public class Person implements Serializable {
 	
 	public void addEvent(Event event) {
 		if (event != null) {
-			if (!this.events.contains(event)) {
+			if (!hasEvent(event)) {
 				this.events.add(event);
 			}
-			List<Person> persons = event.getPersons();
-			if (!persons.contains(this)) {
-			    persons.add(this);
+			if (!event.hasPerson(this)) {
+				event.addPerson(this);
 			}
 		}
 	}
 	
 	public void deleteEvent(long id) {
-		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
+		Optional<Event> e = this.events.stream().filter(x -> x.getId() == id).findFirst();
 		if (e.isPresent()) {
 			deleteEvent(e.get());
 		}
@@ -110,8 +109,14 @@ public class Person implements Serializable {
 	public void deleteEvent(Event event) {
 		if (event != null) {
 			this.events.remove(event);
-			event.getPersons().remove(this);
+			if (event.hasPerson(this)) {
+				event.deletePerson(this);
+			}
 		}
+	}
+	
+	public boolean hasEvent(Event event) {
+		return this.events.contains(event);
 	}
 
 	@Override

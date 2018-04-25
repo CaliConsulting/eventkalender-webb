@@ -5,38 +5,62 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import javax.ejb.EJB;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.Archive;
 
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.test.Deployments;
+import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
 public class NationEAOIT {
 
-	@EJB
-	private NationEAOLocal nationEAO;
-	
-	@Deployment
-	public static JavaArchive createTestArchive() {
-		return ShrinkWrap.create(JavaArchive.class, "nationeao-it.jar").addClasses(Nation.class, NationEAO.class)
-				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-	}
+    @EJB
+    private NationEAOLocal nationEAO;
 
-	@Test
-	public void add() {
-		Nation nation = new Nation("TESTNATION");
+    @Deployment
+    public static Archive<?> createArchive() {
+        return Deployments.getArchive(ArchiveType.EAO);
+    }
 
-		nationEAO.add(nation);
+    @Test
+    public void add() {
+        Nation nation = new Nation("TESTNATION");
+        nationEAO.add(nation);
 
-		Nation fetchedNation = nationEAO.findById(nation.getId());
+        Nation fetchedNation = nationEAO.findById(nation.getId());
 
-		assertNotNull(fetchedNation);
-		assertEquals("TESTNATION", fetchedNation.getName());
-	}
+        assertNotNull(fetchedNation);
+        assertEquals("TESTNATION", fetchedNation.getName());
+    }
+    
+    @Test
+    public void delete() {
+        Nation nation = new Nation("TESTNATION");
+        nationEAO.add(nation);
+        
+        long id = nation.getId();
+        nationEAO.delete(id);
+        
+        Nation fetchedNation = nationEAO.findById(id);
+        
+        assertNull(fetchedNation);
+    }
+    
+    @Test
+    public void update() {
+        Nation nation = new Nation("TESTNATION");
+        nationEAO.add(nation);
+        
+        nation.setName("UPDATENATION");
+        nationEAO.update(nation);
+        
+        assertEquals("UPDATENATION", nation.getName());
+    }
 
 }

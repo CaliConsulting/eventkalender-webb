@@ -77,29 +77,24 @@ public class Nation implements Serializable {
 		}
 	}
 
+	// Denna metod följer inte Law of Demeter (än)
 	public void addEvent(Event event) {
-//		if (event != null) {
-//			this.events.add(event);
-//			Nation n = event.getNation();
-//			if (n != null && n != this) {
-//				n.deleteEvent(event);
-//			}
-//			event.setNation(this);
-//		}
 		if (event != null) {
 			Nation n = event.getNation();
 			if (n != null && n != this) {
 				n.deleteEvent(event);
 			}
-			if (!this.events.contains(event)) {
+			if (!hasEvent(event)) {
 				this.events.add(event);
-				event.setNation(this);
+				if (event.getNation() != this) {
+					event.setNation(this);
+				}
 			}
 		}
 	}
 
 	public void deleteEvent(long id) {
-		Optional<Event> e = this.events.stream().filter(x -> id == x.getId()).findFirst();
+		Optional<Event> e = this.events.stream().filter(x -> x.getId() == id).findFirst();
 		if (e.isPresent()) {
 			deleteEvent(e.get());
 		}
@@ -110,6 +105,10 @@ public class Nation implements Serializable {
 			this.events.remove(event);
 			event.setNation(null);
 		}
+	}
+
+	public boolean hasEvent(Event event) {
+		return this.events.contains(event);
 	}
 
 	@Override

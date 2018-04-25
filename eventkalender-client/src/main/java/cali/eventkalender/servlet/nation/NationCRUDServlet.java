@@ -1,4 +1,4 @@
-package cali.eventkalender.servlet;
+package cali.eventkalender.servlet.nation;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PersonServlet
+ * Servlet implementation class NationServlet
  */
-@WebServlet("/persons")
-public class PersonServlet extends HttpServlet {
+@WebServlet("/nations/crud")
+public class NationCRUDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PersonServlet() {
+    public NationCRUDServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class PersonServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/pages/NationCRUD.jsp").forward(request, response);
 	}
 
 	/**

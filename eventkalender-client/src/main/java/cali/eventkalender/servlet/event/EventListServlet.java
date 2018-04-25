@@ -1,4 +1,4 @@
-package cali.eventkalender.servlet;
+package cali.eventkalender.servlet.event;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EventServlet
+ * Servlet implementation class EventListServlet
  */
-@WebServlet("/events")
-public class EventServlet extends HttpServlet {
+@WebServlet("/EventListServlet")
+public class EventListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventServlet() {
+    public EventListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
