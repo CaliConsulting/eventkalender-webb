@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@ include file = "Head.jsp" %>
+<%@ include file="Head.jsp"%>
 </head>
 <body>
 	<header>
-		<%@ include file = "Header.jsp" %>
+		<%@ include file="Header.jsp"%>
 	</header>
-	<div class="container">
-		<form action="TestServlet" method="POST">
-			<div class="form-group">
-				<label for="Eventname">Evenemangsnamn:</label> 
-				<input type="Text" class="form-control" id="eventName"/> 
-				<label for="Nation">Nation:</label>
-				<input list="Nations" class="form-control"	name="Nations" id="Nations">
-					<datalist id="Nations">
-						<option value="Autogenerad lista från databasen">
-					</datalist>
-				<input type="Submit" name="registerPerson"/>
+	<main role="main" class="container">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="addTitel">Lägg till</h5>
+				<form class="needs-validation" novalidate
+					action="${pageContext.request.contextPath}/events/crud"
+					method="POST">
+					<div class="form-group">
+						<label for="eventname">Evenemangsnamn:</label> <input type="text"
+							class="form-control" id="eventname" placeholder="Evenemangsnamn"
+							required /> <label for="nationTextarea">Evenemangsbeskrivning</label>
+						<textarea class="form-control" id="evenemangTextarea" rows="4"
+							placeholder="Ange en beskrivning för ditt evenemang" required></textarea>
+						<label for="nation">Nation:</label> <select class="custom-select"
+							id="eventFormControl" required>
+							<option value="" disabled="disabled" selected>Välj
+								Nation...</option>
+							<option value="1">Malmö Nation</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">BlazeitTest501</option>
+						</select>
+					</div>
+					<input type="submit" name="registerevent" />
+				</form>
 			</div>
-		</form>
-	</div>
-	<footer class="footer">
-		<%@ include file = "Footer.jsp" %>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="addTitel">Ta bort</h5>
+				<div class="form-group">
+					<label for="event">Evenemang:</label> 
+					<select class="custom-select"
+						id="eventFormControlDelete" required>
+						<option value="" disabled="disabled" selected>Välj
+							Evenemang...</option>
+						<option value="1">Event1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">GA-Balen</option>
+					</select>
+				</div>
+				<input type="submit" name="removeEvent" />
+			</div>
+		</div>
+	</main>
+	<footer>
+		<%@ include file="Footer.jsp"%>
 	</footer>
 </body>
 </html>
