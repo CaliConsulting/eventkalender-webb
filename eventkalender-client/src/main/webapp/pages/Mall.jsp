@@ -4,10 +4,13 @@
 	<%@ include file = "Head.jsp" %>
 </head>
 <body>
-	<%@ include file = "Header.jsp" %>
-	
-	<footer class="footer">
-		<%@ include file = "Footer.jsp" %>
-	</footer>
+	<!-- header -->
+	<%@ include file="Header.jsp"%>
+	<!-- /header -->
+
+
+	<!-- footer -->
+	<%@ include file="Footer.jsp"%>
+	<!-- /footer -->
 </body>
 </html>

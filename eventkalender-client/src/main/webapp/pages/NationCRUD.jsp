@@ -4,7 +4,9 @@
 	<%@ include file="Head.jsp"%>
 </head>
 <body>
+	<!-- header -->
 	<%@ include file="Header.jsp"%>
+	<!-- /header -->
 	<div class="container">
 		<div class="card">
 			<div class="card-body">
@@ -41,9 +43,8 @@
 			</div>
 		</div>
 	</div>
->>>>>>> 50917222beec1bf56f4dff7b8d482f462e5e117c
-	<footer class="footer">
-		<%@ include file="Footer.jsp"%>
-	</footer>
+	<!-- footer -->
+	<%@ include file="Footer.jsp"%>
+	<!-- /footer -->
 </body>
 </html>
