@@ -4,9 +4,7 @@
 	<%@ include file = "Head.jsp" %>
 </head>
 <body>
-	<header>
-		<%@ include file = "Header.jsp" %>
-	</header>
+	<%@ include file = "Header.jsp" %>
 	
 	<footer class="footer">
 		<%@ include file = "Footer.jsp" %>

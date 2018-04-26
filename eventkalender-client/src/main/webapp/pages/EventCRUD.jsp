@@ -3,10 +3,8 @@
 <head>
 	<%@ include file = "Head.jsp" %>
 </head>
-<body>
-	<header>
-		<%@ include file = "Header.jsp" %>
-	</header>
+<body>	
+	<%@ include file = "Header.jsp" %>
 	<div class="container">
 		<form action="TestServlet" method="POST">
 			<div class="form-group">

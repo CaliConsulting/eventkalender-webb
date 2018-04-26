@@ -6,9 +6,7 @@
 	<%@ include file = "Head.jsp" %>
 </head>
 <body>
-	<header>
-		<%@ include file = "Header.jsp" %>
-	</header>
+	<%@ include file = "Header.jsp" %>
 	<div class="container">
 	<br>
 		<table class="table table-hover">
