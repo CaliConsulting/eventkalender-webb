@@ -9,6 +9,10 @@ body {
 	background-color: #f8f9fa;
 }
 
+header {
+	background-color: #afcbff;
+}
+
 .card {
 	margin-bottom:10px;
 }
