@@ -9,7 +9,9 @@
 		<header>
 			<%@ include file="Header.jsp"%>
 		</header>
-
+		<div class="bgImg">
+			<p>text</p>
+		</div>
 		<footer class="footer">
 			<%@ include file="Footer.jsp"%>
 		</footer>
