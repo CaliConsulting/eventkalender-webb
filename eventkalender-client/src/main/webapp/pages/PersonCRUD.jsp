@@ -7,11 +7,6 @@
 	<header>
 		<%@ include file="Header.jsp"%>
 	</header>
-<<<<<<< HEAD
-	
-	<footer class="footer">
-		<%@ include file = "Footer.jsp" %>
-=======
 	<div class="container">
 		<div class="card">
 			<div class="card-body">
@@ -52,7 +47,6 @@
 	</div>
 	<footer>
 		<%@ include file="Footer.jsp"%>
->>>>>>> master
 	</footer>
 </body>
 </html>
