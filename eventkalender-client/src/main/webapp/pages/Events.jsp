@@ -10,7 +10,8 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<div class="container">
-		<table class="table table-hover">
+		<input class="form-control" id="myInput" type="text" placeholder="Sök..">
+		<table class="table table-hover" id="myTable">
 			<thead>
 				<tr>
 					<th>Namn</th>
