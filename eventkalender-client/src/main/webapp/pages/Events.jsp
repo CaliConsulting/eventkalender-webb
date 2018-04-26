@@ -18,7 +18,7 @@
 					<th>Beskrivning</th>
 					<th>Nation</th>
 					<th>Start tid</th>
-					<th>Stängning</th>
+					<th>Sut tid</th>
 					<th>Inbjudna</th>
 				</tr>
 			</thead>
