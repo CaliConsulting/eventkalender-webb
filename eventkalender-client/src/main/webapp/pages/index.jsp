@@ -12,7 +12,7 @@
 	<div class="bgImg">
 		<div class="welcomeText">
 			<h1 class="display-4">Välkommen till Eventkalendern!</h1>
-			<h2>Ditt nationsstöd</h2>
+			<h2>Vi hjälper dig planera ditt nationsliv</h2>
 		</div>
 	</div>
 
