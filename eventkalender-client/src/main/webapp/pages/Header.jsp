@@ -1,7 +1,7 @@
 <header class="mb-2">
 <%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient" %>
 <%@ page import="net.aksingh.owmjapis.api.APIException" %>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+	<nav class="navbar navbar-expand-sm navbar-light bg-light">
 	  <a class="navbar-brand" href="${pageContext.request.contextPath}/">
 	  		<img src="${pageContext.request.contextPath}/img/Cali.png" width="30" height="30">
 	  		Eventkalender
