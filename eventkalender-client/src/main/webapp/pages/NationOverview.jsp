@@ -40,9 +40,6 @@
 				alt="Card image cap">
 			<div class="card-body">
 				<h5 class="card-title">Malmö Nation</h5>
-				<a class="btn btn-primary" data-toggle="collapse"
-					href="https://www.facebook.com/malmonation/" role="button" aria-expanded="false"
-					aria-controls="collapseExample"> Link with href </a>
 				<p class="card-text">This card has supporting text below as a
 					natural lead-in to additional content.</p>
 				<p class="card-text">
