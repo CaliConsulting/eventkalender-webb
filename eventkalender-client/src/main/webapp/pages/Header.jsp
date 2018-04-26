@@ -29,12 +29,12 @@
 	     	</liv>
 	        <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFörköp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Förköp av biljetter
+	          Forkop av biljetter
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="${pageContext.request.contextPath}/förköp">Malmö Nation</a>
-	          <a class="dropdown-item" href="${pageContext.request.contextPath}/förköp">Göteborgs Nation</a>
-	          <a class="dropdown-item" href="${pageContext.request.contextPath}/förköp">Västgöta Nation</a>
+	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Malmö Nation</a>
+	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Göteborgs Nation</a>
+	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Västgöta Nation</a>
 	        </div>
 	      </li>
 	    </ul>
