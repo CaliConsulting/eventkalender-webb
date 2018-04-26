@@ -97,8 +97,12 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="https://krnation.se/"><h5 class="card-title text-dark">Kristianstad Nation</h5></a>
-				<p class="card-text">This card has supporting text below as a
-					natural lead-in to additional content.</p>
+				<p class="card-text">Kristianstads Nation är din länk mellan fritid och framtid! Vi är en relativt
+				 liten nation men med ett garanterat stort hjärta. Vi har ca 1800 inskrivna studenter, och det
+				 finns alltid plats för en till. Det är lätt att snabbt komma in i vårt gäng och att få underbara 
+				 minnen för livet genom att jobba på någon av våra aktiviteter. Här kan du bland annat dansa i 
+				 dimman på Klubb Huset, äta gott till studentpris på både lunch, pub och nattcafé samt se Lunds 
+				 bästa nationsspääx..</p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
@@ -110,7 +114,10 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="https://ostgota.nu/"><h5 class="card-title text-dark">Östgöta Nation</h5></a>
-				<p class="card-text">Den här nationen finns</p>
+				<p class="card-text">Östgöta Nation har funnits ända sedan 1668 och är din port in i 
+				studentlivet. Nationen är en mötesplats för alla Lunds studenter och genomsyras av glädje, 
+				engagemang och gemenskap! Vi har ett brett utbud i vår verksamhet och erbjuder allt ifrån 
+				matlagning och pub- och klubbverksamhet av hög kvalitet till foto, teknik, idrott och kultur. </p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
@@ -122,10 +129,10 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="https://helsingkrona.se/"><h5 class="card-title text-dark">Helsingkrona Nation</h5></a>
-				<p class="card-text">This is a wider card with supporting text
-					below as a natural lead-in to additional content. This card has
-					even longer content than the first to show that equal height
-					action.</p>
+				<p class="card-text">Helsingkrona Nation karaktäriseras av ett brett utbud av utskott och aktiviteter 
+				med en öppen och välkomnande atmosfär med goda möjligheter att utveckla sina egna idéer!Som inskriven 
+				i Helsingkrona Nation är du välkommen att engagera dig i våra utskott! Sexmästeriet, Helsingkronaspexet, 
+				Idrott, NATU, IT, Redaktionen, Internationella sekretariatet, Foto, Gillestugeriet och Novischeriet.</p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
@@ -139,9 +146,11 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="http://sydskanska.se/sv/"><h5 class="card-title text-dark">Sydskånska Nation</h5></a>
-				<p class="card-text">This is a wider card with supporting text
-					below as a natural lead-in to additional content. This content is a
-					little bit longer.</p>
+				<p class="card-text">Nationen där musiken spelar roll! Med en etablerad musiktradition förgyller 
+				SSK ditt Lundaliv med det bästa från musikvärlden! Varje helg smäller vi upp dörrarna till klubbar 
+				där du kan dansa dig svettig till grymma DJ:s, liveband och feta MC:s. De fyra klubbar som regelbundet 
+				huserar på nationen är hiphop- och urbanklubben Svartklubben som kör varannan vecka och Electrified 
+				där källaren fylls med vibrerande elektroniska toner.</p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
@@ -153,8 +162,10 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="https://www.facebook.com/Wermlands/"><h5 class="card-title text-dark">Wermlands Nation</h5></a>
-				<p class="card-text">This card has supporting text below as a
-					natural lead-in to additional content.</p>
+				<p class="card-text">Wermlands erbjuder en plats där du kan känna dig som hemma och snabbt bli en del av 
+				gemenskapen. Som Sveriges första KRAV-certifierade studentförening kan vi erbjuda vällagad ekologisk 
+				mat och ett brett ölsortiment till studentvänliga priser varje onsdag och lördag. Vi har då våra pubar 
+				American pub, Greenway Pub och Pub Aperitivo öppna.</p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
@@ -166,7 +177,10 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="https://www.vgnation.se/"><h5 class="card-title text-dark">Västgöta Nation</h5></a>
-				<p class="card-text">Den här nationen finns</p>
+				<p class="card-text">Varmt välkommen till det sprudlande studentlivet i Lund! Livet i Lund är 
+				så mycket mer än bara studier så därför är det viktigt att välja en nation där man trivs. 
+				Vi på Västgöta Nation är kända för den härliga gemenskapen som kan liknas vid en enda stor familj. 
+				Om du vill vara en del av denna familj har du kommit alldeles rätt!</p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
@@ -178,10 +192,11 @@
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<a href="http://kalmarnation.nu/"><h5 class="card-title text-dark">Kalmar Nation</h5></a>
-				<p class="card-text">This is a wider card with supporting text
-					below as a natural lead-in to additional content. This card has
-					even longer content than the first to show that equal height
-					action.</p>
+				<p class="card-text">Kalmar nation är nationen med Lunds högsta mysighetsfaktor. Beläget 
+				mitt i stadens bankande studenthjärta blir vår lummiga trädgård under novischperioden din 
+				perfekta port in i studielivet. Att Kalmar inte hör till de största nationerna gör oss till 
+				ett tight gäng där du lätt hittar vänner för livet!Varje tisdag och fredag håller våra populära 
+				pubar öppet. Pub Ölkällaren ger besökaren ett härligt barhäng för den som tycker lill-lördag är för långt borta.</p>
 				<p class="card-text">
 					<small class="text-muted">Last updated 3 mins ago</small>
 				</p>
