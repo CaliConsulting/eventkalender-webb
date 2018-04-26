@@ -7,7 +7,7 @@
 	<header>
 		<%@ include file="Header.jsp"%>
 	</header>
-	<div class="container">
+	<main role="main" class="container">
 		<div class="card">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till</h5>
@@ -54,9 +54,7 @@
 				<input type="submit" name="removeEvent" />
 			</div>
 		</div>
-	</div>
-
-
+	</main>
 	<footer>
 		<%@ include file="Footer.jsp"%>
 	</footer>

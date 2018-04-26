@@ -10,9 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
-import cali.eventkalender.model.Person;
+import net.aksingh.owmjapis.api.APIException;
+import net.aksingh.owmjapis.core.OWM;
+import net.aksingh.owmjapis.model.CurrentWeather;
+import net.aksingh.owmjapis.model.param.Weather;
 
 @WebServlet("")
 public class IndexServlet extends HttpServlet {
@@ -25,9 +31,7 @@ public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
-			
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,5 +46,5 @@ public class IndexServlet extends HttpServlet {
 		
 		doGet(request,response);  */
 	}
-
+	
 }
