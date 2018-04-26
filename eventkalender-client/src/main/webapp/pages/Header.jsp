@@ -25,6 +25,16 @@
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/events/crud">Evenemang</a>
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/nations/crud">Nationer</a>
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/persons/crud">Personer</a>
+	     	</div>
+	     	</liv>
+	        <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFörköp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Förköp av biljetter
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="${pageContext.request.contextPath}/förköp">Malmö Nation</a>
+	          <a class="dropdown-item" href="${pageContext.request.contextPath}/förköp">Göteborgs Nation</a>
+	          <a class="dropdown-item" href="${pageContext.request.contextPath}/förköp">Västgöta Nation</a>
 	        </div>
 	      </li>
 	    </ul>
