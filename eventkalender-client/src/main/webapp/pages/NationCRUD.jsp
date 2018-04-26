@@ -10,13 +10,13 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till</h5>
+				<h5 class="addTitel">Lägg till Nation</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/nations/crud"
 					method="POST">
 					<div class="form-group">
-						<label for="nationsname">Nationsnamn:</label> <input type="text"
-							class="form-control" id="nationsnamn" placeholder="Nationsnamn"
+						<label for="nationsname">Namn</label> <input type="text"
+							class="form-control" id="nationsnamn" placeholder="Namn"
 							required />
 					</div>
 					<input type="submit" name="registernation" />
@@ -25,13 +25,13 @@
 		</div>
 		<div class="card">
 			<div class="card-body">
-				<h5 class="addTitel">Ta bort</h5>
+				<h5 class="addTitel">Ta bort Nation</h5>
 				<div class="form-group">
-					<label for="nation">Nation:</label> 
+					<label for="nation">Nation</label> 
 					<select class="custom-select"
 						id="nationFormControlDelete" required>
 						<option value="" disabled="disabled" selected>Välj
-							Nation...</option>
+							Nation..</option>
 						<option value="1">Nation1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
