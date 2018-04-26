@@ -11,7 +11,7 @@
 	</header>
 	<div class="container">
 	<br>
-		<input class="form-control" id="myInput" type="text" placeholder="Sök...">
+		<input class="form-control" id="myInput" type="text" placeholder="Sök..">
 		<table class="table table-hover" id="myTable">
 			<thead>
 				<tr>
