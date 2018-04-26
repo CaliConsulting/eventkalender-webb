@@ -11,8 +11,8 @@
 		</header>
 		<div class="bgImg">
 			<div class="welcomeText">
-				<h1>Välkommen till Eventkalender</h1>
-				<h2>Din lokala drugdealer</h2>
+				<h1 class="display-4">Välkommen till Eventkalendern!</h1>
+				<h2>Ditt nationsstöd</h2>
 			</div>
 		</div>
 

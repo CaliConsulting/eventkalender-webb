@@ -45,5 +45,6 @@ body {
 }
 
 .welcomeText h1, h2, h3 {
-	color: #e6e3ea;
+	font-family: "Bell", Times, serif;
+	color: #ffffff;
 }
