@@ -24,20 +24,11 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Ange namn</label>
+    <label for="exampleFormControlTextarea1">Ange ditt för- och efternamn</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 </form>
+<a href="${pageContext.request.contextPath}/forkop" class="btn btn-outline-dark btn-lg float-left">Till betalning</a>
 </div>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>

@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FörköpCRUDServlet
  */
-@WebServlet("/forkop")
-public class ForkopCRUDServlet extends HttpServlet {
+@WebServlet("/forkop/list")
+public class ForkopListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ForkopCRUDServlet() {
+    public ForkopListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/pages/ForkopCRUD.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/ForkopOverview.jsp").forward(request, response);
 	}
    
 }

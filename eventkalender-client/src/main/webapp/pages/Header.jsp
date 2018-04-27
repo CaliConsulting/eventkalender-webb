@@ -16,7 +16,10 @@
 	      </li>   
 	      <li class="nav-item active">
 	        <a class="nav-link" href="${pageContext.request.contextPath}/events">Evenemangslista</a>
-	      </li>      
+	      </li> 
+	       <li class="nav-item active">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/forkop/list">Förköp biljetter</a>
+	        </li>     
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	          Lägg till / ta bort
@@ -26,17 +29,7 @@
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/nations/crud">Nationer</a>
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/persons/crud">Personer</a>
 	     	</div>
-	     	</liv>
-	        <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownForkop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Forkop av biljetter
-	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdownForkop">
-	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Malmö Nation</a>
-	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Göteborgs Nation</a>
-	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Västgöta Nation</a>
-	        </div>
-	      </li>
+	     	</li>
 	    </ul>
 	    <%
 			OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
