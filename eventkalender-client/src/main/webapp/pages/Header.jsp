@@ -28,10 +28,10 @@
 	     	</div>
 	     	</liv>
 	        <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFörköp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownForkop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	          Forkop av biljetter
 	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdownForkop">
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Malmö Nation</a>
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Göteborgs Nation</a>
 	          <a class="dropdown-item" href="${pageContext.request.contextPath}/forkop">Västgöta Nation</a>
