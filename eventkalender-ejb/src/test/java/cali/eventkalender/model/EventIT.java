@@ -3,10 +3,12 @@ package cali.eventkalender.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -14,130 +16,135 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class EventIT {
 	
+    private Long expectedEventId;
+    private String expectedEventName;
+    private String expectedEventSummary;
+    private LocalDateTime expectedEventStartTime;
+    private LocalDateTime expectedEventEndTime;
+    
+    private Event expectedEvent;
+    
+    private Long expectedNationId;
+    private String expectedNationName;
+    
+    private Nation expectedNation;
+    
+    private Long expectedPersonId;
+    private String expectedPersonFirstName;
+    private String expectedPersonLastName;
+    
+    private Person expectedPerson;
+    
+    @Before
+    public void setup() {
+        expectedNationId = -1L;
+        expectedNationName = "TESTNATION";
+        expectedNation = new Nation(expectedNationName);
+        expectedNation.setId(expectedNationId);
+        
+        expectedEventId = Long.MIN_VALUE;
+        expectedEventName = "TESTEVENT";
+        expectedEventSummary = "TESTSAMMANFATTNING";
+        expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
+        expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
+        expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime, expectedEventEndTime);
+        expectedEvent.setId(expectedEventId);
+        expectedEvent.setNation(expectedNation);
+        
+        expectedPersonId = Long.MAX_VALUE;
+        expectedPersonFirstName = "FÖRNAMN";
+        expectedPersonLastName = "EFTERNAMN";
+        expectedPerson = new Person(expectedPersonFirstName, expectedPersonLastName);
+        expectedPerson.setId(expectedPersonId);
+    }
+    
 	@Test
 	public void getNation() {
-		Event event = new Event();
-
-		assertEquals(null, event.getNation());
+		assertEquals(expectedNation, expectedEvent.getNation());
 	}
 	
 	@Test
 	public void setNation() {
-		Nation nation = new Nation();
-		
-		Event event = new Event();
-		event.setNation(nation);
-
-		assertEquals(nation, event.getNation());
-		assertEquals(1, nation.getEvents().size());
+		assertEquals(expectedNation, expectedEvent.getNation());
+		assertEquals(1, expectedNation.getEvents().size());
 	}
 	
 	@Test
 	public void getPersons() {
-		Event event = new Event();
-
-		assertEquals(0, event.getPersons().size());
+		assertEquals(0, expectedEvent.getPersons().size());
 	}
 
 	@Test
 	public void setPersons() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		List<Person> persons = new ArrayList<>(Arrays.asList(person));
-		event.setPersons(persons);
+		List<Person> persons = new ArrayList<>(Arrays.asList(expectedPerson));
+		expectedEvent.setPersons(persons);
 
-		assertEquals(1, event.getPersons().size());
-		for (Person p : event.getPersons()) {
-			assertTrue(p.getEvents().contains(event));
+		assertEquals(1, expectedEvent.getPersons().size());
+		for (Person p : expectedEvent.getPersons()) {
+			assertTrue(p.getEvents().contains(expectedEvent));
 		}
 	}
 	
 	@Test
 	public void addPerson() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		person.setId(Long.MAX_VALUE);
+		expectedEvent.addPerson(expectedPerson);
 		
-		event.addPerson(person);
-		
-		assertEquals(1, event.getPersons().size());
-		assertEquals(1, person.getEvents().size());
-		assertTrue(person.getEvents().contains(event));
+		assertEquals(1, expectedEvent.getPersons().size());
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedPerson.getEvents().contains(expectedEvent));
 	}
 	
 	@Test
 	public void addPersonAlreadyExists() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		person.setId(Long.MAX_VALUE);
+	    expectedEvent.addPerson(expectedPerson);
+	    expectedEvent.addPerson(expectedPerson);
 		
-		event.addPerson(person);
-		event.addPerson(person);
-		
-		assertEquals(1, event.getPersons().size());
-		assertEquals(1, person.getEvents().size());
-		assertTrue(person.getEvents().contains(event));
+		assertEquals(1, expectedEvent.getPersons().size());
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedPerson.getEvents().contains(expectedEvent));
 	}
 	
 	@Test
 	public void addPersonWithNullObject() {
-		Event event = new Event();
-
-		event.addPerson(null);
+	    expectedEvent.addPerson(null);
 		
-		assertEquals(0, event.getPersons().size());
+		assertEquals(0, expectedEvent.getPersons().size());
 	}
 	
 	@Test
 	public void deletePersonWithId() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		person.setId(Long.MAX_VALUE);
+	    expectedEvent.addPerson(expectedPerson);
+	    expectedEvent.deletePerson(expectedPersonId);
 		
-		event.addPerson(person);
-		event.deletePerson(Long.MAX_VALUE);
-		
-		assertEquals(0, event.getPersons().size());
-		assertEquals(0, person.getEvents().size());
+		assertEquals(0, expectedEvent.getPersons().size());
+		assertEquals(0, expectedPerson.getEvents().size());
 	}
 	
 	@Test
 	public void deletePersonWithIdNoMatch() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		person.setId(Long.MAX_VALUE);
+		expectedEvent.addPerson(expectedPerson);
+		expectedEvent.deletePerson(-1);
 		
-		event.addPerson(person);
-		event.deletePerson(-1);
-		
-		assertEquals(1, event.getPersons().size());
-		assertEquals(1, person.getEvents().size());
+		assertEquals(1, expectedEvent.getPersons().size());
+		assertEquals(1, expectedPerson.getEvents().size());
 	}
 	
 	@Test
 	public void deletePersonWithObject() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		person.setId(Long.MAX_VALUE);
+	    expectedEvent.addPerson(expectedPerson);
+	    expectedEvent.deletePerson(expectedPerson);
 		
-		event.addPerson(person);
-		event.deletePerson(person);
-		
-		assertEquals(0, event.getPersons().size());
-		assertEquals(0, person.getEvents().size());
+		assertEquals(0, expectedEvent.getPersons().size());
+		assertEquals(0, expectedPerson.getEvents().size());
 	}
 	
 	@Test
 	public void deletePersonWithObjectNoMatch() {
-		Event event = new Event();
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		person.setId(Long.MAX_VALUE);
+	    expectedEvent.addPerson(expectedPerson);
+	    expectedEvent.deletePerson(null);
 		
-		event.addPerson(person);
-		event.deletePerson(null);
-		
-		assertEquals(1, event.getPersons().size());
-		assertEquals(1, person.getEvents().size());
+		assertEquals(1, expectedEvent.getPersons().size());
+		assertEquals(1, expectedPerson.getEvents().size());
 	}
 
 }

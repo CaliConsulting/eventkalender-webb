@@ -3,12 +3,12 @@ package cali.eventkalender.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -16,298 +16,254 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class EventTest {
 
-	@Test
-	public void constructorDefault() {
-		Event event = new Event();
+    private Event expectedEventDefault;
 
-		assertEquals(Long.MIN_VALUE, event.getId());
-		assertEquals(null, event.getName());
-		assertEquals(null, event.getSummary());
-		assertEquals(null, event.getStartTime());
-		assertEquals(null, event.getEndTime());
-		assertEquals(null, event.getNation());
-		assertEquals(0, event.getPersons().size());
-	}
+    private Long expectedEventId;
+    private String expectedEventName;
+    private String expectedEventSummary;
+    private LocalDateTime expectedEventStartTime;
+    private LocalDateTime expectedEventEndTime;
 
-	@Test
-	public void constructorValues() {
-		LocalDateTime now = LocalDateTime.now();
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
+    private Event expectedEventOverloaded;
+    private Event expectedEventOverloaded2;
+    private Event expectedEventRelations;
 
-		assertEquals("TESTEVENT", event.getName());
-		assertEquals("TESTSAMMANFATTNING", event.getSummary());
-		assertEquals(now, event.getStartTime());
-		assertEquals(now, event.getEndTime());
-		assertEquals(null, event.getNation());
-		assertEquals(0, event.getPersons().size());
-	}
-	
-	@Test
-	public void constructorRelations() {
-		Nation nation = new Nation("TESTNATION");
-		
-		Person person = new Person("TESTFÖRNAMN", "TESTEFTERNAMN");
-		List<Person> persons = new ArrayList<>(Arrays.asList(person));
-		
-		LocalDateTime now = LocalDateTime.now();
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now, nation, persons);
+    private Long expectedNationId;
+    private String expectedNationName;
 
-		assertEquals("TESTEVENT", event.getName());
-		assertEquals("TESTSAMMANFATTNING", event.getSummary());
-		assertEquals(now, event.getStartTime());
-		assertEquals(now, event.getEndTime());
-		assertEquals(nation, event.getNation());
-		assertEquals(1, event.getPersons().size());
-	}
+    private Nation expectedNation;
 
-	@Test
-	public void getId() {
-		Event event = new Event();
+    private Long expectedPersonId;
+    private String expectedPersonFirstName;
+    private String expectedPersonLastName;
 
-		assertEquals(Long.MIN_VALUE, event.getId());
-	}
+    private Person expectedPerson;
 
-	@Test
-	public void setId() {
-		Event event = new Event();
-		event.setId(Long.MAX_VALUE);
+    @Before
+    public void setup() {
+        expectedNationId = -1L;
+        expectedNationName = "TESTNATION";
+        expectedNation = new Nation(expectedNationName);
+        expectedNation.setId(expectedNationId);
 
-		assertEquals(Long.MAX_VALUE, event.getId());
-	}
+        expectedEventDefault = new Event();
 
-	@Test
-	public void getName() {
-		Event event = new Event();
+        expectedEventId = Long.MIN_VALUE;
+        expectedEventName = "TESTEVENT";
+        expectedEventSummary = "TESTSAMMANFATTNING";
+        expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
+        expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
+        expectedEventOverloaded = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime,
+                expectedEventEndTime);
+        expectedEventOverloaded.setId(expectedEventId);
+        expectedEventOverloaded.setNation(expectedNation);
 
-		assertEquals(null, event.getName());
-	}
+        expectedPersonId = Long.MAX_VALUE;
+        expectedPersonFirstName = "FÖRNAMN";
+        expectedPersonLastName = "EFTERNAMN";
+        expectedPerson = new Person(expectedPersonFirstName, expectedPersonLastName);
+        expectedPerson.setId(expectedPersonId);
 
-	@Test
-	public void setName() {
-		Event event = new Event();
-		event.setName("TESTNATION");
+        // Copy event to use in equals test
+        expectedEventOverloaded2 = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime,
+                expectedEventEndTime);
+        expectedEventOverloaded.setId(expectedEventId);
+        expectedEventOverloaded.setNation(expectedNation);
+        
+        // Use for relation test
+        expectedEventRelations = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime,
+                expectedEventEndTime, expectedNation, Arrays.asList(expectedPerson));
+        expectedEventRelations.setId(expectedEventId);
+    }
 
-		assertEquals("TESTNATION", event.getName());
-	}
-	
-	@Test
-	public void getSummary() {
-		Event event = new Event();
+    @Test
+    public void constructorDefault() {
+        assertEquals(Long.valueOf(Long.MIN_VALUE), expectedEventDefault.getId());
+        assertNull(expectedEventDefault.getName());
+        assertNull(expectedEventDefault.getSummary());
+        assertNull(expectedEventDefault.getStartTime());
+        assertNull(expectedEventDefault.getEndTime());
+        assertNull(expectedEventDefault.getNation());
+        assertEquals(0, expectedEventDefault.getPersons().size());
+    }
 
-		assertEquals(null, event.getSummary());
-	}
+    @Test
+    public void constructorValues() {
+        assertEquals(expectedEventId, expectedEventOverloaded.getId());
+        assertEquals(expectedEventName, expectedEventOverloaded.getName());
+        assertEquals(expectedEventSummary, expectedEventOverloaded.getSummary());
+        assertEquals(expectedEventStartTime, expectedEventOverloaded.getStartTime());
+        assertEquals(expectedEventEndTime, expectedEventOverloaded.getEndTime());
+    }
 
-	@Test
-	public void setSummary() {
-		Event event = new Event();
-		event.setSummary("TESTSAMMANFATTNING");
+    @Test
+    public void constructorRelations() {
+        assertEquals(expectedEventId, expectedEventOverloaded.getId());
+        assertEquals(expectedEventName, expectedEventRelations.getName());
+        assertEquals(expectedEventSummary, expectedEventRelations.getSummary());
+        assertEquals(expectedEventStartTime, expectedEventRelations.getStartTime());
+        assertEquals(expectedEventEndTime, expectedEventRelations.getEndTime());
+        assertEquals(expectedNation, expectedEventRelations.getNation());
+        assertEquals(1, expectedEventRelations.getPersons().size());
+    }
 
-		assertEquals("TESTSAMMANFATTNING", event.getSummary());
-	}
-	
-	@Test
-	public void getStartTime() {
-		Event event = new Event();
+    @Test
+    public void getId() {
+        assertEquals(expectedEventId, expectedEventOverloaded.getId());
+    }
 
-		assertEquals(null, event.getStartTime());
-	}
+    @Test
+    public void setId() {
+        expectedEventOverloaded.setId(Long.MAX_VALUE);
+        assertEquals(Long.valueOf(Long.MAX_VALUE), expectedEventOverloaded.getId());
+    }
 
-	@Test
-	public void setStartTime() {
-		LocalDateTime now = LocalDateTime.now();
-		
-		Event event = new Event();
-		event.setStartTime(now);
+    @Test
+    public void getName() {
+        assertEquals(expectedEventName, expectedEventOverloaded.getName());
+    }
 
-		assertEquals(now, event.getStartTime());
-	}
-	
-	@Test
-	public void getEndTime() {
-		Event event = new Event();
+    @Test
+    public void setName() {
+        expectedEventOverloaded.setName("SETTESTEVENT");
+        assertEquals("SETTESTEVENT", expectedEventOverloaded.getName());
+    }
 
-		assertEquals(null, event.getEndTime());
-	}
+    @Test
+    public void getSummary() {
+        assertEquals(expectedEventSummary, expectedEventOverloaded.getSummary());
+    }
 
-	@Test
-	public void setEndTime() {
-		LocalDateTime now = LocalDateTime.now();
-		
-		Event event = new Event();
-		event.setEndTime(now);
+    @Test
+    public void setSummary() {
+        expectedEventOverloaded.setSummary("SETTESTSAMMANFATTNING");
+        assertEquals("SETTESTSAMMANFATTNING", expectedEventOverloaded.getSummary());
+    }
 
-		assertEquals(now, event.getEndTime());
-	}
+    @Test
+    public void getStartTime() {
+        assertEquals(expectedEventStartTime, expectedEventOverloaded.getStartTime());
+    }
 
-	@Test
-	public void equals() {
-		Event event = new Event();
-		Event event2 = new Event();
+    @Test
+    public void setStartTime() {
+        LocalDateTime startTime = LocalDateTime.of(2010, 1, 1, 12, 00);
+        expectedEventOverloaded.setStartTime(startTime);
+        assertEquals(startTime, expectedEventOverloaded.getStartTime());
+    }
 
-		assertEquals(event, event2);
-	}
+    @Test
+    public void getEndTime() {
+        assertEquals(expectedEventEndTime, expectedEventOverloaded.getEndTime());
+    }
 
-	@Test
-	public void equalsItself() {
-		Event event = new Event();
+    @Test
+    public void setEndTime() {
+        assertEquals(expectedEventEndTime, expectedEventOverloaded.getEndTime());
+    }
 
-		assertEquals(event, event);
-	}
+    @Test
+    public void equals() {
+        Event event = new Event(expectedEventOverloaded.getName(), expectedEventOverloaded.getSummary(),
+                expectedEventOverloaded.getStartTime(), expectedEventOverloaded.getEndTime());
+        event.setId(expectedEventOverloaded.getId());
+        assertEquals(expectedEventOverloaded, event);
+    }
 
-	@Test
-	public void equalsOtherInstanceWithValues() {
-		LocalDateTime now = LocalDateTime.now();
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
-		Event event2 = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
-		
-		assertEquals(event, event2);
-	}
+    @Test
+    public void equalsItself() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded);
+    }
 
-	@Test
-	public void notEqualsNull() {
-		Event event = new Event();
+    @Test
+    public void equalsOtherInstanceWithValues() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertNotEquals(null, event);
-	}
-	
-	@Test
-	public void notEqualsNullParameter() {
-		Event event = new Event();
+    @Test
+    public void notEqualsNull() {
+        assertNotEquals(null, expectedEventOverloaded);
+    }
 
-		assertFalse(event.equals(null));
-	}
-	
-	@Test
-	public void notEqualsIncompatibleObject() {
-		Event event = new Event();
-		
-		assertNotEquals(new Object(), event);
-	}
-	
-	@Test
-	public void notEqualsIncompatibleObjectParameter() {
-		Event event = new Event();
+    @Test
+    public void notEqualsNullParameter() {
+        assertFalse(expectedEventOverloaded.equals(null));
+    }
 
-		assertFalse(event.equals(new Object()));
-	}
+    @Test
+    public void notEqualsIncompatibleObject() {
+        assertNotEquals(new Object(), expectedEventOverloaded);
+    }
 
-	@Test
-	public void equalsId() {
-		Event event = new Event();
-		Event event2 = new Event();
+    @Test
+    public void notEqualsIncompatibleObjectParameter() {
+        assertFalse(expectedEventOverloaded.equals(new Object()));
+    }
 
-		assertEquals(event, event2);
-	}
-	
-	@Test
-	public void notEqualsId() {
-		Event event = new Event();
-		Event event2 = new Event();
-		event2.setId(Long.MAX_VALUE);
+    @Test
+    public void equalsId() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertNotEquals(event, event2);
-	}
-	
-	@Test
-	public void equalsName() {
-		Event event = new Event();
-		event.setName("TESTEVENT");
-		Event event2 = new Event();
-		event2.setName("TESTEVENT");
+    @Test
+    public void notEqualsId() {
+        expectedEventOverloaded2.setId(Long.MAX_VALUE);
+        assertNotEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertEquals(event, event2);
-	}
-	
-	@Test
-	public void notEqualsName() {
-		Event event = new Event();
-		Event event2 = new Event();
-		event.setName("ANOTHERTESTEVENT");
+    @Test
+    public void equalsName() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertNotEquals(event, event2);
-	}
-	
-	@Test
-	public void equalsSummary() {
-		Event event = new Event();
-		event.setSummary("TESTSAMMANFATTNING");
-		Event event2 = new Event();
-		event2.setSummary("TESTSAMMANFATTNING");
+    @Test
+    public void notEqualsName() {
+        expectedEventOverloaded2.setName("ANOTHERTESTEVENT");
+        assertNotEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertEquals(event, event2);
-	}
-	
-	@Test
-	public void notEqualsSummary() {
-		Event event = new Event();
-		Event event2 = new Event();
-		event.setSummary("TESTSAMMANFATTNING");
+    @Test
+    public void equalsSummary() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertNotEquals(event, event2);
-	}
-	
-	@Test
-	public void equalsStartTime() {
-		LocalDateTime now = LocalDateTime.now();
-		
-		Event event = new Event();
-		event.setStartTime(now);
-		Event event2 = new Event();
-		event2.setStartTime(now);
+    @Test
+    public void notEqualsSummary() {
+        expectedEventOverloaded2.setSummary("ANOTHERTESTSAMMANFATTNING");
+        assertNotEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertEquals(event, event2);
-	}
-	
-	@Test
-	public void notEqualsStartTime() {
-		LocalDateTime now = LocalDateTime.now();
-		
-		Event event = new Event();
-		Event event2 = new Event();
-		event2.setStartTime(now);
+    @Test
+    public void equalsStartTime() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertNotEquals(event, event2);
-	}
-	
-	@Test
-	public void equalsEndTime() {
-		LocalDateTime now = LocalDateTime.now();
-		
-		Event event = new Event();
-		event.setEndTime(now);
-		Event event2 = new Event();
-		event2.setEndTime(now);
+    @Test
+    public void notEqualsStartTime() {
+        expectedEventOverloaded2.setStartTime(LocalDateTime.now());
+        assertNotEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertEquals(event, event2);
-	}
-	
-	@Test
-	public void notEqualsEndTime() {
-		LocalDateTime now = LocalDateTime.now();
-		
-		Event event = new Event();
-		Event event2 = new Event();
-		event2.setEndTime(now);
+    @Test
+    public void equalsEndTime() {
+        assertEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
 
-		assertNotEquals(event, event2);
-	}
-	
-	@Test
-	public void equalsHashCode() {
-		Event event = new Event();
-		Event event2 = new Event();
-		
-		assertEquals(event.hashCode(), event2.hashCode());
-	}
-	
-	@Test
-	public void notEqualsHashCode() {
-		Event event = new Event();
-		Event event2 = new Event();
-		event2.setId(Long.MAX_VALUE);
-		
-		assertNotEquals(event.hashCode(), event2.hashCode());
-	}
-	
+    @Test
+    public void notEqualsEndTime() {
+        expectedEventOverloaded2.setEndTime(LocalDateTime.now());
+        assertNotEquals(expectedEventOverloaded, expectedEventOverloaded2);
+    }
+
+    @Test
+    public void equalsHashCode() {
+        assertEquals(expectedEventOverloaded.hashCode(), expectedEventOverloaded2.hashCode());
+    }
+
+    @Test
+    public void notEqualsHashCode() {
+        expectedEventOverloaded2.setId(Long.MAX_VALUE);
+        assertNotEquals(expectedEventOverloaded.hashCode(), expectedEventOverloaded2.hashCode());
+    }
+
 }
-

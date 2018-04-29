@@ -6,10 +6,9 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -17,166 +16,161 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class NationTest {
 
+    private Nation expectedNationDefault;
+    
+    private Long expectedEventId;
+    private String expectedEventName;
+    private String expectedEventSummary;
+    private LocalDateTime expectedEventStartTime;
+    private LocalDateTime expectedEventEndTime;
+    
+    private Event expectedEvent;
+    
+    private Long expectedNationId;
+    private String expectedNationName;
+    
+    private Nation expectedNationOverloaded;
+    private Nation expectedNationOverloaded2;
+    private Nation expectedNationRelations;
+    
+    @Before
+    public void setup() {
+        expectedNationDefault = new Nation();
+        
+        expectedNationId = -1L;
+        expectedNationName = "TESTNATION";
+        expectedNationOverloaded = new Nation(expectedNationName);
+        expectedNationOverloaded.setId(expectedNationId);
+
+        expectedEventId = Long.MIN_VALUE;
+        expectedEventName = "TESTEVENT";
+        expectedEventSummary = "TESTSAMMANFATTNING";
+        expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
+        expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
+        expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime,
+                expectedEventEndTime);
+        expectedEvent.setId(expectedEventId);
+        expectedEvent.setNation(expectedNationOverloaded);
+        
+        // Copy nation to use in equals test
+        expectedNationOverloaded2 = new Nation(expectedNationName);
+        expectedNationOverloaded2.setId(expectedNationId);
+        
+        // Use for relation test
+        expectedNationRelations = new Nation(expectedNationName, Arrays.asList(expectedEvent));
+        expectedNationRelations.setId(expectedNationId);
+    }
+    
 	@Test
 	public void constructorDefault() {
-		Nation nation = new Nation();
-
-		assertEquals(Long.MIN_VALUE, nation.getId());
-		assertNull(nation.getName());
-		assertEquals(0, nation.getEvents().size());
+		assertEquals(Long.valueOf(Long.MIN_VALUE), expectedNationDefault.getId());
+		assertNull(expectedNationDefault.getName());
+		assertEquals(0, expectedNationDefault.getEvents().size());
 	}
 
 	@Test
 	public void constructorValues() {
-		Nation nation = new Nation("TESTNATION");
-
-		assertEquals(Long.MIN_VALUE, nation.getId());
-		assertEquals("TESTNATION", nation.getName());
-		assertEquals(0, nation.getEvents().size());
+        assertEquals(expectedNationId, expectedNationOverloaded.getId());
+		assertEquals(expectedNationName, expectedNationOverloaded.getName());
 	}
 	
 	@Test
 	public void constructorRelations() {
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		List<Event> events = new ArrayList<>(Arrays.asList(event));
-
-		Nation nation = new Nation("TESTNATION", events);
-
-		assertEquals(Long.MIN_VALUE, nation.getId());
-		assertEquals("TESTNATION", nation.getName());
-		assertEquals(1, nation.getEvents().size());
+        assertEquals(expectedNationId, expectedNationRelations.getId());
+        assertEquals(expectedNationName, expectedNationRelations.getName());
+		assertEquals(1, expectedNationRelations.getEvents().size());
 	}
 
 	@Test
 	public void getId() {
-		Nation nation = new Nation();
-
-		assertEquals(Long.MIN_VALUE, nation.getId());
+		assertEquals(expectedNationId, expectedNationOverloaded.getId());
 	}
 
 	@Test
 	public void setId() {
-		Nation nation = new Nation();
-		nation.setId(Long.MAX_VALUE);
-
-		assertEquals(Long.MAX_VALUE, nation.getId());
+	    expectedNationOverloaded.setId(Long.MAX_VALUE);
+		assertEquals(Long.valueOf(Long.MAX_VALUE), expectedNationOverloaded.getId());
 	}
 
 	@Test
 	public void getName() {
-		Nation nation = new Nation();
-
-		assertNull(nation.getName());
+	    assertEquals(expectedNationName, expectedNationOverloaded.getName());
 	}
 
 	@Test
 	public void setName() {
-		Nation nation = new Nation();
-		nation.setName("TESTNATION");
-
-		assertEquals("TESTNATION", nation.getName());
+	    expectedNationOverloaded.setName("ANOTHERTESTNATION");
+        assertEquals("ANOTHERTESTNATION", expectedNationOverloaded.getName());
 	}
 
 	@Test
 	public void equals() {
-		Nation nation = new Nation();
-		Nation nation2 = new Nation();
-
-		assertEquals(nation, nation2);
+        Nation nation = new Nation(expectedNationName);
+        nation.setId(expectedNationId);
+		assertEquals(nation, expectedNationOverloaded);
 	}
 
 	@Test
 	public void equalsItself() {
-		Nation nation = new Nation();
-
-		assertEquals(nation, nation);
+		assertEquals(expectedNationOverloaded, expectedNationOverloaded);
 	}
 
 	@Test
 	public void equalsOtherInstanceWithValues() {
-		Nation nation = new Nation("TESTNATION");
-		Nation nation2 = new Nation("TESTNATION");
-
-		assertEquals(nation, nation2);
+		assertEquals(expectedNationOverloaded, expectedNationOverloaded2);
 	}
 
 	@Test
 	public void notEqualsNull() {
-		Nation nation = new Nation();
-
-		assertNotEquals(null, nation);
+		assertNotEquals(null, expectedNationOverloaded);
 	}
 	
 	@Test
 	public void notEqualsNullParameter() {
-		Nation nation = new Nation();
-
-		assertFalse(nation.equals(null));
+		assertFalse(expectedNationOverloaded.equals(null));
 	}
 	
 	@Test
 	public void notEqualsIncompatibleObject() {
-		Nation nation = new Nation();
-		
-		assertNotEquals(new Object(), nation);
+		assertNotEquals(new Object(), expectedNationOverloaded);
 	}
 	
 	@Test
 	public void notEqualsIncompatibleObjectParameter() {
-		Nation nation = new Nation();
-
-		assertFalse(nation.equals(new Object()));
+		assertFalse(expectedNationOverloaded.equals(new Object()));
 	}
 
 	@Test
 	public void equalsId() {
-		Nation nation = new Nation();
-		Nation nation2 = new Nation();
-
-		assertEquals(nation, nation2);
+		assertEquals(expectedNationOverloaded, expectedNationOverloaded2);
 	}
 	
 	@Test
 	public void notEqualsId() {
-		Nation nation = new Nation();
-		Nation nation2 = new Nation();
-		nation2.setId(Long.MAX_VALUE);
-
-		assertNotEquals(nation, nation2);
+	    expectedNationOverloaded2.setId(Long.MAX_VALUE);
+		assertNotEquals(expectedNationOverloaded, expectedNationOverloaded2);
 	}
 	
 	@Test
 	public void equalsName() {
-		Nation nation = new Nation("TESTNATION");
-		Nation nation2 = new Nation("TESTNATION");
-
-		assertEquals(nation, nation2);
+        assertEquals(expectedNationOverloaded, expectedNationOverloaded2);
 	}
 	
 	@Test
 	public void notEqualsName() {
-		Nation nation = new Nation();
-		Nation nation2 = new Nation();
-		nation2.setName("ANOTHERTESTNATION");
-
-		assertNotEquals(nation, nation2);
+	    expectedNationOverloaded2.setName("ANOTHERTESTNATION");
+		assertNotEquals(expectedNationOverloaded, expectedNationOverloaded2);
 	}
 	
 	@Test
 	public void equalsHashCode() {
-		Nation nation = new Nation();
-		Nation nation2 = new Nation();
-		
-		assertEquals(nation.hashCode(), nation2.hashCode());
+		assertEquals(expectedNationOverloaded.hashCode(), expectedNationOverloaded.hashCode());
 	}
 	
 	@Test
 	public void notEqualsHashCode() {
-		Nation nation = new Nation();
-		Nation nation2 = new Nation();
-		nation2.setId(Long.MAX_VALUE);
-		
-		assertNotEquals(nation.hashCode(), nation2.hashCode());
+	    expectedNationOverloaded2.setId(Long.MAX_VALUE);
+		assertNotEquals(expectedNationOverloaded.hashCode(), expectedNationOverloaded2.hashCode());
 	}
 	
 }

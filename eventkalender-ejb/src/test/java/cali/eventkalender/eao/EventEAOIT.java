@@ -1,10 +1,10 @@
 package cali.eventkalender.eao;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -23,74 +23,80 @@ import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
 public class EventEAOIT {
+    
+    private String expectedEventName;
+    private String expectedEventSummary;
+    private LocalDateTime expectedEventStartTime;
+    private LocalDateTime expectedEventEndTime;
+    
+    private Event expectedEvent;
+    
+    private String expectedNationName;
+    
+    private Nation expectedNation;
 
-	@EJB
-	private EventEAOLocal eventEAO;
-	
-	@Deployment
-	public static Archive<?> createArchive() {
-	    return Deployments.getArchive(ArchiveType.EAO);
-	}
+    @EJB
+    private EventEAOLocal eventEAO;
 
-	@Test
-	public void add() {
-		Nation nation = new Nation("TESTNATION");
-		
-		LocalDateTime now = LocalDateTime.now();
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
-		event.setNation(nation);
+    @Deployment
+    public static Archive<?> createArchive() {
+        return Deployments.getArchive(ArchiveType.EAO);
+    }
 
-		eventEAO.add(event);
+    @Before
+    public void setup() {
+        expectedNationName = "TESTNATION";
+        expectedNation = new Nation(expectedNationName);
 
-		Event fetchedEvent = eventEAO.findById(event.getId());
+        expectedEventName = "TESTEVENT";
+        expectedEventSummary = "TESTSAMMANFATTNING";
+        expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
+        expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
+        expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime, expectedEventEndTime);
+        expectedEvent.setNation(expectedNation);
+    }
 
-		assertNotNull(fetchedEvent);
-		assertEquals("TESTEVENT", fetchedEvent.getName());
-		assertEquals("TESTSAMMANFATTNING", fetchedEvent.getSummary());
-		assertEquals(now, fetchedEvent.getStartTime());
-		assertEquals(now, fetchedEvent.getEndTime());
-		assertEquals(nation, fetchedEvent.getNation());
-	}
-	
+    @Test
+    public void add() {
+        eventEAO.add(expectedEvent);
+
+        Event fetchedEvent = eventEAO.findById(expectedEvent.getId());
+
+        assertNotNull(fetchedEvent);
+        assertEquals(expectedEventName, fetchedEvent.getName());
+        assertEquals(expectedEventSummary, fetchedEvent.getSummary());
+        assertEquals(expectedEventStartTime, fetchedEvent.getStartTime());
+        assertEquals(expectedEventEndTime, fetchedEvent.getEndTime());
+        assertEquals(expectedNation, fetchedEvent.getNation());
+    }
+
     @Test
     public void delete() {
-        Nation nation = new Nation("TESTNATION");
+        eventEAO.add(expectedEvent);
 
-        LocalDateTime now = LocalDateTime.now();
-        Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
-        event.setNation(nation);
-
-        eventEAO.add(event);
-        
-        long id = event.getId();
+        long id = expectedEvent.getId();
         eventEAO.delete(id);
 
         Event fetchedEvent = eventEAO.findById(id);
-        
+
         assertNull(fetchedEvent);
     }
-    
+
     @Test
     public void update() {
-        Nation nation = new Nation("TESTNATION");
+        eventEAO.add(expectedEvent);
 
-        LocalDateTime now = LocalDateTime.now();
-        Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", now, now);
-        event.setNation(nation);
+        LocalDateTime updateTime = LocalDateTime.of(2010, 1, 1, 12, 0);
+        expectedEvent.setName("UPDATEEVENT");
+        expectedEvent.setSummary("UPDATESAMMANFATTNING");
+        expectedEvent.setStartTime(updateTime);
+        expectedEvent.setEndTime(updateTime);
+        eventEAO.update(expectedEvent);
 
-        eventEAO.add(event);
-        
-        LocalDateTime updateTime = LocalDateTime.now();
-        event.setName("UPDATEEVENT");
-        event.setSummary("UPDATESAMMANFATTNING");
-        event.setStartTime(updateTime);
-        event.setEndTime(updateTime);
-        eventEAO.update(event);
-        
-        assertEquals("UPDATEEVENT", event.getName());
-        assertEquals("UPDATESAMMANFATTNING", event.getSummary());
-        assertEquals(updateTime, event.getStartTime());
-        assertEquals(updateTime, event.getEndTime());
+        assertEquals("UPDATEEVENT", expectedEvent.getName());
+        assertEquals("UPDATESAMMANFATTNING", expectedEvent.getSummary());
+        assertEquals(updateTime, expectedEvent.getStartTime());
+        assertEquals(updateTime, expectedEvent.getEndTime());
     }
 
 }
