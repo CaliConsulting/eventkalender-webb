@@ -53,3 +53,11 @@ header {
 	font-family: "Bell", Times, serif;
 	color: #ffffff;
 }
+
+.test {
+  flex: 0 0 75%;
+}
+
+.test1 {
+	flex: 1;
+}
