@@ -1,5 +1,6 @@
 package cali.eventkalender.eao;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,7 +20,11 @@ import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
 public class NationEAOIT {
-
+    
+    private String expectedNationName;
+    
+    private Nation expectedNation;
+    
     @EJB
     private NationEAOLocal nationEAO;
 
@@ -27,24 +32,29 @@ public class NationEAOIT {
     public static Archive<?> createArchive() {
         return Deployments.getArchive(ArchiveType.EAO);
     }
+    
+    @Before
+    public void setup() {
+        expectedNationName = "TESTNATION";
+        
+        expectedNation = new Nation(expectedNationName);
+    }
 
     @Test
     public void add() {
-        Nation nation = new Nation("TESTNATION");
-        nationEAO.add(nation);
+        nationEAO.add(expectedNation);
 
-        Nation fetchedNation = nationEAO.findById(nation.getId());
+        Nation fetchedNation = nationEAO.findById(expectedNation.getId());
 
         assertNotNull(fetchedNation);
-        assertEquals("TESTNATION", fetchedNation.getName());
+        assertEquals(expectedNationName, fetchedNation.getName());
     }
     
     @Test
     public void delete() {
-        Nation nation = new Nation("TESTNATION");
-        nationEAO.add(nation);
+        nationEAO.add(expectedNation);
         
-        long id = nation.getId();
+        long id = expectedNation.getId();
         nationEAO.delete(id);
         
         Nation fetchedNation = nationEAO.findById(id);
@@ -54,13 +64,12 @@ public class NationEAOIT {
     
     @Test
     public void update() {
-        Nation nation = new Nation("TESTNATION");
-        nationEAO.add(nation);
+        nationEAO.add(expectedNation);
         
-        nation.setName("UPDATENATION");
-        nationEAO.update(nation);
+        expectedNation.setName("UPDATENATION");
+        nationEAO.update(expectedNation);
         
-        assertEquals("UPDATENATION", nation.getName());
+        assertEquals("UPDATENATION", expectedNation.getName());
     }
 
 }

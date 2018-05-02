@@ -22,3 +22,13 @@ jQuery('form[data-toggle="validator"] select').on('change', function(event) {
     event.preventDefault();
     jQuery(this).find('option[disabled]').remove();
 });
+
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
