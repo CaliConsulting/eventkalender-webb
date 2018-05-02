@@ -6,7 +6,7 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	<div class="bgImg">
-	<div class="welcomeText text-center-dark">
+	<div class="welcomeText text-center">
 	<h1><strong>FÖRKÖP</strong></h1>
 	<div class="text-center font-italic">
 		<p>Förköp biljetter till klubben för att säkra din plats och gå före kön!</p>
