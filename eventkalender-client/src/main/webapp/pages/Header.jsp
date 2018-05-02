@@ -1,4 +1,4 @@
-<header class="mb-2">
+<header>
 <%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient" %>
 <%@ page import="net.aksingh.owmjapis.api.APIException" %>
 	<nav class="navbar navbar-expand-sm navbar-light">
