@@ -56,14 +56,10 @@ header {
 
 .test {
 	float: left;
-	width: 85%;
+	width: 75%;
 }
 
 .test1 {
 	float: right;
-	width: 5%
-}
-
-.card {
-	clear:both;
+	width: 20%
 }
