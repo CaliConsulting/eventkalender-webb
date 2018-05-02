@@ -2,6 +2,7 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -26,170 +27,181 @@ import javax.persistence.Table;
 @Table(name = "Event")
 public class Event implements Serializable {
 
-	private static final long serialVersionUID = 4865562529984171768L;
+    private static final long serialVersionUID = 4865562529984171768L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
+    private long id;
 
-	@Column(name = "Name", nullable = false)
-	private String name;
+    @Column(name = "Name", nullable = false)
+    private String name;
 
-	@Column(name = "Summary", nullable = false)
-	private String summary;
+    @Column(name = "Summary", nullable = false)
+    private String summary;
 
-	@Column(name = "StartTime", nullable = false)
-	private LocalDateTime startTime;
+    @Column(name = "StartTime", nullable = false)
+    private LocalDateTime startTime;
 
-	@Column(name = "EndTime", nullable = false)
-	private LocalDateTime endTime;
+    @Column(name = "EndTime", nullable = false)
+    private LocalDateTime endTime;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
-	private Nation nation;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
+    private Nation nation;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"),
-			inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
-	private List<Person> persons;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"), inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
+    private List<Person> persons;
 
-	public Event() {
-		this.id = Long.MIN_VALUE;
-		this.persons = new ArrayList<>();
-	}
+    public Event() {
+        this.id = Long.MIN_VALUE;
+        this.persons = new ArrayList<>();
+    }
 
-	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime) {
-		this();
-		setName(Objects.requireNonNull(name));
-		setSummary(Objects.requireNonNull(summary));
-		setStartTime(Objects.requireNonNull(startTime));
-		setEndTime(Objects.requireNonNull(endTime));
-	}
+    public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime) {
+        this();
+        setName(Objects.requireNonNull(name));
+        setSummary(Objects.requireNonNull(summary));
+        setStartTime(Objects.requireNonNull(startTime));
+        setEndTime(Objects.requireNonNull(endTime));
+    }
 
-	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime, Nation nation,
-			List<Person> persons) {
-		this(name, summary, startTime, endTime);
-		setNation(Objects.requireNonNull(nation));
-		setPersons(Objects.requireNonNull(persons));
-	}
+    public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime, Nation nation,
+            List<Person> persons) {
+        this(name, summary, startTime, endTime);
+        setNation(Objects.requireNonNull(nation));
+        setPersons(Objects.requireNonNull(persons));
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getSummary() {
-		return summary;
-	}
+    public String getSummary() {
+        return summary;
+    }
 
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
 
-	public LocalDateTime getStartTime() {
-		return startTime;
-	}
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
 
-	public void setStartTime(LocalDateTime startTime) {
-		this.startTime = startTime;
-	}
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
 
-	public LocalDateTime getEndTime() {
-		return endTime;
-	}
+    public String getStartTimeFormatted() {
+        LocalDateTime start = getStartTime();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return format.format(start);
+    }
 
-	public void setEndTime(LocalDateTime endTime) {
-		this.endTime = endTime;
-	}
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
 
-	public Nation getNation() {
-		return nation;
-	}
+    public String getEndTimeFormatted() {
+        LocalDateTime end = getEndTime();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return format.format(end);
+    }
 
-	public void setNation(Nation nation) {
-		if (nation != this.nation) {
-			this.nation = nation;
-		}
-		if (nation != null && !nation.hasEvent(this)) {
-			nation.addEvent(this);
-		}
-	}
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
 
-	public List<Person> getPersons() {
-		return persons;
-	}
+    public Nation getNation() {
+        return nation;
+    }
 
-	public void setPersons(List<Person> persons) {
-		this.persons = new ArrayList<>();
-		for (Person p : persons) {
-			addPerson(p);
-		}
-	}
+    public void setNation(Nation nation) {
+        if (nation != this.nation) {
+            this.nation = nation;
+        }
+        if (nation != null && !nation.hasEvent(this)) {
+            nation.addEvent(this);
+        }
+    }
 
-	public void addPerson(Person person) {
-		if (person != null) {
-			if (!hasPerson(person)) {
-				this.persons.add(person);
-			}
-			if (!person.hasEvent(this)) {
-				person.addEvent(this);
-			}
-		}
-	}
+    public List<Person> getPersons() {
+        return persons;
+    }
 
-	public void deletePerson(long id) {
-		Optional<Person> p = this.persons.stream().filter(x -> x.getId() == id).findFirst();
-		if (p.isPresent()) {
-			deletePerson(p.get());
-		}
-	}
+    public void setPersons(List<Person> persons) {
+        this.persons = new ArrayList<>();
+        for (Person p : persons) {
+            addPerson(p);
+        }
+    }
 
-	public void deletePerson(Person person) {
-		if (person != null) {
-			this.persons.remove(person);
-			if (person.hasEvent(this)) {
-				person.deleteEvent(this);
-			}
-		}
-	}
-	
-	public boolean hasPerson(Person person) {
-		return this.persons.contains(person);
-	}
+    public void addPerson(Person person) {
+        if (person != null) {
+            if (!hasPerson(person)) {
+                this.persons.add(person);
+            }
+            if (!person.hasEvent(this)) {
+                person.addEvent(this);
+            }
+        }
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Event)) {
-			return false;
-		}
-		Event e = (Event) obj;
-		return Objects.equals(this.id, e.id) && Objects.equals(this.name, e.name)
-				&& Objects.equals(this.summary, e.summary) && Objects.equals(this.startTime, e.startTime)
-				&& Objects.equals(this.endTime, e.endTime);
-	}
+    public void deletePerson(long id) {
+        Optional<Person> p = this.persons.stream().filter(x -> x.getId() == id).findFirst();
+        if (p.isPresent()) {
+            deletePerson(p.get());
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		return Objects.hash(this.id * prime, this.name, this.startTime, this.endTime);
-	}
+    public void deletePerson(Person person) {
+        if (person != null) {
+            this.persons.remove(person);
+            if (person.hasEvent(this)) {
+                person.deleteEvent(this);
+            }
+        }
+    }
+
+    public boolean hasPerson(Person person) {
+        return this.persons.contains(person);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Event)) {
+            return false;
+        }
+        Event e = (Event) obj;
+        return Objects.equals(this.id, e.id) && Objects.equals(this.name, e.name)
+                && Objects.equals(this.summary, e.summary) && Objects.equals(this.startTime, e.startTime)
+                && Objects.equals(this.endTime, e.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        return Objects.hash(this.id * prime, this.name, this.startTime, this.endTime);
+    }
 
 }
