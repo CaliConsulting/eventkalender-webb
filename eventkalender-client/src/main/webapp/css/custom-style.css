@@ -63,3 +63,7 @@ header {
 	float: right;
 	width: 5%
 }
+
+.card {
+	clear:both;
+}

@@ -16,43 +16,44 @@
 		</div>
 	</div>
 	<main role="main" class="container">
-	<div class="test">
-		<div class="card-deck">
-			<div class="card">
-				<img class="card-img-top"
-					src="${pageContext.request.contextPath}/img/Lunds.png"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a longer card with supporting text
-						below as a natural lead-in to additional content. This content is
-						a little bit longer.</p>
+		<div class="test mt-2 mb-2">
+			<div class="card-deck">
+				<div class="card">
+					<img class="card-img-top"
+						src="${pageContext.request.contextPath}/img/Lunds.png"
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">This is a longer card with supporting
+							text below as a natural lead-in to additional content. This
+							content is a little bit longer.</p>
+					</div>
 				</div>
-			</div>
-			<div class="card">
-				<img class="card-img-top" src="..." alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This card has supporting text below as a
-						natural lead-in to additional content.</p>
+				<div class="card">
+					<img class="card-img-top" src="..." alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">This card has supporting text below as a
+							natural lead-in to additional content.</p>
+					</div>
 				</div>
-			</div>
-			<div class="card">
-				<img class="card-img-top" src="..." alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a wider card with supporting text
-						below as a natural lead-in to additional content. This card has
-						even longer content than the first to show that equal height
-						action.</p>
+				<div class="card">
+					<img class="card-img-top" src="..." alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">This is a wider card with supporting text
+							below as a natural lead-in to additional content. This card has
+							even longer content than the first to show that equal height
+							action.</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="test1">
-			<div class="row" style="vertical-align:middle">
-				<div class="span12" style="vertical-align:middle">
-					<table class="table-condensed table-bordered table-striped" style="vertical-align:middle">
+		<div class="test1 mt-2 mb-2">
+			<div class="row" style="vertical-align: middle">
+				<div class="span12" style="vertical-align: middle">
+					<table class="table-condensed table-bordered table-striped"
+						style="vertical-align: middle">
 						<thead>
 							<tr>
 								<th colspan="7"><span class="btn-group"> <a
@@ -122,6 +123,14 @@
 				</div>
 			</div>
 		</div>
+	<div class="card bg-dark text-white mt-2 mb-2" style="clear:both;">
+		<img class="card-img"
+			src="${pageContext.request.contextPath}/img/Ystad.png" alt="Card image">
+		<div class="card-img-overlay">
+			<h5 class="card-title">Studentnöjen!</h5>
+			<p class="card-text">Tandemcykling, Lundakarnevalen, eller varför inte en båttur, bland skånes vackra natur?</p>
+		</div>
+	</div>
 	</main>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
