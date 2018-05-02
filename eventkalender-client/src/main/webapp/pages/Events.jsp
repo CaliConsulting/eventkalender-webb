@@ -9,7 +9,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container">
+	<div class="container mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
 				<input class="form-control" id="myInput" type="text"

@@ -7,9 +7,8 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-
-	<main role="main" class="container">
-		<div class="card">
+	<main role="main" class="container mt-2 mb-2">
+		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Evenemang</h5>
 				<form class="needs-validation" novalidate

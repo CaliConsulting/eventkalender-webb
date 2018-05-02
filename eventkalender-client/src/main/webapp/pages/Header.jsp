@@ -1,4 +1,4 @@
-<header class="mb-2">
+<header class="">
 <%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient" %>
 <%@ page import="net.aksingh.owmjapis.api.APIException" %>
 	<nav class="navbar navbar-expand-sm navbar-light">
@@ -13,7 +13,7 @@
 	      </li>     
 	      <li class="nav-item active">
 	        <a class="nav-link" href="${pageContext.request.contextPath}/nations/overview">Nationer</a>
-	      </li>   
+	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" href="${pageContext.request.contextPath}/events">Evenemangslista</a>
 	      </li>      
