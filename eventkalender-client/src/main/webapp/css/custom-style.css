@@ -55,9 +55,11 @@ header {
 }
 
 .test {
-  flex: 0 0 75%;
+	float: left;
+	width: 85%;
 }
 
 .test1 {
-	flex: 1;
+	float: right;
+	width: 5%
 }
