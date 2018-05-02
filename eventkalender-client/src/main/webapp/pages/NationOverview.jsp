@@ -12,7 +12,7 @@
 	<div class="card-group">
 		<div class="card">
 			<a href="http://www.lundsnation.se/sv/home/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Lunds.png"
+				src="${pageContext.request.contextPath}/img/nations/Lunds.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="http://www.lundsnation.se/sv/home/">Lunds Nation</a></h5>
@@ -28,7 +28,7 @@
 		</div>
 		<div class="card">
 			<a href="http://goteborgsnation.com/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Goteborgs.png"
+				src="${pageContext.request.contextPath}/img/nations/Goteborgs.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="http://goteborgsnation.com/">Göteborgs Nation</a></h5>
@@ -44,7 +44,7 @@
 		</div>
 		<div class="card">
 			<a href="https://www.malmonation.com/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Malmo.png"
+				src="${pageContext.request.contextPath}/img/nations/Malmo.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://www.malmonation.com/">Malmö Nation</a></h5>
@@ -61,7 +61,7 @@
 		</div>
 		<div class="card">
 			<a href="https://www.facebook.com/hallandsnation/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Hallands.png"
+				src="${pageContext.request.contextPath}/img/nations/Hallands.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://www.facebook.com/hallandsnation/">Hallands Nation</a></h5>
@@ -80,7 +80,7 @@
 	<div class="card-group">
 		<div class="card">
 			<a href="http://www.blekingska.se/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Blekingska.png"
+				src="${pageContext.request.contextPath}/img/nations/Blekingska.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="http://www.blekingska.se/">Blekingska Nation</a></h5>
@@ -95,7 +95,7 @@
 		</div>
 		<div class="card">
 			<a href="https://krnation.se/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Kristianstad.jpg"
+				src="${pageContext.request.contextPath}/img/nations/Kristianstad.jpg"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://krnation.se/">Kristianstad Nation</a></h5>
@@ -112,7 +112,7 @@
 		</div>
 		<div class="card">
 			<a href="https://ostgota.nu/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Ostgota.png"
+				src="${pageContext.request.contextPath}/img/nations/Ostgota.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://ostgota.nu/">Östgöta Nation</a></h5>
@@ -127,7 +127,7 @@
 		</div>
 		<div class="card">
 			<a href="https://helsingkrona.se/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Helsingkrona.png"
+				src="${pageContext.request.contextPath}/img/nations/Helsingkrona.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://helsingkrona.se/">Helsingkrona Nation</a></h5>
@@ -144,7 +144,7 @@
 	<div class="card-group">
 		<div class="card">
 			<a href="http://sydskanska.se/sv/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Sydskanska.png"
+				src="${pageContext.request.contextPath}/img/nations/Sydskanska.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="http://sydskanska.se/sv/">Sydskånska Nation</a></h5>
@@ -160,7 +160,7 @@
 		</div>
 		<div class="card">
 			<a href="https://www.facebook.com/Wermlands/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Wermlands.png"
+				src="${pageContext.request.contextPath}/img/nations/Wermlands.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://www.facebook.com/Wermlands/">Wermlands Nation</a></h5>
@@ -175,7 +175,7 @@
 		</div>
 		<div class="card">
 			<a href="https://www.vgnation.se/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Vastgota.png"
+				src="${pageContext.request.contextPath}/img/nations/Vastgota.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="https://www.vgnation.se/">Västgöta Nation</a></h5>
@@ -190,7 +190,7 @@
 		</div>
 		<div class="card">
 			<a href="http://kalmarnation.nu/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Kalmar.png"
+				src="${pageContext.request.contextPath}/img/nations/Kalmar.png"
 				alt="Card image cap"></a>
 			<div class="card-body">
 				<h5 class="card-title"><a class="text-dark" href="http://kalmarnation.nu/">Kalmar Nation</a></h5>
