@@ -1,24 +1,12 @@
 package cali.eventkalender.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import cali.eventkalender.facade.FacadeLocal;
-import cali.eventkalender.model.Event;
-import net.aksingh.owmjapis.api.APIException;
-import net.aksingh.owmjapis.core.OWM;
-import net.aksingh.owmjapis.model.CurrentWeather;
-import net.aksingh.owmjapis.model.param.Weather;
 
 @WebServlet("")
 public class IndexServlet extends HttpServlet {
