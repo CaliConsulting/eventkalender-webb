@@ -5,12 +5,12 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
-	<div class="bgImg">
+	<div class="forkopImg">
 	<div class="welcomeText text-center">
 	<h1><strong>FÖRKÖP</strong></h1>
 	<div class="text-center font-italic">
-		<p>Förköp biljetter till klubben för att säkra din plats och gå före kön!</p>
-		</div>
+		<h3>Förköp biljetter till klubben för att säkra din plats och gå före kön!</h3>
+	</div>
 	</div>
 	</div>
 	<div class="card-group">
