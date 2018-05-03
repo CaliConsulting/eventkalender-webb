@@ -19,9 +19,9 @@
 					method="POST">
 					<div class="form-group">
 						<label for="Name">Namn</label>
-							<input type="text" class="form-control" id="Name" name="Name" placeholder="Namn" required> 
+							<input type="text" class="form-control" id="same" name="same" placeholder="Namn" required> 
 						<label for="nationTextarea">Beskrivning</label>
-							<textarea class="form-control" id="Summary" name="Summary" rows="4"
+							<textarea class="form-control" id="summary" name="summary" rows="4"
 								placeholder="Ange en beskrivning för ditt evenemang" required></textarea>
 						<label for="Nation">Nation</label> 
 							<select class="custom-select form-control" id="nation" name="nation" required>
@@ -39,7 +39,7 @@
 							<input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
 					</div>
 					<input type="submit" name="submitAddEvent">
-					<input type="hidden" name="AddEvent">
+					<input type="hidden" name="addEvent">
 				</form>
 			</div>
 		</div>
