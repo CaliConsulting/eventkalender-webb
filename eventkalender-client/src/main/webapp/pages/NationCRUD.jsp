@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="cali.eventkalender.model.Nation"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +17,11 @@
 					action="${pageContext.request.contextPath}/nations/crud"
 					method="POST">
 					<div class="form-group">
-						<label for="nationsname">Namn</label> <input type="text"
-							class="form-control" id="nationsnamn" placeholder="Namn"
-							required />
+						<label for="nationName">Namn</label>
+							<input type="text" class="form-control" id="nationName" name="nationName" placeholder="Namn" required>
 					</div>
-					<input type="submit" name="registernation" />
+					<input type="submit" name="submitAddNation">
+					<input type="hidden" name="operation" value="addNation">
 				</form>
 			</div>
 		</div>
@@ -28,18 +30,18 @@
 				<h5 class="addTitel">Ta bort Nation</h5>
 				<div class="form-group">
 					<label for="nation">Nation</label> 
-					<select class="custom-select"
-						id="nationFormControlDelete" required>
-						<option value="" disabled="disabled" selected>Välj
-							Nation..</option>
-						<option value="1">Nation1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">Malmö Nation</option>
+					<select class="custom-select" id="nationFormControlDelete" required>
+						<option value="" disabled="disabled" selected>
+						Välj Nation..</option>
+						<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+								for (Nation n : nations) {
+									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+								}
+						%>
 					</select>
 				</div>
-				<input type="submit" name="removeNation" />
+				<input type="submit" name="submitDeleteNation">
+				<input type="hidden" name="operation" value="deleteNation">
 			</div>
 		</div>
 	</div>

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
 
 @Stateless
@@ -22,6 +23,13 @@ public class NationEAO implements NationEAOLocal {
 	@Override
 	public Nation add(Nation nation) {
 		em.persist(nation);
+		
+		for (Event event : nation.getEvents()) {
+		    if (event.getId() == Long.MIN_VALUE) {
+		        em.persist(event);
+		    }
+		}
+		
 		return nation;
 	}
 

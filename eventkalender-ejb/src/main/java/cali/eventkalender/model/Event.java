@@ -46,11 +46,13 @@ public class Event implements Serializable {
     @Column(name = "EndTime", nullable = false)
     private LocalDateTime endTime;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
+            CascadeType.REMOVE }, fetch = FetchType.EAGER)
     @JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
     private Nation nation;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
+            CascadeType.REMOVE }, fetch = FetchType.EAGER)
     @JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"), inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
     private List<Person> persons;
 
@@ -108,7 +110,7 @@ public class Event implements Serializable {
 
     public String getStartTimeFormatted() {
         LocalDateTime start = getStartTime();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return format.format(start);
     }
 
@@ -118,7 +120,7 @@ public class Event implements Serializable {
 
     public String getEndTimeFormatted() {
         LocalDateTime end = getEndTime();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return format.format(end);
     }
 
