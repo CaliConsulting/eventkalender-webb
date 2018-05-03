@@ -1,4 +1,4 @@
-<footer class="footer text-muted mt-2">
+<footer class="footer text-muted">
 	<div>
 		<div class="text-center">
 			<span><a href="${pageContext.request.contextPath}/" class="text-white">Tillbaka till startsidan</a></span>

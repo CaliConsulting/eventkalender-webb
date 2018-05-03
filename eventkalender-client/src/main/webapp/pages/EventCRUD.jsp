@@ -31,7 +31,8 @@
 							<option value="5">BlazeitTest501</option>
 						</select>
 					</div>
-					<input type="submit" name="registerevent" />
+					<input type="submit" name="submitAddEvent">
+					<input type="hidden" name="AddEvent">
 				</form>
 			</div>
 		</div>
@@ -51,7 +52,8 @@
 						<option value="5">GA-Balen</option>
 					</select>
 				</div>
-				<input type="submit" name="removeEvent" />
+				<input type="submit" name="submitDeleteEvent">
+				<input type="hidden" name="deleteEvent"> 
 			</div>
 		</div>
 	</main>

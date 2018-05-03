@@ -19,7 +19,8 @@
 							class="form-control" id="nationsnamn" placeholder="Namn"
 							required />
 					</div>
-					<input type="submit" name="registernation" />
+					<input type="submit" name="submitAddNation">
+					<input type="hidden" name="addNation">
 				</form>
 			</div>
 		</div>
@@ -39,7 +40,8 @@
 						<option value="5">Malmö Nation</option>
 					</select>
 				</div>
-				<input type="submit" name="removeNation" />
+				<input type="submit" name="submitDeleteNation">
+				<input type="hidden" name="deleteNation">
 			</div>
 		</div>
 	</div>
