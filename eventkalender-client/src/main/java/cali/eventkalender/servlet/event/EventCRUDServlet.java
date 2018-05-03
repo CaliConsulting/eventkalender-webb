@@ -1,6 +1,8 @@
 package cali.eventkalender.servlet.event;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,9 +21,12 @@ import cali.eventkalender.model.Nation;
  */
 @WebServlet("/events/crud")
 public class EventCRUDServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = 1L;
+    
     @EJB
     private FacadeLocal facade;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,21 +39,37 @@ public class EventCRUDServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		List<Nation> nations = facade.findAllNations();
 		request.setAttribute("nations", nations);
 		List<Event> events = facade.findAllEvents();
 		request.setAttribute("events", events);
 		request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
-	}
+    }
 
-	/**
+    /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	    String operation = (String) request.getAttribute("operation");
+	    if ("addEvent".equals(operation)) {
+	        String name = (String) request.getAttribute("name");
+	        String summary = (String) request.getAttribute("summary");
+	        
+	        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	        LocalDateTime startTime = LocalDateTime.parse((String) request.getAttribute("startTime"), format);
+	        LocalDateTime endTime = LocalDateTime.parse((String) request.getAttribute("endTime"), format);
+	        
+	        long nationId = (long) request.getAttribute("nation");
+	        Nation nation = facade.findNationById(nationId);
+	        
+	        Event e = new Event(name, summary, startTime, endTime);
+	        e.setNation(nation);
+	        facade.addEvent(e);
+	    } else if ("deleteEvent".equals(operation)) {
+	        long id = (long) request.getAttribute("id");
+	        facade.deleteEvent(id);
+	    }
 		doGet(request, response);
-
 	}
 
 }
