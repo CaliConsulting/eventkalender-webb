@@ -7,7 +7,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2 mb-2">
+	<main role="main" class="container mt-2">
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Evenemang</h5>
@@ -35,7 +35,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Evenemang</h5>
 				<div class="form-group">
