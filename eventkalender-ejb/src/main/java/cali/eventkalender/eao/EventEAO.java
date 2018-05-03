@@ -23,18 +23,16 @@ public class EventEAO implements EventEAOLocal {
 
 	@Override
 	public Event add(Event event) {
-		em.persist(event);
-		
 		Nation nation = event.getNation();
-		if (nation.getId() == Long.MIN_VALUE) {
+		if (nation.getId() < 0) {
 		    em.persist(nation);
 		}
 		for (Person person : event.getPersons()) {
-		    if (person.getId() == Long.MIN_VALUE) {
+		    if (person.getId() < 0) {
 		        em.persist(person);
 		    }
 		}
-		
+		em.persist(event);
 		return event;
 	}
 

@@ -147,7 +147,7 @@ public class EventTest {
     
     @Test
     public void getStartTimeFormatted() {
-        assertEquals("2000-01-01 12:00:00", expectedEventOverloaded.getStartTimeFormatted());
+        assertEquals("2000-01-01 12:00", expectedEventOverloaded.getStartTimeFormatted());
     }
 
     @Test
@@ -164,7 +164,7 @@ public class EventTest {
     
     @Test
     public void getEndTimeFormatted() {
-        assertEquals("2000-01-01 14:00:00", expectedEventOverloaded.getEndTimeFormatted());
+        assertEquals("2000-01-01 14:00", expectedEventOverloaded.getEndTimeFormatted());
     }
 
     @Test

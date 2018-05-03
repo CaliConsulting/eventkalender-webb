@@ -18,6 +18,7 @@ import org.jboss.shrinkwrap.api.Archive;
 
 import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.model.Person;
 import cali.eventkalender.test.Deployments;
 import cali.eventkalender.test.Deployments.ArchiveType;
 
@@ -81,6 +82,17 @@ public class EventEAOIT {
 
         assertNull(fetchedEvent);
     }
+    
+    @Test
+    public void deleteWhenNull() {
+        long id = expectedEvent.getId();
+        eventEAO.delete(id);
+
+        Event fetchedEvent = eventEAO.findById(id);
+
+        assertNull(fetchedEvent);
+    }
+    
 
     @Test
     public void update() {

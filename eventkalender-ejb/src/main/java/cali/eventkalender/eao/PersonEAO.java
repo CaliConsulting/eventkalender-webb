@@ -22,14 +22,12 @@ public class PersonEAO implements PersonEAOLocal {
 
 	@Override
 	public Person add(Person person) {
-		em.persist(person);
-		
 		for (Event event : person.getEvents()) {
-		    if (event.getId() == Long.MIN_VALUE) {
+		    if (event.getId() < 0) {
 	            em.persist(event);
 		    }
 		}
-		
+		em.persist(person);
 		return person;
 	}
 

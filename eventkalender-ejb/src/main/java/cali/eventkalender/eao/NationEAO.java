@@ -22,14 +22,12 @@ public class NationEAO implements NationEAOLocal {
 
 	@Override
 	public Nation add(Nation nation) {
-		em.persist(nation);
-		
 		for (Event event : nation.getEvents()) {
-		    if (event.getId() == Long.MIN_VALUE) {
+		    if (event.getId() < 0) {
 		        em.persist(event);
 		    }
 		}
-		
+		em.persist(nation);
 		return nation;
 	}
 

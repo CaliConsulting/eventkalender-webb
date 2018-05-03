@@ -40,25 +40,26 @@ public class Person implements Serializable {
 	private List<Event> events;
 
 	public Person() {
+		this.id = Long.MIN_VALUE;
 		this.events = new ArrayList<>();
 	}
-
+	
 	public Person(String firstName, String lastName) {
 		this();
 		setFirstName(Objects.requireNonNull(firstName));
 		setLastName(Objects.requireNonNull(lastName));
 	}
-
+	
 	public Person(String firstName, String lastName, List<Event> events) {
 		this(firstName, lastName);
 		setEvents(Objects.requireNonNull(events));
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
