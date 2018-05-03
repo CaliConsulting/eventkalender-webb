@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Person;
 
 @Stateless
@@ -22,6 +23,13 @@ public class PersonEAO implements PersonEAOLocal {
 	@Override
 	public Person add(Person person) {
 		em.persist(person);
+		
+		for (Event event : person.getEvents()) {
+		    if (event.getId() == Long.MIN_VALUE) {
+	            em.persist(event);
+		    }
+		}
+		
 		return person;
 	}
 
