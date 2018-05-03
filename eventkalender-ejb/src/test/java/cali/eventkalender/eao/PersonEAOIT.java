@@ -80,6 +80,16 @@ public class PersonEAOIT {
     }
     
     @Test
+    public void deleteWhenNull() {
+        long id = expectedPerson.getId();
+        personEAO.delete(id);
+        
+        Person fetchedPerson = personEAO.findById(id);
+        
+        assertNull(fetchedPerson);
+    }
+    
+    @Test
     public void findAll() {
         personEAO.add(expectedPerson);
         

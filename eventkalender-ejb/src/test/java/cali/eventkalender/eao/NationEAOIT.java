@@ -18,6 +18,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 
+import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
 import cali.eventkalender.test.Deployments;
 import cali.eventkalender.test.Deployments.ArchiveType;
@@ -67,6 +68,16 @@ public class NationEAOIT {
     public void delete() {
         nationEAO.add(expectedNation);
         
+        long id = expectedNation.getId();
+        nationEAO.delete(id);
+        
+        Nation fetchedNation = nationEAO.findById(id);
+        
+        assertNull(fetchedNation);
+    }
+    
+    @Test
+    public void deleteWhenNull() {
         long id = expectedNation.getId();
         nationEAO.delete(id);
         
