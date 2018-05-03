@@ -39,7 +39,7 @@
 							<input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
 					</div>
 					<input type="submit" name="submitAddEvent">
-					<input type="hidden" name="AddEvent">
+					<input type="hidden" name="operation" value="addEvent">
 				</form>
 			</div>
 		</div>
@@ -49,9 +49,9 @@
 				<div class="form-group">
 					<label for="event">Evenemang</label> 
 					<select class="custom-select"
-						id="eventFormControlDelete" required>
-						<option value="" disabled="disabled" selected>Välj
-							Evenemang..</option>
+						id="deleteEvent" name="deleteEvent" required>
+						<option value="" disabled="disabled" selected>
+						Välj evenemang..</option>
 						<% List<Event> events = (List<Event>) request.getAttribute("events");
 								for (Event e : events) {
 									out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
@@ -60,7 +60,7 @@
 					</select>
 				</div>
 				<input type="submit" name="submitDeleteEvent">
-				<input type="hidden" name="deleteEvent"> 
+				<input type="hidden" name="operation" value="deleteEvent"> 
 			</div>
 		</div>
 	</main>
