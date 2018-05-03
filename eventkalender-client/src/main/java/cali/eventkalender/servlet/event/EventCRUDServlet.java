@@ -3,6 +3,7 @@ package cali.eventkalender.servlet.event;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -34,14 +35,15 @@ public class EventCRUDServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // TODO Auto-generated method stub
-
-        request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Nation> nations = facade.findAllNations();
+		request.setAttribute("nations", nations);
+		List<Event> events = facade.findAllEvents();
+		request.setAttribute("events", events);
+		request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
     }
 
     /**

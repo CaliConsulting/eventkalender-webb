@@ -7,8 +7,8 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container">
-		<div class="card">
+	<div class="container mt-2 mb-2">
+		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Nation</h5>
 				<form class="needs-validation" novalidate
@@ -19,7 +19,8 @@
 							class="form-control" id="nationsnamn" placeholder="Namn"
 							required />
 					</div>
-					<input type="submit" name="registernation" />
+					<input type="submit" name="submitAddNation">
+					<input type="hidden" name="addNation">
 				</form>
 			</div>
 		</div>
@@ -39,7 +40,8 @@
 						<option value="5">Malmö Nation</option>
 					</select>
 				</div>
-				<input type="submit" name="removeNation" />
+				<input type="submit" name="submitDeleteNation">
+				<input type="hidden" name="deleteNation">
 			</div>
 		</div>
 	</div>
