@@ -72,7 +72,7 @@ public class EventCRUDServlet extends HttpServlet {
 	        e.setNation(nation);
 	        facade.addEvent(e);
 	    } else if ("deleteEvent".equals(operation)) {
-	        long id = (long) request.getAttribute("id");
+	        long id = Long.valueOf(request.getParameter("id"));
 	        facade.deleteEvent(id);
 	    }
 		doGet(request, response);

@@ -24,7 +24,7 @@
 							<textarea class="form-control" id="summary" name="summary" rows="4"
 								placeholder="Ange en beskrivning för ditt evenemang" required></textarea>
 						<label for="Nation">Nation</label> 
-							<select class="custom-select form-control" id="nation" name="nation" required>
+							<select class="custom-select form-control" id="nation" name="nations" required>
 								<option value="" disabled="disabled" selected>
 								Välj Nation...</option>
 								<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
@@ -44,24 +44,26 @@
 			</div>
 		</div>
 		<div class="card mb-2">
-			<div class="card-body">
-				<h5 class="addTitel">Ta bort Evenemang</h5>
-				<div class="form-group">
-					<label for="event">Evenemang</label> 
-					<select class="custom-select"
-						id="deleteEvent" name="deleteEvent" required>
-						<option value="" disabled="disabled" selected>
-						Välj evenemang..</option>
-						<% List<Event> events = (List<Event>) request.getAttribute("events");
-								for (Event e : events) {
-									out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
-								}
-						%>
-					</select>
+			<form action="${pageContext.request.contextPath}/events/crud" method="POST" novalidation class="needs-validation">
+				<div class="card-body">
+					<h5 class="addTitel">Ta bort Evenemang</h5>
+					<div class="form-group">
+						<label for="event">Evenemang</label> 
+						<select class="custom-select"
+							id="id" name="id" required>
+							<option value="" disabled="disabled" selected>
+							Välj evenemang..</option>
+							<% List<Event> events = (List<Event>) request.getAttribute("events");
+									for (Event e : events) {
+										out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
+									}
+							%>
+						</select>
+					</div>
+					<input type="submit" name="submitDeleteEvent">
+					<input type="hidden" name="operation" value="deleteEvent"> 
 				</div>
-				<input type="submit" name="submitDeleteEvent">
-				<input type="hidden" name="operation" value="deleteEvent"> 
-			</div>
+			</form>
 		</div>
 	</main>
 	<!-- footer -->
