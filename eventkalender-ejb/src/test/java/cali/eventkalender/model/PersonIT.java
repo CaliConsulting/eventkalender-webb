@@ -1,7 +1,9 @@
 package cali.eventkalender.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,17 +26,19 @@ public class PersonIT {
     
     private Event expectedEvent;
     
-    private Long expectedNationId;
-    private String expectedNationName;
+    private Long expectedPersonId;
+    private String expectedPersonFirstName;
+    private String expectedPersonLastName;
     
-    private Nation expectedNation;
+    private Person expectedPerson;
     
     @Before
     public void setup() {
-        expectedNationId = -1L;
-        expectedNationName = "TESTNATION";
-        expectedNation = new Nation(expectedNationName);
-        expectedNation.setId(expectedNationId);
+        expectedPersonId = -1L;
+        expectedPersonFirstName = "TESTPERSONFIRSTNAME";
+        expectedPersonLastName = "TESTPERSONLASTNAME";
+        expectedPerson = new Person(expectedPersonFirstName, expectedPersonLastName);
+        expectedPerson.setId(expectedPersonId);
 
         expectedEventId = Long.MIN_VALUE;
         expectedEventName = "TESTEVENT";
@@ -48,90 +52,76 @@ public class PersonIT {
     
 	@Test
 	public void getEvents() {
-		assertEquals(0, expectedNation.getEvents().size());
+		assertEquals(0, expectedPerson.getEvents().size());
 	}
 
 	@Test
 	public void setEvents() {
 		List<Event> events = new ArrayList<>(Arrays.asList(expectedEvent));
-		expectedNation.setEvents(events);
+		expectedPerson.setEvents(events);
 
-		assertEquals(1, expectedNation.getEvents().size());
-		for (Event e : expectedNation.getEvents()) {
-			assertEquals(expectedNation, e.getNation());
-		}
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedEvent.getPersons().contains(expectedPerson));
 	}
 
 	@Test
 	public void addEvent() {
-	    expectedNation.addEvent(expectedEvent);
+	    expectedPerson.addEvent(expectedEvent);
 
-		assertEquals(1, expectedNation.getEvents().size());
-		assertEquals(expectedNation, expectedEvent.getNation());
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedEvent.getPersons().contains(expectedPerson));
 	}
 	
 	@Test
 	public void addEventAlreadyExists() {
-	    expectedNation.addEvent(expectedEvent);
-	    expectedNation.addEvent(expectedEvent);
+	    expectedPerson.addEvent(expectedEvent);
+	    expectedPerson.addEvent(expectedEvent);
 
-		assertEquals(1, expectedNation.getEvents().size());
-		assertEquals(expectedNation, expectedEvent.getNation());
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedEvent.getPersons().contains(expectedPerson));
 	}
 
 	@Test
 	public void addEventWithNullObject() {
-	    expectedNation.addEvent(null);
+	    expectedPerson.addEvent(null);
 
-		assertEquals(0, expectedNation.getEvents().size());
-	}
-
-	@Test
-	public void addEventExistsOnAnotherNation() {
-	    expectedNation.addEvent(expectedEvent);
-
-		Nation newNation = new Nation();
-		newNation.addEvent(expectedEvent);
-
-		assertEquals(0, expectedNation.getEvents().size());
-		assertEquals(1, newNation.getEvents().size());
-		assertEquals(newNation, expectedEvent.getNation());
+		assertEquals(0, expectedPerson.getEvents().size());
 	}
 
 	@Test
 	public void deleteEventWithId() {
-	    expectedNation.addEvent(expectedEvent);
-	    expectedNation.deleteEvent(expectedEventId);
+	    expectedPerson.addEvent(expectedEvent);
+	    expectedPerson.deleteEvent(expectedEventId);
 
-		assertEquals(0, expectedNation.getEvents().size());
-		assertNull(expectedEvent.getNation());
+		assertEquals(0, expectedPerson.getEvents().size());
+		assertFalse(expectedEvent.getPersons().contains(expectedPerson));
 	}
 
 	@Test
 	public void deleteEventWithIdNoMatch() {
-	    expectedNation.addEvent(expectedEvent);
-	    expectedNation.deleteEvent(-1);
+	    expectedPerson.addEvent(expectedEvent);
+	    expectedPerson.deleteEvent(-1);
 
-		assertEquals(1, expectedNation.getEvents().size());
-		assertEquals(expectedNation, expectedEvent.getNation());
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedEvent.getPersons().contains(expectedPerson));
 	}
 
 	@Test
 	public void deleteEventWithObject() {
-	    expectedNation.addEvent(expectedEvent);
-	    expectedNation.deleteEvent(expectedEvent);
+	    expectedPerson.addEvent(expectedEvent);
+	    expectedPerson.deleteEvent(expectedEvent);
 
-		assertEquals(0, expectedNation.getEvents().size());
-		assertNull(expectedEvent.getNation());
+		assertEquals(0, expectedPerson.getEvents().size());
+		assertFalse(expectedEvent.getPersons().contains(expectedPerson));
 	}
 
 	@Test
 	public void deleteEventWithObjectNoMatch() {
-	    expectedNation.addEvent(expectedEvent);
-	    expectedNation.deleteEvent(null);
+	    expectedPerson.addEvent(expectedEvent);
+	    expectedPerson.deleteEvent(null);
 
-		assertEquals(1, expectedNation.getEvents().size());
-		assertEquals(expectedNation, expectedEvent.getNation());
+		assertEquals(1, expectedPerson.getEvents().size());
+		assertTrue(expectedEvent.getPersons().contains(expectedPerson));
 	}
 
 }

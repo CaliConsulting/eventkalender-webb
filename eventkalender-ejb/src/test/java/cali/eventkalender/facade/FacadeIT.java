@@ -2,14 +2,18 @@ package cali.eventkalender.facade;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.ejb.EJB;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +22,7 @@ import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
 import cali.eventkalender.model.Person;
 import cali.eventkalender.test.Deployments;
+import cali.eventkalender.test.PersistenceManagerLocal;
 import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
@@ -45,6 +50,9 @@ public class FacadeIT {
     @EJB
     private FacadeLocal facade;
     
+    @EJB
+    private PersistenceManagerLocal persistenceManager;
+    
     @Deployment
     public static Archive<?> createArchive() {
         return Deployments.getArchive(ArchiveType.EAO);
@@ -59,7 +67,7 @@ public class FacadeIT {
         
         expectedEventId = Long.MIN_VALUE;
         expectedEventName = "TESTEVENT";
-        expectedEventSummary = "TESTSAMMANFATTNING";
+        expectedEventSummary = "TESTSUMMARY";
         expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
         expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
         expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime, expectedEventEndTime);
@@ -67,10 +75,15 @@ public class FacadeIT {
         expectedEvent.setNation(expectedNation);
         
         expectedPersonId = Long.MAX_VALUE;
-        expectedPersonFirstName = "FÖRNAMN";
-        expectedPersonLastName = "EFTERNAMN";
+        expectedPersonFirstName = "FIRSTNAME";
+        expectedPersonLastName = "LASTNAME";
         expectedPerson = new Person(expectedPersonFirstName, expectedPersonLastName);
         expectedPerson.setId(expectedPersonId);
+    }
+    
+    @After
+    public void teardown() {
+        persistenceManager.cleanDatabase();
     }
     
     @Test
@@ -87,4 +100,140 @@ public class FacadeIT {
         assertEquals(expectedNation, expectedEvent.getNation());
     }
     
+    @Test
+    public void addNation() {
+    	facade.addNation(expectedNation);
+    	
+    	Nation fetchedNation = facade.findNationById(expectedNation.getId());
+   
+    	assertNotNull(fetchedNation);
+    	assertEquals(expectedNationName, fetchedNation.getName());
+    }
+    
+    @Test
+    public void addPerson() {
+    	facade.addPerson(expectedPerson);
+    	
+    	Person fetchedPerson = facade.findPersonById(expectedPerson.getId());
+    	
+    	assertNotNull(fetchedPerson);
+    	assertEquals(expectedPersonFirstName, fetchedPerson.getFirstName());
+    	assertEquals(expectedPersonLastName, fetchedPerson.getLastName());
+    }
+    
+    @Test
+    public void deleteEvent() {
+    	facade.addEvent(expectedEvent);
+    	facade.deleteEvent(expectedEvent.getId());
+    	
+    	Event fetchedEvent = facade.findEventById(expectedEvent.getId());	
+        assertNull(fetchedEvent);  	
+    }
+    
+    @Test
+    public void deleteNation() {
+    	facade.addNation(expectedNation);
+    	facade.deleteNation(expectedNation.getId());
+    	
+    	Nation fetchedNation = facade.findNationById(expectedNation.getId());
+    	assertNull(fetchedNation);
+    }
+    
+    @Test
+    public void deletePerson() {
+    	facade.addPerson(expectedPerson);
+    	facade.deletePerson(expectedPerson.getId());
+    	
+    	Person fetchedPerson = facade.findPersonById(expectedPerson.getId());
+    	assertNull(fetchedPerson);
+    }
+    
+    @Test
+    public void findAllEvents() {
+    	facade.addEvent(expectedEvent);
+    	List<Event> events = facade.findAllEvents();
+
+    	assertTrue(events.contains(expectedEvent));
+    }
+    
+    @Test
+    public void findAllNations() {
+    	facade.addNation(expectedNation);
+    	List<Nation> nations = facade.findAllNations();
+    	
+    	assertTrue(nations.contains(expectedNation));
+    }
+    
+    @Test
+    public void findAllPersons() {
+    	facade.addPerson(expectedPerson);
+    	List<Person> persons = facade.findAllPersons();
+    	
+    	assertTrue(persons.contains(expectedPerson));
+    }
+    
+    @Test
+    public void findEventById() {
+    	facade.addEvent(expectedEvent);
+    	Event fetchedEvent = facade.findEventById(expectedEvent.getId());
+    	
+        assertNotNull(fetchedEvent);
+        assertEquals(expectedEventName, fetchedEvent.getName());
+        assertEquals(expectedEventSummary, fetchedEvent.getSummary());
+        assertEquals(expectedEventStartTime, fetchedEvent.getStartTime());
+        assertEquals(expectedEventEndTime, fetchedEvent.getEndTime());
+        assertEquals(expectedNation, expectedEvent.getNation());
+    }
+    
+    @Test
+    public void findNationById() {
+    	facade.addNation(expectedNation);
+    	Nation fetchedNation = facade.findNationById(expectedNation.getId());
+    	
+    	assertNotNull(fetchedNation);
+    	assertEquals(expectedNationName, fetchedNation.getName());
+    }
+    
+    @Test
+    public void findPersonById() {
+    	facade.addPerson(expectedPerson);
+    	Person fetchedPerson = facade.findPersonById(expectedPerson.getId());
+    	
+    	assertNotNull(fetchedPerson);
+    	assertEquals(expectedPersonFirstName, fetchedPerson.getFirstName());
+     	assertEquals(expectedPersonLastName, fetchedPerson.getLastName());
+    }
+    
+    @Test
+    public void updateEvent() {
+    	facade.addEvent(expectedEvent);
+    	
+    	expectedEvent.setName("PHILIP");
+    	facade.updateEvent(expectedEvent);
+    	
+    	Event fetchedEvent = facade.findEventById(expectedEvent.getId()); 	
+    	assertEquals("PHILIP", fetchedEvent.getName()); 	
+    }
+    
+    @Test
+    public void updateNation() {
+    	facade.addNation(expectedNation);
+    	
+    	expectedNation.setName("PHILIP");
+    	facade.updateNation(expectedNation);
+    	
+    	Nation fetchedNation = facade.findNationById(expectedNation.getId());  	
+    	assertEquals("PHILIP", fetchedNation.getName());   	
+    }
+    
+    @Test
+    public void updatePerson() {
+    	facade.addPerson(expectedPerson);
+    	
+    	expectedPerson.setFirstName("PHILIP");
+    	facade.updatePerson(expectedPerson);
+    	
+    	Person fetchedPerson = facade.findPersonById(expectedPerson.getId());   	
+    	assertEquals("PHILIP", fetchedPerson.getFirstName());   	
+    }
 }
