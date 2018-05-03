@@ -13,15 +13,14 @@
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Person</h5>
-				<form class="needs-validation" novalidate
-					action="${pageContext.request.contextPath}/persons/crud"
-					method="POST">
+				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
 					<div class="form-group">
-						<label for="forname">Förnamn</label> <input type="text"
-							class="form-control" id="firstname" name="firstname" placeholder="Förnamn" required />
-						<label for="lastname">Efternamn</label> <input type="text"
-							class="form-control" id="lastname" name="lastname" placeholder="Efternamn"
-							required />
+						<label for="forname">Förnamn</label> 
+						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Förnamn" 
+						required>
+						<label for="lastname">Efternamn</label>
+						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Efternamn"
+							required>
 					</div>
 					<input type="submit" name="submitAddPerson">
 					<input type="hidden" name="operation" value="addPerson">
@@ -31,21 +30,23 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Person</h5>
-				<div class="form-group">
-					<label for="person">Person</label> 
-					<select class="custom-select"
-						id="personFormControlDelete" required>
-						<option value="" disabled="disabled" selected>Välj
-							Person..</option>
-						<% List<Person> persons = (List<Person>) request.getAttribute("persons");
-								for (Person p : persons) {
-									out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
-								}
-						%>
-					</select>
-				</div>
-				<input type="submit" name="submitDeletePerson">
-				<input type="hidden" name="operation" value="deletePerson">
+				<form action="${pageContext.request.contextPath}/persons/crud" method="POST" novalidation class="needs-validation">
+					<div class="form-group">
+						<label for="person">Person</label> 
+						<select class="custom-select"
+							id="id" name="id" required>
+							<option value="" disabled="disabled" selected>Välj
+								Person..</option>
+							<% List<Person> persons = (List<Person>) request.getAttribute("persons");
+									for (Person p : persons) {
+										out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
+									}
+							%>
+						</select>
+						<input type="submit" name="submitDeletePerson">
+						<input type="hidden" name="operation" value="deletePerson">
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
