@@ -39,6 +39,7 @@ public class Person implements Serializable {
 	private List<Event> events;
 
 	public Person() {
+		this.id = Long.MIN_VALUE;
 		this.events = new ArrayList<>();
 	}
 	
@@ -53,11 +54,11 @@ public class Person implements Serializable {
 		setEvents(Objects.requireNonNull(events));
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
