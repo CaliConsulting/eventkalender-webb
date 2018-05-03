@@ -18,7 +18,6 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 
-import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
 import cali.eventkalender.test.Deployments;
 import cali.eventkalender.test.Deployments.ArchiveType;
