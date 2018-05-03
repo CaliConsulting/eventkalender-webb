@@ -32,7 +32,8 @@ public class Nation implements Serializable {
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
+	@OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
+			CascadeType.REMOVE }, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
 	private List<Event> events;
 
 	public Nation() {

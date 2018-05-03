@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="cali.eventkalender.model.Person"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,41 +9,44 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container">
-		<div class="card">
+	<div class="container mt-2 mb-2">
+		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Person</h5>
-				<form class="needs-validation" novalidate
-					action="${pageContext.request.contextPath}/persons/crud"
-					method="POST">
+				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
 					<div class="form-group">
-						<label for="forname">Förnamn</label> <input type="text"
-							class="form-control" id="forname" placeholder="Förnamn" required />
-						<label for="lastname">Efternamn</label> <input type="text"
-							class="form-control" id="lastname" placeholder="Efternamn"
-							required />
+						<label for="forname">Förnamn</label> 
+						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Förnamn" 
+						required>
+						<label for="lastname">Efternamn</label>
+						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Efternamn"
+							required>
 					</div>
-					<input type="submit" name="registerperson" />
+					<input type="submit" name="submitAddPerson">
+					<input type="hidden" name="operation" value="addPerson">
 				</form>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Person</h5>
-				<div class="form-group">
-					<label for="person">Person</label> 
-					<select class="custom-select"
-						id="personFormControlDelete" required>
-						<option value="" disabled="disabled" selected>Välj
-							Person..</option>
-						<option value="1">Person1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">Hampus Sandell</option>
-					</select>
-				</div>
-				<input type="submit" name="removePerson" />
+				<form action="${pageContext.request.contextPath}/persons/crud" method="POST" novalidation class="needs-validation">
+					<div class="form-group">
+						<label for="person">Person</label> 
+						<select class="custom-select"
+							id="id" name="id" required>
+							<option value="" disabled="disabled" selected>Välj
+								Person..</option>
+							<% List<Person> persons = (List<Person>) request.getAttribute("persons");
+									for (Person p : persons) {
+										out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
+									}
+							%>
+						</select>
+						<input type="submit" name="submitDeletePerson">
+						<input type="hidden" name="operation" value="deletePerson">
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

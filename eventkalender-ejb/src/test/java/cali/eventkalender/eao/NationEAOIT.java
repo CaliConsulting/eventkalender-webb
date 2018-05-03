@@ -76,6 +76,16 @@ public class NationEAOIT {
     }
     
     @Test
+    public void deleteWhenNull() {
+        long id = expectedNation.getId();
+        nationEAO.delete(id);
+        
+        Nation fetchedNation = nationEAO.findById(id);
+        
+        assertNull(fetchedNation);
+    }
+    
+    @Test
     public void findAll() {
         nationEAO.add(expectedNation);
         
