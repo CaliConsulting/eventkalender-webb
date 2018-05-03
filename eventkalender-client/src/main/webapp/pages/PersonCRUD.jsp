@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="cali.eventkalender.model.Person"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,11 +37,11 @@
 						id="personFormControlDelete" required>
 						<option value="" disabled="disabled" selected>Välj
 							Person..</option>
-						<option value="1">Person1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">Hampus Sandell</option>
+						<% List<Person> persons = (List<Person>) request.getAttribute("persons");
+								for (Person p : persons) {
+									out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
+								}
+						%>
 					</select>
 				</div>
 				<input type="submit" name="submitDeletePerson">

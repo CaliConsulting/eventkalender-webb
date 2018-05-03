@@ -56,7 +56,7 @@
 								for (Event e : events) {
 									out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
 								}
-								%>
+						%>
 					</select>
 				</div>
 				<input type="submit" name="submitDeleteEvent">
