@@ -18,13 +18,13 @@
 					method="POST">
 					<div class="form-group">
 						<label for="forname">Förnamn</label> <input type="text"
-							class="form-control" id="forname" placeholder="Förnamn" required />
+							class="form-control" id="firstname" name="firstname" placeholder="Förnamn" required />
 						<label for="lastname">Efternamn</label> <input type="text"
-							class="form-control" id="lastname" placeholder="Efternamn"
+							class="form-control" id="lastname" name="lastname" placeholder="Efternamn"
 							required />
 					</div>
 					<input type="submit" name="submitAddPerson">
-					<input type="hidden" name="addPerson">
+					<input type="hidden" name="operation" value="addPerson">
 				</form>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 					</select>
 				</div>
 				<input type="submit" name="submitDeletePerson">
-				<input type="hidden" name="deletePerson">
+				<input type="hidden" name="operation" value="deletePerson">
 			</div>
 		</div>
 	</div>
