@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="cali.eventkalender.model.Nation"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,11 +35,11 @@
 						id="nationFormControlDelete" required>
 						<option value="" disabled="disabled" selected>Välj
 							Nation..</option>
-						<option value="1">Nation1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">Malmö Nation</option>
+						<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+								for (Nation n : nations) {
+									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+								}
+						%>
 					</select>
 				</div>
 				<input type="submit" name="submitDeleteNation">
