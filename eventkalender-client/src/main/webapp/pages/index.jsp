@@ -19,20 +19,17 @@
 	<div class="test mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
+			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">Gå med i Studentlund för att ta del av...</a></h4>
 				<div class="card-deck">
 					<div class="card">
-						<div class="card-header">Usch -10</div>
-						<img class="card-img-top"
-							src="${pageContext.request.contextPath}/img/Lunds.png"
-							alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a longer card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+						<div class="card-header">
+						<h5>Nationsengamang</h5>
 						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
+						<div class="card-body">
+							<p class="card-text">
+								I Lunds studentliv så annordnar nationerna flertalet aktiviteter såsom idrottskvällar, luncher, sittningar och nattklubbar.
+								För att medverka i och ta del av alla dessa måste du som student vara medlem i Studentlund. 
+							</p>
 						</div>
 					</div>
 					<div class="card">
@@ -68,6 +65,13 @@
 	<div class="test1  mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
+			<h2 class="card-title">
+				<a href="https://www.studentlund.se/event/" class="text-dark">Är du redan medlem i Studentlund?</a>
+			</h2>
+			<p class="card-text">
+				Ta då en titt i Eventkalenderns evenemangslista där inköp av förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds egna tjänst för lundastudenterna.
+				<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/logo-en.png">
+			</p>
 			</div>
 		</div>
 	</div>
