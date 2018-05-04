@@ -5,7 +5,7 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
-	<div class="forkopImg">
+	<div class="prePurchaseImg">
 		<div class="prePurchaseText text-center">
 			<h1>
 				<strong>FÖRKÖP</strong>
@@ -21,7 +21,7 @@
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/Casanova.png"
+				src="${pageContext.request.contextPath}/img/events/Casanova.png"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
@@ -35,7 +35,7 @@
 		</div>
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/kajplats.png"
+				src="${pageContext.request.contextPath}/img/events/kajplats.png"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
@@ -49,7 +49,7 @@
 		</div>
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/t-bar.png"
+				src="${pageContext.request.contextPath}/img/events/t-bar.png"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
