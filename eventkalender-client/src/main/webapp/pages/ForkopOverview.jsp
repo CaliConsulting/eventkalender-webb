@@ -9,7 +9,7 @@
 	<div class="welcomeText text-center">
 	<h1 class="display-3"><strong>FÖRKÖP</strong></h1>
 	<div class="text-center font-italic">
-	<h5>Förköp biljetter till klubben för att säkra din plats och gå före kön!</h5>
+	<h4>Förköp biljetter till klubben för att säkra din plats och gå före kön!</h4>
 	</div>
 	</div>
 	</div>
