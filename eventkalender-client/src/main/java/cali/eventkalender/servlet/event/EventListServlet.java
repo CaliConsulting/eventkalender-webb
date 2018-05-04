@@ -31,7 +31,7 @@ public class EventListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Event> events = facade.findAllEvents();
 		request.setAttribute("events", events);
-		request.getRequestDispatcher("/pages/Events.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/Events.jsp").forward(request, response);		
 	}
 
 	/**

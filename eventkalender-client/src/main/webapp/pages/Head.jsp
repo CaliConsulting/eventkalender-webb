@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/fullcalendar/fullcalendar.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/fullcalendar/locale-all.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom-scripts.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/fullcalendar/calendar-configuration.jsp"></script>
+<%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/fullcalendar/calendar-configuration.jsp"></script> --%>
 	
 	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/Cali-McKinsey-16x16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/Cali-McKinsey-32x32.png" sizes="32x32">
