@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="cali.eventkalender.model.Event"%>
+<%@page import="cali.eventkalender.model.Person"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,8 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2 mb-2">
-	<div class="card">
+	<main role="main" class="container-fluid mt-2 mb-2">
+	<div class="card invitePerson">
 			<div class="card-body">
 				<input class="form-control" id="myInput" type="text"
 					placeholder="Sök..">
@@ -22,11 +23,20 @@
 						</tr>
 					</thead>
 					<tbody>
+				    	<%
+							List<Person> persons = (List<Person>) request.getAttribute("persons");
+							for (Person p : persons) {
+								out.print("<tr>");
+								out.print("<td>" + p.getFirstName() + "</td>");
+								out.print("<td>" + p.getLastName() + "</td>");
+								out.print("</tr>");
+							}
+						%>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card inviteEvent">
 			<div class="card-body">
 				<input class="form-control" id="myInput" type="text"
 					placeholder="Sök..">
@@ -34,7 +44,6 @@
 					<thead>
 						<tr>
 							<th>Namn</th>
-							<th>Beskrivning</th>
 							<th>Nation</th>
 							<th>Starttid</th>
 							<th>Sluttid</th>
@@ -47,7 +56,6 @@
 							for (Event e : events) {
 								out.print("<tr>");
 								out.print("<td>" + e.getName() + "</td>");
-								out.print("<td>" + e.getSummary() + "</td>");
 								out.print("<td>" + e.getNation().getName() + "</td>");
 								out.print("<td>" + e.getStartTimeFormatted() + "</td>");
 								out.print("<td>" + e.getEndTimeFormatted() + "</td>");

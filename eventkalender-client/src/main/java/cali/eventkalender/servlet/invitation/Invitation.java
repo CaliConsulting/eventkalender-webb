@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
+import cali.eventkalender.model.Person;
 
 /**
  * Servlet implementation class Invitation
@@ -39,6 +40,9 @@ public class Invitation extends HttpServlet {
 		// TODO Auto-generated method stub
 		List<Event> events = facade.findAllEvents();
 		request.setAttribute("events", events);
+		
+		List<Person> persons = facade.findAllPersons();
+		request.setAttribute("persons", persons);
 		request.getRequestDispatcher("/pages/Invitation.jsp").forward(request, response);	
 	}
 
