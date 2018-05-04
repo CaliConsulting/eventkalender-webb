@@ -39,7 +39,7 @@ public class Invitation extends HttpServlet {
 		// TODO Auto-generated method stub
 		List<Event> events = facade.findAllEvents();
 		request.setAttribute("events", events);
-		request.getRequestDispatcher("/pages/Events.jsp").forward(request, response);	
+		request.getRequestDispatcher("/pages/Invitation.jsp").forward(request, response);	
 	}
 
 	/**
