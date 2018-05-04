@@ -13,24 +13,24 @@
 	<main role="main" class="container mt-2">
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till Evenemang</h5>
+				<h5 class="addTitel">Lägg till</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
 					<div class="form-group">
-						<label for="Name">Namn</label>
+						<label for="name">Namn</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Namn" required> 
-						<label for="nationTextarea">Beskrivning</label>
+						<label for="summary">Beskrivning</label>
 							<textarea class="form-control" id="summary" name="summary" rows="4"
 								placeholder="Ange en beskrivning för ditt evenemang" required></textarea>
-						<label for="Nation">Nation</label> 
-							<select class="custom-select form-control" id="nation" name="nations" required>
+						<label for="nations">Nation</label> 
+							<select class="custom-select form-control" id="nations" name="nations" required>
 								<option value="" disabled="disabled" selected>
 								Välj Nation...</option>
 								<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
-								for (Nation n : nations) {
-									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
-								}
+									for (Nation n : nations) {
+										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+									}
 								%>
 							</select>
 						<label for="startTime">Starttid</label>

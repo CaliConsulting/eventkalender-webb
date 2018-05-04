@@ -65,7 +65,7 @@ public class EventCRUDServlet extends HttpServlet {
 	        LocalDateTime startTime = LocalDateTime.parse(request.getParameter("startTime"), format);
 	        LocalDateTime endTime = LocalDateTime.parse(request.getParameter("endTime"), format);
 	        
-	        long nationId = Long.valueOf(request.getParameter("nation"));
+	        long nationId = Long.valueOf(request.getParameter("nations"));
 	        Nation nation = facade.findNationById(nationId);
 	        
 	        Event e = new Event(name, summary, startTime, endTime);

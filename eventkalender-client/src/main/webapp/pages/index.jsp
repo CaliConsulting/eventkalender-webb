@@ -10,7 +10,7 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<div class="bgImg">
-		<div class="welcomeText">
+		<div class="welcomeText smokeybackground">
 			<h1 class="display-4">Välkommen till Eventkalendern!</h1>
 			<h2>Vi hjälper dig planera ditt nationsliv</h2>
 		</div>
@@ -65,10 +65,9 @@
 			</div>
 		</div>
 	</div>
-	<div class="test1  mt-2 mb-2">
+	<div class="test1 mt-2 mb-2">
 		<div class="card">
-			<div class="card-body">
-			</div>
+			<div class="card-body"></div>
 		</div>
 	</div>
 	<div class="card bg-dark text-white mt-2 mb-2" style="clear: both;">
@@ -76,7 +75,8 @@
 			src="${pageContext.request.contextPath}/img/Ystad.png"
 			alt="Card image">
 		<div class="card-img-overlay">
-			<a href="https://www.facebook.com/hampus.sandell.5"><h5 class="card-title">Studentnöjen!</h5></a>
+			<a href="https://www.facebook.com/hampus.sandell.5"><h5
+					class="card-title">Studentnöjen!</h5></a>
 			<p class="card-text">Tandemcykling, Lundakarnevalen, eller varför
 				inte en båttur med trevligt sällskap?</p>
 		</div>
