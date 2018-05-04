@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DefaultInterceptor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eventkalender-ejb</a> &gt; <a href="index.source.html" class="el_package">cali.eventkalender.interceptor</a> &gt; <span class="el_source">DefaultInterceptor.java</span></div><h1>DefaultInterceptor.java</h1><pre class="source lang-java linenums">package cali.eventkalender.interceptor;
+
+import java.lang.reflect.Method;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.Interceptor;
+import javax.interceptor.InvocationContext;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Interceptor
+<span class="nc" id="L15">public class DefaultInterceptor {</span>
+
+<span class="nc" id="L17">	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultInterceptor.class);</span>
+
+	@PostConstruct
+	public void postConstruct(InvocationContext ctx) {
+<span class="nc" id="L21">		Object ctxTarget = ctx.getTarget();</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">		if (ctxTarget == null) {</span>
+<span class="nc" id="L23">			throw new UnsupportedOperationException(&quot;Target can't be null&quot;);</span>
+		}
+		try {
+<span class="nc" id="L26">			LOGGER.info(&quot;PostConstruct - {}&quot;, ctxTarget.getClass().getName());</span>
+<span class="nc" id="L27">		} catch (Exception e) {</span>
+<span class="nc" id="L28">			LOGGER.error(e.getMessage());</span>
+<span class="nc" id="L29">		}</span>
+<span class="nc" id="L30">	}</span>
+
+	@PreDestroy
+	public void preDestroy(InvocationContext ctx) {
+<span class="nc" id="L34">		Object ctxTarget = ctx.getTarget();</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">		if (ctxTarget == null) {</span>
+<span class="nc" id="L36">			throw new UnsupportedOperationException(&quot;Target can't be null&quot;);</span>
+		}
+		try {
+<span class="nc" id="L39">			LOGGER.info(&quot;PreDestroy - {}, proceed={}&quot;, ctxTarget.getClass().getName(), ctx.proceed());</span>
+<span class="nc" id="L40">		} catch (Exception e) {</span>
+<span class="nc" id="L41">			LOGGER.error(e.getMessage());</span>
+<span class="nc" id="L42">		}</span>
+<span class="nc" id="L43">	}</span>
+
+	@AroundInvoke
+	public Object aroundInvoke(InvocationContext ctx) throws Exception {
+<span class="nc" id="L47">		Method ctxMethod = ctx.getMethod();</span>
+<span class="nc" id="L48">		Object ctxTarget = ctx.getTarget();</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		if (ctxMethod == null) {</span>
+<span class="nc" id="L50">			throw new UnsupportedOperationException(&quot;Method can't be null&quot;);</span>
+		}
+<span class="nc bnc" id="L52" title="All 2 branches missed.">		if (ctxTarget == null) {</span>
+<span class="nc" id="L53">			throw new UnsupportedOperationException(&quot;Target can't be null&quot;);</span>
+		}
+
+<span class="nc" id="L56">		String targetName = ctxTarget.getClass().getName();</span>
+<span class="nc" id="L57">		String methodName = ctxMethod.getName();</span>
+
+<span class="nc" id="L59">		String parameterString = getParameterString(ctxMethod.getParameterTypes(), ctx.getParameters());</span>
+
+<span class="nc" id="L61">		LOGGER.info(&quot;AroundInvoke - {}.{}{}&quot;, targetName, methodName, parameterString);</span>
+
+<span class="nc" id="L63">		return ctx.proceed();</span>
+	}
+
+	private String getParameterString(Class&lt;?&gt;[] parameterTypes, Object[] parameterValues) {
+<span class="nc" id="L67">		String formattedParameters = &quot;&quot;;</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if (parameterTypes.length != 0) {</span>
+<span class="nc" id="L69">			formattedParameters += &quot;(&quot;;</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">			for (int i = 0; i &lt; parameterTypes.length; i++) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">				String typeName = (parameterTypes[i] != null ? parameterTypes[i].getName() : &quot;null&quot;);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">				String variableValue = (parameterValues[i] != null ? parameterValues[i].toString() : &quot;null&quot;);</span>
+<span class="nc" id="L73">				formattedParameters += String.format(&quot;%s=%s&quot;, typeName, variableValue);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">				if (i != parameterTypes.length - 1) {</span>
+<span class="nc" id="L75">					formattedParameters += &quot;, &quot;;</span>
+				}
+			}
+<span class="nc" id="L78">			formattedParameters += &quot;)&quot;;</span>
+		}
+<span class="nc" id="L80">		return formattedParameters;</span>
+	}
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
