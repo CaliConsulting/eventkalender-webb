@@ -7,7 +7,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<h5 class="text-center font-italic text-dark">Fyll i några snabba uppgifter så har du dina biljetter</h5>
+	<h5 class="text-center text-dark">Fyll i några snabba uppgifter så har du dina biljetter</h5>
 	<div class="container">
 	<form class="needs-validation" novalidate
 	action="${pageContext.request.contextPath}/forkop"
