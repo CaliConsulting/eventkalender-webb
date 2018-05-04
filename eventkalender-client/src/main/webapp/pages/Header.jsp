@@ -1,7 +1,6 @@
 
 <header class="">
 	<%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient"%>
-	<%@ page import="net.aksingh.owmjapis.api.APIException"%>
 	<nav class="navbar navbar-expand-sm navbar-light">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
 			<img src="${pageContext.request.contextPath}/img/Cali-McKinsey.png"
@@ -18,10 +17,13 @@
 					href="${pageContext.request.contextPath}/events">Evenemangslista</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link"
-					href="${pageContext.request.contextPath}/calendar">Kalendarium</a>
+					href="${pageContext.request.contextPath}/events/calendar">Kalendarium</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link"
 					href="${pageContext.request.contextPath}/prepurchase">Förköp</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="${pageContext.request.contextPath}/invitations">Inbjudningar</a>
+				</li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -35,7 +37,8 @@
 							href="${pageContext.request.contextPath}/persons/crud">Personer</a>
 					</div></li>
 				<li class="nav-item active"><a class="nav-link"
-					href="${pageContext.request.contextPath}/invitations">Inbjudningar</a>
+					href="${pageContext.request.contextPath}/testing/index.html">Testning</a>
+
 				</li>
 			</ul>
 			<%

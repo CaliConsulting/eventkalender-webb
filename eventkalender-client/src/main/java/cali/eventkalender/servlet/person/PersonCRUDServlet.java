@@ -22,32 +22,25 @@ import cali.eventkalender.model.Person;
  */
 @WebServlet("/persons/crud")
 public class PersonCRUDServlet extends HttpServlet {
+    
 	private static final long serialVersionUID = 1L;
+	
 	@EJB
     private FacadeLocal facade;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public PersonCRUDServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		List<Person> persons = facade.findAllPersons();
 		request.setAttribute("persons", persons);
 		request.getRequestDispatcher("/pages/PersonCRUD.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	    String operation = request.getParameter("operation");
 	    if ("addPerson".equals(operation)) {
 	        String firstName = request.getParameter("firstName");
@@ -60,7 +53,6 @@ public class PersonCRUDServlet extends HttpServlet {
 	        long id = Long.valueOf(request.getParameter("id"));
 	        facade.deletePerson(id);
 	    }
-
 		doGet(request, response);
 	}
 

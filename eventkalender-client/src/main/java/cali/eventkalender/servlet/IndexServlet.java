@@ -17,22 +17,16 @@ public class IndexServlet extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	/*	String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
-		
-		Person p = new Person(firstName, lastName);
-		facade.addPerson(p);
-		
-		System.out.println(firstName + " " + lastName);
-		
-		doGet(request,response);  */
+	    doGet(request, response);
 	}
 	
 }

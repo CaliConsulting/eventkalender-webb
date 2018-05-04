@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Person.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eventkalender-ejb</a> &gt; <a href="index.source.html" class="el_package">cali.eventkalender.model</a> &gt; <span class="el_source">Person.java</span></div><h1>Person.java</h1><pre class="source lang-java linenums">package cali.eventkalender.model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@NamedQuery(name = &quot;Person.findAll&quot;, query = &quot;SELECT p FROM Person p&quot;)
+@Table(name = &quot;Person&quot;)
+public class Person implements Serializable {
+
+	private static final long serialVersionUID = 3103101978093076417L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = &quot;Id&quot;)
+	private long id;
+
+	@Column(name = &quot;FirstName&quot;, nullable = false)
+	private String firstName;
+
+	@Column(name = &quot;LastName&quot;, nullable = false)
+	private String lastName;
+
+	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH }, fetch = FetchType.EAGER, mappedBy = &quot;persons&quot;)
+	private List&lt;Event&gt; events;
+
+<span class="fc" id="L42">	public Person() {</span>
+<span class="fc" id="L43">		this.id = Long.MIN_VALUE;</span>
+<span class="fc" id="L44">		this.events = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L45">	}</span>
+	
+	public Person(String firstName, String lastName) {
+<span class="fc" id="L48">		this();</span>
+<span class="fc" id="L49">		setFirstName(Objects.requireNonNull(firstName));</span>
+<span class="fc" id="L50">		setLastName(Objects.requireNonNull(lastName));</span>
+<span class="fc" id="L51">	}</span>
+	
+	public Person(String firstName, String lastName, List&lt;Event&gt; events) {
+<span class="fc" id="L54">		this(firstName, lastName);</span>
+<span class="fc" id="L55">		setEvents(Objects.requireNonNull(events));</span>
+<span class="fc" id="L56">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L59">		return id;</span>
+	}
+
+	public void setId(Long id) {
+<span class="fc" id="L63">		this.id = id;</span>
+<span class="fc" id="L64">	}</span>
+
+	public String getFirstName() {
+<span class="fc" id="L67">		return firstName;</span>
+	}
+
+	public void setFirstName(String firstName) {
+<span class="fc" id="L71">		this.firstName = firstName;</span>
+<span class="fc" id="L72">	}</span>
+
+	public String getLastName() {
+<span class="fc" id="L75">		return lastName;</span>
+	}
+
+	public void setLastName(String lastName) {
+<span class="fc" id="L79">		this.lastName = lastName;</span>
+<span class="fc" id="L80">	}</span>
+
+	public List&lt;Event&gt; getEvents() {
+<span class="fc" id="L83">		return events;</span>
+	}
+
+	public void setEvents(List&lt;Event&gt; events) {
+<span class="fc" id="L87">		this.events = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		for (Event e : events) {</span>
+<span class="fc" id="L89">			addEvent(e);</span>
+<span class="fc" id="L90">		}</span>
+<span class="fc" id="L91">	}</span>
+
+	public void addEvent(Event event) {
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (event != null) {</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">			if (!hasEvent(event)) {</span>
+<span class="fc" id="L96">				this.events.add(event);</span>
+			}
+<span class="fc bfc" id="L98" title="All 2 branches covered.">			if (!event.hasPerson(this)) {</span>
+<span class="fc" id="L99">				event.addPerson(this);</span>
+			}
+		}
+<span class="fc" id="L102">	}</span>
+
+	public void deleteEvent(long id) {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		Optional&lt;Event&gt; e = this.events.stream().filter(x -&gt; x.getId() == id).findFirst();</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">		if (e.isPresent()) {</span>
+<span class="fc" id="L107">			deleteEvent(e.get());</span>
+		}
+<span class="fc" id="L109">	}</span>
+
+	public void deleteEvent(Event event) {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		if (event != null) {</span>
+<span class="fc" id="L113">			this.events.remove(event);</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">			if (event.hasPerson(this)) {</span>
+<span class="fc" id="L115">				event.deletePerson(this);</span>
+			}
+		}
+<span class="fc" id="L118">	}</span>
+
+	public boolean hasEvent(Event event) {
+<span class="fc" id="L121">		return this.events.contains(event);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L126" title="All 2 branches covered.">		if (this == obj) {</span>
+<span class="fc" id="L127">			return true;</span>
+		}
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		if (obj == null) {</span>
+<span class="fc" id="L130">			return false;</span>
+		}
+<span class="fc bfc" id="L132" title="All 2 branches covered.">		if (!(obj instanceof Person)) {</span>
+<span class="fc" id="L133">			return false;</span>
+		}
+<span class="fc" id="L135">		Person p = (Person) obj;</span>
+<span class="fc bfc" id="L136" title="All 4 branches covered.">		return Objects.equals(this.id, p.id) &amp;&amp; Objects.equals(this.firstName, p.firstName)</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">				&amp;&amp; Objects.equals(this.lastName, p.lastName);</span>
+	}
+
+	@Override
+	public int hashCode() {
+<span class="fc" id="L142">		final int prime = 31;</span>
+<span class="fc" id="L143">		return Objects.hash(this.id * prime, this.firstName, this.lastName);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

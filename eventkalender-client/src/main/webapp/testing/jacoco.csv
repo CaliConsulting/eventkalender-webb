@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+eventkalender-ejb,cali.eventkalender.interceptor,DefaultInterceptor,199,0,18,0,40,0,15,0,6,0
+eventkalender-ejb,cali.eventkalender.facade,Facade,0,75,0,0,0,20,0,16,0,16
+eventkalender-ejb,cali.eventkalender.model,Person,0,211,0,28,0,53,0,32,0,18
+eventkalender-ejb,cali.eventkalender.model,Event,0,299,0,38,0,75,0,45,0,26
+eventkalender-ejb,cali.eventkalender.model,Nation,0,194,0,28,0,50,0,30,0,16
+eventkalender-ejb,cali.eventkalender.eao,EventEAO,0,79,0,8,0,20,0,10,0,6
+eventkalender-ejb,cali.eventkalender.eao,NationEAO,0,66,0,6,0,17,0,9,0,6
+eventkalender-ejb,cali.eventkalender.eao,PersonEAO,0,66,0,6,0,17,0,9,0,6
