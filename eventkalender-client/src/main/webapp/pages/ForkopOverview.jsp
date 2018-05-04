@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<main class="container-fluid">
-	<h5 class="text-center font-italic"> KÖP LITE BILJETTER HÄR VA</h5>
+	<h3 class="text-center font-italic text-black"> KÖP BILJETTER SOM GER FÖRTRÄDE TILL KLUBBEN</h3>
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
