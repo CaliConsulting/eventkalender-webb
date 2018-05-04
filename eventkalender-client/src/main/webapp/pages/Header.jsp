@@ -18,7 +18,7 @@
 	        <a class="nav-link" href="${pageContext.request.contextPath}/events">Evenemangslista</a>
 	      </li> 
 	       <li class="nav-item active">
-	        <a class="nav-link" href="${pageContext.request.contextPath}/forkop/list">Förköp</a>
+	        <a class="nav-link" href="${pageContext.request.contextPath}/prepurchase">Förköp</a>
 	        </li>     
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,7 +34,7 @@
 	    <%
 			OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
 	    %>
-	    <span class="align-baseline mr-2"><%= c.getTemperature("Lund") %> ï¿½C</span>
+	    <span class="align-baseline mr-2"><%= c.getTemperature("Lund") %> °C</span>
 	    <img src="<%= c.getIconLink("Lund") %>">
 	  </div>
 	</nav>

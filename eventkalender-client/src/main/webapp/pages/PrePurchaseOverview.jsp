@@ -26,10 +26,10 @@
 			<div class="card-img-overlay">
 				<h5 class="card-title">
 					<a class="text-white"
-						href="${pageContext.request.contextPath}/forkop">Casanova</a>
+						href="${pageContext.request.contextPath}/prepurchase/info">Casanova</a>
 				</h5>
 				<p class="card-text">Läs mer.</p>
-				<a href="${pageContext.request.contextPath}/forkop"
+				<a href="${pageContext.request.contextPath}/prepurchase/info"
 					class="btn btn-light">Köp biljetter</a>
 			</div>
 		</div>
@@ -40,10 +40,24 @@
 			<div class="card-img-overlay">
 				<h5 class="card-title">
 					<a class="text-white"
-						href="${pageContext.request.contextPath}/forkop">Kajplats</a>
+						href="${pageContext.request.contextPath}/prepurchase/info">Kajplats</a>
 				</h5>
 				<p class="card-text">Läs mer.</p>
-				<a href="${pageContext.request.contextPath}/forkop"
+				<a href="${pageContext.request.contextPath}/prepurchase/info"
+					class="btn btn-light">Köp biljetter</a>
+			</div>
+		</div>
+		<div class="card bg-dark text-white">
+			<img class="card-img"
+				src="${pageContext.request.contextPath}/img/t-bar.png"
+				alt="Card image">
+			<div class="card-img-overlay">
+				<h5 class="card-title">
+					<a class="text-white"
+						href="${pageContext.request.contextPath}/prepurchase/info">T-bar</a>
+				</h5>
+				<p class="card-text">Läs mer.</p>
+				<a href="${pageContext.request.contextPath}/prepurchase/info"
 					class="btn btn-light">Köp biljetter</a>
 			</div>
 		</div>
