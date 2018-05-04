@@ -7,9 +7,9 @@
 	<%@ include file="Header.jsp"%>
 	<div class="forkopImg">
 	<div class="welcomeText text-center">
-	<h1><strong>FÖRKÖP</strong></h1>
+	<h1 class="display-3"><strong>FÖRKÖP</strong></h1>
 	<div class="text-center font-italic">
-		<h3>Förköp biljetter till klubben för att säkra din plats och gå före kön!</h3>
+		<h5>Förköp biljetter till klubben för att säkra din plats och gå före kön!</h5>
 	</div>
 	</div>
 	</div>

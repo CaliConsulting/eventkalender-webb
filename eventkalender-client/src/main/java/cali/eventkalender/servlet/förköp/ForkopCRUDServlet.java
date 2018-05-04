@@ -21,9 +21,16 @@ public class ForkopCRUDServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/pages/ForkopCRUD.jsp").forward(request, response);
 	}
-   
+    
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 }

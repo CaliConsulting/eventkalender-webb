@@ -53,7 +53,7 @@ header {
 	text-align: center;
 }
 
-.welcomeText h1, h2, h3 {
+.welcomeText h1, h2, h3, h4, h5 {
 	font-family: "Bell", Times, serif;
 	color: #ffffff;
 }
