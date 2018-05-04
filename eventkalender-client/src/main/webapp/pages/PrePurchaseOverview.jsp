@@ -21,7 +21,7 @@
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/events/Casanova.png"
+				src="${pageContext.request.contextPath}/img/events/CasanovaRed.png.jpg"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
