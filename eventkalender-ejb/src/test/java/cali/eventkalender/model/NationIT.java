@@ -8,132 +8,130 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class NationIT {
+    
+    private Long expectedEventId;
+    private String expectedEventName;
+    private String expectedEventSummary;
+    private LocalDateTime expectedEventStartTime;
+    private LocalDateTime expectedEventEndTime;
+    
+    private Event expectedEvent;
+    
+    private Long expectedNationId;
+    private String expectedNationName;
+    
+    private Nation expectedNation;
+    
+    @Before
+    public void setup() {
+        expectedNationId = -1L;
+        expectedNationName = "TESTNATION";
+        expectedNation = new Nation(expectedNationName);
+        expectedNation.setId(expectedNationId);
 
+        expectedEventId = Long.MIN_VALUE;
+        expectedEventName = "TESTEVENT";
+        expectedEventSummary = "TESTSAMMANFATTNING";
+        expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
+        expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
+        expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime,
+                expectedEventEndTime);
+        expectedEvent.setId(expectedEventId);
+    }
+    
 	@Test
 	public void getEvents() {
-		Nation nation = new Nation();
-
-		assertEquals(0, nation.getEvents().size());
+		assertEquals(0, expectedNation.getEvents().size());
 	}
 
 	@Test
 	public void setEvents() {
-		Nation nation = new Nation();
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		List<Event> events = new ArrayList<>(Arrays.asList(event));
-		nation.setEvents(events);
+		List<Event> events = new ArrayList<>(Arrays.asList(expectedEvent));
+		expectedNation.setEvents(events);
 
-		assertEquals(1, nation.getEvents().size());
-		for (Event e : nation.getEvents()) {
-			assertEquals(nation, e.getNation());
+		assertEquals(1, expectedNation.getEvents().size());
+		for (Event e : expectedNation.getEvents()) {
+			assertEquals(expectedNation, e.getNation());
 		}
 	}
 
 	@Test
 	public void addEvent() {
-		Nation nation = new Nation("TESTNATION");
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		event.setId(Long.MAX_VALUE);
+	    expectedNation.addEvent(expectedEvent);
 
-		nation.addEvent(event);
-
-		assertEquals(1, nation.getEvents().size());
-		assertEquals(nation, event.getNation());
+		assertEquals(1, expectedNation.getEvents().size());
+		assertEquals(expectedNation, expectedEvent.getNation());
 	}
 	
 	@Test
 	public void addEventAlreadyExists() {
-		Nation nation = new Nation("TESTNATION");
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		event.setId(Long.MAX_VALUE);
+	    expectedNation.addEvent(expectedEvent);
+	    expectedNation.addEvent(expectedEvent);
 
-		nation.addEvent(event);
-		nation.addEvent(event);
-
-		assertEquals(1, nation.getEvents().size());
-		assertEquals(nation, event.getNation());
+		assertEquals(1, expectedNation.getEvents().size());
+		assertEquals(expectedNation, expectedEvent.getNation());
 	}
 
 	@Test
 	public void addEventWithNullObject() {
-		Nation nation = new Nation("TESTNATION");
+	    expectedNation.addEvent(null);
 
-		nation.addEvent(null);
-
-		assertEquals(0, nation.getEvents().size());
+		assertEquals(0, expectedNation.getEvents().size());
 	}
 
 	@Test
 	public void addEventExistsOnAnotherNation() {
-		Nation existingNation = new Nation("TESTNATION");
-		Event existingEvent = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		existingNation.addEvent(existingEvent);
+	    expectedNation.addEvent(expectedEvent);
 
 		Nation newNation = new Nation();
-		newNation.addEvent(existingEvent);
+		newNation.addEvent(expectedEvent);
 
-		assertEquals(0, existingNation.getEvents().size());
+		assertEquals(0, expectedNation.getEvents().size());
 		assertEquals(1, newNation.getEvents().size());
-		assertEquals(newNation, existingEvent.getNation());
+		assertEquals(newNation, expectedEvent.getNation());
 	}
 
 	@Test
 	public void deleteEventWithId() {
-		Nation nation = new Nation("TESTNATION");
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		event.setId(Long.MAX_VALUE);
+	    expectedNation.addEvent(expectedEvent);
+	    expectedNation.deleteEvent(expectedEventId);
 
-		nation.addEvent(event);
-		nation.deleteEvent(Long.MAX_VALUE);
-
-		assertEquals(0, nation.getEvents().size());
-		assertNull(event.getNation());
+		assertEquals(0, expectedNation.getEvents().size());
+		assertNull(expectedEvent.getNation());
 	}
 
 	@Test
 	public void deleteEventWithIdNoMatch() {
-		Nation nation = new Nation("TESTNATION");
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		event.setId(Long.MAX_VALUE);
+	    expectedNation.addEvent(expectedEvent);
+	    expectedNation.deleteEvent(-1);
 
-		nation.addEvent(event);
-		nation.deleteEvent(-1);
-
-		assertEquals(1, nation.getEvents().size());
-		assertEquals(nation, event.getNation());
+		assertEquals(1, expectedNation.getEvents().size());
+		assertEquals(expectedNation, expectedEvent.getNation());
 	}
 
 	@Test
 	public void deleteEventWithObject() {
-		Nation nation = new Nation();
+	    expectedNation.addEvent(expectedEvent);
+	    expectedNation.deleteEvent(expectedEvent);
 
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		event.setId(Long.MAX_VALUE);
-
-		nation.addEvent(event);
-		nation.deleteEvent(event);
-
-		assertEquals(0, nation.getEvents().size());
-		assertNull(event.getNation());
+		assertEquals(0, expectedNation.getEvents().size());
+		assertNull(expectedEvent.getNation());
 	}
 
 	@Test
 	public void deleteEventWithObjectNoMatch() {
-		Nation nation = new Nation("TESTNATION");
-		Event event = new Event("TESTEVENT", "TESTSAMMANFATTNING", LocalDateTime.now(), LocalDateTime.now());
-		event.setId(Long.MAX_VALUE);
+	    expectedNation.addEvent(expectedEvent);
+	    expectedNation.deleteEvent(null);
 
-		nation.addEvent(event);
-		nation.deleteEvent(null);
-
-		assertEquals(1, nation.getEvents().size());
-		assertEquals(nation, event.getNation());
+		assertEquals(1, expectedNation.getEvents().size());
+		assertEquals(expectedNation, expectedEvent.getNation());
 	}
 
 }

@@ -32,7 +32,8 @@ public class Nation implements Serializable {
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
+	@OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
+			CascadeType.REMOVE }, fetch = FetchType.EAGER, mappedBy = "nation", orphanRemoval = true)
 	private List<Event> events;
 
 	public Nation() {
@@ -50,11 +51,11 @@ public class Nation implements Serializable {
 		setEvents(Objects.requireNonNull(events));
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

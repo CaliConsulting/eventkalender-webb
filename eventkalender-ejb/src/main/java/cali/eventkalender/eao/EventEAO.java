@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import cali.eventkalender.model.Event;
+import cali.eventkalender.model.Nation;
+import cali.eventkalender.model.Person;
 
 @Stateless
 public class EventEAO implements EventEAOLocal {
@@ -21,6 +23,15 @@ public class EventEAO implements EventEAOLocal {
 
 	@Override
 	public Event add(Event event) {
+		Nation nation = event.getNation();
+		if (nation.getId() < 0) {
+		    em.persist(nation);
+		}
+		for (Person person : event.getPersons()) {
+		    if (person.getId() < 0) {
+		        em.persist(person);
+		    }
+		}
 		em.persist(event);
 		return event;
 	}

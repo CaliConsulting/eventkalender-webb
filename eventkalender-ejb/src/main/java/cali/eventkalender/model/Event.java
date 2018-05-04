@@ -2,6 +2,7 @@ package cali.eventkalender.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -45,13 +46,12 @@ public class Event implements Serializable {
 	@Column(name = "EndTime", nullable = false)
 	private LocalDateTime endTime;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.EAGER)
 	@JoinColumn(name = "NationId", referencedColumnName = "Id", nullable = false)
 	private Nation nation;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"),
-			inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
+	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.EAGER)
+	@JoinTable(name = "PersonEvent", joinColumns = @JoinColumn(name = "EventId", referencedColumnName = "Id"), inverseJoinColumns = @JoinColumn(name = "PersonId", referencedColumnName = "Id"))
 	private List<Person> persons;
 
 	public Event() {
@@ -74,11 +74,11 @@ public class Event implements Serializable {
 		setPersons(Objects.requireNonNull(persons));
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -106,8 +106,20 @@ public class Event implements Serializable {
 		this.startTime = startTime;
 	}
 
+	public String getStartTimeFormatted() {
+		LocalDateTime start = getStartTime();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		return format.format(start);
+	}
+
 	public LocalDateTime getEndTime() {
 		return endTime;
+	}
+
+	public String getEndTimeFormatted() {
+		LocalDateTime end = getEndTime();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		return format.format(end);
 	}
 
 	public void setEndTime(LocalDateTime endTime) {
@@ -164,7 +176,7 @@ public class Event implements Serializable {
 			}
 		}
 	}
-	
+
 	public boolean hasPerson(Person person) {
 		return this.persons.contains(person);
 	}

@@ -9,7 +9,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container">
+	<main role="main" class="container mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
 				<input class="form-control" id="myInput" type="text"
@@ -20,22 +20,21 @@
 							<th>Namn</th>
 							<th>Beskrivning</th>
 							<th>Nation</th>
-							<th>Start tid</th>
-							<th>Slut tid</th>
+							<th>Starttid</th>
+							<th>Sluttid</th>
 							<th>Inbjudna</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%
 							List<Event> events = (List<Event>) request.getAttribute("events");
-
 							for (Event e : events) {
 								out.print("<tr>");
 								out.print("<td>" + e.getName() + "</td>");
 								out.print("<td>" + e.getSummary() + "</td>");
 								out.print("<td>" + e.getNation().getName() + "</td>");
-								out.print("<td>" + e.getStartTime() + "</td>");
-								out.print("<td>" + e.getEndTime() + "</td>");
+								out.print("<td>" + e.getStartTimeFormatted() + "</td>");
+								out.print("<td>" + e.getEndTimeFormatted() + "</td>");
 								out.print("<td>" + e.getPersons().size() + "</td>");
 								out.print("</tr>");
 							}
@@ -44,7 +43,7 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</main>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
 	<!-- /footer -->
