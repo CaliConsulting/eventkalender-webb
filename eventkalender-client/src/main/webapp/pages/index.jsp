@@ -19,7 +19,7 @@
 	<div class="test mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
-			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">Gå med i Studentlund för att ta del av...</a></h4>
+			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">Gå med i Studentlund.</a></h4>
 				<div class="card-deck">
 					<div class="card">
 						<div class="card-header">
