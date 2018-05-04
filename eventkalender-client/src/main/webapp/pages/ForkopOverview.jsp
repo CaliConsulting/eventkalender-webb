@@ -16,7 +16,8 @@
 		</div>
 	</div>
 	<main class="container-fluid">
-	<h3 class="text-center font-italic text-black"> KÖP BILJETTER SOM GER FÖRTRÄDE TILL KLUBBEN</h3>
+	<h3 class="text-center font-italic text-black">KÖP BILJETTER SOM
+		GER FÖRTRÄDE TILL KLUBBEN</h3>
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
@@ -24,12 +25,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white"href="${pageContext.request.contextPath}/forkop">Casanova</a>
+					<a class="text-white"
+						href="${pageContext.request.contextPath}/forkop">Casanova</a>
 				</h5>
+				<p class="card-text">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/forkop"
-					class="btn btn-outline-lw btn-lg text-center">Köp biljetter</a>
-				<p class="card-text">Tandemcykling, Lundakarnevalen, eller
-					varför inte en båttur med trevligt sällskap?</p>
+					class="btn btn-light">Köp biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -38,10 +39,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white" href="${pageContext.request.contextPath}/forkop">Kajplats</a>
+					<a class="text-white"
+						href="${pageContext.request.contextPath}/forkop">Kajplats</a>
 				</h5>
-				<p class="card-text">Tandemcykling, Lundakarnevalen, eller
-					varför inte en båttur med trevligt sällskap?</p>
+				<p class="card-text">Läs mer.</p>
+				<a href="${pageContext.request.contextPath}/forkop"
+					class="btn btn-light">Köp biljetter</a>
 			</div>
 		</div>
 	</div>
