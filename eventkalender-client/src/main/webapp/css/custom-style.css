@@ -13,10 +13,9 @@ header {
 	background-color: #ededed;
 }
 
-.card {
-	margin-bottom:10px;
+.prepurchasespacer {
+	width: 90%;
 }
-
 .footer {
 	position: absolute;
 	bottom: 0;
@@ -54,6 +53,22 @@ header {
 }
 
 .welcomeText h1, h2, h3 {
+	font-family: "Bell", Times, serif;
+	color: #ffffff;
+}
+
+.prePurchaseText {
+	position: absolute;
+	top: 50%;
+	/* position the top  edge of the element at the middle of the parent */
+	left: 50%;
+	/* position the left edge of the element at the middle of the parent */
+	transform: translate(-50%, -50%); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+	text-align: center;
+}
+
+.prePurchaseText h1, h2, h3 {
 	font-family: "Bell", Times, serif;
 	color: #ffffff;
 }
