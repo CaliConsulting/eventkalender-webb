@@ -49,6 +49,20 @@
 		</div>
 		<div class="card bg-dark text-white">
 			<img class="card-img"
+				src="${pageContext.request.contextPath}/img/events/ssk.png"
+				alt="Card image">
+			<div class="card-img-overlay">
+				<h5 class="card-title">
+					<a class="text-white"
+						href="${pageContext.request.contextPath}/prepurchase/info">Svartklubben</a>
+				</h5>
+				<p class="card-text">Läs mer.</p>
+				<a href="${pageContext.request.contextPath}/prepurchase/info"
+					class="btn btn-light">Köp biljetter</a>
+			</div>
+		</div>
+		<div class="card bg-dark text-white">
+			<img class="card-img"
 				src="${pageContext.request.contextPath}/img/events/t-bar.png"
 				alt="Card image">
 			<div class="card-img-overlay">
