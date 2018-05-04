@@ -1,4 +1,4 @@
-package cali.eventkalender.servlet;
+package cali.eventkalender.servlet.event;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,23 +15,25 @@ import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
 import cali.eventkalender.utility.JsonUtility;
 
-@WebServlet("/calendar")
-public class CalendarServlet extends HttpServlet {
+@WebServlet("/events/calendar")
+public class EventCalendarServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     @EJB
     private FacadeLocal facade;
 
-    public CalendarServlet() {
+    public EventCalendarServlet() {
         super();
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/pages/Calendar.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/EventCalendar.jsp").forward(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Event> events = facade.findAllEvents();

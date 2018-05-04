@@ -3,7 +3,6 @@ package cali.eventkalender.servlet.event;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -20,9 +19,6 @@ import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Nation;
 
-/**
- * Servlet implementation class EventCRUDServlet
- */
 @WebServlet("/events/crud")
 public class EventCRUDServlet extends HttpServlet {
     
@@ -33,17 +29,11 @@ public class EventCRUDServlet extends HttpServlet {
     @EJB
     private FacadeLocal facade;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public EventCRUDServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Nation> nations = facade.findAllNations();
 		request.setAttribute("nations", nations);
@@ -51,10 +41,8 @@ public class EventCRUDServlet extends HttpServlet {
 		request.setAttribute("events", events);
 		request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
     }
-
-    /**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String operation = request.getParameter("operation");
 	    if ("addEvent".equals(operation)) {

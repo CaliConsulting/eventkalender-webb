@@ -60,6 +60,12 @@
       <artifactId>org.jacoco.core</artifactId>
     </dependency>
 
+    <!-- OpenWeatherMap -->
+    <dependency>
+      <groupId>net.aksingh</groupId>
+      <artifactId>owm-japis</artifactId>
+    </dependency>
+
     <!-- Gson -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
