@@ -1,6 +1,3 @@
-<%@page import="java.util.List"%>
-<%@page import="cali.eventkalender.model.Nation"%>
-<%@page import="cali.eventkalender.model.Event"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,5 +15,3 @@
 	<!-- /footer -->
 </body>
 </html>
-
-<div id="calendar"></div>

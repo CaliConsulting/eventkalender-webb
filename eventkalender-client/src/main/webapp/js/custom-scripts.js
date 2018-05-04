@@ -32,34 +32,57 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-	if($("#calendar").length > 0) {
-		getEvents();
+	if ($("#calendar").length > 0) {
+		// getEvents();
+		$('#calendar').fullCalendar({
+			header : {
+				left : 'prev,next today',
+				center : 'title',
+				//right : 'month,agendaWeek,agendaDay,listMonth'
+				right : 'month'
+			},
+			locale : 'sv',
+			editable : false,
+			events : {
+				url : 'calendar',
+				type : 'POST',
+				error : function() {
+					alert('there was an error while fetching events!');
+				}
+			}
+		})
 	}
 });
 
-function buildCalendar(data) {
-	var initialLocaleCode = 'sv';
-	
-	console.log("startar kalender");
-	
-	console.log("hej");
-	
-	$('#calendar').fullCalendar({
-		header : {
-			left : 'prev,next today',
-			center : 'title',
-			//right : 'month,agendaWeek,agendaDay,listMonth'
-			right : 'month'
-		},
-		locale : initialLocaleCode,
-		editable : false,
-		events : data
-	})
-}
-
-function getEvents() {
-	$.post("calendar", function(data, status) {
-		alert("Data: " + data);
-		buildCalendar(data);
-	});
-}
+//function buildCalendar(data) {
+//	var initialLocaleCode = 'sv';
+//
+//	console.log("startar kalender");
+//
+//	console.log("hej");
+//
+//	$('#calendar').fullCalendar({
+//		header : {
+//			left : 'prev,next today',
+//			center : 'title',
+//			//right : 'month,agendaWeek,agendaDay,listMonth'
+//			right : 'month'
+//		},
+//		locale : initialLocaleCode,
+//		editable : false,
+//		events : {
+//			url : 'calendar',
+//			type : 'POST',
+//			error : function() {
+//				alert('there was an error while fetching events!');
+//			}
+//		}
+//	})
+//}
+//
+//function getEvents() {
+//	$.post("calendar", function(data, status) {
+//		alert("Data: " + data);
+//		buildCalendar(data);
+//	});
+//}

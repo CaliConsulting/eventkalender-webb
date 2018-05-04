@@ -59,6 +59,12 @@
       <groupId>org.jacoco</groupId>
       <artifactId>org.jacoco.core</artifactId>
     </dependency>
+
+    <!-- Gson -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
   </dependencies>
 
   <profiles>

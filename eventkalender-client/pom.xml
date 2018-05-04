@@ -34,12 +34,6 @@
       <groupId>net.aksingh</groupId>
       <artifactId>owm-japis</artifactId>
     </dependency>
-
-    <!-- Gson -->
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-    </dependency>
   </dependencies>
 
   <build>
