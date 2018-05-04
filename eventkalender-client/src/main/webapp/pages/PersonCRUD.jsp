@@ -15,11 +15,11 @@
 				<h5 class="addTitel">Lägg till Person</h5>
 				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
 					<div class="form-group">
-						<label for="forname">Förnamn</label> 
-						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Förnamn" 
+						<label for="firstName">Förnamn</label> 
+						<input type="text" class="form-control" id="firstName" name="firstName" placeholder="Förnamn" 
 						required>
-						<label for="lastname">Efternamn</label>
-						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Efternamn"
+						<label for="lastName">Efternamn</label>
+						<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Efternamn"
 							required>
 					</div>
 					<input type="submit" name="submitAddPerson">
