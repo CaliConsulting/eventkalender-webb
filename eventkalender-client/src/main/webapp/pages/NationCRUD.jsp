@@ -9,7 +9,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container mt-2 mb-2">
+	<main role="main" class="container mt-2 mb-2">
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Nation</h5>
@@ -26,26 +26,25 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Nation</h5>
-					<form action="${pageContext.request.contextPath}/nations/crud" method="POST" novalidation class="needs-validation">
+				<form action="${pageContext.request.contextPath}/nations/crud" method="POST" novalidation class="needs-validation">
 						<div class="form-group">
-							<label for="nation">Nation</label> 
-							<select class="custom-select" id="id" name="id" required>
-								<option value="" disabled="disabled" selected>
-								Välj Nation..</option>
-								<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
-										for (Nation n : nations) {
-											out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
-										}
-								%>
-							</select>
-							<input type="submit" name="submitDeleteNation">
-							<input type="hidden" name="operation" value="deleteNation">
-						</div>
-					</form>
-				</div>
-			</form>
+						<label for="nation">Nation</label> 
+						<select class="custom-select" id="id" name="id" required>
+							<option value="" disabled="disabled" selected>
+							Välj Nation..</option>
+							<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+									for (Nation n : nations) {
+										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+									}
+							%>
+						</select>
+					</div>
+					<input type="submit" name="submitDeleteNation">
+					<input type="hidden" name="operation" value="deleteNation">
+				</form>
+			</div>
 		</div>
-	</div>
+	</main>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
 	<!-- /footer -->
