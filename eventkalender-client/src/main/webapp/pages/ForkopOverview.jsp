@@ -16,10 +16,11 @@
 		</div>
 	</div>
 	<main class="container-fluid">
+	<h5 class="text-center font-italic"> KÖP LITE BILJETTER HÄR VA</h5>
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/Casanova.jpg"
+				src="${pageContext.request.contextPath}/img/Casanova.png"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
@@ -33,11 +34,11 @@
 		</div>
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/t-bar.png"
+				src="${pageContext.request.contextPath}/img/kajplats.png"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white" href="${pageContext.request.contextPath}/forkop">T-Bar</a>
+					<a class="text-white" href="${pageContext.request.contextPath}/forkop">Kajplats</a>
 				</h5>
 				<p class="card-text">Tandemcykling, Lundakarnevalen, eller
 					varför inte en båttur med trevligt sällskap?</p>
@@ -45,74 +46,6 @@
 		</div>
 	</div>
 	</main>
-	<div class="card-group">
-		<div class="card">
-			<a href="http://www.lundsnation.se/sv/home/"><img
-				class="card-img"
-				src="${pageContext.request.contextPath}/img/Lunds.png"
-				alt="Card image cap"></a>
-			<div class="card-body">
-				<a href="${pageContext.request.contextPath}/forkop"><h5
-						class="card-title text-dark">Casanova</h5></a>
-				<p class="card-text">Malmö Nations nattklubb Casanova ---- fullt
-					ös på torsdagar och lördagar!</p>
-				<a href="${pageContext.request.contextPath}/forkop"
-					class="btn btn-outline-dark btn-lg">Köp biljetter</a>
-				<p class="card-text">
-					<small class="text-muted">Last updated 3 mins ago</small>
-				</p>
-			</div>
-		</div>
-		<div class="card">
-			<a href="http://goteborgsnation.com/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Goteborgs.png"
-				alt="Card image cap"></a>
-			<div class="card-body">
-				<a href="http://goteborgsnation.com/"><h5
-						class="card-title text-dark">Kajplats</h5></a>
-				<p class="card-text">Göteborg Nations nattklubb Kajplats ----
-					fullt ös på onsdagar och fredagar!</p>
-				<a href="${pageContext.request.contextPath}/forkop"
-					class="btn btn-outline-dark btn-lg">Köp biljetter</a>
-				<p class="card-text">
-					<small class="text-muted">Last updated 3 mins ago</small>
-				</p>
-			</div>
-		</div>
-		<div class="card">
-			<a href="https://www.malmonation.com/"><img class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Malmo.png"
-				alt="Card image cap"></a>
-			<div class="card-body">
-				<a href="https://www.malmonation.com/"><h5
-						class="card-title text-dark">T-bar</h5></a>
-				<p class="card-text">T-Bar ----------------------------------
-					fullt ös på fredagar och lördagar!</p>
-				<a href="${pageContext.request.contextPath}/forkop"
-					class="btn btn-outline-dark btn-lg">Köp biljetter</a>
-				<p class="card-text">
-					<small class="text-muted">Last updated 3 mins ago</small>
-				</p>
-			</div>
-		</div>
-		<div class="card">
-			<a href="https://www.facebook.com/hallandsnation/"><img
-				class="card-img-top"
-				src="${pageContext.request.contextPath}/img/Hallands.png"
-				alt="Card image cap"></a>
-			<div class="card-body">
-				<a href="https://www.facebook.com/hallandsnation/"><h5
-						class="card-title text-dark">Hallands Nation</h5></a>
-				<p class="card-text">xxx---------------------------------------
-					fullt ös och smös</p>
-				<a href="${pageContext.request.contextPath}/forkop"
-					class="btn btn-outline-dark btn-lg">Köp biljetter</a>
-				<p class="card-text">
-					<small class="text-muted">Last updated 3 mins ago</small>
-				</p>
-			</div>
-		</div>
-	</div>
 	<footer class="footer">
 		<%@ include file="Footer.jsp"%>
 	</footer>

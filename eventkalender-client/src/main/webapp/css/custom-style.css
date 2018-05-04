@@ -13,9 +13,6 @@ header {
 	background-color: #ededed;
 }
 
-.prepurchasespacer {
-	width: 90%;
-}
 .footer {
 	position: absolute;
 	bottom: 0;
@@ -57,6 +54,10 @@ header {
 	color: #ffffff;
 }
 
+.prepurchasespacer {
+	width: 93%;
+	margin: 0 auto;
+}
 .prePurchaseText {
 	position: absolute;
 	top: 50%;
