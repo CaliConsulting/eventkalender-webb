@@ -23,39 +23,31 @@
 				<div class="card-deck">
 					<div class="card">
 						<div class="card-header">
-						<h5>Nationsengamang</h5>
+							<h5>Ny som student?</h5>
 						</div>
 						<div class="card-body">
 							<p class="card-text">
-								I Lunds studentliv så annordnar nationerna flertalet aktiviteter såsom idrottskvällar, luncher, sittningar och nattklubbar.
-								För att medverka i och ta del av alla dessa måste du som student vara medlem i Studentlund. 
+								 Då annordnar både nationer och kårer novischveckor, en fartfylldperiod av aktiviteter där du lär dig känna dina
+								 nya klasskamrater och nationsmedlemmar. Ett ypperligt tillfälle att utöka din nyvunna umgängeskrets!
 							</p>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-header">Header</div>
-						<img class="card-img-top" src="..." alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This card has supporting text below as a
-								natural lead-in to additional content.</p>
-						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
+							<p class="card-text">
+								This card has supporting text below as a
+							</p>
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header">Header</div>
-						<img class="card-img-top" src="..." alt="Card image cap">
+						<div class="card-header"><h5 class="card-title">Studentliv</h5></div>
 						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This card
-								has even longer content than the first to show that equal height
-								action.</p>
-						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
+							<p class="card-text">
+								I Lunds studentliv så annordnar nationerna flertalet aktiviteter såsom idrottskvällar, luncher, sittningar och nattklubbar.
+								För att medverka i och ta del av alla dessa måste du som student vara medlem i Studentlund.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -81,8 +73,10 @@
 			alt="Card image">
 		<div class="card-img-overlay">
 			<a href="https://www.facebook.com/hampus.sandell.5"><h5 class="card-title">Studentnöjen!</h5></a>
-			<p class="card-text">Tandemcykling, Lundakarnevalen, eller varför
-				inte en båttur med trevligt sällskap?</p>
+			<p class="card-text">
+				Tandemcykling, Lundakarnevalen, eller varför
+				inte en båttur med trevligt sällskap?
+			</p>
 		</div>
 	</div>
 	</main>
