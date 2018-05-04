@@ -34,6 +34,9 @@
 						<a class="dropdown-item"
 							href="${pageContext.request.contextPath}/persons/crud">Personer</a>
 					</div></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="${pageContext.request.contextPath}/invitations">Inbjudningar</a>
+				</li>
 			</ul>
 			<%
 				OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();

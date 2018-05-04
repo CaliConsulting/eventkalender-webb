@@ -57,6 +57,16 @@ header {
 	width: 20%
 }
 
+.invitePerson {
+	float: left;
+	widht: 40%;
+}
+
+.inviteEvent {
+	float: right; 
+	widht: 60%
+}
+
 .prepurchasespacer {
 	width: 93%;
 	margin: 0 auto;
