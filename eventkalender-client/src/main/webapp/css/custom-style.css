@@ -47,7 +47,6 @@ header {
 	color: #ffffff;
 }
 
-<<<<<<< HEAD
 .test {
 	float: left;
 	width: 75%;
@@ -58,12 +57,11 @@ header {
 	width: 20%
 }
 
-#roundedcorner {
-=======
 .prepurchasespacer {
 	width: 93%;
 	margin: 0 auto;
 }
+
 .prePurchaseText {
 	position: absolute;
 	top: 50%;
@@ -93,10 +91,7 @@ header {
 	position: relative;
 }
 
-}
-
 .roundedcorner {
->>>>>>> refs/remotes/origin/master
 	border-radius: 5px 15px;
 	border: 3px solid #fffffff;	
 }
