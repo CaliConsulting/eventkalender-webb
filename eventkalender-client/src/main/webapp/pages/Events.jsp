@@ -9,7 +9,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container mt-2 mb-2">
+	<main role="main" class="container mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
 				<input class="form-control" id="myInput" type="text"
@@ -43,7 +43,7 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</main>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
 	<!-- /footer -->

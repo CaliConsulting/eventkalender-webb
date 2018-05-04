@@ -9,7 +9,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<div class="container mt-2 mb-2">
+	<main class="container mt-2 mb-2">
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Person</h5>
@@ -30,7 +30,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Person</h5>
-				<form action="${pageContext.request.contextPath}/persons/crud" method="POST" novalidation class="needs-validation">
+				<form action="${pageContext.request.contextPath}/persons/crud" method="POST" novalidate class="needs-validation">
 					<div class="form-group">
 						<label for="person">Person</label> 
 						<select class="custom-select"
@@ -49,7 +49,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</main>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
 	<!-- /footer -->

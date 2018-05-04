@@ -3,7 +3,7 @@
 	<%@ page import="net.aksingh.owmjapis.api.APIException" %>
 		<nav class="navbar navbar-expand-sm navbar-light">
 		  <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-		  		<img src="${pageContext.request.contextPath}/img/Cali-McKinsey.png" width="40" height="40" id="roundedcorner">
+		  		<img src="${pageContext.request.contextPath}/img/Cali-McKinsey.png" width="40" height="40" class="roundedcorner">
 		  		Eventkalender
 		  </a>
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
