@@ -38,9 +38,9 @@
 									}
 							%>
 						</select>
-						<input type="submit" name="submitDeleteNation">
-						<input type="hidden" name="operation" value="deleteNation">
 					</div>
+					<input type="submit" name="submitDeleteNation">
+					<input type="hidden" name="operation" value="deleteNation">
 				</form>
 			</div>
 		</div>
