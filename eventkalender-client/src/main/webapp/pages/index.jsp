@@ -10,7 +10,7 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<div class="bgImg">
-		<div class="welcomeText">
+		<div class="welcomeText smokeybackground">
 			<h1 class="display-4">Välkommen till Eventkalendern!</h1>
 			<h2>Vi hjälper dig planera ditt nationsliv</h2>
 		</div>
