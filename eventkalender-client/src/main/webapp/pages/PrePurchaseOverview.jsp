@@ -63,7 +63,7 @@
 		</div>
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/events/T-bar.png.jpg"
+				src="${pageContext.request.contextPath}/img/events/rT-bar.png.jpg"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
