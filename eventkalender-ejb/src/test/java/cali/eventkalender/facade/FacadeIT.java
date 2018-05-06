@@ -218,9 +218,9 @@ public class FacadeIT {
     public void addPersonWithNonExistingEvent() {
         Nation tempNation = new Nation("TEMPNATION");
         facade.addNation(tempNation);
-        
+
         expectedEvent.setNation(tempNation);
-        
+
         expectedPerson.addEvent(expectedEvent);
         facade.addPerson(expectedPerson);
 
@@ -330,6 +330,29 @@ public class FacadeIT {
     }
 
     @Test
+    public void updateEventAndPersonWithRelation() {
+        facade.addEvent(expectedEvent);
+        facade.addPerson(expectedPerson);
+
+        expectedEvent.addPerson(expectedPerson);
+        expectedPerson.addEvent(expectedEvent);
+
+        facade.updateEvent(expectedEvent);
+        facade.updatePerson(expectedPerson);
+
+        Event fetchedEvent = facade.findEventById(expectedEvent.getId());
+        Person fetchedPerson = facade.findPersonById(expectedPerson.getId());
+
+        assertNotNull(fetchedEvent);
+        assertTrue(fetchedEvent.getPersons().contains(fetchedPerson));
+        assertEquals(1, fetchedEvent.getPersons().size());
+
+        assertNotNull(fetchedPerson);
+        assertTrue(fetchedPerson.getEvents().contains(fetchedEvent));
+        assertEquals(1, fetchedPerson.getEvents().size());
+    }
+
+    @Test
     public void updateNation() {
         facade.addNation(expectedNation);
 
@@ -338,6 +361,28 @@ public class FacadeIT {
 
         Nation fetchedNation = facade.findNationById(expectedNation.getId());
         assertEquals("PHILIP", fetchedNation.getName());
+    }
+    
+    @Test
+    public void updateNationAndEventWithRelation() {
+        facade.addEvent(expectedEvent);
+        facade.addNation(expectedNation);
+
+        expectedEvent.addPerson(expectedPerson);
+        expectedNation.addEvent(expectedEvent);
+
+        facade.updateEvent(expectedEvent);
+        facade.updateNation(expectedNation);
+
+        Event fetchedEvent = facade.findEventById(expectedEvent.getId());
+        Nation fetchedNation = facade.findNationById(expectedNation.getId());
+
+        assertNotNull(fetchedEvent);
+        assertTrue(fetchedEvent.getNation().equals(fetchedNation));
+
+        assertNotNull(fetchedNation);
+        assertTrue(fetchedNation.getEvents().contains(fetchedEvent));
+        assertEquals(1, fetchedNation.getEvents().size());
     }
 
     @Test
