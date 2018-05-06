@@ -1,4 +1,4 @@
-<%@page import="java.util.List"%>
+ï»¿<%@page import="java.util.List"%>
 <%@page import="cali.eventkalender.model.Event"%>
 <!DOCTYPE html>
 <html>
@@ -17,11 +17,11 @@
 					alt="Card image cap"></a>
 				<div class="card-body">
 					<h5 class="card-title"><a class="text-dark" href="http://www.lundsnation.se/sv/home/">Lunds Nation</a></h5>
-					<p class="card-text">Varmt välkommen till den bästa tiden i ditt liv! I nationen kan du finna en 
-					tillflyktsort när tentaångesten gör sig påmind, CSN har tagit slut eller om du har lite hemlängtan. 
-					Här träffar du en härlig blandning av folk från alla olika fakulteter som känner precis som du och 
-					vill göra något roligt vid sidan av studierna. Den tid som ligger framför dig kanske verkar oändligt 
-					lång, men utan att bli högtravande vill vi säga ta vara på den här tiden och gör det mesta av den.</p>
+					<p class="card-text">Varmt vÃ¤lkommen till den bÃ¤sta tiden i ditt liv! I nationen kan du finna en 
+					tillflyktsort nnr tentaÃ¥ngesten gÃ¶r sig pÃ¥mind, CSN har tagit slut eller om du har lite hemlÃ¤ngtan. 
+					HÃ¤r trÃ¤ffar du en hÃ¤rlig blandning av folk frÃ¥n alla olika fakulteter som kÃ¤nner precis som du och 
+					vill gÃ¶ra nÃ¥got roligt vid sidan av studierna. Den tid som ligger framfÃ¶r dig kanske verkar oÃ¤ndligt 
+					lÃ¤nge, men utan att bli hÃ¶gtravande vill vi sÃ¤ga ta vara pÃ¥ den hÃ¤r tiden och gÃ¶r det mesta av den.</p>
 					<p class="card-text">
 						<small class="text-muted">Last updated 3 mins ago</small>
 					</p>

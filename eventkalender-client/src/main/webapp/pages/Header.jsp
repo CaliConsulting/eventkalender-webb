@@ -20,14 +20,14 @@
 					href="${pageContext.request.contextPath}/events/calendar">Kalendarium</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link"
-					href="${pageContext.request.contextPath}/prepurchase">Förköp</a></li>
+					href="${pageContext.request.contextPath}/prepurchase">FÃ¶rkÃ¶p</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="${pageContext.request.contextPath}/invitations">Inbjudningar</a>
 				</li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Lägg till / ta bort </a>
+					aria-expanded="false"> LÃ¤gg till / ta bort </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
 							href="${pageContext.request.contextPath}/events/crud">Evenemang</a>
@@ -38,14 +38,12 @@
 					</div></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="${pageContext.request.contextPath}/testing/index.html">Testning</a>
-
 				</li>
 			</ul>
 			<%
 				OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
 		    %>
-			<span class="align-baseline mr-2"><%= c.getTemperature("Lund") %>
-				°C</span> <img src="<%= c.getIconLink("Lund") %>">
+			<span class="align-baseline mr-2"><%= c.getTemperature("Lund") %> Â°C</span> <img src="<%= c.getIconLink("Lund") %>">
 		</div>
 	</nav>
 </header>
