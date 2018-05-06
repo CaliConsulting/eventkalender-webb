@@ -24,7 +24,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Ange ditt för- och efternamn</label>
+    <label for="exampleFormControlTextarea1">Ange ditt fÃ¶r- och efternamn</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 </form>

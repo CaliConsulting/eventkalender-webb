@@ -13,7 +13,7 @@
 	<main role="main" class="container mt-2">
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till</h5>
+				<h5 class="addTitel">LÃ¤gg till Evenemang</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
@@ -22,11 +22,11 @@
 							<input type="text" class="form-control" id="name" name="name" placeholder="Namn" required> 
 						<label for="summary">Beskrivning</label>
 							<textarea class="form-control" id="summary" name="summary" rows="4"
-								placeholder="Ange en beskrivning för ditt evenemang" required></textarea>
+								placeholder="Ange en beskrivning fÃ¶r ditt evenemang" required></textarea>
 						<label for="nations">Nation</label> 
 							<select class="custom-select form-control" id="nations" name="nations" required>
 								<option value="" disabled="disabled" selected>
-								Välj Nation...</option>
+								VÃ¤lj Nation...</option>
 								<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
 									for (Nation n : nations) {
 										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
@@ -52,7 +52,7 @@
 						<select class="custom-select"
 							id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
-							Välj evenemang..</option>
+							VÃ¤lj evenemang..</option>
 							<% List<Event> events = (List<Event>) request.getAttribute("events");
 									for (Event e : events) {
 										out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
