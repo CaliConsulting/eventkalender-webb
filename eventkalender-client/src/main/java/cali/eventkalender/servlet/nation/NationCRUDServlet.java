@@ -1,6 +1,7 @@
 package cali.eventkalender.servlet.nation;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,11 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Nation;
+import cali.eventkalender.utility.JsonUtility;
 
 @WebServlet("/nations/crud")
 public class NationCRUDServlet extends HttpServlet {
+    
+    private static final Logger LOGGER = LoggerFactory.getLogger(NationCRUDServlet.class);
     
 	private static final long serialVersionUID = 1L;
 	
@@ -34,7 +41,7 @@ public class NationCRUDServlet extends HttpServlet {
 
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String operation = request.getParameter("operation");
+        String operation = request.getParameter("operation");
 	    if ("addNation".equals(operation)) {
 	        String nationName = request.getParameter("nationName");
 	        
@@ -43,6 +50,23 @@ public class NationCRUDServlet extends HttpServlet {
 	    } else if ("deleteNation".equals(operation)) {
 	        long id = Long.valueOf(request.getParameter("id"));
 	        facade.deleteNation(id);
+	    } else if ("updateNation".equals(operation)) {
+	        long id = Long.valueOf(request.getParameter("updateNationList"));
+	        String nationName = request.getParameter("updateNationName");
+	        
+	        Nation n = facade.findNationById(id);
+	        n.setName(nationName);
+	        facade.updateNation(n);
+	    } else if ("ajaxUpdateNation".equals(operation)) {
+	        response.setContentType("application/json");
+	        
+	        long id = Long.valueOf(request.getParameter("id"));
+	        
+	        Nation n = facade.findNationById(id);
+	        try (PrintWriter out = response.getWriter()) {
+	            out.write(JsonUtility.toJson(n));
+	        }
+	        return;
 	    }
 		doGet(request, response);
 	}

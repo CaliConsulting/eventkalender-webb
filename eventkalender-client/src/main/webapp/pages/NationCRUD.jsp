@@ -23,6 +23,29 @@
 				</form>
 			</div>
 		</div>
+		<div class="card mb-2">
+			<div class="card-body">
+				<h5 class="addTitel">Uppdatera Nation</h5>
+				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/nations/crud" method="POST">
+					<div class="form-group">
+						<label for="nationName">Namn</label>
+							<select class="custom-select form-control" id="updateNationList" name="updateNationList" required>
+								<option value="" disabled="disabled" selected>
+								Välj Nation...</option>
+								<%  List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+									for (Nation n : nations) {
+										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+									}
+								%>
+							</select>
+						<label for="name">Namn</label>
+							<input type="text" class="form-control" id="updateNationName" name="updateNationName" placeholder="Namn" required> 
+					</div>
+					<input type="submit" name="submitUpdateNation">
+					<input type="hidden" name="operation" value="updateNation">
+				</form>
+			</div>
+		</div>
 		<div class="card">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Nation</h5>
@@ -32,10 +55,10 @@
 						<select class="custom-select" id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
 							Välj Nation..</option>
-							<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
-									for (Nation n : nations) {
-										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
-									}
+							<%
+								for (Nation n : nations) {
+									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+								}
 							%>
 						</select>
 					</div>

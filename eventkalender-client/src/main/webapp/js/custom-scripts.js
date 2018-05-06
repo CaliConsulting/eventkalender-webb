@@ -63,3 +63,25 @@ $(document).ready(function() {
 		})
 	}
 });
+
+// uppdateringar
+$(document).ready(function() {
+	$("#updateNationList").change(function() {
+	    $.post("crud", { operation: "ajaxUpdateNation", id: $(this).val() }, function(data) {
+	    	console.log("updateNationList");
+	    	console.log(data);
+	        $("#updateNationName").val(data["name"]);
+	    });
+	});
+});
+
+$(document).ready(function() {
+	$("#updatePersonList").change(function() {
+	    $.post("crud", { operation: "ajaxUpdatePerson", id: $(this).val() }, function(data) {
+	    	console.log("updatePersonList");
+	    	console.log(data);
+	        $("#updatePersonFirstName").val(data["firstName"]);
+	        $("#updatePersonLastName").val(data["lastName"]);
+	    });
+	});
+});
