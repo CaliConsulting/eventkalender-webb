@@ -31,15 +31,25 @@ $(document).ready(function() {
 	});
 });
 
+// kalender
 $(document).ready(function() {
 	if ($("#calendar").length > 0) {
-		// getEvents();
 		$('#calendar').fullCalendar({
+			height: parent,
+			defaultView: 'month',
 			header : {
 				left : 'prev,next today',
 				center : 'title',
 				//right : 'month,agendaWeek,agendaDay,listMonth'
-				right : 'month'
+				right : 'month,listWeek,listDay'
+			},
+			views : {
+				listDay : {
+					buttonText : 'Dag'
+				},
+				listWeek : {
+					buttonText : 'Vecka'
+				}
 			},
 			locale : 'sv',
 			editable : false,
