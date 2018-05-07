@@ -83,31 +83,38 @@
 			<li data-target="#carouselIndicators" data-slide-to="1"></li>
 			<li data-target="#carouselIndicators" data-slide-to="2"></li>
 			<li data-target="#carouselIndicators" data-slide-to="3"></li>
+			<li data-target="#carouselIndicators" data-slide-to="4"></li>
 		</ol>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<a href="${pageContext.request.contextPath}/prepurchase"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/img/events/CasanovaRed.png.jpg"
+					src="${pageContext.request.contextPath}/img/events/Skybar.png"
 					alt="First slide"> </a>
 			</div>
 			<div class="carousel-item">
 				<a href="${pageContext.request.contextPath}/events"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/img/events/freda.png"
+					src="${pageContext.request.contextPath}/img/events/Bedas.png"
 					alt="Second slide"></a>
 			</div>
 			<div class="carousel-item">
 				<a href="${pageContext.request.contextPath}/prepurchase"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/img/events/kajplats.png"
+					src="${pageContext.request.contextPath}/img/events/CasanovaRed.png.jpg"
 					alt="Third slide"></a>
 			</div>
 			<div class="carousel-item">
 				<a href="${pageContext.request.contextPath}/events"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/img/events/Bedas.png"
+					src="${pageContext.request.contextPath}/img/events/freda.png"
 					alt="Fourth slide"></a>
+			</div>
+			<div class="carousel-item">
+				<a href="${pageContext.request.contextPath}/prepurchase"><img
+					class="d-block w-100"
+					src="${pageContext.request.contextPath}/img/events/kajplats.png"
+					alt="Fifth slide"> </a>
 			</div>
 		</div>
 	</div>
