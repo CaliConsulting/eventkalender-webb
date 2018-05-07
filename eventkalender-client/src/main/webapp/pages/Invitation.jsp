@@ -11,7 +11,9 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<main role="main" class="container-fluid mt-2 mb-2">
-		<form action="${pageContext.request.contextPath}/invitations" method="POST">
+	<div class="card">
+		<form action="${pageContext.request.contextPath}/invitations"
+			method="POST">
 			<div class="card invitePerson">
 				<div class="card-body">
 					<input class="form-control" id="myInputPerson" type="text"
@@ -85,6 +87,7 @@
 				</div>
 			</div>
 		</form>
+	</div>
 	</main>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
