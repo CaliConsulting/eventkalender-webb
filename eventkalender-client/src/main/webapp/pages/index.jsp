@@ -180,8 +180,8 @@
 	</main>
 	<div class="bgImgEnd">
 		<div class="goodbyeText smokeybackground">
-			<h1 class="display-4">Kom igen, det blir kul!</h1>
-			<h2>Vi ses i dimman</h2>
+			<h1 class="display-4">Upplev det själv!</h1>
+			<h2>Vi hjälper dig hitta rätt!</h2>
 		</div>
 	</div>
 	<!-- footer -->
