@@ -33,7 +33,7 @@
 				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
 					<label for="person">Person</label> 
 						<select class="custom-select" id="updatePersonList" name="updatePersonList" required>
-							<option value="" disabled="disabled" selected>Välj
+							<option value="" disabled="disabled" selected>VÃ¤lj
 								Person..</option>
 							<% List<Person> persons = (List<Person>) request.getAttribute("persons");
 								for (Person p : persons) {
@@ -42,8 +42,8 @@
 							%>
 						</select>
 						<div class="form-group">
-							<label for="firstName">Förnamn</label> 
-							<input type="text" class="form-control" id="updatePersonFirstName" name="updatePersonFirstName" placeholder="Förnamn" 
+							<label for="firstName">FÃ¶rnamn</label> 
+							<input type="text" class="form-control" id="updatePersonFirstName" name="updatePersonFirstName" placeholder="FÃ¶rnamn" 
 							required>
 							<label for="lastName">Efternamn</label>
 							<input type="text" class="form-control" id="updatePersonLastName" name="updatePersonLastName" placeholder="Efternamn"

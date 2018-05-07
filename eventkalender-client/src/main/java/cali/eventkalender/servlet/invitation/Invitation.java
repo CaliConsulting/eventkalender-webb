@@ -21,10 +21,6 @@ import cali.eventkalender.model.Person;
 public class Invitation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
 	@EJB
 	private FacadeLocal facade;
 	
