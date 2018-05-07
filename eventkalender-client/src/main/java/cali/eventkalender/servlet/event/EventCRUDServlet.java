@@ -67,7 +67,24 @@ public class EventCRUDServlet extends HttpServlet {
             long id = Long.valueOf(request.getParameter("id"));
             facade.deleteEvent(id);
         } else if ("updateEvent".equals(operation)) {
-            LOGGER.info("POST updateEvent");
+            long id = Long.valueOf(request.getParameter("updateEventList"));
+            String name = request.getParameter("updateEventName");
+            String summary = request.getParameter("updateEventSummary");
+
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+            LocalDateTime startTime = LocalDateTime.parse(request.getParameter("updateEventStartTime"), format);
+            LocalDateTime endTime = LocalDateTime.parse(request.getParameter("updateEventEndTime"), format);
+
+            long nationId = Long.valueOf(request.getParameter("updateEventNations"));
+            Nation nation = facade.findNationById(nationId);
+            
+            Event e = facade.findEventById(id);
+            e.setName(name);
+            e.setSummary(summary);
+            e.setStartTime(startTime);
+            e.setEndTime(endTime);
+            e.setNation(nation);
+            facade.updateEvent(e);
         } else if ("ajaxUpdateEvent".equals(operation)) {
             response.setContentType("application/json");
 
