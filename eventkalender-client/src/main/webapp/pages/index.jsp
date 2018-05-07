@@ -178,6 +178,12 @@
 		</div>
 	</div>
 	</main>
+	<div class="bgImgEnd">
+		<div class="goodbyeText smokeybackground">
+			<h1 class="display-4">Kom igen, det blir kul!</h1>
+			<h2>Vi ses i dimman</h2>
+		</div>
+	</div>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
 	<!-- /footer -->
