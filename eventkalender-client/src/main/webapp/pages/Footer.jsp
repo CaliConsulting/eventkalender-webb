@@ -8,7 +8,7 @@
 				<span class="align-text-right"><a href="https://www.mckinsey.com/" class="text-white">Om bolaget</a></span>
 			</div>
 			<div class="text-center">
-				<span class="text-white">© inter Cali Consulting 2017 - 2018</span>
+				<span class="text-white">&copy; inter Cali Consulting 2017 - 2018</span>
 			</div>
 		</div>
 	</footer>

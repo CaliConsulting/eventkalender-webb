@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eventkalender-ejb</a> &gt; <a href="index.source.html" class="el_package">cali.eventkalender.utility</a> &gt; <span class="el_source">JsonUtility.java</span></div><h1>JsonUtility.java</h1><pre class="source lang-java linenums">package cali.eventkalender.utility;
+
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import cali.eventkalender.model.Event;
+
+<span class="nc" id="L11">public class JsonUtility {</span>
+
+    public static String toCalendarJson(List&lt;Event&gt; events) {
+<span class="nc" id="L14">    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd'T'HH:mm:ss&quot;);</span>
+<span class="nc" id="L15">        JsonArray array = new JsonArray();</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        for (Event e : events) {</span>
+<span class="nc" id="L17">            JsonObject obj = new JsonObject();</span>
+<span class="nc" id="L18">            obj.addProperty(&quot;title&quot;, e.getName());</span>
+<span class="nc" id="L19">            obj.addProperty(&quot;start&quot;, e.getStartTime().format(formatter));</span>
+<span class="nc" id="L20">            obj.addProperty(&quot;end&quot;, e.getEndTime().format(formatter));</span>
+<span class="nc" id="L21">            array.add(obj);</span>
+<span class="nc" id="L22">        }</span>
+<span class="nc" id="L23">        return array.toString();</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

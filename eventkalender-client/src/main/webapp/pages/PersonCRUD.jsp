@@ -12,11 +12,11 @@
 	<main class="container mt-2 mb-2">
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till Person</h5>
+				<h5 class="addTitel">LÃ¤gg till Person</h5>
 				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
 					<div class="form-group">
-						<label for="firstName">Förnamn</label> 
-						<input type="text" class="form-control" id="firstName" name="firstName" placeholder="Förnamn" 
+						<label for="firstName">FÃ¶rnamn</label> 
+						<input type="text" class="form-control" id="firstName" name="firstName" placeholder="FÃ¶rnamn" 
 						required>
 						<label for="lastName">Efternamn</label>
 						<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Efternamn"
@@ -62,7 +62,7 @@
 						<label for="person">Person</label> 
 						<select class="custom-select"
 							id="id" name="id" required>
-							<option value="" disabled="disabled" selected>Välj
+							<option value="" disabled="disabled" selected>VÃ¤lj
 								Person..</option>
 							<%
 								for (Person p : persons) {

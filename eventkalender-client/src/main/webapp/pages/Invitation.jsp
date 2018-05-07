@@ -14,11 +14,11 @@
 	<div class="card invitePerson">
 		<div class="card-body">
 			<input class="form-control" id="myInputPerson" type="text"
-				placeholder="Sök..">
+				placeholder="SÃ¶k..">
 			<table class="table table-hover" id="myPersonTable">
 				<thead>
 					<tr>
-						<th>Förnamn</th>
+						<th>FÃ¶rnamn</th>
 						<th>Efternamn</th>
 					</tr>
 				</thead>
@@ -39,7 +39,7 @@
 	<div class="card inviteEvent">
 		<div class="card-body">
 			<input class="form-control" id="myInputEvent" type="text"
-				placeholder="Sök..">
+				placeholder="SÃ¶k..">
 			<table class="table table-hover" id="myEventTable">
 				<thead>
 					<tr>
@@ -70,7 +70,7 @@
 	<div class="card inviteControls">
 		<div class="card-body">
 			<button type="button" class="btn btn-dark">Bjud in</button>
-				<button type="button" class="btn btn-dark">Ring Åklagaren</button>
+				<button type="button" class="btn btn-dark">Ring Ã¥klagaren</button>
 		</div>
 	</div>
 	</main>
