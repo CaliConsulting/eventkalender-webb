@@ -31,6 +31,11 @@
 						<select class="custom-select form-control" id="updateNationList" name="updateNationList" required>
 							<option value="" disabled="disabled" selected>
 							Välj Nation...</option>
+							<% 
+								List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+								for (Nation n : nations) {
+									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+								}
 							%>
 						</select>
 						<label for="name">Namn</label>
@@ -50,7 +55,7 @@
 						<select class="custom-select" id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
 							Välj Nation..</option>
-							<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+							<%
 								for (Nation n : nations) {
 									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
 								}
