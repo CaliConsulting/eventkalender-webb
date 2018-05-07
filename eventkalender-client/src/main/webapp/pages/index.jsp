@@ -19,7 +19,7 @@
 	<div class="test mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
-			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">G� med i Studentlund.</a></h4>
+			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">Gå med i Studentlund.</a></h4>
 				<div class="card-deck">
 					<div class="card">
 						<div class="card-header">
@@ -27,8 +27,8 @@
 						</div>
 						<div class="card-body">
 							<p class="card-text">
-								 D� annordnar b�de nationer och k�rer novischveckor, en fartfylldperiod av aktiviteter d�r du l�r dig k�nna dina
-								 nya klasskamrater och nationsmedlemmar. Ett ypperligt tillf�lle att ut�ka din nyvunna umg�ngeskrets!
+								 Då annordnar både nationer och kårer novischveckor, en fartfylldperiod av aktiviteter där du lär dig känna dina
+								 nya klasskamrater och nationsmedlemmar. Ett ypperligt tillfälle att utöka din nyvunna umgängeskrets!
 							</p>
 						</div>
 					</div>
@@ -45,8 +45,8 @@
 						<div class="card-header"><h5 class="card-title">Studentliv</h5></div>
 						<div class="card-body">
 							<p class="card-text">
-								I Lunds studentliv s� annordnar nationerna flertalet aktiviteter s�som idrottskv�llar, luncher, sittningar och nattklubbar.
-								F�r att medverka i och ta del av alla dessa m�ste du som student vara medlem i Studentlund.
+								I Lunds studentliv så annordnar nationerna flertalet aktiviteter såsom idrottskvällar, luncher, sittningar och nattklubbar.
+								För att medverka i och ta del av alla dessa måste du som student vara medlem i Studentlund.
 							</p>
 						</div>
 					</div>
@@ -58,10 +58,10 @@
 		<div class="card">
 			<div class="card-body">
 			<h2 class="card-title">
-				<a href="https://www.studentlund.se/event/" class="text-dark">�r du redan medlem i Studentlund?</a>
+				<a href="https://www.studentlund.se/event/" class="text-dark">Är du redan medlem i Studentlund?</a>
 			</h2>
 			<p class="card-text">
-				Ta d� en titt i Eventkalenderns evenemangslista d�r ink�p av f�rk�psbilljetter �r m�jligt, eller s�k evenemang via Studentlunds egna tj�nst f�r lundastudenterna.
+				Ta då en titt i Eventkalenderns evenemangslista där inköp av förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds egna tjänst för lundastudenterna.
 				<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/logo-en.png">
 			</p>
 			</div>
