@@ -1,9 +1,10 @@
 html {
 	position: relative;
+	min-height: 100%;
 }
 
 body {
-	min-height: 100%;
+	height: 100%;
 	margin-bottom: 120px; /* marginalen p� botten skall vara samma som h�jden p� footern */
 	background-color: #f8f9fa;
 }

@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="container-fluid">
-			<div class="indexLeftCard mt-2 mb-2">
+			<div class="mt-2 mb-2">
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">
@@ -56,24 +56,24 @@
 										alla dessa måste du som student vara medlem i Studentlund.</p>
 								</div>
 							</div>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a href="https://www.studentlund.se/event/" class="text-dark">
+										Redan medlem i Studentlund?</a>
+									</h5>
+								</div>
+								<div class="card-body">
+									<p class="card-text">
+										Ta då en titt i Eventkalenderns evenemangslista där inköp av
+										förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds
+										egna tjänst för lundastudenterna. 
+										<img class="card-img mt-2"
+											src="${pageContext.request.contextPath}/img/logo-en.png">
+									</p>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="indexRightCard mt-2 mb-2">
-				<div class="card">
-					<div class="card-body">
-						<h2 class="card-title">
-							<a href="https://www.studentlund.se/event/" class="text-dark">Är
-								du redan medlem i Studentlund?</a>
-						</h2>
-						<p class="card-text">
-							Ta då en titt i Eventkalenderns evenemangslista där inköp av
-							förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds
-							egna tjänst för lundastudenterna. 
-							<img class="card-img mt-2"
-								src="${pageContext.request.contextPath}/img/logo-en.png">
-						</p>
 					</div>
 				</div>
 			</div>
@@ -113,7 +113,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="indexLeftCard mt-2 mb-2">
+			<div class="mt-2 mb-2">
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">
@@ -152,23 +152,23 @@
 										alla dessa måste du som student vara medlem i Studentlund.</p>
 								</div>
 							</div>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">
+										<a href="https://www.studentlund.se/event/" class="text-dark">
+										Redan medlem i Studentlund?</a>
+									</h5>
+								</div>
+								<div class="card-body">
+									<p class="card-text">
+										Ta då en titt i Eventkalenderns evenemangslista där inköp av
+										förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds
+										egna tjänst för lundastudenterna. <img class="card-img mt-2"
+											src="${pageContext.request.contextPath}/img/logo-en.png">
+									</p>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="indexRightCard mt-2 mb-2">
-				<div class="card">
-					<div class="card-body">
-						<h2 class="card-title">
-							<a href="https://www.studentlund.se/event/" class="text-dark">Är
-								du redan medlem i Studentlund?</a>
-						</h2>
-						<p class="card-text">
-							Ta då en titt i Eventkalenderns evenemangslista där inköp av
-							förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds
-							egna tjänst för lundastudenterna. <img class="card-img mt-2"
-								src="${pageContext.request.contextPath}/img/logo-en.png">
-						</p>
 					</div>
 				</div>
 			</div>
