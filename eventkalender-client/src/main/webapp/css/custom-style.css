@@ -35,12 +35,12 @@ header {
 }
 
 .bgImgEnd {
-	background-image: url(../img/Slut.png);
+	background-image: url(../img/Sluts.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	width: 100%;
 	height: 0;
-	padding-top: 47%; /* (img-height / img-width * container-width) */
+	padding-bottom: 42%; /* (img-height / img-width * container-width) */
 	/* (853 / 1280 * 100) */
 	position: relative;
 }

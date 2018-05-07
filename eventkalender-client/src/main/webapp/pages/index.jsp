@@ -161,7 +161,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="test1 mt-2 mb-2">
+	<div class="mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
 				<h2 class="card-title">
