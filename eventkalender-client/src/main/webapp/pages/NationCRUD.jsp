@@ -18,7 +18,7 @@
 						<label for="nationName">Namn</label>
 							<input type="text" class="form-control" id="nationName" name="nationName" placeholder="Namn" required>
 					</div>
-					<input type="submit" name="submitAddNation">
+					<input type="submit" name="submitAddNation" value="Lägg till">
 					<input type="hidden" name="operation" value="addNation">
 				</form>
 			</div>
@@ -41,7 +41,7 @@
 						<label for="name">Namn</label>
 							<input type="text" class="form-control" id="updateNationName" name="updateNationName" placeholder="Namn" required> 
 					</div>
-					<input type="submit" name="submitUpdateNation">
+					<input type="submit" name="submitUpdateNation" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateNation">
 				</form>
 			</div>
@@ -51,7 +51,6 @@
 				<h5 class="addTitel">Ta bort Nation</h5>
 				<form action="${pageContext.request.contextPath}/nations/crud" method="POST" novalidation class="needs-validation">
 						<div class="form-group">
-						<label for="nation">Nation</label> 
 						<select class="custom-select" id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
 							Välj Nation..</option>
@@ -62,7 +61,7 @@
 							%>
 						</select>
 					</div>
-					<input type="submit" name="submitDeleteNation">
+					<input type="submit" name="submitDeleteNation" value="Ta bort">
 					<input type="hidden" name="operation" value="deleteNation">
 				</form>
 			</div>

@@ -38,7 +38,7 @@
 						<label for="endTime">Sluttid</label>
 							<input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
 					</div>
-					<input type="submit" name="submitAddEvent">
+					<input type="submit" name="submitAddEvent" value="Lägg till">
 					<input type="hidden" name="operation" value="addEvent">
 				</form>
 			</div>
@@ -80,7 +80,7 @@
 						<label for="endTime">Sluttid</label>
 							<input type="datetime-local" class="form-control" id="updateEventEndTime" name="updateEventEndTime" required>
 					</div>
-					<input type="submit" name="submitUpdateEvent">
+					<input type="submit" name="submitUpdateEvent" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateEvent">
 				</form>
 			</div>
@@ -90,7 +90,6 @@
 				<div class="card-body">
 					<h5 class="addTitel">Ta bort Evenemang</h5>
 					<div class="form-group">
-						<label for="event">Evenemang</label> 
 						<select class="custom-select"
 							id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
@@ -102,7 +101,7 @@
 							%>
 						</select>
 					</div>
-					<input type="submit" name="submitDeleteEvent">
+					<input type="submit" name="submitDeleteEvent" value="Ta bort">
 					<input type="hidden" name="operation" value="deleteEvent"> 
 				</div>
 			</form>
