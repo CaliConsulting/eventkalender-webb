@@ -1,10 +1,9 @@
 html {
 	position: relative;
-	min-height: 100%;
 }
 
 body {
-	height: 100%;
+	min-height: 100%;
 	margin-bottom: 120px; /* marginalen p� botten skall vara samma som h�jden p� footern */
 	background-color: #f8f9fa;
 }
@@ -47,12 +46,12 @@ header {
 	color: #ffffff;
 }
 
-.test {
+.indexLeftCard {
 	float: left;
 	width: 75%;
 }
 
-.test1 {
+.indexRightCard {
 	float: right;
 	width: 24%
 }
