@@ -13,7 +13,7 @@
 		<div class="card">
 			<div class="card-body">
 				<input class="form-control" id="myInput" type="text"
-					placeholder="Sök..">
+					placeholder="SÃ¶k..">
 				<table class="table table-hover" id="myTable">
 					<thead>
 						<tr>

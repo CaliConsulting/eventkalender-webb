@@ -12,11 +12,11 @@
 	<main class="container mt-2 mb-2">
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till Person</h5>
+				<h5 class="addTitel">LÃ¤gg till Person</h5>
 				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
 					<div class="form-group">
-						<label for="firstName">Förnamn</label> 
-						<input type="text" class="form-control" id="firstName" name="firstName" placeholder="Förnamn" 
+						<label for="firstName">FÃ¶rnamn</label> 
+						<input type="text" class="form-control" id="firstName" name="firstName" placeholder="FÃ¶rnamn" 
 						required>
 						<label for="lastName">Efternamn</label>
 						<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Efternamn"
@@ -24,6 +24,33 @@
 					</div>
 					<input type="submit" name="submitAddPerson">
 					<input type="hidden" name="operation" value="addPerson">
+				</form>
+			</div>
+		</div>
+		<div class="card mb-2">
+			<div class="card-body">
+				<h5 class="addTitel">Uppdatera Person</h5>
+				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/persons/crud" method="POST">
+					<label for="person">Person</label> 
+						<select class="custom-select" id="updatePersonList" name="updatePersonList" required>
+							<option value="" disabled="disabled" selected>VÃ¤lj
+								Person..</option>
+							<% List<Person> persons = (List<Person>) request.getAttribute("persons");
+								for (Person p : persons) {
+									out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
+								}
+							%>
+						</select>
+						<div class="form-group">
+							<label for="firstName">FÃ¶rnamn</label> 
+							<input type="text" class="form-control" id="updatePersonFirstName" name="updatePersonFirstName" placeholder="FÃ¶rnamn" 
+							required>
+							<label for="lastName">Efternamn</label>
+							<input type="text" class="form-control" id="updatePersonLastName" name="updatePersonLastName" placeholder="Efternamn"
+								required>
+						</div>
+						<input type="submit" name="submitUpdatePerson">
+						<input type="hidden" name="operation" value="updatePerson">
 				</form>
 			</div>
 		</div>
@@ -35,12 +62,12 @@
 						<label for="person">Person</label> 
 						<select class="custom-select"
 							id="id" name="id" required>
-							<option value="" disabled="disabled" selected>Välj
+							<option value="" disabled="disabled" selected>VÃ¤lj
 								Person..</option>
-							<% List<Person> persons = (List<Person>) request.getAttribute("persons");
-									for (Person p : persons) {
-										out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
-									}
+							<%
+								for (Person p : persons) {
+									out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
+								}
 							%>
 						</select>
 					</div>

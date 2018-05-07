@@ -11,15 +11,15 @@
 	<!-- /header -->
 	<div class="bgImg">
 		<div class="welcomeText smokeybackground">
-			<h1 class="display-4">Välkommen till Eventkalendern!</h1>
-			<h2>Vi hjälper dig planera ditt nationsliv</h2>
+			<h1 class="display-4">VÃ¤lkommen till Eventkalendern!</h1>
+			<h2>Vi hjÃ¤lper dig planera ditt nationsliv</h2>
 		</div>
 	</div>
 	<main role="main" class="container-fluid">
 	<div class="test mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
-			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">Gå med i Studentlund.</a></h4>
+			<h4 class="card-title"><a href="www.studentlund.se" class="text-dark">Gï¿½ med i Studentlund.</a></h4>
 				<div class="card-deck">
 					<div class="card">
 						<div class="card-header">
@@ -27,8 +27,8 @@
 						</div>
 						<div class="card-body">
 							<p class="card-text">
-								 Då annordnar både nationer och kårer novischveckor, en fartfylldperiod av aktiviteter där du lär dig känna dina
-								 nya klasskamrater och nationsmedlemmar. Ett ypperligt tillfälle att utöka din nyvunna umgängeskrets!
+								 Dï¿½ annordnar bï¿½de nationer och kï¿½rer novischveckor, en fartfylldperiod av aktiviteter dï¿½r du lï¿½r dig kï¿½nna dina
+								 nya klasskamrater och nationsmedlemmar. Ett ypperligt tillfï¿½lle att utï¿½ka din nyvunna umgï¿½ngeskrets!
 							</p>
 						</div>
 					</div>
@@ -45,8 +45,8 @@
 						<div class="card-header"><h5 class="card-title">Studentliv</h5></div>
 						<div class="card-body">
 							<p class="card-text">
-								I Lunds studentliv så annordnar nationerna flertalet aktiviteter såsom idrottskvällar, luncher, sittningar och nattklubbar.
-								För att medverka i och ta del av alla dessa måste du som student vara medlem i Studentlund.
+								I Lunds studentliv sï¿½ annordnar nationerna flertalet aktiviteter sï¿½som idrottskvï¿½llar, luncher, sittningar och nattklubbar.
+								Fï¿½r att medverka i och ta del av alla dessa mï¿½ste du som student vara medlem i Studentlund.
 							</p>
 						</div>
 					</div>
@@ -54,14 +54,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="test1  mt-2 mb-2">
+	<div class="test1 mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
 			<h2 class="card-title">
-				<a href="https://www.studentlund.se/event/" class="text-dark">Är du redan medlem i Studentlund?</a>
+				<a href="https://www.studentlund.se/event/" class="text-dark">ï¿½r du redan medlem i Studentlund?</a>
 			</h2>
 			<p class="card-text">
-				Ta då en titt i Eventkalenderns evenemangslista där inköp av förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds egna tjänst för lundastudenterna.
+				Ta dï¿½ en titt i Eventkalenderns evenemangslista dï¿½r inkï¿½p av fï¿½rkï¿½psbilljetter ï¿½r mï¿½jligt, eller sï¿½k evenemang via Studentlunds egna tjï¿½nst fï¿½r lundastudenterna.
 				<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/logo-en.png">
 			</p>
 			</div>
@@ -72,11 +72,10 @@
 			src="${pageContext.request.contextPath}/img/Ystad.png"
 			alt="Card image">
 		<div class="card-img-overlay">
-			<a href="https://www.facebook.com/hampus.sandell.5"><h5 class="card-title">Studentnöjen!</h5></a>
-			<p class="card-text">
-				Tandemcykling, Lundakarnevalen, eller varför
-				inte en båttur med trevligt sällskap?
-			</p>
+			<a href="https://www.facebook.com/hampus.sandell.5"><h5
+					class="card-title">StudentnÃ¶jen!</h5></a>
+			<p class="card-text">Tandemcykling, Lundakarnevalen, eller varfÃ¶r
+				inte en bÃ¥ttur med trevligt sÃ¤llskap?</p>
 		</div>
 	</div>
 	</main>

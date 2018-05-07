@@ -8,16 +8,16 @@
 	<div class="prePurchaseImg">
 		<div class="prePurchaseText text-center">
 			<h1>
-				<strong>FÖRKÖP</strong>
+				<strong>FÃ–RKÃ–P</strong>
 			</h1>
 			<div class="text-center font-italic">
-				<h3>Säkra din plats och gå före kön!</h3>
+				<h3>SÃ¤kra din plats och gÃ¥ fÃ¶re kÃ¶n!</h3>
 			</div>
 		</div>
 	</div>
 	<main class="container-fluid">
-	<h3 class="text-center font-italic text-black">KÖP BILJETTER SOM
-		GER FÖRTRÄDE TILL KLUBBEN</h3>
+	<h3 class="text-center font-italic text-black">KÃ–P BILJETTER SOM
+		GER FÃ–RTRÃ„DE TILL KLUBBEN</h3>
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
@@ -28,9 +28,9 @@
 					<a class="text-white"
 						href="${pageContext.request.contextPath}/prepurchase/info">Casanova</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text">LÃ¤s mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-light">KÃ¶p biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -42,9 +42,9 @@
 					<a class="text-white"
 						href="${pageContext.request.contextPath}/prepurchase/info">Kajplats</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text">LÃ¤s mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-light">KÃ¶p biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -56,23 +56,23 @@
 					<a class="text-white"
 						href="${pageContext.request.contextPath}/prepurchase/info">Svartklubben</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text">LÃ¤s mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-light">KÃ¶p biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
 			<img class="card-img"
-				src="${pageContext.request.contextPath}/img/events/t-bar.png"
+				src="${pageContext.request.contextPath}/img/events/rT-bar.png.jpg"
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
 					<a class="text-white"
 						href="${pageContext.request.contextPath}/prepurchase/info">T-bar</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text">LÃ¤s mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-light">KÃ¶p biljetter</a>
 			</div>
 		</div>
 	</div>
