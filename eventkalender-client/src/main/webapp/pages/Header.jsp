@@ -37,7 +37,7 @@
 							href="${pageContext.request.contextPath}/persons/crud">Personer</a>
 					</div></li>
 				<li class="nav-item active"><a class="nav-link"
-					href="${pageContext.request.contextPath}/testing/index.html">Testning</a>
+					href="${pageContext.request.contextPath}/testing/index.html" target="_blank">Testning</a>
 				</li>
 			</ul>
 			<%
