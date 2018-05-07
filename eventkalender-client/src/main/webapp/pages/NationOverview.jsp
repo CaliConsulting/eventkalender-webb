@@ -22,9 +22,6 @@
 					Här träffar du en härlig blandning av folk från alla olika fakulteter som känner precis som du och 
 					vill göra något roligt vid sidan av studierna. Den tid som ligger framför dig kanske verkar oändligt 
 					länge, men utan att bli högtravande vill vi säga ta vara på den här tiden och gör det mesta av den.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -38,9 +35,6 @@
 					 årliga evenemang såsom Gustav II Adolf bal som är Nordens största studentbal, Julfest, Första
 					 maj-firande, Räkfest och Novischfester. Göteborgs nation karakteriseras av att vara en nation med
 					 fart och glädje i alla sina verksamheter. Vi är den lilla nationen med det stora hjärtat!</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -55,9 +49,6 @@
 					3000 medlemmar i dagsläget vilket gör oss till Lunds näst största nation. Men vi är absolut störst 
 					när det kommer till att arrangera fester. Vi har haft uppträdanden från artister såsom: Avicii, Laidback Luke, 
 					Kygo, Nause, Joachim Garraud, Sean Kingston och många fler!</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -72,9 +63,6 @@
 					skall få ut så mycket som möjligt av din studietid i Lund. Onsdagspuben är ett perfekt tillfälle att glömma bort 
 					skolans stress med dina kursare och utmanas istället av ett klurigt pubquiz eller att bara dyka upp på fredagspuben 
 					som ett härligt avslut på veckan.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -89,9 +77,6 @@
 					 erbjudit en scen där många i dag stora band spelat. Vad sägs om Silvana Imam, Alphaville, Broder Daniel och
 					 The Cardigans? Vår legendariska klubb Indigo har erbjudit det bästa inom indie i över två decennier men i några
 					 år har vi även drivit electroklubben Heartbeats som spelar fantastisk electronica snarare än mainstream house.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -106,9 +91,6 @@
 					 minnen för livet genom att jobba på någon av våra aktiviteter. Här kan du bland annat dansa i 
 					 dimman på Klubb Huset, äta gott till studentpris på både lunch, pub och nattcafé samt se Lunds 
 					 bästa nationsspääx.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -121,9 +103,6 @@
 					studentlivet. Nationen är en mötesplats för alla Lunds studenter och genomsyras av glädje, 
 					engagemang och gemenskap! Vi har ett brett utbud i vår verksamhet och erbjuder allt ifrån 
 					matlagning och pub- och klubbverksamhet av hög kvalitet till foto, teknik, idrott och kultur.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -136,9 +115,6 @@
 					med en öppen och välkomnande atmosfär med goda möjligheter att utveckla sina egna idéer!Som inskriven 
 					i Helsingkrona Nation är du välkommen att engagera dig i våra utskott! Sexmästeriet, Helsingkronaspexet, 
 					Idrott, NATU, IT, Redaktionen, Internationella sekretariatet, Foto, Gillestugeriet och Novischeriet.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -154,9 +130,6 @@
 					där du kan dansa dig svettig till grymma DJ:s, liveband och feta MC:s. De fyra klubbar som regelbundet 
 					huserar på nationen är hiphop- och urbanklubben Svartklubben som kör varannan vecka och Electrified 
 					där källaren fylls med vibrerande elektroniska toner.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -169,9 +142,6 @@
 					gemenskapen. Som Sveriges första KRAV-certifierade studentförening kan vi erbjuda vällagad ekologisk 
 					mat och ett brett ölsortiment till studentvänliga priser varje onsdag och lördag. Vi har då våra pubar 
 					American pub, Greenway Pub och Pub Aperitivo öppna.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -184,9 +154,6 @@
 					så mycket mer än bara studier så därför är det viktigt att välja en nation där man trivs. 
 					Vi på Västgöta Nation är kända för den härliga gemenskapen som kan liknas vid en enda stor familj. 
 					Om du vill vara en del av denna familj har du kommit alldeles rätt!</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 			<div class="card">
@@ -200,9 +167,6 @@
 					perfekta port in i studielivet. Att Kalmar inte hör till de största nationerna gör oss till 
 					ett tight gäng där du lätt hittar vänner för livet!Varje tisdag och fredag håller våra populära 
 					pubar öppet. Pub Ölkällaren ger besökaren ett härligt barhäng för den som tycker lill-lördag är för långt borta.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
 				</div>
 			</div>
 		</div>
