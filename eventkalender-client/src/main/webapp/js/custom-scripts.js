@@ -85,3 +85,17 @@ $(document).ready(function() {
 	    });
 	});
 });
+
+$(document).ready(function() {
+	$("#updateEventList").change(function() {
+	    $.post("crud", { operation: "ajaxUpdateEvent", id: $(this).val() }, function(data) {
+	    	console.log("updateEventList");
+	    	console.log(data);
+	        $("#updateEventName").val(data["name"]);
+	        $("#updateEventSummary").val(data["summary"]);
+	        $("#updateEventNations").val(data["nation"]["id"]).change();
+	        $("#updateEventStartTime").val(data["startTime"]);
+	        $("#updateEventEndTime").val(data["endTime"]);
+	    });
+	});
+});
