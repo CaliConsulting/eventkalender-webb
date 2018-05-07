@@ -31,6 +31,24 @@ $(document).ready(function() {
 	});
 });
 
+$(document).ready(function() {
+	$("#myInputEvent").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myEventTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+});
+
+$(document).ready(function() {
+	$("#myInputPerson").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myPersonTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+});
+
 // kalender
 $(document).ready(function() {
 	if ($("#calendar").length > 0) {

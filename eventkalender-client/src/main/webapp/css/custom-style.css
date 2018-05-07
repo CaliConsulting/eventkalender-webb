@@ -5,7 +5,7 @@ html {
 
 body {
 	height: 100%;
-	margin-bottom: 120px; /* marginalen på botten skall vara samma som höjden på footern */
+	margin-bottom: 120px; /* marginalen pï¿½ botten skall vara samma som hï¿½jden pï¿½ footern */
 	background-color: #f8f9fa;
 }
 
@@ -18,8 +18,8 @@ header {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 120px; /* Höjden på footern skall vara den samma som bodyn */
-	line-height: 40px; /* Höjden på varje rad, tre rader - 120px */
+	height: 120px; /* Hï¿½jden pï¿½ footern skall vara den samma som bodyn */
+	line-height: 40px; /* Hï¿½jden pï¿½ varje rad, tre rader - 120px */
 	background-color: #213752;
 }
 
@@ -59,17 +59,16 @@ header {
 
 .invitePerson {
 	float: left;
-	width: 40%;
+	width: 45%;
 }
 
 .inviteControls {
-	margin: 0 40% 0 40%
-
+	margin: 0 45% 0 45%
 }
 
 .inviteEvent {
 	float: right; 
-	width: 40%
+	width: 45%
 }
 
 .prepurchasespacer {
