@@ -70,7 +70,7 @@
 					<a class="text-white"
 						href="${pageContext.request.contextPath}/prepurchase/info">T-bar</a>
 				</h5>
-				<p class="card-text">L�ä mer.</p>
+				<p class="card-text">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
 					class="btn btn-light">Köp biljetter</a>
 			</div>
