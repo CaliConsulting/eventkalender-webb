@@ -23,7 +23,7 @@
 					<input type="text" class="form-control" id="lastName"
 						name="lastName" placeholder="Efternamn" required>
 				</div>
-				<input type="submit" name="submitAddPerson" value="Lägg till">
+				<input type="submit" name="submitAddPerson" class="btn btn-outline-dark" value="Lägg till">
 				<input type="hidden" name="operation" value="addPerson">
 			</form>
 		</div>
@@ -51,7 +51,7 @@
 						class="form-control" id="updatePersonLastName"
 						name="updatePersonLastName" placeholder="Efternamn" required>
 				</div>
-				<input type="submit" name="submitUpdatePerson" value="Uppdatera">
+				<input type="submit" name="submitUpdatePerson" class="btn btn-outline-dark" value="Uppdatera">
 				<input type="hidden" name="operation" value="updatePerson">
 			</form>
 		</div>
@@ -73,7 +73,7 @@
 							%>
 					</select>
 				</div>
-				<input type="submit" name="submitDeletePerson" value="Ta bort">
+				<input type="submit" name="submitDeletePerson" class="btn btn-outline-dark" value="Ta bort">
 				<input type="hidden" name="operation" value="deletePerson">
 			</form>
 		</div>
