@@ -7,6 +7,7 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cali.eventkalender.utility.TimedCache;
 import net.aksingh.owmjapis.api.APIException;
 import net.aksingh.owmjapis.core.OWM;
 import net.aksingh.owmjapis.model.CurrentWeather;
@@ -33,7 +34,7 @@ public class OpenWeatherMapClient {
         owm = new OWM(this.apiKey);
         owm.setUnit(OWM.Unit.METRIC);
         
-        cache = new TimedCache();
+        cache = new TimedCache(300);
     }
 
     public static OpenWeatherMapClient getInstance() {

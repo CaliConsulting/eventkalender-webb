@@ -1,4 +1,4 @@
-package cali.eventkalender.api.weather;
+package cali.eventkalender.utility;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -11,10 +11,12 @@ public class TimedCache {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(TimedCache.class);
 	
+	private int seconds;
+	
 	private Map<String, LocalDateTime> timings;
 	private Map<String, String> actualCache;
 	
-	public TimedCache() {
+	public TimedCache(int seconds) {
 		this.timings = new HashMap<>();
 		this.actualCache = new HashMap<>();
 	}
@@ -35,7 +37,7 @@ public class TimedCache {
 		if (!timings.containsKey(key)) {
 			return true;
 		}
-		LocalDateTime expiration = timings.get(key).plusMinutes(5);
+		LocalDateTime expiration = timings.get(key).plusSeconds(seconds);
 		if (LocalDateTime.now().isAfter(expiration)) {
 			return true;
 		}
