@@ -23,27 +23,27 @@ jQuery('form[data-toggle="validator"] select').on('change', function(event) {
 });
 
 $(document).ready(function() {
-	$("#myInput").on("keyup", function() {
+	$("#inputNation").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
-		$("#myTable tr").filter(function() {
+		$("#tableNation tr").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
 });
 
 $(document).ready(function() {
-	$("#myInputEvent").on("keyup", function() {
+	$("#inputEvent").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
-		$("#myEventTable tr").filter(function() {
+		$("#tableEvent tr").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
 });
 
 $(document).ready(function() {
-	$("#myInputPerson").on("keyup", function() {
+	$("#inputPerson").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
-		$("#myPersonTable tr").filter(function() {
+		$("#tablePerson tr").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
