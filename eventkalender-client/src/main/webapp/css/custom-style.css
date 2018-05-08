@@ -21,6 +21,7 @@ header {
 	height: 120px; /* H�jden p� footern skall vara den samma som bodyn */
 	line-height: 40px; /* H�jden p� varje rad, tre rader - 120px */
 	background-color: #213752;
+	clear:both;
 }
 
 .bgImg {
@@ -42,7 +43,7 @@ header {
 	height: 0;
 	padding-bottom: 32%; /* (img-height / img-width * container-width) */
 	/* (853 / 1280 * 100) */
-	position: relative;
+	clear:both;
 }
 
 .goodbyeText {
