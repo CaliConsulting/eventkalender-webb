@@ -1,4 +1,4 @@
-package cali.eventkalender.servlet.invitation;
+package cali.eventkalender.servlet.event;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,17 +17,17 @@ import cali.eventkalender.facade.FacadeLocal;
 import cali.eventkalender.model.Event;
 import cali.eventkalender.model.Person;
 
-@WebServlet("/invitations")
-public class InvitationServlet extends HttpServlet {
+@WebServlet("/events/invitations")
+public class EventInvitationServlet extends HttpServlet {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(InvitationServlet.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EventInvitationServlet.class);
 
 	private static final long serialVersionUID = 1L;
 
 	@EJB
 	private FacadeLocal facade;
 
-	public InvitationServlet() {
+	public EventInvitationServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,7 +40,7 @@ public class InvitationServlet extends HttpServlet {
 
 		List<Person> persons = facade.findAllPersons();
 		request.setAttribute("persons", persons);
-		request.getRequestDispatcher("/pages/Invitation.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/EventInvitation.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
