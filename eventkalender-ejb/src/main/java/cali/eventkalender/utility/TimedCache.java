@@ -17,6 +17,8 @@ public class TimedCache {
 	private Map<String, String> actualCache;
 	
 	public TimedCache(int seconds) {
+		this.seconds = seconds;
+		
 		this.timings = new HashMap<>();
 		this.actualCache = new HashMap<>();
 	}
