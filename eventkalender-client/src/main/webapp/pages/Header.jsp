@@ -43,7 +43,12 @@
 			<%
 				OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
 		    %>
-			<span class="align-baseline mr-2"><%= c.getTemperature("Lund") %> °C</span> <img src="<%= c.getIconLink("Lund") %>">
+		    
+			<span class="align-baseline mr-2"> 
+				<%= c.getTemperature("Lund") %> °C
+			</span> 
+			<img src="<%= c.getIconLink("Lund") %>">
+			 
 		</div>
 	</nav>
 </header>
