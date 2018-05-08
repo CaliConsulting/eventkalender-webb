@@ -7,7 +7,7 @@
 	<%@ include file="Header.jsp"%>
 	<div class="prePurchaseImg">
 		<div class="prePurchaseText text-center">
-			<h1>
+			<h1 class="display-4">
 				<strong>FÖRKÖP</strong>
 			</h1>
 			<div class="text-center font-italic">
@@ -15,9 +15,11 @@
 			</div>
 		</div>
 	</div>
+	<div>
+	<h3 class="text-center font-italic text-black bg-light">KÖP BILJETTER SOM
+		GER FÖRETRÄDE TILL KLUBBEN</h3>
+	</div>
 	<main class="container-fluid">
-	<h3 class="text-center font-italic text-black">KÖP BILJETTER SOM
-		GER FÖRTRÄDE TILL KLUBBEN</h3>
 	<div class="card prepurchasespacer">
 		<div class="card bg-dark text-white">
 			<img class="card-img"
@@ -25,12 +27,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white"
+					<a class="text-white smokeybackground"
 						href="${pageContext.request.contextPath}/prepurchase/info">Casanova</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text smokeybackground">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-outline-light">Köp biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -39,12 +41,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white"
+					<a class="text-white smokeybackground"
 						href="${pageContext.request.contextPath}/prepurchase/info">Kajplats</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text smokeybackground">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-outline-light">Köp biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -53,12 +55,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white"
+					<a class="text-white smokeybackground"
 						href="${pageContext.request.contextPath}/prepurchase/info">Skybar</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text smokeybackground">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-outline-light">Köp biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -67,12 +69,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white"
+					<a class="text-white smokeybackground"
 						href="${pageContext.request.contextPath}/prepurchase/info">Svartklubben</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text smokeybackground">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-outline-light">Köp biljetter</a>
 			</div>
 		</div>
 		<div class="card bg-dark text-white">
@@ -81,12 +83,12 @@
 				alt="Card image">
 			<div class="card-img-overlay">
 				<h5 class="card-title">
-					<a class="text-white"
+					<a class="text-white smokeybackground"
 						href="${pageContext.request.contextPath}/prepurchase/info">T-bar</a>
 				</h5>
-				<p class="card-text">Läs mer.</p>
+				<p class="card-text smokeybackground">Läs mer.</p>
 				<a href="${pageContext.request.contextPath}/prepurchase/info"
-					class="btn btn-light">Köp biljetter</a>
+					class="btn btn-outline-light">Köp biljetter</a>
 			</div>
 		</div>
 	</div>

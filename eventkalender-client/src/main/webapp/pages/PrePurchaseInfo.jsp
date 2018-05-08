@@ -28,7 +28,7 @@
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 </form>
-<a href="${pageContext.request.contextPath}/prepurchase/info" class="btn btn-outline-dark btn-lg float-left">Till betalning</a>
+<a href="${pageContext.request.contextPath}/prepurchase/info" class="btn btn-outline-dark float-left">Till betalning</a>
 </div>
 	<!-- footer -->
 	<%@ include file="Footer.jsp"%>
