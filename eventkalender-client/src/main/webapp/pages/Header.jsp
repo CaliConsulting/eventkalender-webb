@@ -20,7 +20,7 @@
 					href="${pageContext.request.contextPath}/events/calendar">Kalendarium</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link"
-					href="${pageContext.request.contextPath}/invitations">Inbjudningar</a>
+					href="${pageContext.request.contextPath}/events/invitations">Inbjudningar</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link"
 					href="${pageContext.request.contextPath}/prepurchase">Förköp</a></li>
