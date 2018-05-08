@@ -1,4 +1,4 @@
-package cali.eventkalender.servlet;
+package cali.eventkalender.servlet.about;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -18,14 +18,14 @@ import cali.eventkalender.facade.FacadeLocal;
  * Servlet implementation class NationServlet
  */
 @WebServlet("/About")
-public class AboutServlet extends HttpServlet {
+public class aboutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     @EJB
     private FacadeLocal facade;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AboutServlet() {
+    public aboutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
