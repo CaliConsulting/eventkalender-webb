@@ -48,7 +48,9 @@ public class EventCRUDServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String operation = request.getParameter("operation");
+    	String postMessage = "";
+    	
+    	String operation = request.getParameter("operation");
         if ("addEvent".equals(operation)) {
             String name = request.getParameter("name");
             String summary = request.getParameter("summary");
@@ -63,15 +65,21 @@ public class EventCRUDServlet extends HttpServlet {
             Event e = new Event(name, summary, startTime, endTime);
             e.setNation(nation);
             facade.addEvent(e);
+            
+            postMessage = "Du lade till evenemanget " + e.getName();
         } else if ("deleteEvent".equals(operation)) {
             long id = Long.valueOf(request.getParameter("id"));
-            facade.deleteEvent(id);
+            Event e = facade.findEventById(id);
+            if (e != null) {
+                facade.deleteEvent(id);
+                postMessage = "Du tog bort evenemanget " + e.getName();
+            }
         } else if ("updateEvent".equals(operation)) {
             long id = Long.valueOf(request.getParameter("updateEventList"));
             String name = request.getParameter("updateEventName");
             String summary = request.getParameter("updateEventSummary");
 
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             LocalDateTime startTime = LocalDateTime.parse(request.getParameter("updateEventStartTime"), format);
             LocalDateTime endTime = LocalDateTime.parse(request.getParameter("updateEventEndTime"), format);
 
@@ -85,6 +93,8 @@ public class EventCRUDServlet extends HttpServlet {
             e.setEndTime(endTime);
             e.setNation(nation);
             facade.updateEvent(e);
+            
+            postMessage = "Du uppdaterade evenemanget " + e.getName();
         } else if ("ajaxUpdateEvent".equals(operation)) {
             response.setContentType("application/json");
 
@@ -96,6 +106,12 @@ public class EventCRUDServlet extends HttpServlet {
             }
             return;
         }
+        
+        // Sätt attributet endast om vi satt ett meddelande
+        if (postMessage != null && !postMessage.equals("")) {
+            request.setAttribute("postMessage", postMessage);
+        }
+        
         doGet(request, response);
     }
 

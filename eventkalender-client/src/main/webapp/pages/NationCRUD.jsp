@@ -9,7 +9,8 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2 mb-2">
+	<main role="main" class="container mt-2">
+		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Nation</h5>

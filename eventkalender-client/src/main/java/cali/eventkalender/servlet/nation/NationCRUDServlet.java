@@ -41,15 +41,23 @@ public class NationCRUDServlet extends HttpServlet {
 
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String operation = request.getParameter("operation");
+        String postMessage = "";
+    	
+    	String operation = request.getParameter("operation");
 	    if ("addNation".equals(operation)) {
 	        String nationName = request.getParameter("nationName");
 	        
 	        Nation n = new Nation(nationName);
 	        facade.addNation(n);
+	        
+	        postMessage = "Du lade till nationen " + n.getName();
 	    } else if ("deleteNation".equals(operation)) {
 	        long id = Long.valueOf(request.getParameter("id"));
-	        facade.deleteNation(id);
+	        Nation n = facade.findNationById(id);
+	        if (n != null) {
+	        	facade.deleteNation(id);
+	        	postMessage = "Du tog bort nationen " + n.getName();
+	        }
 	    } else if ("updateNation".equals(operation)) {
 	        long id = Long.valueOf(request.getParameter("updateNationList"));
 	        String nationName = request.getParameter("updateNationName");
@@ -57,6 +65,8 @@ public class NationCRUDServlet extends HttpServlet {
 	        Nation n = facade.findNationById(id);
 	        n.setName(nationName);
 	        facade.updateNation(n);
+	        
+	        postMessage = "Du uppdaterade nationen " + n.getName();
 	    } else if ("ajaxUpdateNation".equals(operation)) {
 	        response.setContentType("application/json");
 	        
@@ -68,6 +78,12 @@ public class NationCRUDServlet extends HttpServlet {
 	        }
 	        return;
 	    }
+
+        // Sätt attributet endast om vi satt ett meddelande
+        if (postMessage != null && !postMessage.equals("")) {
+            request.setAttribute("postMessage", postMessage);
+        }
+	    
 		doGet(request, response);
 	}
 
