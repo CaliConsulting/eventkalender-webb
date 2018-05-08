@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Event.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eventkalender-ejb</a> &gt; <a href="index.source.html" class="el_package">cali.eventkalender.model</a> &gt; <span class="el_source">Event.java</span></div><h1>Event.java</h1><pre class="source lang-java linenums">package cali.eventkalender.model;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@NamedQuery(name = &quot;Event.findAll&quot;, query = &quot;SELECT e FROM Event e&quot;)
+@Table(name = &quot;Event&quot;)
+public class Event implements Serializable {
+
+	private static final long serialVersionUID = 4865562529984171768L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = &quot;Id&quot;)
+	private long id;
+
+	@Column(name = &quot;Name&quot;, nullable = false)
+	private String name;
+
+	@Column(name = &quot;Summary&quot;, nullable = false)
+	private String summary;
+
+	@Column(name = &quot;StartTime&quot;, nullable = false)
+	private LocalDateTime startTime;
+
+	@Column(name = &quot;EndTime&quot;, nullable = false)
+	private LocalDateTime endTime;
+
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.EAGER)
+	@JoinColumn(name = &quot;NationId&quot;, referencedColumnName = &quot;Id&quot;, nullable = false)
+	private Nation nation;
+
+	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.EAGER)
+	@JoinTable(name = &quot;PersonEvent&quot;, joinColumns = @JoinColumn(name = &quot;EventId&quot;, referencedColumnName = &quot;Id&quot;), inverseJoinColumns = @JoinColumn(name = &quot;PersonId&quot;, referencedColumnName = &quot;Id&quot;))
+	private List&lt;Person&gt; persons;
+
+<span class="fc" id="L57">	public Event() {</span>
+<span class="fc" id="L58">		this.id = Long.MIN_VALUE;</span>
+<span class="fc" id="L59">		this.persons = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L60">	}</span>
+
+	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime) {
+<span class="fc" id="L63">		this();</span>
+<span class="fc" id="L64">		setName(Objects.requireNonNull(name));</span>
+<span class="fc" id="L65">		setSummary(Objects.requireNonNull(summary));</span>
+<span class="fc" id="L66">		setStartTime(Objects.requireNonNull(startTime));</span>
+<span class="fc" id="L67">		setEndTime(Objects.requireNonNull(endTime));</span>
+<span class="fc" id="L68">	}</span>
+
+	public Event(String name, String summary, LocalDateTime startTime, LocalDateTime endTime, Nation nation,
+			List&lt;Person&gt; persons) {
+<span class="fc" id="L72">		this(name, summary, startTime, endTime);</span>
+<span class="fc" id="L73">		setNation(Objects.requireNonNull(nation));</span>
+<span class="fc" id="L74">		setPersons(Objects.requireNonNull(persons));</span>
+<span class="fc" id="L75">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L78">		return id;</span>
+	}
+
+	public void setId(Long id) {
+<span class="fc" id="L82">		this.id = id;</span>
+<span class="fc" id="L83">	}</span>
+
+	public String getName() {
+<span class="fc" id="L86">		return name;</span>
+	}
+
+	public void setName(String name) {
+<span class="fc" id="L90">		this.name = name;</span>
+<span class="fc" id="L91">	}</span>
+
+	public String getSummary() {
+<span class="fc" id="L94">		return summary;</span>
+	}
+
+	public void setSummary(String summary) {
+<span class="fc" id="L98">		this.summary = summary;</span>
+<span class="fc" id="L99">	}</span>
+
+	public LocalDateTime getStartTime() {
+<span class="fc" id="L102">		return startTime;</span>
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+<span class="fc" id="L106">		this.startTime = startTime;</span>
+<span class="fc" id="L107">	}</span>
+
+	public String getStartTimeFormatted() {
+<span class="fc" id="L110">		LocalDateTime start = getStartTime();</span>
+<span class="fc" id="L111">		DateTimeFormatter format = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm&quot;);</span>
+<span class="fc" id="L112">		return format.format(start);</span>
+	}
+
+	public LocalDateTime getEndTime() {
+<span class="fc" id="L116">		return endTime;</span>
+	}
+
+	public String getEndTimeFormatted() {
+<span class="fc" id="L120">		LocalDateTime end = getEndTime();</span>
+<span class="fc" id="L121">		DateTimeFormatter format = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm&quot;);</span>
+<span class="fc" id="L122">		return format.format(end);</span>
+	}
+
+	public void setEndTime(LocalDateTime endTime) {
+<span class="fc" id="L126">		this.endTime = endTime;</span>
+<span class="fc" id="L127">	}</span>
+
+	public Nation getNation() {
+<span class="fc" id="L130">		return nation;</span>
+	}
+
+	public void setNation(Nation nation) {
+<span class="fc bfc" id="L134" title="All 2 branches covered.">		if (nation != this.nation) {</span>
+<span class="fc" id="L135">			this.nation = nation;</span>
+		}
+<span class="fc bfc" id="L137" title="All 4 branches covered.">		if (nation != null &amp;&amp; !nation.hasEvent(this)) {</span>
+<span class="fc" id="L138">			nation.addEvent(this);</span>
+		}
+<span class="fc" id="L140">	}</span>
+
+	public List&lt;Person&gt; getPersons() {
+<span class="fc" id="L143">		return persons;</span>
+	}
+
+	public void setPersons(List&lt;Person&gt; persons) {
+<span class="fc" id="L147">		this.persons = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">		for (Person p : persons) {</span>
+<span class="fc" id="L149">			addPerson(p);</span>
+<span class="fc" id="L150">		}</span>
+<span class="fc" id="L151">	}</span>
+
+	public void addPerson(Person person) {
+<span class="fc bfc" id="L154" title="All 2 branches covered.">		if (person != null) {</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">			if (!hasPerson(person)) {</span>
+<span class="fc" id="L156">				this.persons.add(person);</span>
+			}
+<span class="fc bfc" id="L158" title="All 2 branches covered.">			if (!person.hasEvent(this)) {</span>
+<span class="fc" id="L159">				person.addEvent(this);</span>
+			}
+		}
+<span class="fc" id="L162">	}</span>
+
+	public void deletePerson(long id) {
+<span class="fc bfc" id="L165" title="All 2 branches covered.">		Optional&lt;Person&gt; p = this.persons.stream().filter(x -&gt; x.getId() == id).findFirst();</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">		if (p.isPresent()) {</span>
+<span class="fc" id="L167">			deletePerson(p.get());</span>
+		}
+<span class="fc" id="L169">	}</span>
+
+	public void deletePerson(Person person) {
+<span class="fc bfc" id="L172" title="All 2 branches covered.">		if (person != null) {</span>
+<span class="fc" id="L173">			this.persons.remove(person);</span>
+<span class="fc bfc" id="L174" title="All 2 branches covered.">			if (person.hasEvent(this)) {</span>
+<span class="fc" id="L175">				person.deleteEvent(this);</span>
+			}
+		}
+<span class="fc" id="L178">	}</span>
+
+	public boolean hasPerson(Person person) {
+<span class="fc" id="L181">		return this.persons.contains(person);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L186" title="All 2 branches covered.">		if (this == obj) {</span>
+<span class="fc" id="L187">			return true;</span>
+		}
+<span class="fc bfc" id="L189" title="All 2 branches covered.">		if (obj == null) {</span>
+<span class="fc" id="L190">			return false;</span>
+		}
+<span class="fc bfc" id="L192" title="All 2 branches covered.">		if (!(obj instanceof Event)) {</span>
+<span class="fc" id="L193">			return false;</span>
+		}
+<span class="fc" id="L195">		Event e = (Event) obj;</span>
+<span class="fc bfc" id="L196" title="All 4 branches covered.">		return Objects.equals(this.id, e.id) &amp;&amp; Objects.equals(this.name, e.name)</span>
+<span class="fc bfc" id="L197" title="All 4 branches covered.">				&amp;&amp; Objects.equals(this.summary, e.summary) &amp;&amp; Objects.equals(this.startTime, e.startTime)</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">				&amp;&amp; Objects.equals(this.endTime, e.endTime);</span>
+	}
+
+	@Override
+	public int hashCode() {
+<span class="fc" id="L203">		final int prime = 31;</span>
+<span class="fc" id="L204">		return Objects.hash(this.id * prime, this.name, this.startTime, this.endTime);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

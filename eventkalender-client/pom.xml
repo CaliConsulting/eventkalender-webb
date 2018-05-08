@@ -28,12 +28,6 @@
       <scope>provided</scope>
       <type>ejb</type>
     </dependency>
-
-    <!-- OpenWeatherMap -->
-    <dependency>
-      <groupId>net.aksingh</groupId>
-      <artifactId>owm-japis</artifactId>
-    </dependency>
   </dependencies>
 
   <build>

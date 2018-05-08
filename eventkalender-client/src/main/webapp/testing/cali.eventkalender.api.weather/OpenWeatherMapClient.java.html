@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OpenWeatherMapClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eventkalender-ejb</a> &gt; <a href="index.source.html" class="el_package">cali.eventkalender.api.weather</a> &gt; <span class="el_source">OpenWeatherMapClient.java</span></div><h1>OpenWeatherMapClient.java</h1><pre class="source lang-java linenums">package cali.eventkalender.api.weather;
+
+import net.aksingh.owmjapis.api.APIException;
+import net.aksingh.owmjapis.core.OWM;
+import net.aksingh.owmjapis.model.CurrentWeather;
+import net.aksingh.owmjapis.model.param.Weather;
+
+/**
+ * &lt;p&gt;Wrapper for OWM client.&lt;/p&gt;
+ */
+public class OpenWeatherMapClient {
+
+    private static OpenWeatherMapClient client;
+
+    private OWM owm;
+
+    private String apiKey;
+
+<span class="nc" id="L19">    private OpenWeatherMapClient() {</span>
+<span class="nc" id="L20">        this.apiKey = &quot;e33f7134856ab9fbbe79a544cc23bc39&quot;;</span>
+
+<span class="nc" id="L22">        owm = new OWM(this.apiKey);</span>
+<span class="nc" id="L23">        owm.setUnit(OWM.Unit.METRIC);</span>
+<span class="nc" id="L24">    }</span>
+
+    public static OpenWeatherMapClient getInstance() {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (client == null) {</span>
+<span class="nc" id="L28">            client = new OpenWeatherMapClient();</span>
+        }
+<span class="nc" id="L30">        return client;</span>
+    }
+
+    public CurrentWeather getCurrentWeather(String city) {
+        try {
+<span class="nc" id="L35">            CurrentWeather cwd = owm.currentWeatherByCityName(&quot;Lund&quot;, OWM.Country.SWEDEN);</span>
+<span class="nc" id="L36">            return cwd;</span>
+<span class="nc" id="L37">        } catch (APIException e) {</span>
+<span class="nc" id="L38">            throw new RuntimeException(e);</span>
+        }
+    }
+
+    public String getTemperature(String city) {
+<span class="nc" id="L43">        double temp = getCurrentWeather(city).getMainData().getTemp();</span>
+        // Round temperature
+<span class="nc" id="L45">        return String.format(&quot;%.1f&quot;, temp);</span>
+    }
+
+    public String getIconLink(String city) {
+<span class="nc" id="L49">        CurrentWeather cwd = getCurrentWeather(city);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if (cwd.hasWeatherList()) {</span>
+            // We want the current weather; it is first in the list
+<span class="nc" id="L52">            Weather weather = cwd.getWeatherList().get(0);</span>
+<span class="nc" id="L53">            return weather.getIconLink();</span>
+        }
+<span class="nc" id="L55">        return null;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

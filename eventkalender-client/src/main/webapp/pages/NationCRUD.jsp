@@ -12,14 +12,37 @@
 	<main role="main" class="container mt-2 mb-2">
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">L�gg till Nation</h5>
+				<h5 class="addTitel">Lägg till Nation</h5>
 				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/nations/crud" method="POST">
 					<div class="form-group">
 						<label for="nationName">Namn</label>
 							<input type="text" class="form-control" id="nationName" name="nationName" placeholder="Namn" required>
 					</div>
-					<input type="submit" name="submitAddNation">
+					<input type="submit" name="submitAddNation" value="Lägg till">
 					<input type="hidden" name="operation" value="addNation">
+				</form>
+			</div>
+		</div>
+		<div class="card mb-2">
+			<div class="card-body">
+				<h5 class="addTitel">Uppdatera Nation</h5>
+				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/nations/crud" method="POST">
+					<div class="form-group">
+						<select class="custom-select form-control" id="updateNationList" name="updateNationList" required>
+							<option value="" disabled="disabled" selected>
+							Välj Nation...</option>
+							<% 
+								List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+								for (Nation n : nations) {
+									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+								}
+							%>
+						</select>
+						<label for="name">Namn</label>
+							<input type="text" class="form-control" id="updateNationName" name="updateNationName" placeholder="Namn" required> 
+					</div>
+					<input type="submit" name="submitUpdateNation" value="Uppdatera">
+					<input type="hidden" name="operation" value="updateNation">
 				</form>
 			</div>
 		</div>
@@ -28,18 +51,17 @@
 				<h5 class="addTitel">Ta bort Nation</h5>
 				<form action="${pageContext.request.contextPath}/nations/crud" method="POST" novalidation class="needs-validation">
 						<div class="form-group">
-						<label for="nation">Nation</label> 
 						<select class="custom-select" id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
-							V�lj Nation..</option>
-							<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
-									for (Nation n : nations) {
-										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
-									}
+							Välj Nation..</option>
+							<%
+								for (Nation n : nations) {
+									out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
+								}
 							%>
 						</select>
 					</div>
-					<input type="submit" name="submitDeleteNation">
+					<input type="submit" name="submitDeleteNation" value="Ta bort">
 					<input type="hidden" name="operation" value="deleteNation">
 				</form>
 			</div>
