@@ -22,6 +22,8 @@ public class OpenWeatherMapClient {
     private static OpenWeatherMapClient client;
 
     private OWM owm;
+    
+    private TimedCache cache;
 
     private String apiKey;
 
@@ -30,6 +32,8 @@ public class OpenWeatherMapClient {
 
         owm = new OWM(this.apiKey);
         owm.setUnit(OWM.Unit.METRIC);
+        
+        cache = new TimedCache();
     }
 
     public static OpenWeatherMapClient getInstance() {
@@ -52,39 +56,55 @@ public class OpenWeatherMapClient {
     }
 
     public String getTemperature(String city) {
+    	if (!cache.isExpired("temperature")) {
+    		return cache.getValue("temperature");
+    	}
+    	
         CurrentWeather cwd = getCurrentWeather(city);
         if (cwd == null) {
             return "--";
         }
+        
         double temp = cwd.getMainData().getTemp();
+        
         // Round temperature
-        return String.format("%.1f", temp);
+        String roundedTemp = String.format("%.1f", temp);
+        cache.setValue("temperature", roundedTemp);
+        return roundedTemp;
     }
 
     public String getIconLink(String city) {
+    	if (!cache.isExpired("iconLink")) {
+    		return cache.getValue("iconLink");
+    	}
+    	
+    	String iconLink = "";
         CurrentWeather cwd = getCurrentWeather(city);
-        if (cwd == null) {
-            // Fullösning men låt gå, om nu API:t skulle gå ner
-            return "/EventkalenderClient/img/questionmark.png";
+        if (cwd != null) {
+        	if (cwd.hasWeatherList()) {
+            	// Det aktuella vädret är först i listan
+                Weather weather = cwd.getWeatherList().get(0);
+                iconLink = weather.getIconLink();
+                cache.setValue("iconLink", iconLink);
+                return iconLink;
+        	}
         }
-        if (cwd.hasWeatherList()) {
-            // We want the current weather; it is first in the list
-            Weather weather = cwd.getWeatherList().get(0);
-            return weather.getIconLink();
-        }
+        // Vi vet inte vad vädret är
+        iconLink = "/EventkalenderClient/img/questionmark.png";
+        cache.setValue("iconLink", iconLink);
         return null;
     }
     
     private boolean isConnectionValid() {
-        String strUrl = "https://api.openweathermap.org/data/2.5/";
+        String address = "https://api.openweathermap.org/data/2.5/";
         try {
-            URL url = new URL(strUrl);
-            HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
-            urlConn.connect();
-            LOGGER.info("valid connection");
+            URL url = new URL(address);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            LOGGER.info("Valid connection to API");
             return true;
         } catch (IOException e) {
-            LOGGER.info("invalid connection");
+            LOGGER.info("Invalid connection to API");
             return false;
         }
     }
