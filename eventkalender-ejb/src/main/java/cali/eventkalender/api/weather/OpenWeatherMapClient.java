@@ -42,7 +42,7 @@ public class OpenWeatherMapClient {
     public CurrentWeather getCurrentWeather(String city) {
         try {
             if (isConnectionValid()) {
-                CurrentWeather cwd = owm.currentWeatherByCityName("Lund", OWM.Country.SWEDEN);
+                CurrentWeather cwd = owm.currentWeatherByCityName(city, OWM.Country.SWEDEN);
                 return cwd;
             }
             return null;
