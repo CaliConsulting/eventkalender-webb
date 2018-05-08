@@ -16,9 +16,9 @@
 			method="POST">
 			<div class="card invitePerson">
 				<div class="card-body">
-					<input class="form-control" id="myInputPerson" type="text"
+					<input class="form-control" id="inputPerson" type="text"
 						placeholder="Sök..">
-					<table class="table table-hover" id="myPersonTable">
+					<table class="table table-hover" id="tablePerson">
 						<thead>
 							<tr>
 								<th>Förnamn</th>
@@ -28,17 +28,17 @@
 						</thead>
 						<tbody>
 							<%
-								List<Person> persons = (List<Person>) request.getAttribute("persons");
-								for (Person p : persons) {
-									out.print("<tr>");
-									out.print("<td>" + p.getFirstName() + "</td>");
-									out.print("<td>" + p.getLastName() + "</td>");
+							    List<Person> persons = (List<Person>) request.getAttribute("persons");
+							    for (Person p : persons) {
+							        out.print("<tr>");
+							        out.print("<td>" + p.getFirstName() + "</td>");
+							        out.print("<td>" + p.getLastName() + "</td>");
 							%>
 							<td><input type="checkbox" name="persons"
 								value="<%=p.getId()%>"></td>
 							<%
-								out.print("</tr>");
-								}
+							    out.print("</tr>");
+							    }
 							%>
 						</tbody>
 					</table>
@@ -46,9 +46,9 @@
 			</div>
 			<div class="card inviteEvent">
 				<div class="card-body">
-					<input class="form-control" id="myInputEvent" type="text"
+					<input class="form-control" id="inputEvent" type="text"
 						placeholder="Sök..">
-					<table class="table table-hover" id="myEventTable">
+					<table class="table table-hover" id="tableEvent">
 						<thead>
 							<tr>
 								<th>Namn</th>
@@ -61,20 +61,20 @@
 						</thead>
 						<tbody>
 							<%
-								List<Event> events = (List<Event>) request.getAttribute("events");
-								for (Event e : events) {
-									out.print("<tr>");
-									out.print("<td>" + e.getName() + "</td>");
-									out.print("<td>" + e.getNation().getName() + "</td>");
-									out.print("<td>" + e.getStartTimeFormatted() + "</td>");
-									out.print("<td>" + e.getEndTimeFormatted() + "</td>");
-									out.print("<td>" + e.getPersons().size() + "</td>");
+							    List<Event> events = (List<Event>) request.getAttribute("events");
+							    for (Event e : events) {
+							        out.print("<tr>");
+							        out.print("<td>" + e.getName() + "</td>");
+							        out.print("<td>" + e.getNation().getName() + "</td>");
+							        out.print("<td>" + e.getStartTimeFormatted() + "</td>");
+							        out.print("<td>" + e.getEndTimeFormatted() + "</td>");
+							        out.print("<td>" + e.getPersons().size() + "</td>");
 							%>
 							<td><input type="checkbox" name="events"
 								value="<%=e.getId()%>"></td>
 							<%
-								out.print("</tr>");
-								}
+							    out.print("</tr>");
+							    }
 							%>
 						</tbody>
 					</table>
