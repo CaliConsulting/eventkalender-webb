@@ -9,13 +9,6 @@ body {
 	background-color: #f8f9fa;
 }
 
-tilbody {
-	height: 100%;
-	margin-bottom: 120px; /* marginalen p� botten skall vara samma som h�jden p� footern */
-	background-color: #f8f9fa;
-}
-
-
 header {
 	background-color: #ededed;
 
