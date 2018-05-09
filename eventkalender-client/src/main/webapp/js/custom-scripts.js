@@ -65,6 +65,12 @@ jQuery('form[data-toggle="validator"] select').on('change', function(event) {
 });
 
 $(document).ready(function() {
+	$("#postMessage").delay(3000).fadeOut(3000, function() {
+		$(this).remove();
+	});
+});
+
+$(document).ready(function() {
 	$("#inputNation").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
 		$("#tableNation tr").filter(function() {
