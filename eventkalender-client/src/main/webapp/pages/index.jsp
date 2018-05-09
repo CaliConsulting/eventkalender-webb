@@ -73,8 +73,7 @@
 			<div class="card-body">
 				<p class="card-text">
 					Lundastudenterna har en otrolig gemenskap som vi på Eventkalendern försöker
-					främja i bästa möjliga anda. Ansök till Lunds Universitet, något lätt exempelvis så att
-					du kan festa mer, ekonomi eller humbug grejer som språk. 
+					främja i bästa möjliga anda. Ansök till Lunds Universitet idag.
 					<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/logo-en.png">
 				</p>
 			</div>
