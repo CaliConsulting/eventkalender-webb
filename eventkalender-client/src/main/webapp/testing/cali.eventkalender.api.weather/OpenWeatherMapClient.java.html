@@ -7,6 +7,7 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cali.eventkalender.utility.TimedCache;
 import net.aksingh.owmjapis.api.APIException;
 import net.aksingh.owmjapis.core.OWM;
 import net.aksingh.owmjapis.model.CurrentWeather;
@@ -17,75 +18,95 @@ import net.aksingh.owmjapis.model.param.Weather;
  */
 public class OpenWeatherMapClient {
 
-<span class="fc" id="L20">    private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherMapClient.class);</span>
+<span class="fc" id="L21">    private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherMapClient.class);</span>
     
     private static OpenWeatherMapClient client;
 
     private OWM owm;
+    
+    private TimedCache cache;
 
     private String apiKey;
 
-<span class="fc" id="L28">    private OpenWeatherMapClient() {</span>
-<span class="fc" id="L29">        this.apiKey = &quot;e33f7134856ab9fbbe79a544cc23bc39&quot;;</span>
+<span class="fc" id="L31">    private OpenWeatherMapClient() {</span>
+<span class="fc" id="L32">        this.apiKey = &quot;e33f7134856ab9fbbe79a544cc23bc39&quot;;</span>
 
-<span class="fc" id="L31">        owm = new OWM(this.apiKey);</span>
-<span class="fc" id="L32">        owm.setUnit(OWM.Unit.METRIC);</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L34">        owm = new OWM(this.apiKey);</span>
+<span class="fc" id="L35">        owm.setUnit(OWM.Unit.METRIC);</span>
+        
+<span class="fc" id="L37">        cache = new TimedCache(300);</span>
+<span class="fc" id="L38">    }</span>
 
     public static OpenWeatherMapClient getInstance() {
-<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (client == null) {</span>
-<span class="fc" id="L37">            client = new OpenWeatherMapClient();</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (client == null) {</span>
+<span class="fc" id="L42">            client = new OpenWeatherMapClient();</span>
         }
-<span class="fc" id="L39">        return client;</span>
+<span class="fc" id="L44">        return client;</span>
     }
 
     public CurrentWeather getCurrentWeather(String city) {
         try {
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">            if (isConnectionValid()) {</span>
-<span class="fc" id="L45">                CurrentWeather cwd = owm.currentWeatherByCityName(city, OWM.Country.SWEDEN);</span>
-<span class="fc" id="L46">                return cwd;</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">            if (isConnectionValid()) {</span>
+<span class="fc" id="L50">                CurrentWeather cwd = owm.currentWeatherByCityName(city, OWM.Country.SWEDEN);</span>
+<span class="fc" id="L51">                return cwd;</span>
             }
-<span class="nc" id="L48">            return null;</span>
-<span class="nc" id="L49">        } catch (APIException e) {</span>
-<span class="nc" id="L50">            throw new RuntimeException(e);</span>
+<span class="nc" id="L53">            return null;</span>
+<span class="nc" id="L54">        } catch (APIException e) {</span>
+<span class="nc" id="L55">            throw new RuntimeException(e);</span>
         }
     }
 
     public String getTemperature(String city) {
-<span class="fc" id="L55">        CurrentWeather cwd = getCurrentWeather(city);</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (cwd == null) {</span>
-<span class="nc" id="L57">            return &quot;--&quot;;</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">    	if (!cache.isExpired(&quot;temperature&quot;)) {</span>
+<span class="nc" id="L61">    		return cache.getValue(&quot;temperature&quot;);</span>
+    	}
+    	
+<span class="fc" id="L64">        CurrentWeather cwd = getCurrentWeather(city);</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if (cwd == null) {</span>
+<span class="nc" id="L66">            return &quot;--&quot;;</span>
         }
-<span class="fc" id="L59">        double temp = cwd.getMainData().getTemp();</span>
+        
+<span class="fc" id="L69">        double temp = cwd.getMainData().getTemp();</span>
+        
         // Round temperature
-<span class="fc" id="L61">        return String.format(&quot;%.1f&quot;, temp);</span>
+<span class="fc" id="L72">        String roundedTemp = String.format(&quot;%.1f&quot;, temp);</span>
+<span class="fc" id="L73">        cache.setValue(&quot;temperature&quot;, roundedTemp);</span>
+<span class="fc" id="L74">        return roundedTemp;</span>
     }
 
     public String getIconLink(String city) {
-<span class="fc" id="L65">        CurrentWeather cwd = getCurrentWeather(city);</span>
-<span class="pc bpc" id="L66" title="1 of 2 branches missed.">        if (cwd == null) {</span>
-            // Full�sning men l�t g�, om nu API:t skulle g� ner
-<span class="nc" id="L68">            return &quot;/EventkalenderClient/img/questionmark.png&quot;;</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">    	if (!cache.isExpired(&quot;iconLink&quot;)) {</span>
+<span class="nc" id="L79">    		return cache.getValue(&quot;iconLink&quot;);</span>
+    	}
+    	
+<span class="fc" id="L82">    	String iconLink = &quot;&quot;;</span>
+<span class="fc" id="L83">        CurrentWeather cwd = getCurrentWeather(city);</span>
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if (cwd != null) {</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">        	if (cwd.hasWeatherList()) {</span>
+            	// Det aktuella v�dret �r f�rst i listan
+<span class="fc" id="L87">                Weather weather = cwd.getWeatherList().get(0);</span>
+<span class="fc" id="L88">                iconLink = weather.getIconLink();</span>
+<span class="fc" id="L89">                cache.setValue(&quot;iconLink&quot;, iconLink);</span>
+<span class="fc" id="L90">                return iconLink;</span>
+        	}
         }
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (cwd.hasWeatherList()) {</span>
-            // We want the current weather; it is first in the list
-<span class="fc" id="L72">            Weather weather = cwd.getWeatherList().get(0);</span>
-<span class="fc" id="L73">            return weather.getIconLink();</span>
-        }
-<span class="nc" id="L75">        return null;</span>
+        // Vi vet inte vad v�dret �r
+<span class="nc" id="L94">        iconLink = &quot;/EventkalenderClient/img/questionmark.png&quot;;</span>
+<span class="nc" id="L95">        cache.setValue(&quot;iconLink&quot;, iconLink);</span>
+<span class="nc" id="L96">        return null;</span>
     }
     
     private boolean isConnectionValid() {
-<span class="fc" id="L79">        String strUrl = &quot;https://api.openweathermap.org/data/2.5/&quot;;</span>
+<span class="fc" id="L100">        String address = &quot;https://api.openweathermap.org/data/2.5/&quot;;</span>
         try {
-<span class="fc" id="L81">            URL url = new URL(strUrl);</span>
-<span class="fc" id="L82">            HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();</span>
-<span class="fc" id="L83">            urlConn.connect();</span>
-<span class="fc" id="L84">            LOGGER.info(&quot;valid connection&quot;);</span>
-<span class="fc" id="L85">            return true;</span>
-<span class="nc" id="L86">        } catch (IOException e) {</span>
-<span class="nc" id="L87">            LOGGER.info(&quot;invalid connection&quot;);</span>
-<span class="nc" id="L88">            return false;</span>
+<span class="fc" id="L102">            URL url = new URL(address);</span>
+<span class="fc" id="L103">            HttpURLConnection connection = (HttpURLConnection) url.openConnection();</span>
+<span class="fc" id="L104">            connection.connect();</span>
+<span class="fc" id="L105">            LOGGER.info(&quot;Valid connection to API&quot;);</span>
+<span class="fc" id="L106">            return true;</span>
+<span class="nc" id="L107">        } catch (IOException e) {</span>
+<span class="nc" id="L108">            LOGGER.info(&quot;Invalid connection to API&quot;);</span>
+<span class="nc" id="L109">            return false;</span>
         }
     }
 
