@@ -14,11 +14,11 @@
 		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till Evenemang</h5>
+				<h5 class="title">Lägg till Evenemang</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
-					<div class="form-group">
+					<div class="form-group" id="formGroupAddEvent">
 						<label for="name">Namn</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Namn" required> 
 						<label for="summary">Beskrivning</label>
@@ -35,11 +35,11 @@
 								%>
 							</select>
 						<label for="startTime">Starttid</label>
-							<input type="datetime-local" class="form-control" id="startTime" name="startTime" required>
+							<input type="datetime-local" class="form-control" id="startTime" name="startTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
 						<label for="endTime">Sluttid</label>
-							<input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
+							<input type="datetime-local" class="form-control" id="endTime" name="endTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
 					</div>
-					<input type="submit" name="submitAddEvent" class="btn btn-outline-dark" value="Lägg till">
+					<input type="submit" id="submitAddEvent" name="submitAddEvent" class="btn btn-outline-dark" value="Lägg till">
 					<input type="hidden" name="operation" value="addEvent">
 				</form>
 			</div>
@@ -50,7 +50,7 @@
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
-					<div class="form-group">
+					<div class="form-group" id="formGroupUpdateEvent">
 						<select class="custom-select"
 							id="updateEventList" name="updateEventList" required>
 							<option value="" disabled="disabled" selected>
@@ -77,11 +77,11 @@
 								%>
 							</select>
 						<label for="startTime">Starttid</label>
-							<input type="datetime-local" class="form-control" id="updateEventStartTime" name="updateEventStartTime" required>
+							<input type="datetime-local" class="form-control" id="updateEventStartTime" name="updateEventStartTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
 						<label for="endTime">Sluttid</label>
-							<input type="datetime-local" class="form-control" id="updateEventEndTime" name="updateEventEndTime" required>
+							<input type="datetime-local" class="form-control" id="updateEventEndTime" name="updateEventEndTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
 					</div>
-					<input type="submit" name="submitUpdateEvent" class="btn btn-outline-dark" value="Uppdatera">
+					<input type="submit" id="submitUpdateEvent" name="submitUpdateEvent" class="btn btn-outline-dark" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateEvent">
 				</form>
 			</div>

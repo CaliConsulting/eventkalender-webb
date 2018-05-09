@@ -13,8 +13,8 @@
 	<!-- /header -->
 	<main role="main" class="container mt-2 mb-2">
 		<div class="card mb-2">
-		<h5 class="mt-2 text-center">Evenemang</h5>
 			<div class="card-body">
+				<h5 class="card-title text-center">Evenemang</h5>
 				<input class="form-control" id="inputEvent" type="text"
 					placeholder="Sök..">
 				<table class="table table-hover" id="tableEvent">
@@ -39,56 +39,6 @@
 								out.print("<td>" + e.getStartTimeFormatted() + "</td>");
 								out.print("<td>" + e.getEndTimeFormatted() + "</td>");
 								out.print("<td>" + e.getPersons().size() + "</td>");
-								out.print("</tr>");
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="card mb-2">
-		<h5 class="mt-2 text-center">Nationer</h5>
-			<div class="card-body">
-				<input class="form-control" id="inputNation" type="text"
-					placeholder="Sök..">
-				<table class="table table-hover" id="tableNation">
-					<thead>
-						<tr>
-							<th>Namn</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							List<Nation> nations = (List<Nation>) request.getAttribute("nations");
-							for (Nation n : nations) {
-								out.print("<tr>");
-								out.print("<td>" + n.getName() + "</td>");
-								out.print("</tr>");
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="card">
-		<h5 class="mt-2 text-center">Personer</h5>
-			<div class="card-body">
-				<input class="form-control" id="inputPerson" type="text"
-					placeholder="Sök..">
-				<table class="table table-hover" id="tablePerson">
-					<thead>
-						<tr>
-							<th>Förnamn</th>
-							<th>Efternamn</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							List<Person> persons = (List<Person>) request.getAttribute("persons");
-							for (Person p : persons) {
-								out.print("<tr>");
-								out.print("<td>" + p.getFirstName() + "</td>");
-								out.print("<td>" + p.getLastName() + "</td>");
 								out.print("</tr>");
 							}
 						%>

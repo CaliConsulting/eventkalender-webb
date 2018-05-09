@@ -12,7 +12,7 @@
 	<!-- /header -->
 	<main role="main" class="container-fluid mt-2 mb-2">
 	<div class="card">
-		<form action="${pageContext.request.contextPath}/invitations"
+		<form action="${pageContext.request.contextPath}/events/invitations"
 			method="POST">
 			<div class="card invitePerson mt-2 mb-2">
 				<div class="card-body">
