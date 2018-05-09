@@ -14,7 +14,7 @@
 	<div class="card">
 		<form action="${pageContext.request.contextPath}/invitations"
 			method="POST">
-			<div class="card invitePerson">
+			<div class="card invitePerson mt-2 mb-2">
 				<div class="card-body">
 					<input class="form-control" id="inputPerson" type="text"
 						placeholder="Sök..">
@@ -44,7 +44,7 @@
 					</table>
 				</div>
 			</div>
-			<div class="card inviteEvent">
+			<div class="card inviteEvent mt-2 mb-2">
 				<div class="card-body">
 					<input class="form-control" id="inputEvent" type="text"
 						placeholder="Sök..">

@@ -80,30 +80,33 @@ header {
 	color: #ffffff;
 }
 
-.test {
-	float: left;
+.indexLeft {
+	float:left;
 	width: 75%;
+	clear: both;
 }
 
-.test1 {
-	float: right;
-	width: 24%
+.indexRight {
+	float:right;
+	width: 24%;
 }
 
 .invitePerson {
 	float: left;
 	width: 45%;
+	position:relative;
 }
 
 .inviteControls {
 	top: 50%;
 	position: fixed;
-	margin: 0 45% 0 45%
+	margin: 0 45% 0 45%;
 }
 
 .inviteEvent {
 	float: right; 
-	width: 45%
+	width: 45%;
+	position:relative;
 }
 
 .prepurchasespacer {
