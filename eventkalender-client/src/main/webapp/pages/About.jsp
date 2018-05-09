@@ -11,7 +11,7 @@
 		<u>Välkommen!</u>
 	</h2>
 	<h4 class="aboutText mt-3">Vi är studenter som brinner för
-		programmering</h4>
+		studentlivet</h4>
 	<div class="container-fluid">
 		<div class="card mb-3">
 			<img class="card-img"
@@ -28,7 +28,7 @@
 							<button class="btn btn-outline-dark" type="button"
 								data-toggle="collapse" data-target="#collapseTwo"
 								aria-expanded="false" aria-controls="collapseTwo">
-								Ledningsgrupp</button>
+								Kontaktuppgifter</button>
 						</h5>
 					</div>
 					<div id="collapseOne" class="collapse show"
@@ -43,15 +43,14 @@
 							organiskt. Vi vill främja studentens sociala liv genom att
 							digitalisera lunds studentliv utan att kompromissa på jordens
 							resurser.
-							</p>
-							</p>
 						</div>
 					</div>
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 						data-parent="#accordion">
 						<div class="card-body">
-							Daniel Nilsson <br> Philip Eriksson <br> Hampus Harryson
-							<br> Johan Dyster-Aas.
+								Nummer: 046-13 84 57 		
+							<br> E-mail: Hampa@live.se
+							<br> Adress: Östra vallgatan 36 
 						</div>
 					</div>
 				</div>
