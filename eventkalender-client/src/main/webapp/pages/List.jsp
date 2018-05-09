@@ -13,6 +13,7 @@
 	<!-- /header -->
 	<main role="main" class="container mt-2 mb-2">
 		<div class="card mb-2">
+		<h5 class="mt-2 text-center">Evenemang</h5>
 			<div class="card-body">
 				<input class="form-control" id="inputEvent" type="text"
 					placeholder="Sök..">
@@ -46,6 +47,7 @@
 			</div>
 		</div>
 		<div class="card mb-2">
+		<h5 class="mt-2 text-center">Nationer</h5>
 			<div class="card-body">
 				<input class="form-control" id="inputNation" type="text"
 					placeholder="Sök..">
@@ -69,6 +71,7 @@
 			</div>
 		</div>
 		<div class="card">
+		<h5 class="mt-2 text-center">Personer</h5>
 			<div class="card-body">
 				<input class="form-control" id="inputPerson" type="text"
 					placeholder="Sök..">
