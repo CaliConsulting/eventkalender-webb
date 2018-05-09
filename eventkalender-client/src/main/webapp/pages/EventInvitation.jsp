@@ -11,7 +11,8 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<main role="main" class="container-fluid mt-2 mb-2">
-	<div class="card">
+	<div class="card mb-2">
+	<h5 class="mt-2 text-center">Bjud in personer till ditt evenemang</h5>
 		<form action="${pageContext.request.contextPath}/invitations"
 			method="POST">
 			<div class="card invitePerson">
