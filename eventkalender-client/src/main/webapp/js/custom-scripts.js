@@ -17,6 +17,19 @@
 	}, false);
 })();
 
+$(document).ready(function() {
+	$("form#addEventForm").submit(function(e) {
+		console.log("i jquery addEventForm");
+		var startTime = $("#startTime").val();
+		var endTime = $("#endTime").val();
+		console.log("startTime: " + startTime);
+		console.log("endTime: " + endTime);
+		if (startTime < endTime) {
+			e.preventDefault();
+		}
+	});
+});
+
 jQuery('form[data-toggle="validator"] select').on('change', function(event) {
 	event.preventDefault();
 	jQuery(this).find('option[disabled]').remove();

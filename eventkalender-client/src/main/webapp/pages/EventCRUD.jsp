@@ -15,7 +15,7 @@
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Evenemang</h5>
-				<form class="needs-validation" novalidate
+				<form class="needs-validation" id="addEventForm" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
 					<div class="form-group">
@@ -35,11 +35,11 @@
 								%>
 							</select>
 						<label for="startTime">Starttid</label>
-							<input type="datetime-local" class="form-control" id="startTime" name="startTime" required>
+							<input type="datetime-local" class="form-control" id="startTime" name="startTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
 						<label for="endTime">Sluttid</label>
-							<input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
+							<input type="datetime-local" class="form-control" id="endTime" name="endTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
 					</div>
-					<input type="submit" name="submitAddEvent" class="btn btn-outline-dark" value="Lägg till">
+					<input type="submit" id="submitAddEvent" name="submitAddEvent" class="btn btn-outline-dark" value="Lägg till">
 					<input type="hidden" name="operation" value="addEvent">
 				</form>
 			</div>
