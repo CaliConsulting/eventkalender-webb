@@ -9,13 +9,6 @@ body {
 	background-color: #f8f9fa;
 }
 
-tilbody {
-	height: 100%;
-	margin-bottom: 120px; /* marginalen p� botten skall vara samma som h�jden p� footern */
-	background-color: #f8f9fa;
-}
-
-
 header {
 	background-color: #ededed;
 
@@ -125,13 +118,9 @@ header {
 }
 
 .aboutText {
-	position: absolute;
-	top: 20%;
+	position: relative;
 	/* position the top  edge of the element at the middle of the parent */
-	left: 50%;
 	/* position the left edge of the element at the middle of the parent */
-	transform: translate(-50%, -50%); /* This is a shorthand of
-                                         translateX(-50%) and translateY(-50%) */
 	text-align: center;
 		font-family: "Bell", Times, serif;
 	color: #400000;

@@ -47,7 +47,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Ta bort Nation</h5>
 				<form action="${pageContext.request.contextPath}/nations/crud" method="POST" novalidation class="needs-validation">
