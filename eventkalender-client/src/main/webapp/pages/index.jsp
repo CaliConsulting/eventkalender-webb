@@ -66,7 +66,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h5 class="card-title">
-					<a href="https://www.studentlund.se/event/" class="text-dark">
+					<a href="https://www.antagning.se/se/start" class="text-dark">
 					I tankarna i att börja studera vid Lunds universitet?</a>
 				</h5>
 			</div>
