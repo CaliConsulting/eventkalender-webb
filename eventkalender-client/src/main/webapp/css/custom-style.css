@@ -156,9 +156,7 @@ header {
 	border: 2px solid #02D773;
 }
 	
-.inviteButton:hover  {
+.inviteButton:hover {
 	background-color: #02D773;
 	color: black;
 }
-
-
