@@ -18,7 +18,7 @@
 				src="${pageContext.request.contextPath}/img/AboutImg.png.jpg"
 				alt="Card image">
 			<div id="accordion">
-				<div class="card mt-3">
+				<div class="card">
 					<div class="card-header text-center" id="headingOne">
 						<h5 class="mb-0">
 							<button class="btn btn-outline-dark" type="button"
