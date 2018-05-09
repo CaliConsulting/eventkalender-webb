@@ -17,9 +17,57 @@
 	}, false);
 })();
 
+$(document).ready(function() {
+	$("#submitAddEvent").click(function(e) {
+		$("#addEventDateResult").remove();
+		//console.log("i jquery addEventForm");
+		var startTime = $("#startTime").val();
+		var endTime = $("#endTime").val();
+		//console.log("startTime: " + startTime);
+		//console.log("endTime: " + endTime);
+		var d1 = new Date(startTime);
+		var d2 = new Date(endTime);
+		if (d1 >= d2) {
+			//console.log("i if");
+			$("#startTime").addClass("is-invalid");
+			$("#endTime").addClass("is-invalid");
+			$('input[name="submitAddEvent"]').closest("form").addClass("was-validated");
+			$("#formGroupAddEvent").append('<div id="addEventDateResult" class="alert alert-danger mt-2" role="alert"><strong>Startdatumet måste vara efter i tiden än slutdatumet</strong></div>');
+			return false;
+		}
+	});
+});
+
+$(document).ready(function() {
+	$("#submitUpdateEvent").click(function(e) {
+		$("#UpdateEventDateResult").remove();
+//		console.log("i jquery addEventForm");
+		var startTime = $("#updateEventStartTime").val();
+		var endTime = $("#updateEventEndTime").val();
+//		console.log("startTime: " + startTime);
+//		console.log("endTime: " + endTime);
+		var d1 = new Date(startTime);
+		var d2 = new Date(endTime);
+		if (d1 >= d2) {
+			//console.log("i if");
+			$("#updateEventStartTime").addClass("is-invalid");
+			$("#updateEventEndTime").addClass("is-invalid");
+			$('input[name="submitUpdateEvent"]').closest("form").addClass("was-validated");
+			$("#formGroupUpdateEvent").append('<div id="UpdateEventDateResult" class="alert alert-danger mt-2" role="alert"><strong>Startdatumet måste vara efter i tiden än slutdatumet</strong></div>');
+			return false;
+		}
+	});
+});
+
 jQuery('form[data-toggle="validator"] select').on('change', function(event) {
 	event.preventDefault();
 	jQuery(this).find('option[disabled]').remove();
+});
+
+$(document).ready(function() {
+	$("#postMessage").delay(3000).fadeOut(3000, function() {
+		$(this).remove();
+	});
 });
 
 $(document).ready(function() {
