@@ -9,6 +9,13 @@ body {
 	background-color: #f8f9fa;
 }
 
+tilbody {
+	height: 100%;
+	margin-bottom: 120px; /* marginalen p� botten skall vara samma som h�jden p� footern */
+	background-color: #f8f9fa;
+}
+
+
 header {
 	background-color: #ededed;
 
@@ -21,6 +28,7 @@ header {
 	height: 120px; /* H�jden p� footern skall vara den samma som bodyn */
 	line-height: 40px; /* H�jden p� varje rad, tre rader - 120px */
 	background-color: #213752;
+	clear:both;
 }
 
 .bgImg {
@@ -32,6 +40,31 @@ header {
 	padding-top: 47%; /* (img-height / img-width * container-width) */
 	/* (853 / 1280 * 100) */
 	position: relative;
+}
+
+.bgImgEnd {
+	background-image: url(../img/end.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 0;
+	padding-bottom: 32%; /* (img-height / img-width * container-width) */
+	/* (853 / 1280 * 100) */
+	clear: both;
+	position: relative;
+}
+
+.goodbyeText {
+	position: absolute;
+	top: 50%;
+	/* position the top  edge of the element at the middle of the parent */
+	left: 50%;
+	/* position the left edge of the element at the middle of the parent */
+	transform: translate(-50%, -50%); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+	text-align: center;
+	font-family: "Bell", Times, serif;
+	color: #ffffff;
 }
 
 .welcomeText {
@@ -91,6 +124,19 @@ header {
 	color: #ffffff;
 }
 
+.aboutText {
+	position: absolute;
+	top: 20%;
+	/* position the top  edge of the element at the middle of the parent */
+	left: 50%;
+	/* position the left edge of the element at the middle of the parent */
+	transform: translate(-50%, -50%); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+	text-align: center;
+		font-family: "Bell", Times, serif;
+	color: #400000;
+}
+
 .prePurchaseImg {
 	background-image: url(../img/partybild.png.jpg);
 	/* 	height: 1699px; */
@@ -115,4 +161,15 @@ header {
 .smokeybackground {
 	text-shadow: #000000 0 0 25px
 }
+
+.color {
+	color: #02D773;
+	border: 2px solid #02D773;
+}
+	
+.inviteButton:hover  {
+	background-color: #02D773;
+	color: black;
+}
+
 

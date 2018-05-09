@@ -46,16 +46,24 @@ public class PersonCRUDServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String operation = request.getParameter("operation");
+        String postMessage = "";
+    	
+    	String operation = request.getParameter("operation");
         if ("addPerson".equals(operation)) {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
 
             Person p = new Person(firstName, lastName);
             facade.addPerson(p);
+            
+            postMessage = "Du lade till personen " + p.getFirstName() + " " + p.getLastName();
         } else if ("deletePerson".equals(operation)) {
             long id = Long.valueOf(request.getParameter("id"));
-            facade.deletePerson(id);
+            Person p = facade.findPersonById(id);
+            if (p != null) {
+                facade.deletePerson(id);
+                postMessage = "Du tog bort personen " + p.getFirstName() + " " + p.getLastName();
+            }
         } else if ("updatePerson".equals(operation)) {
             long id = Long.valueOf(request.getParameter("updatePersonList"));
             String firstName = request.getParameter("updatePersonFirstName");
@@ -65,6 +73,8 @@ public class PersonCRUDServlet extends HttpServlet {
             p.setFirstName(firstName);
             p.setLastName(lastName);
             facade.updatePerson(p);
+            
+            postMessage = "Du uppdaterade personen " + p.getFirstName() + " " + p.getLastName();
         } else if ("ajaxUpdatePerson".equals(operation)) {
             response.setContentType("application/json");
             
@@ -76,6 +86,12 @@ public class PersonCRUDServlet extends HttpServlet {
             }
             return;
         }
+        
+        // Sätt attributet endast om vi satt ett meddelande
+        if (postMessage != null && !postMessage.equals("")) {
+            request.setAttribute("postMessage", postMessage);
+        }
+        
         doGet(request, response);
     }
 

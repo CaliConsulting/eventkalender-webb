@@ -1,5 +1,13 @@
 package cali.eventkalender.api.weather;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import cali.eventkalender.utility.TimedCache;
 import net.aksingh.owmjapis.api.APIException;
 import net.aksingh.owmjapis.core.OWM;
 import net.aksingh.owmjapis.model.CurrentWeather;
@@ -10,9 +18,13 @@ import net.aksingh.owmjapis.model.param.Weather;
  */
 public class OpenWeatherMapClient {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherMapClient.class);
+    
     private static OpenWeatherMapClient client;
 
     private OWM owm;
+    
+    private TimedCache cache;
 
     private String apiKey;
 
@@ -21,6 +33,8 @@ public class OpenWeatherMapClient {
 
         owm = new OWM(this.apiKey);
         owm.setUnit(OWM.Unit.METRIC);
+        
+        cache = new TimedCache(300);
     }
 
     public static OpenWeatherMapClient getInstance() {
@@ -32,27 +46,68 @@ public class OpenWeatherMapClient {
 
     public CurrentWeather getCurrentWeather(String city) {
         try {
-            CurrentWeather cwd = owm.currentWeatherByCityName("Lund", OWM.Country.SWEDEN);
-            return cwd;
+            if (isConnectionValid()) {
+                CurrentWeather cwd = owm.currentWeatherByCityName(city, OWM.Country.SWEDEN);
+                return cwd;
+            }
+            return null;
         } catch (APIException e) {
             throw new RuntimeException(e);
         }
     }
 
     public String getTemperature(String city) {
-        double temp = getCurrentWeather(city).getMainData().getTemp();
+    	if (!cache.isExpired("temperature")) {
+    		return cache.getValue("temperature");
+    	}
+    	
+        CurrentWeather cwd = getCurrentWeather(city);
+        if (cwd == null) {
+            return "--";
+        }
+        
+        double temp = cwd.getMainData().getTemp();
+        
         // Round temperature
-        return String.format("%.1f", temp);
+        String roundedTemp = String.format("%.1f", temp);
+        cache.setValue("temperature", roundedTemp);
+        return roundedTemp;
     }
 
     public String getIconLink(String city) {
+    	if (!cache.isExpired("iconLink")) {
+    		return cache.getValue("iconLink");
+    	}
+    	
+    	String iconLink = "";
         CurrentWeather cwd = getCurrentWeather(city);
-        if (cwd.hasWeatherList()) {
-            // We want the current weather; it is first in the list
-            Weather weather = cwd.getWeatherList().get(0);
-            return weather.getIconLink();
+        if (cwd != null) {
+        	if (cwd.hasWeatherList()) {
+            	// Det aktuella vädret är först i listan
+                Weather weather = cwd.getWeatherList().get(0);
+                iconLink = weather.getIconLink();
+                cache.setValue("iconLink", iconLink);
+                return iconLink;
+        	}
         }
+        // Vi vet inte vad vädret är
+        iconLink = "/EventkalenderClient/img/questionmark.png";
+        cache.setValue("iconLink", iconLink);
         return null;
+    }
+    
+    private boolean isConnectionValid() {
+        String address = "https://api.openweathermap.org/data/2.5/";
+        try {
+            URL url = new URL(address);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            LOGGER.info("Valid connection to API");
+            return true;
+        } catch (IOException e) {
+            LOGGER.info("Invalid connection to API");
+            return false;
+        }
     }
 
 }

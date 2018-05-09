@@ -9,7 +9,8 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2 mb-2">
+	<main role="main" class="container mt-2">
+		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Nation</h5>
@@ -18,7 +19,7 @@
 						<label for="nationName">Namn</label>
 							<input type="text" class="form-control" id="nationName" name="nationName" placeholder="Namn" required>
 					</div>
-					<input type="submit" name="submitAddNation" value="Lägg till">
+					<input type="submit" name="submitAddNation" class="btn btn-outline-dark" value="Lägg till">
 					<input type="hidden" name="operation" value="addNation">
 				</form>
 			</div>
@@ -41,7 +42,7 @@
 						<label for="name">Namn</label>
 							<input type="text" class="form-control" id="updateNationName" name="updateNationName" placeholder="Namn" required> 
 					</div>
-					<input type="submit" name="submitUpdateNation" value="Uppdatera">
+					<input type="submit" name="submitUpdateNation" class="btn btn-outline-dark" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateNation">
 				</form>
 			</div>
@@ -61,7 +62,7 @@
 							%>
 						</select>
 					</div>
-					<input type="submit" name="submitDeleteNation" value="Ta bort">
+					<input type="submit" name="submitDeleteNation" class="btn btn-outline-dark" value="Ta bort">
 					<input type="hidden" name="operation" value="deleteNation">
 				</form>
 			</div>

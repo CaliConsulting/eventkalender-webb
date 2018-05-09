@@ -1,27 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">eventkalender-ejb</a> &gt; <a href="index.source.html" class="el_package">cali.eventkalender.utility</a> &gt; <span class="el_source">JsonUtility.java</span></div><h1>JsonUtility.java</h1><pre class="source lang-java linenums">package cali.eventkalender.utility;
 
+import java.lang.reflect.Type;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 import cali.eventkalender.model.Event;
 
-<span class="nc" id="L11">public class JsonUtility {</span>
+<span class="nc" id="L30">public class JsonUtility {</span>
 
+<span class="fc" id="L32">    private static final Logger LOGGER = LoggerFactory.getLogger(JsonUtility.class);</span>
+    
     public static String toCalendarJson(List&lt;Event&gt; events) {
-<span class="nc" id="L14">    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd'T'HH:mm:ss&quot;);</span>
-<span class="nc" id="L15">        JsonArray array = new JsonArray();</span>
-<span class="nc bnc" id="L16" title="All 2 branches missed.">        for (Event e : events) {</span>
-<span class="nc" id="L17">            JsonObject obj = new JsonObject();</span>
-<span class="nc" id="L18">            obj.addProperty(&quot;title&quot;, e.getName());</span>
-<span class="nc" id="L19">            obj.addProperty(&quot;start&quot;, e.getStartTime().format(formatter));</span>
-<span class="nc" id="L20">            obj.addProperty(&quot;end&quot;, e.getEndTime().format(formatter));</span>
-<span class="nc" id="L21">            array.add(obj);</span>
-<span class="nc" id="L22">        }</span>
-<span class="nc" id="L23">        return array.toString();</span>
+<span class="fc" id="L35">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd'T'HH:mm:ss&quot;);</span>
+<span class="fc" id="L36">        JsonArray array = new JsonArray();</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (Event e : events) {</span>
+<span class="fc" id="L38">            JsonObject obj = new JsonObject();</span>
+<span class="fc" id="L39">            obj.addProperty(&quot;title&quot;, e.getName());</span>
+<span class="fc" id="L40">            obj.addProperty(&quot;start&quot;, e.getStartTime().format(formatter));</span>
+<span class="fc" id="L41">            obj.addProperty(&quot;end&quot;, e.getEndTime().format(formatter));</span>
+<span class="fc" id="L42">            array.add(obj);</span>
+<span class="fc" id="L43">        }</span>
+<span class="fc" id="L44">        return array.toString();</span>
+    }
+
+    public static String toJson(Object obj) {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (obj instanceof Event) {</span>
+<span class="fc" id="L49">            return toJson((Event) obj);</span>
+        }
+
+<span class="fc" id="L52">        GsonBuilder gsonBuilder = new GsonBuilder();</span>
+<span class="fc" id="L53">        gsonBuilder.setExclusionStrategies(new RelationExcluder());</span>
+
+<span class="fc" id="L55">        Gson gson = gsonBuilder.create();</span>
+<span class="fc" id="L56">        return gson.toJson(obj);</span>
+    }
+
+    private static String toJson(Event e) {
+<span class="fc" id="L60">        GsonBuilder gsonBuilder = new GsonBuilder();</span>
+<span class="fc" id="L61">        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapterSerializer());</span>
+<span class="fc" id="L62">        gsonBuilder.setExclusionStrategies(new EventsExcluder());</span>
+<span class="fc" id="L63">        Gson gson = gsonBuilder.create();</span>
+<span class="fc" id="L64">        return gson.toJson(e);</span>
+    }
+
+    private static class RelationExcluder implements ExclusionStrategy {
+
+        @Override
+        public boolean shouldSkipField(FieldAttributes f) {
+<span class="fc" id="L71">            String name = f.getName();</span>
+<span class="pc bpc" id="L72" title="2 of 6 branches missed.">            return name.equals(&quot;events&quot;) || name.equals(&quot;persons&quot;) || name.equals(&quot;nation&quot;);</span>
+        }
+
+        @Override
+        public boolean shouldSkipClass(Class&lt;?&gt; clazz) {
+<span class="fc" id="L77">            return false;</span>
+        }
+
+    }
+
+    private static class EventsExcluder implements ExclusionStrategy {
+        
+        @Override
+        public boolean shouldSkipField(FieldAttributes f) {
+<span class="fc" id="L86">            String name = f.getName();</span>
+<span class="fc" id="L87">            return name.equals(&quot;events&quot;);</span>
+        }
+
+        @Override
+        public boolean shouldSkipClass(Class&lt;?&gt; clazz) {
+<span class="fc" id="L92">            return false;</span>
+        }
+        
     }
     
+    private static class LocalDateTimeAdapterSerializer implements JsonSerializer&lt;LocalDateTime&gt; {
+
+        @Override
+        public JsonElement serialize(LocalDateTime date, Type typeOfSrc, JsonSerializationContext context) {
+<span class="fc" id="L101">            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd'T'HH:mm&quot;);</span>
+<span class="fc" id="L102">            return new JsonPrimitive(date.format(formatter));</span>
+        }
+        
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -11,6 +11,7 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<main role="main" class="container mt-2">
+		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Lägg till Evenemang</h5>
@@ -38,7 +39,7 @@
 						<label for="endTime">Sluttid</label>
 							<input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
 					</div>
-					<input type="submit" name="submitAddEvent" value="Lägg till">
+					<input type="submit" name="submitAddEvent" class="btn btn-outline-dark" value="Lägg till">
 					<input type="hidden" name="operation" value="addEvent">
 				</form>
 			</div>
@@ -80,7 +81,7 @@
 						<label for="endTime">Sluttid</label>
 							<input type="datetime-local" class="form-control" id="updateEventEndTime" name="updateEventEndTime" required>
 					</div>
-					<input type="submit" name="submitUpdateEvent" value="Uppdatera">
+					<input type="submit" name="submitUpdateEvent" class="btn btn-outline-dark" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateEvent">
 				</form>
 			</div>
@@ -101,7 +102,7 @@
 							%>
 						</select>
 					</div>
-					<input type="submit" name="submitDeleteEvent" value="Ta bort">
+					<input type="submit" name="submitDeleteEvent" class="btn btn-outline-dark" value="Ta bort">
 					<input type="hidden" name="operation" value="deleteEvent"> 
 				</div>
 			</form>
