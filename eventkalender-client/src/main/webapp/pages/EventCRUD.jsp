@@ -47,10 +47,10 @@
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="addTitel">Uppdatera Evenemang</h5>
-				<form class="needs-validation" id="formGroupUpdateEvent" novalidate
+				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
-					<div class="form-group">
+					<div class="form-group" id="formGroupUpdateEvent">
 						<select class="custom-select"
 							id="updateEventList" name="updateEventList" required>
 							<option value="" disabled="disabled" selected>
