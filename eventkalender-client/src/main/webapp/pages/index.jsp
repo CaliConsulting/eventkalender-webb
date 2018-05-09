@@ -19,40 +19,43 @@
 	<div class="indexLeft mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title">
-					<a href="https://www.studentlund.se/" class="text-dark">Gå med
-						i Studentlund.</a>
-				</h4>
+				<h3 class="card-title">
+					<a href="https://www.studentlund.se/" class="text-dark">
+						Nationerna erbjuder mängder med aktiviteter.
+					</a>
+				</h3>
 				<div class="card-deck">
 					<div class="card">
-						<div class="card-header">
-							<h5>Ny som student?</h5>
-						</div>
 						<div class="card-body">
-							<p class="card-text">Då annordnar både nationer och kårer
-								novischveckor, en fartfylldperiod av aktiviteter där du lär dig
-								känna dina nya klasskamrater och nationsmedlemmar. Ett ypperligt
-								tillfälle att utöka din nyvunna umgängeskrets!</p>
+							<h5 class="card-title">Lunch och brunch</h5>
+							<p class="card-text">
+								Alla dagar i veckorna serverar de olika studentnationerna
+								måltider i sina lokaler. Det erbjuds mat med inspiration från alla världens regioner
+								och preferenser. Maten tillagas av engagerade studenter.
+								<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/kronalunch.png">
+							</p>
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header">
-							<h5 class="card-title">Boende</h5>
-						</div>
 						<div class="card-body">
-							<p class="card-text">BoPoolen eller AF Bostäder är två
-								excellenta aktörer som kan hjälpa dig hitta boende i Lund.</p>
+							<h5 class="card-title">Nattklubb</h5>
+							<p class="card-text">
+								Med all stress i plugget kan det vara härligt att röra på höfterna
+								till lite rytmisk musik med dina vänner. Danssugna är välkomna ut på dansgolven
+								mellan onsdag - lördag. Närhelst det passar dina studier såklart.
+								<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/nattklubb.png">
+							</p>
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header">
+						<div class="card-body">
 							<h5 class="card-title">Studentliv</h5>
-						</div>
-						<div class="card-body">
 							<p class="card-text">I Lunds studentliv så annordnar
 								nationerna flertalet aktiviteter såsom idrottskvällar, luncher,
 								sittningar och nattklubbar. För att medverka i och ta del av
-								alla dessa måste du som student vara medlem i Studentlund.</p>
+								alla dessa måste du som student vara medlem i Studentlund.
+								<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/studentliv.jpg">
+							</p>
 						</div>
 					</div>
 				</div>
@@ -64,14 +67,14 @@
 			<div class="card-header">
 				<h5 class="card-title">
 					<a href="https://www.studentlund.se/event/" class="text-dark">
-					Är du redan medlem i Studentlund?</a>
+					I tankarna i att börja studera vid Lunds universitet?</a>
 				</h5>
 			</div>
 			<div class="card-body">
 				<p class="card-text">
-					Ta då en titt i Eventkalenderns evenemangslista där inköp av
-					förköpsbilljetter är möjligt, eller sök evenemang via Studentlunds
-					egna tjänst för lundastudenterna. 
+					Lundastudenterna har en otrolig gemenskap som vi på Eventkalendern försöker
+					främja i bästa möjliga anda. Ansök till Lunds Universitet, något lätt exempelvis så att
+					du kan festa mer, ekonomi eller humbug grejer som språk. 
 					<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/logo-en.png">
 				</p>
 			</div>
@@ -123,37 +126,40 @@
 	<div class="indexLeft mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
-				<h3 class="card-title">
+				<h4 class="card-title">
 					<a href="https://www.studentlund.se/" class="text-dark">Gå med
 						i Studentlund.</a>
-				</h3>
+				</h4>
 				<div class="card-deck">
 					<div class="card">
+						<div class="card-header">
+							<h5>Ny som student?</h5>
+						</div>
 						<div class="card-body">
-							<h5 class="card-title">Ny som student?</h5>
 							<p class="card-text">Då annordnar både nationer och kårer
 								novischveckor, en fartfylldperiod av aktiviteter där du lär dig
 								känna dina nya klasskamrater och nationsmedlemmar. Ett ypperligt
-								tillfälle att utöka din nyvunna umgängeskrets!
-							</p>
+								tillfälle att utöka din nyvunna umgängeskrets!</p>
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-body">
+						<div class="card-header">
 							<h5 class="card-title">Boende</h5>
+						</div>
+						<div class="card-body">
 							<p class="card-text">BoPoolen eller AF Bostäder är två
-								excellenta aktörer som kan hjälpa dig hitta boende i Lund.
-							</p>
+								excellenta aktörer som kan hjälpa dig hitta boende i Lund.</p>
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-body">
+						<div class="card-header">
 							<h5 class="card-title">Studentliv</h5>
+						</div>
+						<div class="card-body">
 							<p class="card-text">I Lunds studentliv så annordnar
 								nationerna flertalet aktiviteter såsom idrottskvällar, luncher,
 								sittningar och nattklubbar. För att medverka i och ta del av
-								alla dessa måste du som student vara medlem i Studentlund.
-							</p>
+								alla dessa måste du som student vara medlem i Studentlund.</p>
 						</div>
 					</div>
 				</div>
