@@ -108,7 +108,7 @@ public class EventCRUDServlet extends HttpServlet {
         }
         
         // Sätt attributet endast om vi satt ett meddelande
-        if (postMessage != null && !postMessage.equals("")) {
+        if (postMessage != null && !postMessage.isEmpty()) {
             request.setAttribute("postMessage", postMessage);
         }
         

@@ -74,7 +74,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#inputNation").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
-		$("#tableNation tr").filter(function() {
+		$("#tableNation tbody tr").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
@@ -83,7 +83,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#inputEvent").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
-		$("#tableEvent tr").filter(function() {
+		$("#tableEvent tbody tr").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
@@ -92,7 +92,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#inputPerson").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
-		$("#tablePerson tr").filter(function() {
+		$("#tablePerson tbody tr").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
