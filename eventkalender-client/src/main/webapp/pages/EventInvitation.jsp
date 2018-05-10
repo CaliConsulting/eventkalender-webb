@@ -17,6 +17,7 @@
 				method="POST">
 				<div class="card invitePerson mt-2 mb-2">
 					<div class="card-body">
+						<h5 class="card-title">Personer</h5>
 						<input class="form-control" id="inputPerson" type="text"
 							placeholder="Sök...">
 						<table class="table table-hover" id="tablePerson">
@@ -47,6 +48,7 @@
 				</div>
 				<div class="card inviteEvent mt-2 mb-2">
 					<div class="card-body">
+						<h5 class="card-title">Evenemang</h5>
 						<input class="form-control" id="inputEvent" type="text"
 							placeholder="Sök...">
 						<table class="table table-hover" id="tableEvent">
