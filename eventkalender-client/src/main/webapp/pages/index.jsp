@@ -21,7 +21,7 @@
 				<div class="card-body">
 					<h3 class="card-title">
 						<a href="https://www.studentlund.se/" class="text-dark">
-							Nationerna erbjuder mängder med aktiviteter.
+							Nationerna erbjuder mängder med aktiviteter
 						</a>
 					</h3>
 					<div class="card-deck">
@@ -29,7 +29,7 @@
 							<div class="card-body">
 								<h5 class="card-title">Lunch och brunch</h5>
 								<p class="card-text">
-									Alla dagar i veckorna serverar de olika studentnationerna
+									Alla dagar i veckan serverar de olika studentnationerna
 									måltider i sina lokaler. Det erbjuds mat med inspiration från alla världens regioner
 									och preferenser. Maten tillagas av engagerade studenter.
 									<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/kronalunch.png">
@@ -50,7 +50,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title">Studentliv</h5>
-								<p class="card-text">I Lunds studentliv så annordnar
+								<p class="card-text">I Lunds studentliv så anordnar
 									nationerna flertalet aktiviteter såsom idrottskvällar, luncher,
 									sittningar och nattklubbar. För att medverka i och ta del av
 									alla dessa måste du som student vara medlem i Studentlund.
@@ -67,13 +67,13 @@
 				<div class="card-header">
 					<h5 class="card-title">
 						<a href="https://www.antagning.se/se/start" class="text-dark">
-						I tankarna i att börja studera vid Lunds universitet?</a>
+						I tankarna att börja studera vid Lunds universitet?</a>
 					</h5>
 				</div>
 				<div class="card-body">
 					<p class="card-text">
 						Lundastudenterna har en otrolig gemenskap som vi på Eventkalendern försöker
-						främja i bästa möjliga anda. Ansök till Lunds Universitet idag.
+						främja i bästa möjliga anda. Ansök till Lunds universitet idag.
 						<img class="card-img mt-2" src="${pageContext.request.contextPath}/img/logo-en.png">
 					</p>
 				</div>
@@ -135,8 +135,8 @@
 								<h5>Ny som student?</h5>
 							</div>
 							<div class="card-body">
-								<p class="card-text">Då annordnar både nationer och kårer
-									novischveckor, en fartfylldperiod av aktiviteter där du lär dig
+								<p class="card-text">Då anordnar både nationer och kårer
+									novischveckor, en fartfylld period av aktiviteter där du lär dig
 									känna dina nya klasskamrater och nationsmedlemmar. Ett ypperligt
 									tillfälle att utöka din nyvunna umgängeskrets!</p>
 							</div>
