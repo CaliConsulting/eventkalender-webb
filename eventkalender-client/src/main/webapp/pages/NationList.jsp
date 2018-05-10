@@ -11,12 +11,12 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2 mb-2">
+	<main class="container mt-2 mb-2">
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="card-title text-center">Nationer</h5>
 				<input class="form-control" id="inputNation" type="text"
-					placeholder="Sök..">
+					placeholder="Sök...">
 				<table class="table table-hover" id="tableNation">
 					<thead>
 						<tr>

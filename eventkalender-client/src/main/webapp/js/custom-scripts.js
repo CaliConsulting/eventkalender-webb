@@ -38,6 +38,7 @@ $(document).ready(function() {
 	});
 });
 
+// är startdatumet före i tiden än slutdatumet?
 $(document).ready(function() {
 	$("#submitUpdateEvent").click(function(e) {
 		$("#UpdateEventDateResult").remove();
@@ -130,12 +131,17 @@ $(document).ready(function() {
 	}
 });
 
-// uppdateringar
+//////////////////////////////////
+// Funktioner för uppdateringar //
+//////////////////////////////////
 $(document).ready(function() {
 	$("#updateNationList").change(function() {
 	    $.post("crud", { operation: "ajaxUpdateNation", id: $(this).val() }, function(data) {
 	    	console.log("updateNationList");
 	    	console.log(data);
+	    	
+	    	$("#formGroupUpdateNation input").prop("disabled", false);
+	    	
 	        $("#updateNationName").val(data["name"]);
 	    });
 	});
@@ -146,6 +152,9 @@ $(document).ready(function() {
 	    $.post("crud", { operation: "ajaxUpdatePerson", id: $(this).val() }, function(data) {
 	    	console.log("updatePersonList");
 	    	console.log(data);
+	    	
+	    	$("#formGroupUpdatePerson input").prop("disabled", false);
+	    	
 	        $("#updatePersonFirstName").val(data["firstName"]);
 	        $("#updatePersonLastName").val(data["lastName"]);
 	    });
@@ -157,6 +166,9 @@ $(document).ready(function() {
 	    $.post("crud", { operation: "ajaxUpdateEvent", id: $(this).val() }, function(data) {
 	    	console.log("updateEventList");
 	    	console.log(data);
+	    	
+	    	$("#formGroupUpdateEvent input, #formGroupUpdateEvent textarea, #updateEventNations").prop("disabled", false);
+	    	
 	        $("#updateEventName").val(data["name"]);
 	        $("#updateEventSummary").val(data["summary"]);
 	        $("#updateEventNations").val(data["nation"]["id"]).change();

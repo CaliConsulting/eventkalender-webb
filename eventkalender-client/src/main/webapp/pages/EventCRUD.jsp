@@ -10,11 +10,11 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2">
+	<main class="container mt-2">
 		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="title">Lägg till Evenemang</h5>
+				<h5 class="card-title">Lägg till Evenemang</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
@@ -27,8 +27,9 @@
 						<label for="nations">Nation</label> 
 							<select class="custom-select form-control" id="nations" name="nations" required>
 								<option value="" disabled="disabled" selected>
-								Välj Nation...</option>
-								<% List<Nation> nations = (List<Nation>) request.getAttribute("nations");
+								Välj nation...</option>
+								<% 
+									List<Nation> nations = (List<Nation>) request.getAttribute("nations");
 									for (Nation n : nations) {
 										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
 									}
@@ -46,7 +47,7 @@
 		</div>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Uppdatera Evenemang</h5>
+				<h5 class="card-title">Uppdatera Evenemang</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
@@ -54,22 +55,23 @@
 						<select class="custom-select"
 							id="updateEventList" name="updateEventList" required>
 							<option value="" disabled="disabled" selected>
-							Välj evenemang..</option>
-							<% List<Event> events = (List<Event>) request.getAttribute("events");
+							Välj evenemang...</option>
+							<% 	
+								List<Event> events = (List<Event>) request.getAttribute("events");
 								for (Event e : events) {
 									out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
 								}
 							%>
 						</select>
 						<label for="name">Namn</label>
-							<input type="text" class="form-control" id="updateEventName" name="updateEventName" placeholder="Namn" required> 
+							<input type="text" class="form-control" id="updateEventName" name="updateEventName" placeholder="Namn" disabled="disabled" required> 
 						<label for="summary">Beskrivning</label>
 							<textarea class="form-control" id="updateEventSummary" name="updateEventSummary" rows="4"
-								placeholder="Ange en beskrivning för ditt evenemang" required></textarea>
+								placeholder="Ange en beskrivning för ditt evenemang" disabled="disabled" required></textarea>
 						<label for="nations">Nation</label> 
-							<select class="custom-select form-control" id="updateEventNations" name="updateEventNations" required>
+							<select class="custom-select form-control" id="updateEventNations" name="updateEventNations" disabled="disabled" required>
 								<option value="" disabled="disabled" selected>
-								Välj Nation...</option>
+								Välj nation...</option>
 								<% 
 									for (Nation n : nations) {
 										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
@@ -77,9 +79,11 @@
 								%>
 							</select>
 						<label for="startTime">Starttid</label>
-							<input type="datetime-local" class="form-control" id="updateEventStartTime" name="updateEventStartTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
+							<input type="datetime-local" class="form-control" id="updateEventStartTime" name="updateEventStartTime"
+								min="2000-01-01T00:00" max="2999-12-31T00:00" disabled="disabled" required>
 						<label for="endTime">Sluttid</label>
-							<input type="datetime-local" class="form-control" id="updateEventEndTime" name="updateEventEndTime" min="2000-01-01T00:00" max="2999-12-31T00:00" required>
+							<input type="datetime-local" class="form-control" id="updateEventEndTime" name="updateEventEndTime"
+								min="2000-01-01T00:00" max="2999-12-31T00:00" disabled="disabled" required>
 					</div>
 					<input type="submit" id="submitUpdateEvent" name="submitUpdateEvent" class="btn btn-outline-dark" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateEvent">
@@ -89,12 +93,12 @@
 		<div class="card mb-2">
 			<form action="${pageContext.request.contextPath}/events/crud" method="POST" novalidation class="needs-validation">
 				<div class="card-body">
-					<h5 class="addTitel">Ta bort Evenemang</h5>
+					<h5 class="card-title">Ta bort Evenemang</h5>
 					<div class="form-group">
 						<select class="custom-select"
 							id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
-							Välj evenemang..</option>
+							Välj evenemang...</option>
 							<%
 								for (Event e : events) {
 									out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");

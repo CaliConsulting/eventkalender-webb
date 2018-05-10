@@ -1,6 +1,5 @@
-
-<header class="">
-	<%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient"%>
+<%@ page import="cali.eventkalender.api.weather.OpenWeatherMapClient"%>
+<header>
 	<nav class="navbar navbar-expand-sm navbar-light">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
 			<img src="${pageContext.request.contextPath}/img/Cali-McKinsey.png"
@@ -52,12 +51,10 @@
 			<%
 				OpenWeatherMapClient c = OpenWeatherMapClient.getInstance();
 		    %>
-		    
 			<span class="align-baseline mr-2"> 
 				<%= c.getTemperature("Lund") %> °C
 			</span> 
 			<img src="<%= c.getIconLink("Lund") %>">
-			 
 		</div>
 	</nav>
 </header>

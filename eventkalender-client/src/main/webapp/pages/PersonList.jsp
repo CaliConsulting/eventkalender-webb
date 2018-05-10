@@ -11,7 +11,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2 mb-2">
+	<main class="container mt-2 mb-2">
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title text-center">Personer</h5>

@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fullcalendar/fullcalendar.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-style.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/calender.css">
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/popper.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
