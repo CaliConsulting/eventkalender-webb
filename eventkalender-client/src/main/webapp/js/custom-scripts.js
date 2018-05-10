@@ -134,14 +134,6 @@ $(document).ready(function() {
 //////////////////////////////////
 // Funktioner för uppdateringar //
 //////////////////////////////////
-
-// inaktivera uppdateringsfälten innan användaren har valt ett alternativ
-$(document).ready(function() {
-	$("#formGroupUpdateNation input").prop("disabled", true);
-	$("#formGroupUpdatePerson input").prop("disabled", true);
-	$("#formGroupUpdateEvent input, #formGroupUpdateEvent textarea, #updateEventNations").prop("disabled", true);
-});
-
 $(document).ready(function() {
 	$("#updateNationList").change(function() {
 	    $.post("crud", { operation: "ajaxUpdateNation", id: $(this).val() }, function(data) {

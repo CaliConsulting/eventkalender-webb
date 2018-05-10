@@ -40,17 +40,18 @@
 							id="updatePersonList" name="updatePersonList" required>
 							<option value="" disabled="disabled" selected>Välj
 								Person..</option>
-							<% List<Person> persons = (List<Person>) request.getAttribute("persons");
-									for (Person p : persons) {
-										out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");
-									}
-								%>
+							<% 
+								List<Person> persons = (List<Person>) request.getAttribute("persons");
+								for (Person p : persons) {
+									out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName() + "</option>");
+								}
+							%>
 						</select> <label for="firstName">Förnamn</label> <input type="text"
 							class="form-control" id="updatePersonFirstName"
-							name="updatePersonFirstName" placeholder="Förnamn" required>
+							name="updatePersonFirstName" placeholder="Förnamn" disabled="disabled" required>
 						<label for="lastName">Efternamn</label> <input type="text"
 							class="form-control" id="updatePersonLastName"
-							name="updatePersonLastName" placeholder="Efternamn" required>
+							name="updatePersonLastName" placeholder="Efternamn" disabled="disabled" required>
 					</div>
 					<input type="submit" name="submitUpdatePerson" class="btn btn-outline-dark" value="Uppdatera">
 					<input type="hidden" name="operation" value="updatePerson">

@@ -40,7 +40,7 @@
 							%>
 						</select>
 						<label for="name">Namn</label>
-							<input type="text" class="form-control" id="updateNationName" name="updateNationName" placeholder="Namn" required> 
+							<input type="text" class="form-control" id="updateNationName" name="updateNationName" placeholder="Namn" disabled="disabled" required> 
 					</div>
 					<input type="submit" name="submitUpdateNation" class="btn btn-outline-dark" value="Uppdatera">
 					<input type="hidden" name="operation" value="updateNation">
