@@ -94,9 +94,15 @@ header {
 	top: 50%;
 	position: fixed;
 	margin: auto;
-	Width:117px;
+	Width: 77px;
 	left:15px;
 	right:15px;
+}
+.invcard-body{
+	ms flex: 1 1 auto;
+	flex:1 1 auto;
+	padding:0;
+	
 }
 
 .inviteEvent {
