@@ -93,7 +93,10 @@ header {
 .inviteControls {
 	top: 50%;
 	position: fixed;
-	margin: 0 45% 0 45%;
+	margin: auto;
+	Width:117px;
+	left:15px;
+	right:15px;
 }
 
 .inviteEvent {
