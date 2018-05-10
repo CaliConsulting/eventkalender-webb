@@ -4,6 +4,7 @@ eventkalender-ejb,cali.eventkalender.interceptor,DefaultInterceptor,199,0,18,0,4
 eventkalender-ejb,cali.eventkalender.utility,JsonUtility.EventsExcluder,0,9,0,0,0,3,0,2,0,2
 eventkalender-ejb,cali.eventkalender.utility,JsonUtility.RelationExcluder,0,21,2,4,0,3,2,3,0,2
 eventkalender-ejb,cali.eventkalender.utility,JsonUtility,3,112,0,4,1,22,1,6,1,4
+eventkalender-ejb,cali.eventkalender.utility,MessageUtility,3,199,0,24,1,40,1,14,1,2
 eventkalender-ejb,cali.eventkalender.utility,JsonUtility.LocalDateTimeAdapterSerializer,0,10,0,0,0,2,0,1,0,1
 eventkalender-ejb,cali.eventkalender.utility,TimedCache,0,74,0,6,0,18,0,8,0,5
 eventkalender-ejb,cali.eventkalender.facade,Facade,0,75,0,0,0,20,0,16,0,16
