@@ -7,7 +7,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container-fluid mt-2">
+	<main class="container-fluid mt-2">
 		<div id="calendar"></div>
 	</main>
 	<!-- footer -->

@@ -13,7 +13,7 @@
 		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Lägg till Person</h5>
+				<h5 class="card-title">Lägg till Person</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/persons/crud"
 					method="POST">
@@ -31,7 +31,7 @@
 		</div>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Uppdatera Person</h5>
+				<h5 class="card-title">Uppdatera Person</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/persons/crud"
 					method="POST">
@@ -39,7 +39,7 @@
 						 <select class="custom-select"
 							id="updatePersonList" name="updatePersonList" required>
 							<option value="" disabled="disabled" selected>Välj
-								Person..</option>
+								person...</option>
 							<% 
 								List<Person> persons = (List<Person>) request.getAttribute("persons");
 								for (Person p : persons) {
@@ -60,14 +60,14 @@
 		</div>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Ta bort Person</h5>
+				<h5 class="card-title">Ta bort Person</h5>
 				<form action="${pageContext.request.contextPath}/persons/crud"
 					method="POST" novalidate class="needs-validation">
 					<div class="form-group">
 						<select class="custom-select"
 							id="id" name="id" required>
 							<option value="" disabled="disabled" selected>Välj
-								Person..</option>
+								person...</option>
 							<%
 									for (Person p : persons) {
 										out.print("<option value=\"" + p.getId() + "\">" + p.getId() + " " + p.getFirstName() + " " + p.getLastName()+ "</option>");

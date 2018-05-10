@@ -9,7 +9,7 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="">
+	<main>
 		<div class="card-group">
 			<div class="card">
 				<a href="http://www.lundsnation.se/sv/home/"><img class="card-img-top"

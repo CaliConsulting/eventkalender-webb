@@ -10,11 +10,11 @@
 	<!-- header -->
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
-	<main role="main" class="container mt-2">
+	<main class="container mt-2">
 		<%@ include file="PostMessage.jsp" %>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="title">Lägg till Evenemang</h5>
+				<h5 class="card-title">Lägg till Evenemang</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
@@ -27,7 +27,7 @@
 						<label for="nations">Nation</label> 
 							<select class="custom-select form-control" id="nations" name="nations" required>
 								<option value="" disabled="disabled" selected>
-								Välj Nation...</option>
+								Välj nation...</option>
 								<% 
 									List<Nation> nations = (List<Nation>) request.getAttribute("nations");
 									for (Nation n : nations) {
@@ -47,7 +47,7 @@
 		</div>
 		<div class="card mb-2">
 			<div class="card-body">
-				<h5 class="addTitel">Uppdatera Evenemang</h5>
+				<h5 class="card-title">Uppdatera Evenemang</h5>
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/events/crud"
 					method="POST">
@@ -55,7 +55,7 @@
 						<select class="custom-select"
 							id="updateEventList" name="updateEventList" required>
 							<option value="" disabled="disabled" selected>
-							Välj evenemang..</option>
+							Välj evenemang...</option>
 							<% 	
 								List<Event> events = (List<Event>) request.getAttribute("events");
 								for (Event e : events) {
@@ -71,7 +71,7 @@
 						<label for="nations">Nation</label> 
 							<select class="custom-select form-control" id="updateEventNations" name="updateEventNations" disabled="disabled" required>
 								<option value="" disabled="disabled" selected>
-								Välj Nation...</option>
+								Välj nation...</option>
 								<% 
 									for (Nation n : nations) {
 										out.print("<option value=\"" + n.getId() + "\">" + n.getId() + " " + n.getName() + "</option>");
@@ -93,12 +93,12 @@
 		<div class="card mb-2">
 			<form action="${pageContext.request.contextPath}/events/crud" method="POST" novalidation class="needs-validation">
 				<div class="card-body">
-					<h5 class="addTitel">Ta bort Evenemang</h5>
+					<h5 class="card-title">Ta bort Evenemang</h5>
 					<div class="form-group">
 						<select class="custom-select"
 							id="id" name="id" required>
 							<option value="" disabled="disabled" selected>
-							Välj evenemang..</option>
+							Välj evenemang...</option>
 							<%
 								for (Event e : events) {
 									out.print("<option value=\"" + e.getId() + "\">" + e.getId() + " " + e.getName() + "</option>");
