@@ -11,8 +11,8 @@
 	<%@ include file="Header.jsp"%>
 	<!-- /header -->
 	<main class="container-fluid mt-2 mb-2">
+		<%@ include file="PostMessage.jsp" %>
 		<div class="card">
-			<%@ include file="PostMessage.jsp" %>
 			<form action="${pageContext.request.contextPath}/events/invitations"
 				method="POST">
 				<div class="card invitePerson mt-2 mb-2">
