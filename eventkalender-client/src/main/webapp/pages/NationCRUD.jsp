@@ -28,7 +28,7 @@
 			<div class="card-body">
 				<h5 class="addTitel">Uppdatera Nation</h5>
 				<form class="needs-validation" novalidate action="${pageContext.request.contextPath}/nations/crud" method="POST">
-					<div class="form-group">
+					<div class="form-group" id="formGroupUpdateNation">
 						<select class="custom-select form-control" id="updateNationList" name="updateNationList" required>
 							<option value="" disabled="disabled" selected>
 							Välj Nation...</option>

@@ -35,7 +35,7 @@
 				<form class="needs-validation" novalidate
 					action="${pageContext.request.contextPath}/persons/crud"
 					method="POST">
-					<div class="form-group">
+					<div class="form-group" id="formGroupUpdatePerson">
 						 <select class="custom-select"
 							id="updatePersonList" name="updatePersonList" required>
 							<option value="" disabled="disabled" selected>Välj
