@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			<div class="card inviteControls">
-				<div class="card-body">
+				<div class="invcard-body">
 					<button type="submit" class="btn btn-dark">Bjud in</button>
 					<input type="hidden" name="operation" value="InviteToEvents">
 				</div>
