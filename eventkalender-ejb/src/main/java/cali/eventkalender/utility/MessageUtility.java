@@ -15,9 +15,8 @@ public class MessageUtility {
 		if (personsSize == 0) {
 			return "inga personer";
 		} else if (personsSize <= personsOutputCap) {
-			Iterator<Person> itPersons = persons.iterator();
 			if (personsSize == 1) {
-				Person onlyPerson = itPersons.next();
+				Person onlyPerson = persons.get(0);
 				builder.append("personen " + onlyPerson.getFirstName() + " " + onlyPerson.getLastName());
 			} else {
 				builder.append("personerna ");
@@ -46,9 +45,8 @@ public class MessageUtility {
 		if (eventsSize == 0) {
 			return "inga evenemang";
 		} else if (eventsSize <= eventsOutputCap) {
-			Iterator<Event> itEvents = events.iterator();
 			if (eventsSize == 1) {
-				Event onlyEvent = itEvents.next();
+				Event onlyEvent = events.get(0);
 				builder.append("evenemanget " + onlyEvent.getName());
 			} else {
 				builder.append("evenemangen ");
