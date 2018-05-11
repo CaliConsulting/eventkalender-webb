@@ -32,7 +32,7 @@ $(document).ready(function() {
 			$("#startTime").addClass("is-invalid");
 			$("#endTime").addClass("is-invalid");
 			$('input[name="submitAddEvent"]').closest("form").addClass("was-validated");
-			$("#formGroupAddEvent").append('<div id="addEventDateResult" class="alert alert-danger mt-2" role="alert"><strong>Startdatumet måste vara efter i tiden än slutdatumet</strong></div>');
+			$("#formGroupAddEvent").append('<div id="addEventDateResult" class="alert alert-danger mt-2" role="alert"><strong>Startdatumet måste vara innan slutdatumet</strong></div>');
 			return false;
 		}
 	});
@@ -54,7 +54,7 @@ $(document).ready(function() {
 			$("#updateEventStartTime").addClass("is-invalid");
 			$("#updateEventEndTime").addClass("is-invalid");
 			$('input[name="submitUpdateEvent"]').closest("form").addClass("was-validated");
-			$("#formGroupUpdateEvent").append('<div id="UpdateEventDateResult" class="alert alert-danger mt-2" role="alert"><strong>Startdatumet måste vara efter i tiden än slutdatumet</strong></div>');
+			$("#formGroupUpdateEvent").append('<div id="UpdateEventDateResult" class="alert alert-danger mt-2" role="alert"><strong>Startdatumet måste vara innan slutdatumet</strong></div>');
 			return false;
 		}
 	});
