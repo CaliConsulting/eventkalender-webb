@@ -50,7 +50,7 @@
 		<div class="card mb-2">
 			<div class="card-body">
 				<h5 class="card-title">Ta bort Nation</h5>
-				<form action="${pageContext.request.contextPath}/nations/crud" method="POST" novalidation class="needs-validation">
+				<form action="${pageContext.request.contextPath}/nations/crud" method="POST" class="needs-validation" novalidate>
 						<div class="form-group">
 						<select class="custom-select" id="id" name="id" required>
 							<option value="" disabled="disabled" selected>

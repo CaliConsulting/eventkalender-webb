@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="card mb-2">
-			<form action="${pageContext.request.contextPath}/events/crud" method="POST" novalidation class="needs-validation">
+			<form action="${pageContext.request.contextPath}/events/crud" method="POST" class="needs-validation" novalidate>
 				<div class="card-body">
 					<h5 class="card-title">Ta bort Evenemang</h5>
 					<div class="form-group">
