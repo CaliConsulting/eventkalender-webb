@@ -48,9 +48,10 @@
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 						data-parent="#accordion">
 						<div class="card-body">
-								Nummer: 046-13 84 57 		
-							<br> E-mail: Hampa@live.se
-							<br> Adress: Östra vallgatan 36 
+								 Grundare: Philip Eriksson, Daniel Nilsson, Hampus Sandell & Johan Dyster-Aas
+							<br> E-mail: hampa@live.se
+							<br> Adress: Östra vallgatan 36
+							<br> Nummer: 046-13 84 57
 						</div>
 					</div>
 				</div>
