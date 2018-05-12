@@ -68,7 +68,7 @@ public class NationCRUDServlet extends HttpServlet {
 	        
 	        postMessage = "Du uppdaterade nationen " + n.getName();
 	    } else if ("ajaxUpdateNation".equals(operation)) {
-	        response.setContentType("application/json");
+	        response.setContentType("application/json;charset=UTF-8");
 	        
 	        long id = Long.valueOf(request.getParameter("id"));
 	        

@@ -96,7 +96,7 @@ public class EventCRUDServlet extends HttpServlet {
             
             postMessage = "Du uppdaterade evenemanget " + e.getName();
         } else if ("ajaxUpdateEvent".equals(operation)) {
-            response.setContentType("application/json");
+            response.setContentType("application/json;charset=UTF-8");
 
             long id = Long.valueOf(request.getParameter("id"));
 

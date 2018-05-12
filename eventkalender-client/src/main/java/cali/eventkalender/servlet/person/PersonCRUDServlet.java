@@ -76,7 +76,7 @@ public class PersonCRUDServlet extends HttpServlet {
             
             postMessage = "Du uppdaterade personen " + p.getFirstName() + " " + p.getLastName();
         } else if ("ajaxUpdatePerson".equals(operation)) {
-            response.setContentType("application/json");
+            response.setContentType("application/json;charset=UTF-8");
             
             long id = Long.valueOf(request.getParameter("id"));
 
