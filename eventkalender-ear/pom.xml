@@ -45,7 +45,7 @@
               <groupId>cali</groupId>
               <artifactId>eventkalender-client</artifactId>
               <bundleFileName>eventkalender-client.war</bundleFileName>
-              <contextRoot>/EventkalenderClient</contextRoot>
+              <contextRoot>/</contextRoot>
             </webModule>
             <ejbModule>
               <groupId>cali</groupId>
