@@ -71,7 +71,7 @@ public class OpenWeatherMapClient {
         // Round temperature
         String roundedTemp = String.format("%.1f", temp);
         cache.setValue("temperature", roundedTemp);
-        return roundedTemp;
+        return cache.getValue("temperature");
     }
 
     public String getIconLink(String city) {
@@ -81,19 +81,17 @@ public class OpenWeatherMapClient {
     	
     	String iconLink = "";
         CurrentWeather cwd = getCurrentWeather(city);
-        if (cwd != null) {
-        	if (cwd.hasWeatherList()) {
-            	// Det aktuella vädret är först i listan
-                Weather weather = cwd.getWeatherList().get(0);
-                iconLink = weather.getIconLink();
-                cache.setValue("iconLink", iconLink);
-                return iconLink;
-        	}
+        if (cwd != null && cwd.hasWeatherList()) {
+        	// Det aktuella vädret är först i listan
+            Weather weather = cwd.getWeatherList().get(0);
+            iconLink = weather.getIconLink();
+        } else {
+            // Vi vet inte vad vädret är
+            iconLink = "/EventkalenderClient/img/questionmark.png";
         }
-        // Vi vet inte vad vädret är
-        iconLink = "/EventkalenderClient/img/questionmark.png";
+        
         cache.setValue("iconLink", iconLink);
-        return null;
+        return cache.getValue("iconLink");
     }
     
     private boolean isConnectionValid() {
