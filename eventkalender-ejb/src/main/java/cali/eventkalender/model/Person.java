@@ -29,10 +29,10 @@ public class Person implements Serializable {
 	@Column(name = "Id")
 	private long id;
 
-	@Column(name = "FirstName", nullable = false)
+	@Column(name = "FirstName", length = 255, nullable = false)
 	private String firstName;
 
-	@Column(name = "LastName", nullable = false)
+	@Column(name = "LastName", length = 255, nullable = false)
 	private String lastName;
 
 	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE,
