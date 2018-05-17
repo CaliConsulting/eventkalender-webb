@@ -56,7 +56,6 @@ public class TimedCacheTest {
 	public void isExpired() throws InterruptedException {
 		cache.setValue(expectedKey, expectedValue);
 		Thread.sleep(1500);
-		cache.setValue(expectedKey, expectedValue);
 		
 		assertTrue(cache.isExpired(expectedKey));
 	}

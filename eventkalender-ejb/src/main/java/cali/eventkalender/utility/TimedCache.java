@@ -24,7 +24,7 @@ public class TimedCache {
 	}
 	
 	public void setValue(String key, String value) {
-		if (!timings.containsKey(key)) {
+		if (isExpired(key)) {
 			timings.put(key, LocalDateTime.now());
 		}
 		LOGGER.info("Caching {}, value: {}", key, value);
