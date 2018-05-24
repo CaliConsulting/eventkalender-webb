@@ -97,7 +97,7 @@
 						alt="First slide"> </a>
 				</div>
 				<div class="carousel-item">
-					<a href="${pageContext.request.contextPath}/events"><img
+					<a href="${pageContext.request.contextPath}/events/list"><img
 						class="d-block w-100"
 						src="${pageContext.request.contextPath}/img/events/Bedas.png"
 						alt="Second slide"></a>
@@ -109,7 +109,7 @@
 						alt="Third slide"></a>
 				</div>
 				<div class="carousel-item">
-					<a href="${pageContext.request.contextPath}/events"><img
+					<a href="${pageContext.request.contextPath}/events/list"><img
 						class="d-block w-100"
 						src="${pageContext.request.contextPath}/img/events/freda.png"
 						alt="Fourth slide"></a>

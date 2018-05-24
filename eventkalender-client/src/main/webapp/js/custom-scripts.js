@@ -136,7 +136,7 @@ $(document).ready(function() {
 //////////////////////////////////
 $(document).ready(function() {
 	$("#updateNationList").change(function() {
-	    $.post("crud", { operation: "ajaxUpdateNation", id: $(this).val() }, function(data) {
+	    $.post($(location).attr('pathname'), { operation: "ajaxUpdateNation", id: $(this).val() }, function(data) {
 	    	console.log("updateNationList");
 	    	console.log(data);
 	    	
@@ -149,7 +149,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#updatePersonList").change(function() {
-	    $.post("crud", { operation: "ajaxUpdatePerson", id: $(this).val() }, function(data) {
+	    $.post($(location).attr('pathname'), { operation: "ajaxUpdatePerson", id: $(this).val() }, function(data) {
 	    	console.log("updatePersonList");
 	    	console.log(data);
 	    	
@@ -163,7 +163,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#updateEventList").change(function() {
-	    $.post("crud", { operation: "ajaxUpdateEvent", id: $(this).val() }, function(data) {
+	    $.post($(location).attr('pathname'), { operation: "ajaxUpdateEvent", id: $(this).val() }, function(data) {
 	    	console.log("updateEventList");
 	    	console.log(data);
 	    	
