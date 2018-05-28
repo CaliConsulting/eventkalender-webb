@@ -34,10 +34,10 @@ public class Event implements Serializable {
 	@Column(name = "Id")
 	private long id;
 
-	@Column(name = "Name", nullable = false)
+	@Column(name = "Name", length = 255, nullable = false)
 	private String name;
 
-	@Column(name = "Summary", nullable = false)
+	@Column(name = "Summary", length = 4095, nullable = false)
 	private String summary;
 
 	@Column(name = "StartTime", nullable = false)

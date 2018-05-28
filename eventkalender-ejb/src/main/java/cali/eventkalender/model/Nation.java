@@ -29,7 +29,7 @@ public class Nation implements Serializable {
 	@Column(name = "Id")
 	private long id;
 
-	@Column(name = "Name", nullable = false)
+	@Column(name = "Name", length = 255, nullable = false)
 	private String name;
 
 	@OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
