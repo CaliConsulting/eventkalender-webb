@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("")
 public class IndexServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public IndexServlet() {
@@ -26,7 +26,7 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	    doGet(request, response);
+		doGet(request, response);
 	}
-	
+
 }

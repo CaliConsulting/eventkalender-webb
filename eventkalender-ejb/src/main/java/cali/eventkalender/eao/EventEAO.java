@@ -16,21 +16,21 @@ public class EventEAO implements EventEAOLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-    public EventEAO() {
-        // TODO Auto-generated constructor stub
-    }
+
+	public EventEAO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Event add(Event event) {
 		Nation nation = event.getNation();
 		if (nation.getId() < 0) {
-		    em.persist(nation);
+			em.persist(nation);
 		}
 		for (Person person : event.getPersons()) {
-		    if (person.getId() < 0) {
-		        em.persist(person);
-		    }
+			if (person.getId() < 0) {
+				em.persist(person);
+			}
 		}
 		em.persist(event);
 		return event;

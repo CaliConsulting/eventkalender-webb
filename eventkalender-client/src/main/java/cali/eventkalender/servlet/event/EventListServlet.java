@@ -16,27 +16,27 @@ import cali.eventkalender.model.Event;
 @WebServlet("/events/list")
 public class EventListServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @EJB
-    private FacadeLocal facade;
+	@EJB
+	private FacadeLocal facade;
 
-    public EventListServlet() {
-        super();
-    }
+	public EventListServlet() {
+		super();
+	}
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        List<Event> events = facade.findAllEvents();
-        request.setAttribute("events", events);
-        request.getRequestDispatcher("/pages/EventList.jsp").forward(request, response);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Event> events = facade.findAllEvents();
+		request.setAttribute("events", events);
+		request.getRequestDispatcher("/pages/EventList.jsp").forward(request, response);
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 }

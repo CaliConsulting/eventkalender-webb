@@ -37,7 +37,7 @@ public class MessageUtility {
 		}
 		return builder.toString();
 	}
-	
+
 	public static String getEventsInvitationMessage(List<Event> events, int outputCap) {
 		StringBuilder builder = new StringBuilder();
 		int eventsOutputCap = outputCap;
@@ -67,5 +67,5 @@ public class MessageUtility {
 		}
 		return builder.toString();
 	}
-	
+
 }

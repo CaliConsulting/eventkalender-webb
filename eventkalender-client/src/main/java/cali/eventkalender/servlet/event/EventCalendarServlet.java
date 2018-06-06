@@ -18,30 +18,30 @@ import cali.eventkalender.utility.JsonUtility;
 @WebServlet("/events/calendar")
 public class EventCalendarServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @EJB
-    private FacadeLocal facade;
+	@EJB
+	private FacadeLocal facade;
 
-    public EventCalendarServlet() {
-        super();
-    }
+	public EventCalendarServlet() {
+		super();
+	}
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/pages/EventCalendar.jsp").forward(request, response);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("/pages/EventCalendar.jsp").forward(request, response);
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        List<Event> events = facade.findAllEvents();
-        String json = JsonUtility.toCalendarJson(events);
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Event> events = facade.findAllEvents();
+		String json = JsonUtility.toCalendarJson(events);
 
-        try (PrintWriter out = response.getWriter()) {
-            out.write(json);
-        }
-    }
+		try (PrintWriter out = response.getWriter()) {
+			out.write(json);
+		}
+	}
 
 }

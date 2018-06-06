@@ -43,13 +43,13 @@ public class Person implements Serializable {
 		this.id = Long.MIN_VALUE;
 		this.events = new ArrayList<>();
 	}
-	
+
 	public Person(String firstName, String lastName) {
 		this();
 		setFirstName(Objects.requireNonNull(firstName));
 		setLastName(Objects.requireNonNull(lastName));
 	}
-	
+
 	public Person(String firstName, String lastName, List<Event> events) {
 		this(firstName, lastName);
 		setEvents(Objects.requireNonNull(events));

@@ -5,6 +5,6 @@ import javax.ejb.Local;
 @Local
 public interface PersistenceManagerLocal {
 
-    void cleanDatabase();
-    
+	void cleanDatabase();
+
 }

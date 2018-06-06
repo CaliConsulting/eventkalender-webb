@@ -13,64 +13,64 @@ import org.junit.runners.JUnit4;
 public class TimedCacheTest {
 
 	private TimedCache cache;
-	
+
 	private String expectedKey;
 	private String expectedValue;
-	
+
 	@Before
 	public void setup() {
 		cache = new TimedCache(1);
-		
+
 		expectedKey = "TESTKEY";
 		expectedValue = "EXPECTEDVALUE";
 	}
-	
+
 	@Test
 	public void setValue() {
 		cache.setValue(expectedKey, expectedValue);
-		
+
 		assertEquals(expectedValue, cache.getValue(expectedKey));
 	}
-	
+
 	@Test
 	public void setValueAlreadyHasKey() {
 		cache.setValue(expectedKey, expectedValue);
 		cache.setValue(expectedKey, expectedValue);
-		
+
 		assertEquals(expectedValue, cache.getValue(expectedKey));
 	}
-	
+
 	@Test
 	public void getValue() {
 		cache.setValue(expectedKey, expectedValue);
-		
+
 		assertEquals(expectedValue, cache.getValue(expectedKey));
 	}
-	
+
 	@Test
 	public void getValueNonExistingKey() {
 		assertEquals(null, cache.getValue(expectedKey));
 	}
-	
+
 	@Test
 	public void isExpired() throws InterruptedException {
 		cache.setValue(expectedKey, expectedValue);
 		Thread.sleep(1500);
-		
+
 		assertTrue(cache.isExpired(expectedKey));
 	}
-	
+
 	@Test
 	public void isNotExpired() {
 		cache.setValue(expectedKey, expectedValue);
 		cache.setValue(expectedKey, expectedValue);
-		
+
 		assertFalse(cache.isExpired(expectedKey));
 	}
-	
+
 	@Test
 	public void isExpiredNonExistingKey() {
 		assertTrue(cache.isExpired(expectedKey));
 	}
-	
+
 }

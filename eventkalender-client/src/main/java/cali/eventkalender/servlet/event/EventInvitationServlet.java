@@ -69,10 +69,10 @@ public class EventInvitationServlet extends HttpServlet {
 					}
 					facade.updateEvent(e);
 				}
-				
+
 				String personsPart = MessageUtility.getPersonsInvitationMessage(persons, 4);
 				String eventsPart = MessageUtility.getEventsInvitationMessage(events, 2);
-				
+
 				StringBuilder builder = new StringBuilder();
 				builder.append("Du bjöd in ");
 				builder.append(personsPart);

@@ -24,95 +24,95 @@ import cali.eventkalender.utility.JsonUtility;
 @WebServlet("/events/crud")
 public class EventCRUDServlet extends HttpServlet {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EventCRUDServlet.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EventCRUDServlet.class);
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @EJB
-    private FacadeLocal facade;
+	@EJB
+	private FacadeLocal facade;
 
-    public EventCRUDServlet() {
-        super();
-    }
+	public EventCRUDServlet() {
+		super();
+	}
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        List<Nation> nations = facade.findAllNations();
-        request.setAttribute("nations", nations);
-        List<Event> events = facade.findAllEvents();
-        request.setAttribute("events", events);
-        request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Nation> nations = facade.findAllNations();
+		request.setAttribute("nations", nations);
+		List<Event> events = facade.findAllEvents();
+		request.setAttribute("events", events);
+		request.getRequestDispatcher("/pages/EventCRUD.jsp").forward(request, response);
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    	String postMessage = "";
-    	
-    	String operation = request.getParameter("operation");
-        if ("addEvent".equals(operation)) {
-            String name = request.getParameter("name");
-            String summary = request.getParameter("summary");
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String postMessage = "";
 
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            LocalDateTime startTime = LocalDateTime.parse(request.getParameter("startTime"), format);
-            LocalDateTime endTime = LocalDateTime.parse(request.getParameter("endTime"), format);
+		String operation = request.getParameter("operation");
+		if ("addEvent".equals(operation)) {
+			String name = request.getParameter("name");
+			String summary = request.getParameter("summary");
 
-            long nationId = Long.valueOf(request.getParameter("nations"));
-            Nation nation = facade.findNationById(nationId);
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+			LocalDateTime startTime = LocalDateTime.parse(request.getParameter("startTime"), format);
+			LocalDateTime endTime = LocalDateTime.parse(request.getParameter("endTime"), format);
 
-            Event e = new Event(name, summary, startTime, endTime);
-            e.setNation(nation);
-            facade.addEvent(e);
-            
-            postMessage = "Du lade till evenemanget " + e.getName();
-        } else if ("deleteEvent".equals(operation)) {
-            long id = Long.valueOf(request.getParameter("id"));
-            Event e = facade.findEventById(id);
-            if (e != null) {
-                facade.deleteEvent(id);
-                postMessage = "Du tog bort evenemanget " + e.getName();
-            }
-        } else if ("updateEvent".equals(operation)) {
-            long id = Long.valueOf(request.getParameter("updateEventList"));
-            String name = request.getParameter("updateEventName");
-            String summary = request.getParameter("updateEventSummary");
+			long nationId = Long.valueOf(request.getParameter("nations"));
+			Nation nation = facade.findNationById(nationId);
 
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            LocalDateTime startTime = LocalDateTime.parse(request.getParameter("updateEventStartTime"), format);
-            LocalDateTime endTime = LocalDateTime.parse(request.getParameter("updateEventEndTime"), format);
+			Event e = new Event(name, summary, startTime, endTime);
+			e.setNation(nation);
+			facade.addEvent(e);
 
-            long nationId = Long.valueOf(request.getParameter("updateEventNations"));
-            Nation nation = facade.findNationById(nationId);
-            
-            Event e = facade.findEventById(id);
-            e.setName(name);
-            e.setSummary(summary);
-            e.setStartTime(startTime);
-            e.setEndTime(endTime);
-            e.setNation(nation);
-            facade.updateEvent(e);
-            
-            postMessage = "Du uppdaterade evenemanget " + e.getName();
-        } else if ("ajaxUpdateEvent".equals(operation)) {
-            response.setContentType("application/json;charset=UTF-8");
+			postMessage = "Du lade till evenemanget " + e.getName();
+		} else if ("deleteEvent".equals(operation)) {
+			long id = Long.valueOf(request.getParameter("id"));
+			Event e = facade.findEventById(id);
+			if (e != null) {
+				facade.deleteEvent(id);
+				postMessage = "Du tog bort evenemanget " + e.getName();
+			}
+		} else if ("updateEvent".equals(operation)) {
+			long id = Long.valueOf(request.getParameter("updateEventList"));
+			String name = request.getParameter("updateEventName");
+			String summary = request.getParameter("updateEventSummary");
 
-            long id = Long.valueOf(request.getParameter("id"));
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+			LocalDateTime startTime = LocalDateTime.parse(request.getParameter("updateEventStartTime"), format);
+			LocalDateTime endTime = LocalDateTime.parse(request.getParameter("updateEventEndTime"), format);
 
-            Event e = facade.findEventById(id);
-            try (PrintWriter out = response.getWriter()) {
-                out.write(JsonUtility.toJson(e));
-            }
-            return;
-        }
-        
-        // Sätt attributet endast om vi satt ett meddelande
-        if (postMessage != null && !postMessage.isEmpty()) {
-            request.setAttribute("postMessage", postMessage);
-        }
-        
-        doGet(request, response);
-    }
+			long nationId = Long.valueOf(request.getParameter("updateEventNations"));
+			Nation nation = facade.findNationById(nationId);
+
+			Event e = facade.findEventById(id);
+			e.setName(name);
+			e.setSummary(summary);
+			e.setStartTime(startTime);
+			e.setEndTime(endTime);
+			e.setNation(nation);
+			facade.updateEvent(e);
+
+			postMessage = "Du uppdaterade evenemanget " + e.getName();
+		} else if ("ajaxUpdateEvent".equals(operation)) {
+			response.setContentType("application/json;charset=UTF-8");
+
+			long id = Long.valueOf(request.getParameter("id"));
+
+			Event e = facade.findEventById(id);
+			try (PrintWriter out = response.getWriter()) {
+				out.write(JsonUtility.toJson(e));
+			}
+			return;
+		}
+
+		// Sätt attributet endast om vi satt ett meddelande
+		if (postMessage != null && !postMessage.isEmpty()) {
+			request.setAttribute("postMessage", postMessage);
+		}
+
+		doGet(request, response);
+	}
 
 }

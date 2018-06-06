@@ -15,17 +15,17 @@ public class PersonEAO implements PersonEAOLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-    public PersonEAO() {
-        // TODO Auto-generated constructor stub
-    }
+
+	public PersonEAO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Person add(Person person) {
 		for (Event event : person.getEvents()) {
-		    if (event.getId() < 0) {
-	            em.persist(event);
-		    }
+			if (event.getId() < 0) {
+				em.persist(event);
+			}
 		}
 		em.persist(person);
 		return person;

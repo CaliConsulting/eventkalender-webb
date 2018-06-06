@@ -24,91 +24,91 @@ import cali.eventkalender.test.Deployments.ArchiveType;
 
 @RunWith(Arquillian.class)
 public class EventEAOIT {
-    
-    private String expectedEventName;
-    private String expectedEventSummary;
-    private LocalDateTime expectedEventStartTime;
-    private LocalDateTime expectedEventEndTime;
-    
-    private Event expectedEvent;
-    
-    private String expectedNationName;
-    
-    private Nation expectedNation;
 
-    @EJB
-    private EventEAOLocal eventEAO;
+	private String expectedEventName;
+	private String expectedEventSummary;
+	private LocalDateTime expectedEventStartTime;
+	private LocalDateTime expectedEventEndTime;
 
-    @Deployment
-    public static Archive<?> createArchive() {
-        return Deployments.getArchive(ArchiveType.EAO);
-    }
+	private Event expectedEvent;
 
-    @Before
-    public void setup() {
-        expectedNationName = "TESTNATION";
-        expectedNation = new Nation(expectedNationName);
+	private String expectedNationName;
 
-        expectedEventName = "TESTEVENT";
-        expectedEventSummary = "TESTSAMMANFATTNING";
-        expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
-        expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
-        expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime, expectedEventEndTime);
-        expectedEvent.setNation(expectedNation);
-    }
+	private Nation expectedNation;
 
-    @Test
-    public void add() {
-        eventEAO.add(expectedEvent);
+	@EJB
+	private EventEAOLocal eventEAO;
 
-        Event fetchedEvent = eventEAO.findById(expectedEvent.getId());
+	@Deployment
+	public static Archive<?> createArchive() {
+		return Deployments.getArchive(ArchiveType.EAO);
+	}
 
-        assertNotNull(fetchedEvent);
-        assertEquals(expectedEventName, fetchedEvent.getName());
-        assertEquals(expectedEventSummary, fetchedEvent.getSummary());
-        assertEquals(expectedEventStartTime, fetchedEvent.getStartTime());
-        assertEquals(expectedEventEndTime, fetchedEvent.getEndTime());
-        assertEquals(expectedNation, fetchedEvent.getNation());
-    }
+	@Before
+	public void setup() {
+		expectedNationName = "TESTNATION";
+		expectedNation = new Nation(expectedNationName);
 
-    @Test
-    public void delete() {
-        eventEAO.add(expectedEvent);
+		expectedEventName = "TESTEVENT";
+		expectedEventSummary = "TESTSAMMANFATTNING";
+		expectedEventStartTime = LocalDateTime.of(2000, 1, 1, 12, 0);
+		expectedEventEndTime = LocalDateTime.of(2000, 1, 1, 14, 0);
+		expectedEvent = new Event(expectedEventName, expectedEventSummary, expectedEventStartTime,
+				expectedEventEndTime);
+		expectedEvent.setNation(expectedNation);
+	}
 
-        long id = expectedEvent.getId();
-        eventEAO.delete(id);
+	@Test
+	public void add() {
+		eventEAO.add(expectedEvent);
 
-        Event fetchedEvent = eventEAO.findById(id);
+		Event fetchedEvent = eventEAO.findById(expectedEvent.getId());
 
-        assertNull(fetchedEvent);
-    }
-    
-    @Test
-    public void deleteWhenNull() {
-        long id = expectedEvent.getId();
-        eventEAO.delete(id);
+		assertNotNull(fetchedEvent);
+		assertEquals(expectedEventName, fetchedEvent.getName());
+		assertEquals(expectedEventSummary, fetchedEvent.getSummary());
+		assertEquals(expectedEventStartTime, fetchedEvent.getStartTime());
+		assertEquals(expectedEventEndTime, fetchedEvent.getEndTime());
+		assertEquals(expectedNation, fetchedEvent.getNation());
+	}
 
-        Event fetchedEvent = eventEAO.findById(id);
+	@Test
+	public void delete() {
+		eventEAO.add(expectedEvent);
 
-        assertNull(fetchedEvent);
-    }
-    
+		long id = expectedEvent.getId();
+		eventEAO.delete(id);
 
-    @Test
-    public void update() {
-        eventEAO.add(expectedEvent);
+		Event fetchedEvent = eventEAO.findById(id);
 
-        LocalDateTime updateTime = LocalDateTime.of(2010, 1, 1, 12, 0);
-        expectedEvent.setName("UPDATEEVENT");
-        expectedEvent.setSummary("UPDATESAMMANFATTNING");
-        expectedEvent.setStartTime(updateTime);
-        expectedEvent.setEndTime(updateTime);
-        eventEAO.update(expectedEvent);
+		assertNull(fetchedEvent);
+	}
 
-        assertEquals("UPDATEEVENT", expectedEvent.getName());
-        assertEquals("UPDATESAMMANFATTNING", expectedEvent.getSummary());
-        assertEquals(updateTime, expectedEvent.getStartTime());
-        assertEquals(updateTime, expectedEvent.getEndTime());
-    }
+	@Test
+	public void deleteWhenNull() {
+		long id = expectedEvent.getId();
+		eventEAO.delete(id);
+
+		Event fetchedEvent = eventEAO.findById(id);
+
+		assertNull(fetchedEvent);
+	}
+
+	@Test
+	public void update() {
+		eventEAO.add(expectedEvent);
+
+		LocalDateTime updateTime = LocalDateTime.of(2010, 1, 1, 12, 0);
+		expectedEvent.setName("UPDATEEVENT");
+		expectedEvent.setSummary("UPDATESAMMANFATTNING");
+		expectedEvent.setStartTime(updateTime);
+		expectedEvent.setEndTime(updateTime);
+		eventEAO.update(expectedEvent);
+
+		assertEquals("UPDATEEVENT", expectedEvent.getName());
+		assertEquals("UPDATESAMMANFATTNING", expectedEvent.getSummary());
+		assertEquals(updateTime, expectedEvent.getStartTime());
+		assertEquals(updateTime, expectedEvent.getEndTime());
+	}
 
 }

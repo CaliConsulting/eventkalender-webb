@@ -29,79 +29,79 @@ import cali.eventkalender.model.Event;
 
 public class JsonUtility {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JsonUtility.class);
-    
-    public static String toCalendarJson(List<Event> events) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        JsonArray array = new JsonArray();
-        for (Event e : events) {
-            JsonObject obj = new JsonObject();
-            obj.addProperty("title", e.getName());
-            obj.addProperty("start", e.getStartTime().format(formatter));
-            obj.addProperty("end", e.getEndTime().format(formatter));
-            array.add(obj);
-        }
-        return array.toString();
-    }
+	private static final Logger LOGGER = LoggerFactory.getLogger(JsonUtility.class);
 
-    public static String toJson(Object obj) {
-        if (obj instanceof Event) {
-            return toJson((Event) obj);
-        }
+	public static String toCalendarJson(List<Event> events) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+		JsonArray array = new JsonArray();
+		for (Event e : events) {
+			JsonObject obj = new JsonObject();
+			obj.addProperty("title", e.getName());
+			obj.addProperty("start", e.getStartTime().format(formatter));
+			obj.addProperty("end", e.getEndTime().format(formatter));
+			array.add(obj);
+		}
+		return array.toString();
+	}
 
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setExclusionStrategies(new RelationExcluder());
+	public static String toJson(Object obj) {
+		if (obj instanceof Event) {
+			return toJson((Event) obj);
+		}
 
-        Gson gson = gsonBuilder.create();
-        return gson.toJson(obj);
-    }
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		gsonBuilder.setExclusionStrategies(new RelationExcluder());
 
-    private static String toJson(Event e) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapterSerializer());
-        gsonBuilder.setExclusionStrategies(new EventsExcluder());
-        Gson gson = gsonBuilder.create();
-        return gson.toJson(e);
-    }
+		Gson gson = gsonBuilder.create();
+		return gson.toJson(obj);
+	}
 
-    private static class RelationExcluder implements ExclusionStrategy {
+	private static String toJson(Event e) {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapterSerializer());
+		gsonBuilder.setExclusionStrategies(new EventsExcluder());
+		Gson gson = gsonBuilder.create();
+		return gson.toJson(e);
+	}
 
-        @Override
-        public boolean shouldSkipField(FieldAttributes f) {
-            String name = f.getName();
-            return name.equals("events") || name.equals("persons") || name.equals("nation");
-        }
+	private static class RelationExcluder implements ExclusionStrategy {
 
-        @Override
-        public boolean shouldSkipClass(Class<?> clazz) {
-            return false;
-        }
+		@Override
+		public boolean shouldSkipField(FieldAttributes f) {
+			String name = f.getName();
+			return name.equals("events") || name.equals("persons") || name.equals("nation");
+		}
 
-    }
+		@Override
+		public boolean shouldSkipClass(Class<?> clazz) {
+			return false;
+		}
 
-    private static class EventsExcluder implements ExclusionStrategy {
-        
-        @Override
-        public boolean shouldSkipField(FieldAttributes f) {
-            String name = f.getName();
-            return name.equals("events");
-        }
+	}
 
-        @Override
-        public boolean shouldSkipClass(Class<?> clazz) {
-            return false;
-        }
-        
-    }
-    
-    private static class LocalDateTimeAdapterSerializer implements JsonSerializer<LocalDateTime> {
+	private static class EventsExcluder implements ExclusionStrategy {
 
-        @Override
-        public JsonElement serialize(LocalDateTime date, Type typeOfSrc, JsonSerializationContext context) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            return new JsonPrimitive(date.format(formatter));
-        }
-        
-    }
+		@Override
+		public boolean shouldSkipField(FieldAttributes f) {
+			String name = f.getName();
+			return name.equals("events");
+		}
+
+		@Override
+		public boolean shouldSkipClass(Class<?> clazz) {
+			return false;
+		}
+
+	}
+
+	private static class LocalDateTimeAdapterSerializer implements JsonSerializer<LocalDateTime> {
+
+		@Override
+		public JsonElement serialize(LocalDateTime date, Type typeOfSrc, JsonSerializationContext context) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+			return new JsonPrimitive(date.format(formatter));
+		}
+
+	}
 
 }

@@ -32,8 +32,8 @@ public class PersonListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        List<Person> persons = facade.findAllPersons();
-        request.setAttribute("persons", persons);
+		List<Person> persons = facade.findAllPersons();
+		request.setAttribute("persons", persons);
 		request.getRequestDispatcher("/pages/PersonList.jsp").forward(request, response);
 	}
 

@@ -9,20 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/nations/overview")
 public class NationOverviewServlet extends HttpServlet {
-    
-	private static final long serialVersionUID = 1L;
-       
-    public NationOverviewServlet() {
-        super();
-    }
 
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private static final long serialVersionUID = 1L;
+
+	public NationOverviewServlet() {
+		super();
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.getRequestDispatcher("/pages/NationOverview.jsp").forward(request, response);
 	}
 
-    @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

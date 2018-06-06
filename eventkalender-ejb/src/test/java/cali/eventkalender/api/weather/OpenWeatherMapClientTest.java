@@ -12,14 +12,14 @@ import cali.eventkalender.api.weather.OpenWeatherMapClient;
 
 @RunWith(JUnit4.class)
 public class OpenWeatherMapClientTest {
-	
+
 	private OpenWeatherMapClient owm;
-	
+
 	@Before
-	public void setup(){
+	public void setup() {
 		owm = OpenWeatherMapClient.getInstance();
 	}
-	
+
 	@Test
 	public void getInstance() {
 		assertNotNull(owm);
@@ -29,12 +29,12 @@ public class OpenWeatherMapClientTest {
 	public void getCurrentWeather() {
 		assertNotNull(owm.getCurrentWeather("Lund"));
 	}
-	
+
 	@Test
 	public void getTemperature() {
 		assertNotNull(owm.getTemperature("Lund"));
 	}
-	
+
 	@Test
 	public void getIconLink() {
 		assertNotNull(owm.getIconLink("Lund"));

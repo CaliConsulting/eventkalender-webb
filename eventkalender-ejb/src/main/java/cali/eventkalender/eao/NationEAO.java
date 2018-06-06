@@ -23,9 +23,9 @@ public class NationEAO implements NationEAOLocal {
 	@Override
 	public Nation add(Nation nation) {
 		for (Event event : nation.getEvents()) {
-		    if (event.getId() < 0) {
-		        em.persist(event);
-		    }
+			if (event.getId() < 0) {
+				em.persist(event);
+			}
 		}
 		em.persist(nation);
 		return nation;
@@ -57,4 +57,3 @@ public class NationEAO implements NationEAOLocal {
 	}
 
 }
-

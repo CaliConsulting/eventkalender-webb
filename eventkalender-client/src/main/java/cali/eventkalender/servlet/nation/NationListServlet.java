@@ -32,8 +32,8 @@ public class NationListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        List<Nation> nations = facade.findAllNations();
-        request.setAttribute("nations", nations);
+		List<Nation> nations = facade.findAllNations();
+		request.setAttribute("nations", nations);
 		request.getRequestDispatcher("/pages/NationList.jsp").forward(request, response);
 	}
 
