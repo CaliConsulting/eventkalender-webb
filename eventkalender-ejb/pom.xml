@@ -87,6 +87,10 @@
     </profile>
     <profile>
       <id>wildfly-managed</id>
+
+      <!-- <properties> -->
+      <!-- <customArg>-Djboss.socket.binding.port-offset=10000</customArg> -->
+      <!-- </properties> -->
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
@@ -176,6 +180,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
             <configuration>
+              <argLine>-Djboss.socket.binding.port-offset=10000
+                ${argLine}</argLine>
               <systemPropertyVariables>
                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                 <jboss.home>${project.basedir}/target/wildfly-11.0.0.Final</jboss.home>

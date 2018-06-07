@@ -15,7 +15,9 @@
     <configuration>
       <property name="jbossHome">${jboss.home}</property>
       <property name="modulePath">${jboss.module.path}</property>
-      <property name="javaVmArguments">-Djboss.socket.binding.port-offset=10000 -Djboss.management.http.port=19990 -Xms512m -Xmx1024m -XX:MaxPermSize=512m</property>
+
+      <!-- The Maven Failsafe Plugin handles the start of the application 
+        server; the ports are decided by the plguin's configuration in the POM file -->
       <property name="httpPort">18080</property>
       <property name="managementPort">19990</property>
     </configuration>
